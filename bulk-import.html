@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+
+    <style>
+        .drag--area {
+            border: 2px dashed #c5d2d2;
+            height: 161px;
+            max-width: 682px;
+            width: 100%;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+        <div class="dashboard-body">
+            <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+                <!-- Breadcrumb Start -->
+                <div class="breadcrumb mb-24">
+                    <ul class="flex-align gap-4">
+                        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+                        </li>
+                        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+                        <li><span class="text-main-600 fw-normal text-15">Bulk Import</span></li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb End -->
+
+            </div>
+
+
+            <!-- Starting of Role Setup -->
+
+            <div class="tab-pane fade show active" id="pills-details" role="tabpanel"
+                aria-labelledby="pills-details-tab" tabindex="0">
+                <div class="card mt-24">
+                    <div class="card-header border-bottom">
+                        <h4 class="mb-4">Bulk Import</h4>
+                        <!-- <p class="text-gray-600 text-15">Please fill full details about yourself</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <div class="jumbotron mb-0 p-3 p-md-4  bg-white">
+                                    <h5 class="title">Instructions : </h5>
+                                    <p> 1. Download the format file and fill it with proper data.</p>
+
+                                    <p>2. You can download the example file to understand how the data must be filled.
+                                    </p>
+                                    <p>3. You can assign a student with multiple batch category list name by comma(,)
+                                        seperated.
+                                    </p>
+
+                                    <p>4. Once you have downloaded and filled the format file upload it in the form
+                                        below and submit.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form action="#">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="text-center mt-2">
+                                                Do not have the template?
+                                                <a href="assets/sample_file_export_xlsx/batch-category-list.xlsx" download=""
+                                                    class="text-primary">Download Here</a>
+                                            </h5>
+                                            <div class="form-group mt-4">
+                                                <label class="drag--area mb-0 mx-auto cursor-pointer"
+                                                    ondrop="drop(event)" ondragover="allowDrop(event)">
+                                                    <img class="icon" src="assets/images/icons/cloud.png" alt="">
+                                                    <div class="my-10">Click here to import the .xlsx file here
+                                                    </div>
+                                                    <div class="__choose-input">
+                                                        <input type="file" name="products_file" class="form-control"
+                                                            id="import-file" accept=".xlsx">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 mt-20">
+                    <div class="flex-align justify-content-end gap-8">
+                        <button type="reset"
+                            class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                            Reset
+                        </button>
+                        <button type="submit" class="btn btn-main rounded-pill py-9">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ending of Role Setup -->
+
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js -->
+
+
+</body>
+
+</html>

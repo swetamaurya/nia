@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Viewer with Chat</title>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
+    <!-- Agora RTM SDK -->
+    <!-- <script src="https://download.agora.io/sdk/release/AgoraRTM_N-1.5.1.js"></script> -->
+     
+    <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+    <style>
+      #remote-stream {
+        width: 400px;
+        height: 300px;
+        background: #ddd;
+        margin-bottom: 15px;
+      }
+      #chat-box {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #ccc;
+        overflow: auto;
+        margin-bottom: 10px;
+      }
+      #chat-input {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Viewer with Chat</h1>
+
+    <div>
+      <input type="text" id="clsIdBro" placeholder="enter your class id here" />
+      <button id="joinBtn">Join Class</button>
+    </div>
+    
+    <!-- Video container -->
+    <div id="remote-stream"><!-- Teacher's video will be displayed here --></div>
+
+    <!-- Chat UI -->
+    <div>
+      <h3>Chat</h3>
+      <div id="chat-box"></div>
+      <input type="text" id="chat-input" placeholder="Type message..." />
+      <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+      // Replace with your Agora App ID and server URL
+      const APP_ID = "3a55484f226043e18c5298242837f753";
+      const SERVER_URL = "http://192.168.1.5:5000"; // Node server with tokens
+
+      let rtcClient; // For audio/video
+      let rtmClient; // For real-time messaging
+      let rtmChannel; 
+      let remoteUid = null; // we might store teacher's UID if needed
+
+      document.getElementById("joinBtn").onclick = async () => {
+        const channelName = document.getElementById("clsIdBro").value.trim();
+        if (!channelName) {
+          alert("Please enter a channel name!");
+          return;
+        }
+        // Generate random UID for this student
+        const uid = String(Math.floor(Math.random() * 10000));
+
+        // 1. Join RTC channel to see teacher's video
+        await joinRTC(channelName, uid);
+
+        // 2. Join RTM channel to chat
+        await joinRTM(channelName, uid);
+      };
+
+      // ----------- RTC PART -----------
+      async function joinRTC(channelName, uid) {
+        try {
+          const role = "subscriber";
+
+          // Fetch RTC token
+          const resp = await fetch(`${SERVER_URL}/rtc-token`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ channelName, uid, role }),
+          });
+          const data = await resp.json();
+          const rtcToken = data.token;
+
+          // Create Agora client
+          rtcClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+          // Listen for teacher's published track
+          rtcClient.on("user-published", handleUserPublished);
+
+          // Join channel
+          await rtcClient.join(APP_ID, channelName, rtcToken, uid);
+          console.log("Student joined RTC channel:", channelName, "UID:", uid);
+        } catch (error) {
+          console.error("Failed to join RTC:", error);
+        }
+      }
+
+      // Triggered when teacher publishes
+      async function handleUserPublished(user, mediaType) {
+        await rtcClient.subscribe(user, mediaType);
+        console.log("Subscribed to user:", user.uid);
+
+        if (mediaType === "video") {
+          const remoteVideoTrack = user.videoTrack;
+          remoteUid = user.uid; // store teacher's UID if you want
+          if (remoteVideoTrack) {
+            remoteVideoTrack.play("remote-stream");
+          }
+        }
+
+        if (mediaType === "audio") {
+          const remoteAudioTrack = user.audioTrack;
+          if (remoteAudioTrack) {
+            remoteAudioTrack.play(); // No DOM needed for audio
+          }
+        }
+      }
+
+      // ----------- RTM PART -----------
+      async function joinRTM(channelName, uid) {
+        try {
+          // 1. Fetch RTM token
+          const resp = await fetch(`${SERVER_URL}/rtm-token`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ uid }),
+          });
+          const data = await resp.json();
+          const rtmToken = data.token;
+
+          // 2. Create RTM client & login
+          rtmClient = AgoraRTM.createInstance(APP_ID);
+          await rtmClient.login({ token: rtmToken, uid });
+          console.log("RTM login success for UID:", uid);
+
+          // 3. Join RTM channel
+          rtmChannel = await rtmClient.createChannel(channelName);
+          await rtmChannel.join();
+          console.log("RTM channel joined:", channelName);
+
+          // 4. Listen for channel messages
+          rtmChannel.on("ChannelMessage", ({ text }, senderId) => {
+            addMessageToChatBox(`User(${senderId}): ${text}`);
+          });
+        } catch (err) {
+          console.error("Error joining RTM:", err);
+        }
+      }
+
+      // Sending a chat message
+      document.getElementById("send-btn").onclick = async () => {
+        if (!rtmChannel) {
+          alert("Join the RTM channel first!");
+          return;
+        }
+        const input = document.getElementById("chat-input");
+        const msg = input.value.trim();
+        if (!msg) return;
+
+        await rtmChannel.sendMessage({ text: msg });
+        addMessageToChatBox(`Me: ${msg}`);
+        input.value = "";
+      };
+
+      function addMessageToChatBox(message) {
+        const box = document.getElementById("chat-box");
+        const newMsg = document.createElement("div");
+        newMsg.innerText = message;
+        box.appendChild(newMsg);
+        box.scrollTop = box.scrollHeight;
+      }
+    </script>
+  </body>
+</html>

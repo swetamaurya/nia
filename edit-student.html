@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/create-Students.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:10 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <!-- <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" /> -->
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+</head>
+
+<body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+        <div class="dashboard-body">
+            <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+                <!-- Breadcrumb Start -->
+                <div class="breadcrumb mb-24">
+                    <ul class="flex-align gap-4">
+                        <li>
+                            <a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+                        </li>
+                        <li>
+                            <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
+                        </li>
+                        <li>
+                            <span class="text-main-600 fw-normal text-15">Create Students</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb End -->
+
+            </div>
+
+            <!-- Students Tab Start -->
+            <form id="add-Students-form" action="#">
+                <div class="card">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Students Details</h5>
+                        <!-- <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip"
+                            data-bs-placement="top" data-bs-title="Students Details">
+                            <i class="ph-fill ph-question"></i>
+                        </button> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-20">
+                            <div class="col-sm-3">
+                                <label for="batchId" class="h6 mb-8 fw-semibold font-heading">Select Student List
+                                </label>
+                                <div class="position-relative">
+                                    <select id="batchId" class="form-select py-9 placeholder-13 text-15">
+                                        <option disabled selected>Select </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="paymentStudent" class="h6 mb-8 fw-semibold font-heading">
+                                    Payment Status
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    maxlength="100" id="paymentStudent" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="applicationNumber" class="h6 mb-8 fw-semibold font-heading">
+                                    Application Number
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    maxlength="100" id="applicationNumber" placeholder="Enter the application number" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="registrationNumber" class="h6 mb-8 fw-semibold font-heading">
+                                    Registration Number
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    maxlength="100" id="registrationNumber" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-top">
+                    <div class="card-body">
+                        <!-- <h5 class="mt-20">Examination Details</h5> -->
+                        <!-- <div class="border-bottom border-gray-100 mb-15"></div> -->
+                        <div class="row gy-20">
+                            <div class="col-sm-3">
+                                <label for="applyFor" class="h6 mb-8 fw-semibold font-heading">
+                                    Apply For
+                                </label>
+                                <select id="applyFor" class="form-select py-9 placeholder-13 text-15">
+                                    <option disabled selected>Select </option>
+                                    <option value="CSA">CSA </option>
+                                    <option value="Loader/Housekeeping">Loader/Housekeeping </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="examinationFee" class="h6 mb-8 fw-semibold font-heading">
+                                    Examination Fee
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="examinationFee" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="examinationCenterState" class="h6 mb-8 fw-semibold font-heading">
+                                    Exam Center State
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="examinationCenterState" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="examinationCenterCity" class="h6 mb-8 fw-semibold font-heading">
+                                    Exam Center City
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="examinationCenterCity" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-20">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Personel Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="mt-20">Personel Details</h5> -->
+                        <!-- <div class="border-bottom border-gray-100 mb-15"></div> -->
+                        <div class="row gy-20">
+                            <div class="col-sm-9">
+                                <div class="row gy-20">
+                                    <div class="col-sm-6">
+                                        <label for="firstName" class="h6 mb-8 fw-semibold font-heading">First
+                                            Name
+                                        </label>
+                                        <div class="position-relative">
+                                            <input type="text" id="firstName"
+                                                class="placeholder-13 form-control py-11"
+                                                placeholder="Enter the first name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="lastName" class="h6 mb-8 fw-semibold font-heading">Last
+                                            Name
+                                        </label>
+                                        <div class="position-relative">
+                                            <input type="text" id="lastName"
+                                                class="placeholder-13 form-control py-11"
+                                                placeholder="Enter the last name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="fatherHusbandName"
+                                            class="h6 mb-8 fw-semibold font-heading">Father/Husband
+                                            Name
+                                        </label>
+                                        <div class="position-relative">
+                                            <input type="text" id="fatherHusbandName"
+                                                class="placeholder-13 form-control py-11"
+                                                placeholder="Enter the father/husband name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="motherName" class="h6 mb-8 fw-semibold font-heading">Mother
+                                            Name
+                                        </label>
+                                        <div class="position-relative">
+                                            <input type="text" id="motherName"
+                                                class="placeholder-13 form-control py-11"
+                                                placeholder="Enter the mother name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="dateOfBirth" class="h6 mb-8 fw-semibold font-heading">Date of Birth
+                                        </label>
+                                        <div class="position-relative">
+                                            <input type="date" id="dateOfBirth"
+                                                class="placeholder-13 form-control py-11" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="category" class="h6 mb-8 fw-semibold font-heading">Category
+                                        </label>
+                                        <div class="position-relative">
+                                            <select id="category" class="form-select py-9 placeholder-13 text-15">
+                                                <option disabled selected>Select </option>
+                                                <option value="General">General </option>
+                                                <option value="OBC">OBC </option>
+                                                <option value="SC">SC </option>
+                                                <option value="ST">ST </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">Email ID
+                                        </span>
+                                        <input type="email" class=" placeholder-13 form-control py-11 col-5"
+                                            id="email" placeholder="Enter Your email id" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">Mobile Number
+                                        </span>
+                                        <input type="tel" class=" placeholder-13 form-control py-11 col-5" id="mobile"
+                                            placeholder="Enter your mobile number" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="gender" class="h6 mb-8 fw-semibold font-heading">Gender
+                                        </label>
+                                        <div class="position-relative">
+                                            <select id="gender" class="form-select py-9 placeholder-13 text-15">
+                                                <option disabled selected>Select </option>
+                                                <option value="Male">Male </option>
+                                                <option value="Female">Female </option>
+                                                <option value="Other">Other </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="maritalStatus" class="h6 mb-8 fw-semibold font-heading">Marital
+                                            Status
+                                        </label>
+                                        <div class="position-relative">
+                                            <select id="maritalStatus" class="form-select py-9 placeholder-13 text-15">
+                                                <option disabled selected>Select </option>
+                                                <option value="Single">Single </option>
+                                                <option value="Married">Married </option>
+                                                <option value="Divorced">Divorced </option>
+                                                <option value="Widowed">Widowed </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3 ">
+                                <div class="row gy-20">
+                                    <!-- <label class="form-label d-none d-md-block">
+                                    &nbsp;
+                                </label> -->
+                                    <div class="col-sm-12 col-xs-12 text-center">
+                                        <div id="uploadPhoto" class="fileUpload image-upload"></div>
+
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 text-center">
+                                        <!-- <label class="form-label d-none d-md-block">
+                                    &nbsp;
+                                </label> -->
+                                        <div id="uploadSignature" class="fileUpload image-upload"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-20">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Education Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="mt-20">Education Details</h5> -->
+                        <!-- <div class="border-bottom border-gray-100 mb-15"></div> -->
+                        <div class="row gy-20">
+                            <div class="col-sm-4 border-end">
+                                <div class="row gy-20">
+                                    <div class="col-12">
+                                        <label for="educationalQualification" class="h6 mb-8 fw-semibold font-heading">
+                                            Educational Qualification
+                                        </label>
+                                        <div class="position-relative">
+                                            <select id="educationalQualification" class="form-select py-9 placeholder-13 text-15">
+                                                <option disabled selected>Select </option>
+                                                <option value="High School">High School </option>
+                                                <option value="Intermediate">Intermediate </option>
+                                                <option value="Graduate">Graduate </option>
+                                                <option value="Post Graduate">Post Graduate </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="educationalQualificationDivision" class="h6 mb-8 fw-semibold font-heading">
+                                            Division
+                                        </label>
+                                        <select id="educationalQualificationDivision" class="form-select py-9 placeholder-13 text-15">
+                                            <option disabled selected>Select </option>
+                                            <option value="First Division">First Division </option>
+                                            <option value="Second Division">Second Division </option>
+                                            <option value="Third Division">Third Division </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 border-end">
+                                <div class="row gy-20">
+                                    <div class="col-12">
+                                        <label for="intermediateDetails" class="h6 mb-8 fw-semibold font-heading">
+                                            Intermediate
+                                        </label>
+                                        <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                            id="intermediateDetails" placeholder="Enter your education board" />
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="intermediateDetailsDivision" class="h6 mb-8 fw-semibold font-heading">
+                                            Division
+                                        </label>
+                                        <select id="intermediateDetailsDivision" class="form-select py-9 placeholder-13 text-15">
+                                            <option disabled selected>Select </option>
+                                            <option value="First Division">First Division </option>
+                                            <option value="Second Division">Second Division </option>
+                                            <option value="Third Division">Third Division </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="row gy-20">
+                                    <div class="col-12">
+                                        <label for="highSchoolDetails" class="h6 mb-8 fw-semibold font-heading">
+                                            High School
+                                        </label>
+                                        <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                            id="highSchoolDetails" placeholder="Enter your education board" />
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="highSchoolDetailsDivision" class="h6 mb-8 fw-semibold font-heading">
+                                            Division
+                                        </label>
+                                        <select id="highSchoolDetailsDivision" class="form-select py-9 placeholder-13 text-15">
+                                            <option disabled selected>Select </option>
+                                            <option value="First Division">First Division </option>
+                                            <option value="Second Division">Second Division </option>
+                                            <option value="Third Division">Third Division </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-20">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Permanent Address</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <div><input type="checkbox" class="btn-check" id="btncheck1"></div> -->
+                        <!-- <h5>Permanent Address</h5> -->
+                        <!-- <div class="border-bottom border-gray-100 mb-15"></div> -->
+                        <div class="row gy-20">
+                            <div class="col-sm-3">
+                                <label for="permanentStreet" class="h6 mb-8 fw-semibold font-heading">
+                                    Street Name
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentStreet" placeholder="Enter your street name" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentHouseNo" class="h6 mb-8 fw-semibold font-heading">
+                                    House No
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentHouseNo" placeholder="Enter your house no" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentVillage" class="h6 mb-8 fw-semibold font-heading">
+                                    Village
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentVillage" placeholder="Enter your village" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentCity" class="h6 mb-8 fw-semibold font-heading">
+                                    City
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentCity" placeholder="Enter your city" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentPostOffice" class="h6 mb-8 fw-semibold font-heading">
+                                    Post Office
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentPostOffice" placeholder="Enter your post office" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentState" class="h6 mb-8 fw-semibold font-heading">
+                                    State
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentState" placeholder="Enter your state" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentDistrict" class="h6 mb-8 fw-semibold font-heading">
+                                    District
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentDistrict" placeholder="Enter your district" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="permanentPincode" class="h6 mb-8 fw-semibold font-heading">
+                                    Pin Code
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="permanentPincode" placeholder="Enter your pin code" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-20">
+                    <div class="card-body">
+                        <input type="checkbox" class="form-check-input me-7" id="sameAsPermanent" />
+                        <label for="sameAsPermanent">Same as Permanent Address</label>
+                    </div>
+                </div>
+                <div class="card mt-20">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Present Address</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5>Present Address</h5> -->
+                        <!-- <div class="border-bottom border-gray-100 mb-15"></div> -->
+                        <div class="row gy-20">
+                            <div class="col-sm-3">
+                                <label for="presentStreet" class="h6 mb-8 fw-semibold font-heading">
+                                    Street Name
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentStreet" placeholder="Enter your street name" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentHouseNo" class="h6 mb-8 fw-semibold font-heading">
+                                    House No
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentHouseNo" placeholder="Enter your house no" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentVillage" class="h6 mb-8 fw-semibold font-heading">
+                                    Village
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentVillage" placeholder="Enter your village" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentCity" class="h6 mb-8 fw-semibold font-heading">
+                                    City
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentCity" placeholder="Enter your city" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentPostOffice" class="h6 mb-8 fw-semibold font-heading">
+                                    Post Office
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentPostOffice" placeholder="Enter your post office" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentState" class="h6 mb-8 fw-semibold font-heading">
+                                    State
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentState" placeholder="Enter your state" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentDistrict" class="h6 mb-8 fw-semibold font-heading">
+                                    District
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentDistrict" placeholder="Enter your district" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="presentPincode" class="h6 mb-8 fw-semibold font-heading">
+                                    Pin Code
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11"
+                                    id="presentPincode" placeholder="Enter your pin code" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Buttons Start -->
+                <div class="flex-align justify-content-end gap-8 mt-20">
+                    <button id="submit" type="button"
+                        class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                        Submit
+                    </button>
+                    <button id="cancel" type="button" class="btn btn-main rounded-pill py-9">
+                        Cancel
+                    </button>
+                </div>
+                <!-- Buttons End -->
+            </form>
+
+
+            <!-- Students Tab End -->
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <!-- <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script> -->
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js  -->
+     <script type="module" src="assets/custom-js/edit-student.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <!-- <script type="module" src="./assets/custom-js/create-student.js"></script> -->
+
+    <!-- <script>
+        flatpickr("#StudentsYear", {
+            dateFormat: "Y", // Year only
+            defaultDate: new Date(), // Set default date to current year
+            plugins: [new window.flatpickr.l10n.plugins().monthSelectPlugin()],
+        });
+    </script> -->
+    <script>
+        document.addEventListener("change", function (e) {
+            const input = e.target; // Get the element that triggered the event
+            if (input.matches("[data-viewer]")) { // Check if the input has a viewer dataset
+                const viewer = document.getElementById(input.dataset.viewer);
+                const file = input.files[0];
+                if (file && viewer) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => (viewer.src = e.target.result);
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+
+
+
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/create-Students.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:11 GMT -->
+
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/create-course.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:10 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+
+    <style>
+        .edit-course-initial .initial-24 {
+            height: 216px;
+            width: 100%;
+            padding: 15px;
+        }
+
+        #image-container .initial-23 {
+            height: 137px;
+            width: 137px;
+            padding: 0px;
+            border: 1px solid rgb(153, 167, 186);
+            -o-object-fit: cover;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            width: 137px;
+            padding: 0;
+            /* width: 150px; */
+            /* Adjust based on your design */
+            /* height: 137px; */
+            /* Adjust based on your design */
+            /* margin: 10px; */
+            /* Space between images */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            /* Optional */
+        }
+
+        .image-container .action-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: rgba(0, 0, 0, 0.5); */
+            /* Semi-transparent overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 5px;
+            /* Match image border radius */
+        }
+
+        .image-container .action-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .image-container:hover .action-icons {
+            opacity: 1;
+            background: linear-gradient(45deg, black, #0000007d);
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+        <div class="dashboard-body">
+            <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+                <!-- Breadcrumb Start -->
+                <div class="breadcrumb mb-24">
+                    <ul class="flex-align gap-4">
+                        <li>
+                            <a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+                        </li>
+                        <li>
+                            <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
+                        </li>
+                        <li>
+                            <span class="text-main-600 fw-normal text-15">Edit Course</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb End -->
+
+                <!-- Buttons Start -->
+                <div class="flex-align justify-content-end gap-8 mt-20">
+                    <button id="save-as-draft" type="button"
+                        class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                        Save as Draft
+                    </button>
+                    <button id="publish-course" type="button" class="btn btn-main rounded-pill py-9">
+                        Publish Course
+                    </button>
+                </div>
+                <!-- Buttons End -->
+            </div>
+
+            <!-- Course Tab Start -->
+            <div class="card">
+                <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                    <h5 class="mb-0">Course Details</h5>
+                    <button type="button" class="text-main-600 text-md d-flex" data-bs-toggle="tooltip"
+                        data-bs-placement="top" data-bs-title="Course Details">
+                        <i class="ph-fill ph-question"></i>
+                    </button>
+                </div>
+                <div class="card-body edit-course-initial">
+                    <form action="#">
+                        <div class="row g-20 align-items-center">
+
+                            <div class="col-3">
+                                <div class="text-center mb-4">
+                                    <img class="initial-24" id="viewer" src="assets/images/thumbs/upload-image.png"
+                                        alt="Employee" />
+                                </div>
+
+                            </div>
+                            <div class="col-9">
+                                <div class="my-20">
+                                    <label for="courseTitle" class="h6 mb-8 fw-semibold font-heading">Course Tittle
+                                        <span class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                    </label>
+                                    <div class="position-relative">
+                                        <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76"
+                                            maxlength="100" id="courseTitle" placeholder="Name of the Lesson" />
+                                        <div
+                                            class="text-gray-400 position-absolute inset-inline-end-0 top-50 translate-middle-y me-16">
+                                            <span id="current">0</span>
+                                            <span id="maximum">/ 100</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-20">
+                                    <label class="h6 mb-8 fw-semibold font-heading">Course Description</label>
+                                    <textarea id="description" rows="4" class="placeholder-13 form-control w-100"
+                                        placeholder="Enter Course Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-20 mt-0">
+                            <div class="col-sm-4 mb-0">
+
+                                <label class="form-label mb-8 h6">
+                                    Update Thumbnail
+                                </label>
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="fileUpload-2" class="form-control py-11"
+                                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                                    <label class="custom-file-label h--45px" for="fileUpload-2"></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="courseCategory" class="h6 mb-8 fw-semibold font-heading">Course Category
+                                </label>
+                                <div class="position-relative">
+                                    <select id="courseCategory" class="form-select py-9 placeholder-13 text-15">
+                                        <option value="Aviation">Aviation </option>
+                                        <option value="Gromming">Gromming </option>
+                                        <option value="Management">Management </option>
+                                        <option value="Humanities">Humanities </option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="courseDuration" class="h6 mb-8 fw-semibold font-heading">Course Duration
+                                </label>
+                                <div class="position-relative">
+                                    <input type="text" class=" placeholder-13 form-control py-11 pe-76"
+                                        id="courseDuration" placeholder="Enter the Course Duration" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-0">
+                                <label class="h6 mb-8 fw-semibold font-heading">
+                                    Add Multiple Images
+                                </label>
+                                <input type="file" name="image" id="multipleImageUpload"
+                                    class="form-control py-11 pe-76" multiple
+                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required="" />
+                            </div>
+                            <div class="col-sm-6 m-0">
+                                <label class="h6 mb-8 fw-semibold font-heading">
+                                    Add Multiple Files
+                                </label>
+                                <input type="file" name="image" id="multipleFileUpload" class="form-control py-11 pe-76"
+                                    multiple required="" />
+                            </div>
+
+                        </div>
+
+                        <div class="border-bottom border-gray-100 my-30"></div>
+
+                        <div class="row mt-30">
+                            <div class=" col-md-7 border-end border-gray-100">
+                                <h5 class="mb-22 fw-bold">Course Gallery</h5>
+                                <div id="image-container" class="row gap-15 mb-4 px-13 position-relative">
+
+
+                                </div>
+                            </div>
+                            <div class=" col-md-5 px-20">
+                                <h5 class="mb-12 fw-bold mb-22">Multiple Documents</h5>
+                                <div class="row" id="uploaded_filesss">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover ">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-white">#</th>
+                                                        <th class="text-white">Files</th>
+                                                        <th class="text-white"> Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="course-file-tbody">
+                                                    <!-- <tr>
+                                                        <td>1</td>
+
+                                                        <td><a href="javascript:void(0)" target="_blank">File 1</a>
+                                                        </td>
+                                                        <td >
+                                                            <div class="btn--container d-flex ">
+                                                                <a href="javascript:void(0)" class="action-btn me-5" title="Edit">
+                                                                  <i class="ph ph-eye"></i>
+                                                                </a>
+                                                                <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-2" data-message="Want to delete this role?">
+                                                                  <i class="ph ph-trash"></i>
+                                                                </a>
+                                                              </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+
+                                                        <td><a href="#"
+                                                                target="_blank">File 2</a></td>
+                                                        <td>
+                                                            <div class="btn--container d-flex ">
+                                                                <a href="javascript:void(0)" class="action-btn me-5" title="Edit">
+                                                                  <i class="ph ph-eye"></i>
+                                                                </a>
+                                                                <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-2" data-message="Want to delete this role?">
+                                                                  <i class="ph ph-trash"></i>
+                                                                </a>
+                                                              </div>
+                                                        </td>
+                                                    </tr>  -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Course Tab End -->
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <!-- <script src="assets/js/file-upload.js"></script> -->
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js  -->
+    <script type="module" src="./assets/custom-js/edit-course.js"></script>
+
+    <script>
+        // Get references to the input and image elements
+        const fileInput = document.getElementById("fileUpload-2");
+        const viewer = document.getElementById("viewer");
+
+        // Add an event listener for file selection
+        fileInput.addEventListener("change", function () {
+            const file = fileInput.files[0]; // Get the selected file
+            if (file) {
+                const reader = new FileReader(); // Create a FileReader to read the file
+                reader.onload = function (e) {
+                    viewer.src = e.target.result; // Update the image's src with the file's data URL
+                };
+                reader.readAsDataURL(file); // Read the file as a Data URL
+            }
+        });
+    </script>
+
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/create-course.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:11 GMT -->
+
+</html>

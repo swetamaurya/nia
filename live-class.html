@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.themeholy.com/edmate/live-class.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:40 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title> NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css">
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css">
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css">
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css">
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/global-header.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #controls {
+            margin-bottom: 15px;
+        }
+
+        #teacher-stream,
+        #screen-stream {
+            margin: 10px 0;
+            background: #ccc;
+            position: relative;
+            border-radius: 15px;
+
+            >div {
+                border-radius: 15px;
+            }
+
+        }
+
+        /* Default sizing for teacher-stream when screen share is OFF */
+        #teacher-stream {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+
+
+        }
+
+        /* Hidden by default for screen-stream */
+        #screen-stream {
+            display: none;
+            width: 100%;
+            height: 400px;
+            background: #aaa;
+        }
+
+        /* When screen sharing is ON, show #screen-stream and shrink #teacher-stream into corner */
+        body.screensharing #screen-stream {
+            display: block;
+            width: 100%;
+            height: 500px;
+            background: #ccc;
+            margin-bottom: 20px;
+        }
+
+        body.screensharing #teacher-stream {
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            border: 2px solid #000;
+        }
+
+        video {
+            border-radius: 15px;
+        }
+
+        /* Chat styles */
+        #chat-container {
+            margin-top: 20px;
+        }
+
+        #chat-box {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow: auto;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        #chat-input {
+            width: 220px;
+        }
+
+        #controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button i {
+            font-size: 18px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .on {
+            background-color: #28a745;
+        }
+
+        .on:hover {
+            background-color: #1e7e34;
+        }
+
+        .off {
+            background-color: #dc3545;
+        }
+
+        .off:hover {
+            background-color: #b02a37;
+        }
+
+        /* Separator styles */
+        .separator {
+            display: inline-block;
+            width: 2px;
+            height: 24px;
+            background-color: #ccc;
+            margin: 0 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+
+        <div class="dashboard-body">
+
+            <!-- Breadcrumb Start -->
+            <div class="breadcrumb mb-24">
+                <ul class="flex-align gap-4">
+                    <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+                    <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+                    <li><span class="text-main-600 fw-normal text-15">Course Details</span></li>
+                </ul>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <!-- Channel name input -->
+            <input type="text" id="classId" placeholder="Enter your channel/class name" style="margin-bottom:10px;" />
+
+            <!-- Control Buttons -->
+            <div id="controls">
+                <button id="startBtn" class="on"><i class="fas fa-play"></i> Start Streaming</button>
+                <span class="separator"></span>
+                <button id="stopBtn" class="off"><i class="fas fa-pause"></i> Streaming Paused</button>
+                <span class="separator"></span>
+                <button id="screenShareBtn" class="on"><i class="fas fa-desktop"></i> Screen Share ON</button>
+                <span class="separator"></span>
+                <button id="screenShareOffBtn" class="off"><i class="fas fa-pause-circle"></i> Screen Sharing
+                    Paused</button>
+                <span class="separator"></span>
+                <button id="videoOnBtn" class="on"><i class="fas fa-video"></i> Video ON</button>
+                <span class="separator"></span>
+                <button id="videoOffBtn" class="off"><i class="fas fa-video-slash"></i> Video Disabled</button>
+                <span class="separator"></span>
+                <button id="micOnBtn" class="on"><i class="fas fa-microphone"></i> Mic ON</button>
+                <span class="separator"></span>
+                <button id="micOffBtn" class="off"><i class="fas fa-volume-mute"></i> Mic Muted</button>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <div class="rounded-16 overflow-hidden position-relative">
+                        <span
+                            class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
+                        <!-- Teacher camera container -->
+                        <div id="teacher-stream"></div>
+                        <!-- Screen-share container -->
+                        <div id="screen-stream"></div>
+                    </div>
+                    <!-- Course Card Start -->
+                    <div class="card mt-24">
+                        <div class="card-body">
+                            <div class="pb-24 flex-between gap-4 flex-wrap">
+                                <h5 class="mb-12 fw-bold">Questions (85)</h5>
+                                <a href="#" class="btn btn-outline-gray text-gray-500 text-13 py-8 px-8 rounded-4">See
+                                    All</a>
+                            </div>
+
+                            <ul class="comment-list">
+                                <li>
+                                    <div class="d-flex align-items-start gap-8 flex-xs-row flex-column">
+                                        <img src="assets/images/thumbs/mentor-img1.png" alt=""
+                                            class="w-48 h-48 rounded-circle object-fit-cover flex-shrink-0">
+                                        <div class="">
+                                            <div class="flex-align flex-wrap gap-8">
+                                                <h6 class="text-15 fw-bold mb-0">Amir Hamja </h6>
+                                                <span
+                                                    class="py-0 px-8 bg-main-50 text-main-600 rounded-4 text-15 fw-medium h5 mb-0 fw-bold">You</span>
+                                                <span class="text-gray-300 text-13">8:00PM </span>
+                                            </div>
+                                            <p class="text-15 text-gray-600 mt-8">Fringilla justo mauris cursus arcu sit
+                                                urna. Nullam eu non bibendum quam mi dolor nisi orci?</p>
+                                        </div>
+                                    </div>
+                                    <ul class="sub-comment-list mt-24">
+                                        <li>
+                                            <div class="d-flex align-items-start gap-8 flex-xs-row flex-column">
+                                                <img src="assets/images/thumbs/mentor-img2.png" alt=""
+                                                    class="w-48 h-48 rounded-circle object-fit-cover flex-shrink-0">
+                                                <div class="">
+                                                    <div class="flex-align flex-wrap gap-8">
+                                                        <h6 class="text-15 fw-bold mb-0">Selina Eyvi</h6>
+                                                        <span
+                                                            class="py-0 px-8 bg-main-50 text-main-600 rounded-4 text-15 fw-medium h5 mb-0 fw-bold">Mentor</span>
+                                                        <span class="text-gray-300 text-13">8:10PM</span>
+                                                    </div>
+                                                    <p class="text-15 text-gray-600 mt-8">Justo gravida eget id massa
+                                                        volutpat. Volutpat vehicula tortor fusce sed pellentesque id
+                                                        sagittis eu commodo. Ut ultrices neque faucibus morbi rhoncus.
+                                                        Volutpat vehicula tortor fusce sed pellentesque id sagittis eu
+                                                        commodo</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form action="#" class="position-relative mt-44">
+                                <input type="text" class="form-control bg-main-50 border-0 py-18 pe-54"
+                                    placeholder="Drop your questions here...">
+                                <button type="submit"
+                                    class="w-40 h-40 flex-center rounded-8 bg-white text-main-600 hover-bg-main-600 hover-text-white transition-1 position-absolute inset-inline-end-0 top-50 translate-middle-y me-8">
+                                    <i class="ph ph-paper-plane-tilt"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Course Card End -->
+                </div>
+            </div>
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/global-header.js"></script>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+
+
+
+    <script>
+        /********************************************
+         *  Replace with your own details
+         ********************************************/
+        const APP_ID = "3a55484f226043e18c5298242837f753";  // e.g. "3a55484fxxxx"
+        const SERVER_URL = "http://localhost:5000";
+        /********************************************/
+
+        // ========= [ A. RTC Setup with 2 Clients ] =========
+        // -- Client A: for camera + mic --
+        let mainClient;
+        let localTracks = {
+            videoTrack: null,
+            audioTrack: null
+        };
+        let isMainPublished = false;
+
+        // -- Client B: for screen share --
+        let screenClient;
+        let screenTrack = null;
+        let isScreenPublished = false;
+
+        // ========= [ B. RTM (Chat) Setup ] =========
+        let rtmClient;
+        let rtmChannel;
+
+        // =========== Start Button (Camera & Mic) ===========
+        document.getElementById("startBtn").onclick = async () => {
+            if (isMainPublished) {
+                alert("Already streaming camera!");
+                return;
+            }
+
+            // Get the channel name
+            const channelName = document.getElementById("classId").value.trim();
+            if (!channelName) {
+                alert("Please enter a channel name first!");
+                return;
+            }
+
+            // Random teacher UID
+            const uid = String(Math.floor(Math.random() * 10000));
+            const role = "publisher";
+
+            // 1) Get RTC token
+            let rtcToken;
+            try {
+                const resp = await fetch(`${SERVER_URL}/rtc-token`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ channelName, uid, role })
+                });
+                const data = await resp.json();
+                rtcToken = data.token;
+            } catch (err) {
+                console.error("Failed to get RTC token:", err);
+                return;
+            }
+
+            try {
+                // 2) mainClient join
+                mainClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+                await mainClient.join(APP_ID, channelName, rtcToken, uid);
+
+                // 3) Create camera+mic
+                const [micTrack, camTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
+                localTracks.audioTrack = micTrack;
+                localTracks.videoTrack = camTrack;
+
+                // 4) Play camera in teacher-stream
+                localTracks.videoTrack.play("teacher-stream");
+
+                // 5) Publish
+                await mainClient.publish([micTrack, camTrack]);
+                isMainPublished = true;
+                console.log("Camera stream published!");
+
+                // 6) Also log in to RTM and join channel for chat
+                await startRTM(channelName, uid);
+            } catch (err) {
+                console.error("Error starting main stream:", err);
+            }
+        };
+
+        // ========== Stop Button (Stop All Streaming) ==========
+        document.getElementById("stopBtn").onclick = async () => {
+            // 1) Stop camera+mic
+            if (isMainPublished && mainClient) {
+                try {
+                    await mainClient.unpublish();
+                    if (localTracks.videoTrack) {
+                        localTracks.videoTrack.stop();
+                        localTracks.videoTrack.close();
+                        localTracks.videoTrack = null;
+                    }
+                    if (localTracks.audioTrack) {
+                        localTracks.audioTrack.stop();
+                        localTracks.audioTrack.close();
+                        localTracks.audioTrack = null;
+                    }
+                    await mainClient.leave();
+                    mainClient = null;
+                    isMainPublished = false;
+                } catch (err) {
+                    console.error("Error stopping main stream:", err);
+                }
+            }
+
+            // 2) Stop screen share
+            if (isScreenPublished && screenClient) {
+                try {
+                    await screenClient.unpublish(screenTrack);
+                    if (screenTrack) {
+                        screenTrack.stop();
+                        screenTrack.close();
+                        screenTrack = null;
+                    }
+                    await screenClient.leave();
+                    screenClient = null;
+                    isScreenPublished = false;
+                } catch (err) {
+                    console.error("Error stopping screen share:", err);
+                }
+            }
+
+            // 3) Clear UI
+            document.getElementById("teacher-stream").innerHTML = "";
+            document.getElementById("screen-stream").innerHTML = "";
+            document.body.classList.remove("screensharing");
+
+            // 4) Leave RTM channel if joined
+            if (rtmChannel) {
+                await rtmChannel.leave();
+                rtmChannel = null;
+            }
+            if (rtmClient) {
+                await rtmClient.logout();
+                rtmClient = null;
+            }
+
+            console.log("All streaming & RTM stopped.");
+        };
+
+        // ========== Screen Share ON ==========
+        document.getElementById("screenShareBtn").onclick = async () => {
+            if (!isMainPublished) {
+                alert("Please start camera streaming first!");
+                return;
+            }
+            if (isScreenPublished) {
+                alert("Screen share already active!");
+                return;
+            }
+
+            const channelName = document.getElementById("classId").value.trim();
+            if (!channelName) {
+                alert("Enter channel name first!");
+                return;
+            }
+
+            // New random UID for screen client
+            const uid = String(Math.floor(Math.random() * 10000));
+            const role = "publisher";
+
+            // 1) Get RTC token for second client
+            let screenToken;
+            try {
+                const resp = await fetch(`${SERVER_URL}/rtc-token`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ channelName, uid, role })
+                });
+                const data = await resp.json();
+                screenToken = data.token;
+            } catch (err) {
+                console.error("Failed to get screen RTC token:", err);
+                return;
+            }
+
+            // 2) Create screenClient, join channel
+            try {
+                screenClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+                await screenClient.join(APP_ID, channelName, screenToken, uid);
+
+                // 3) Create screen track
+                screenTrack = await AgoraRTC.createScreenVideoTrack(
+                    { encoderConfig: "1080p_1" },
+                    "auto"
+                );
+
+                // 4) Publish screen track
+                await screenClient.publish(screenTrack);
+                isScreenPublished = true;
+                console.log("Screen sharing published!");
+
+                // 5) Play in #screen-stream
+                document.body.classList.add("screensharing");
+                screenTrack.play("screen-stream");
+            } catch (err) {
+                console.error("Error starting screen share:", err);
+            }
+        };
+
+        // ========== Screen Share OFF ==========
+        document.getElementById("screenShareOffBtn").onclick = async () => {
+            if (!isScreenPublished || !screenClient || !screenTrack) {
+                alert("No active screen share!");
+                return;
+            }
+
+            try {
+                await screenClient.unpublish(screenTrack);
+                screenTrack.stop();
+                screenTrack.close();
+                screenTrack = null;
+                await screenClient.leave();
+                screenClient = null;
+                isScreenPublished = false;
+
+                document.body.classList.remove("screensharing");
+                document.getElementById("screen-stream").innerHTML = "";
+                console.log("Screen sharing stopped!");
+            } catch (err) {
+                console.error("Error stopping screen share:", err);
+            }
+        };
+
+        // ========== Video OFF (Camera) ==========
+        document.getElementById("videoOffBtn").onclick = async () => {
+            if (!localTracks.videoTrack) {
+                alert("Camera track not found!");
+                return;
+            }
+            try {
+                await localTracks.videoTrack.setEnabled(false);
+                console.log("Camera is OFF now.");
+            } catch (err) {
+                console.error("Failed to turn off camera:", err);
+            }
+        };
+
+        // ========== Video ON (Camera) ==========
+        document.getElementById("videoOnBtn").onclick = async () => {
+            if (!localTracks.videoTrack) {
+                alert("Camera track not found!");
+                return;
+            }
+            try {
+                await localTracks.videoTrack.setEnabled(true);
+                console.log("Camera is ON now.");
+            } catch (err) {
+                console.error("Failed to turn on camera:", err);
+            }
+        };
+
+        // ========== Mic OFF ==========
+        document.getElementById("micOffBtn").onclick = async () => {
+            if (!localTracks.audioTrack) {
+                alert("Mic track not found!");
+                return;
+            }
+            try {
+                await localTracks.audioTrack.setEnabled(false);
+                console.log("Mic is OFF now.");
+            } catch (err) {
+                console.error("Failed to turn off mic:", err);
+            }
+        };
+
+        // ========== Mic ON ==========
+        document.getElementById("micOnBtn").onclick = async () => {
+            if (!localTracks.audioTrack) {
+                alert("Mic track not found!");
+                return;
+            }
+            try {
+                await localTracks.audioTrack.setEnabled(true);
+                console.log("Mic is ON now.");
+            } catch (err) {
+                console.error("Failed to turn on mic:", err);
+            }
+        };
+
+        // ========== RTM (Chat) Logic ==========
+        async function startRTM(channelName, uid) {
+            try {
+                // 1) Get RTM token
+                const resp = await fetch(`${SERVER_URL}/rtm-token`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ uid })
+                });
+                console.warn("Fetching RTM token...");
+                const data = await resp.json();
+                const rtmToken = data.token;
+                console.warn("RTM token fetched:", rtmToken);
+
+                // 2) Create RTM client & login
+                console.warn("Logging in to RTM...");
+                rtmClient = AgoraRTM.createInstance(APP_ID);
+                await rtmClient.login({ token: rtmToken, uid });
+                console.warn("RTM login success, uid:", uid);
+                console.warn("Successfully logged in to RTM.");
+
+                // 3) Join RTM channel
+                console.warn("Joining RTM channel...");
+                rtmChannel = await rtmClient.createChannel(channelName);
+                await rtmChannel.join();
+                console.warn("RTM channel joined:", channelName);
+                console.warn("Joined RTM channel:", channelName);
+
+                // 4) Listen for incoming messages
+                rtmChannel.on("ChannelMessage", ({ text }, senderId) => {
+                    addMessageToChatBox(`User(${senderId}): ${text}`);
+                });
+            } catch (err) {
+                console.error("Error starting RTM:", err);
+            }
+        }
+
+        // ---------- Send Chat Message ----------
+        document.getElementById("send-btn").onclick = async () => {
+            if (!rtmChannel) {
+                alert("Not in RTM channel yet!");
+                return;
+            }
+            const input = document.getElementById("chat-input");
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            try {
+                await rtmChannel.sendMessage({ text: msg });
+                addMessageToChatBox(`Me: ${msg}`);
+                input.value = "";
+            } catch (err) {
+                console.error("Failed to send RTM message:", err);
+            }
+        };
+
+        // Display a new chat message in the #chat-box
+        function addMessageToChatBox(message) {
+            const box = document.getElementById("chat-box");
+            const newMsg = document.createElement("div");
+            newMsg.innerText = message;
+            box.appendChild(newMsg);
+            box.scrollTop = box.scrollHeight;
+        }
+    </script>
+
+    <script>
+        // Define button states for toggling
+        const buttonStates = {
+            startStop: {
+                onText: "Stop Streaming",
+                offText: "Start Streaming",
+                onIcon: "fa-stop",
+                offIcon: "fa-play",
+                toggleId: "stopBtn"
+            },
+            pauseResume: {
+                onText: "Streaming Paused",
+                offText: "Streaming Resumed",
+                onIcon: "fa-pause",
+                offIcon: "fa-play-circle",
+                toggleId: "startBtn"
+            },
+            screenShare: {
+                onText: "Screen Share OFF",
+                offText: "Screen Share ON",
+                onIcon: "fa-times-circle",
+                offIcon: "fa-desktop",
+                toggleId: "screenShareOffBtn"
+            },
+            screenShareOff: {
+                onText: "Screen Sharing Resumed",
+                offText: "Screen Sharing Paused",
+                onIcon: "fa-share-square",
+                offIcon: "fa-pause-circle",
+                toggleId: "screenShareBtn"
+            },
+            videoOnOff: {
+                onText: "Video OFF",
+                offText: "Video ON",
+                onIcon: "fa-video-slash",
+                offIcon: "fa-video",
+                toggleId: "videoOffBtn"
+            },
+            videoOff: {
+                onText: "Video Disabled",
+                offText: "Video Resumed",
+                onIcon: "fa-video-slash",
+                offIcon: "fa-video",
+                toggleId: "videoOnBtn"
+            },
+            micOnOff: {
+                onText: "Mic OFF",
+                offText: "Mic ON",
+                onIcon: "fa-microphone-slash",
+                offIcon: "fa-microphone",
+                toggleId: "micOffBtn"
+            },
+            micOff: {
+                onText: "Mic Unmuted",
+                offText: "Mic Muted",
+                onIcon: "fa-volume-up",
+                offIcon: "fa-volume-mute",
+                toggleId: "micOnBtn"
+            }
+        };
+
+        // Apply event listeners to all buttons
+        document.querySelectorAll("button").forEach(button => {
+            button.addEventListener("click", () => {
+                const currentState = buttonStates[button.id];
+                if (button.classList.contains("on")) {
+                    button.classList.remove("on");
+                    button.classList.add("off");
+                    button.innerHTML = `<i class="fas ${currentState.offIcon}"></i> ${currentState.offText}`;
+                    button.id = currentState.toggleId;
+                } else {
+                    button.classList.remove("off");
+                    button.classList.add("on");
+                    button.innerHTML = `<i class="fas ${currentState.onIcon}"></i> ${currentState.onText}`;
+                    button.id = currentState.toggleId;
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/live-class.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:42 GMT -->
+
+</html>

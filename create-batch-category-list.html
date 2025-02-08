@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title -->
+  <title>NIA LMS Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/plyr.css" />
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+  <!-- full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css" />
+  <!-- jquery Ui -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+  <!-- editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css" />
+  <!-- apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css" />
+  <!-- calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css" />
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/global-header.js"></script>
+
+  <style>
+    .multiselect-container {
+      position: relative;
+
+    }
+
+    .multiselect-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .multiselect-container:hover .multiselect-dropdown {
+      display: block;
+      padding: 13px 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
+
+  <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
+
+  <!-- ============================ Sidebar Start ============================ -->
+  <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+  <!-- ============================ Sidebar End  ============================ -->
+
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
+
+    <div class="dashboard-body">
+      <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb mb-24">
+          <ul class="flex-align gap-4">
+            <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+            </li>
+            <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+            <li><span class="text-main-600 fw-normal text-15">Create Student Batch List</span></li>
+          </ul>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Breadcrumb Right Start -->
+        <div class="flex-align gap-8 flex-wrap">
+          <div
+            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+            <span class="text-lg"><i class="ph ph-layout"></i></span>
+            <button class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
+              id="download_excel_multiple_file" data-bs-toggle="modal" data-bs-target="#export_data">
+              Export All
+            </button>
+          </div>
+          <div
+            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+            <span class="text-lg"><i class="ph ph-layout"></i></span>
+            <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
+              id="exportOptions">
+              <option value="" selected disabled>Import</option>
+              <option value="csv">CSV</option>
+              <option value="json">JSON</option>
+            </select>
+          </div>
+
+          <div
+            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+            <span class="text-lg"><i class="ph ph-trash"></i></span>
+            <button class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
+              id="delete_btn_multiple_file" data-bs-toggle="modal" data-bs-target="#delete_data">
+              Delete All
+            </button>
+          </div>
+        </div>
+        <!-- Breadcrumb Right End -->
+      </div>
+
+      <!-- Modals -->
+      <!-- Export Data Modal -->
+      <div class="modal custom-modal fade" id="export_data" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="form-header">
+                <h3>Export Students</h3>
+                <p>Are you sure want to download the File?</p>
+              </div>
+              <div class="modal-btn delete-action">
+                <div class="row">
+                  <div class="col-6">
+                    <a href="javascript:void(0);" id="exportButton" class="btn btn-primary continue-btn"
+                      data-bs-dismiss="modal" n>Download</a>
+                  </div>
+                  <div class="col-6">
+                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary cancel-btn">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Data Modal -->
+      <div class="modal custom-modal fade" id="delete_data" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="form-header">
+                <h3>Delete Batch List</h3>
+                <p>Are you sure want to delete?</p>
+              </div>
+              <div class="modal-btn delete-action">
+                <div class="row">
+                  <div class="col-6">
+                    <a href="javascript:void(0);" id="deleteButton" class="btn btn-primary continue-btn"
+                      data-bs-dismiss="modal">Delete</a>
+                  </div>
+                  <div class="col-6">
+                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary cancel-btn">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Starting of Role Setup -->
+      <div class="row">
+        <form id="add-batch-form" class="col-sm-6">
+
+          <div class="card mt-24 ">
+            <div class="card-header border-bottom">
+              <h4 class="mb-4">Create Student Batch List</h4>
+              <!-- <p class="text-gray-600 text-15">Please fill full details about yourself</p> -->
+            </div>
+            <div class="card-body">
+              <div class="row gy-4">
+                <div class="col-sm-6 col-xs-6">
+                  <label for="role" class="form-label mb-8 h6">Create List</label>
+                  <input type="text" class="form-control py-11" id="createList"
+                    placeholder="Ex:- Student-List-101, Student-List-103, Student-List-103" />
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                  <label for="role" class="form-label mb-8 h6">Student Name</label>
+                  <div class="multiselect-container">
+                    <input type="text" id="searchInput"
+                      class="form-control py-11 text-start mb-0 fw-medium text-gray-300"
+                      placeholder="Search Students...">
+                    <div class="multiselect-dropdown form-check" id="dropdownMenu">
+                      <div id="studentList"></div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-12 selected-students" style="display: none;">
+                  <label for="role" class="form-label mb-8 h6">Selected Students</label>
+                  <input type="text" class="form-control py-11" disabled id="selectedStudents" />
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-20">
+            <div class="flex-align justify-content-end gap-8">
+              <button type="reset"
+                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                Reset
+              </button>
+              <button type="submit" id="submit" class="btn btn-main rounded-pill py-9">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <form id="" class="col-sm-6">
+
+          <div class="card mt-24 ">
+            <div class="card-header border-bottom">
+              <h4 class="mb-4">Add Multi Student in Multi List</h4>
+              <!-- <p class="text-gray-600 text-15">Please fill full details about yourself</p> -->
+            </div>
+            <div class="card-body">
+              <div class="row gy-4">
+                <div class="col-sm-6 col-xs-6">
+                  <label for="role" class="form-label mb-8 h6">Created List</label>
+                  <div class="dropdown">
+                    <input id="dropdownToggle" class="form-select py-9 placeholder-13 text-15"
+                      style="text-align: left; width: 100%;" placeholder=" Select Batches">
+                    </input>
+                    <div id="checkboxContainer" class="dropdown-menu"
+                      style="display: none; border: 1px solid #ccc; padding: 10px; max-height: 200px; overflow-y: auto; position: absolute; z-index: 1000; background: #fff; width: 100%;">
+                      <span>Loading...</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-xs-6">
+                  <label for="role" class="form-label mb-8 h6">Student Name</label>
+                  <div class="multiselect-container">
+                    <input type="text" id="searchStudentInputs"
+                      class="form-control py-11 text-start mb-0 fw-medium text-gray-300"
+                      placeholder="Search Students...">
+                    <div class="multiselect-dropdown form-check" id="dropdownMenus">
+                      <div id="studentSelectList"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 selected-items-container" style="display: none;">
+                  <div class="row">
+                    <div class="col-sm-6"><label for="role" class="form-label mb-8 h6">Selected List</label>
+                      <input type="text" class="form-control py-11" id="multiSelectedBatch" disabled
+                        placeholder="Selected courses" />
+                    </div>
+                    <div class="col-sm-6"> <label for="role" class="form-label mb-8 h6">Selected Students</label>
+                      <input type="text" class="form-control py-11 mb-3" disabled id="multiSelectedStudents"
+                        placeholder="Selected students" />
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-20">
+            <div class="flex-align justify-content-end gap-8">
+              <button type="reset"
+                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                Reset
+              </button>
+              <button type="submit" id="submit" class="btn btn-main rounded-pill py-9">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Ending of Role Setup -->
+
+      <!-- Starting of role setup list -->
+
+      <div class="card mt-24 overflow-hidden">
+        <div class="card-header border-bottom">
+          <h4 class="mb-4">Batch Category List</h4>
+          <!-- <p class="text-gray-600 text-15">Please fill full details about yourself</p> -->
+        </div>
+        
+        <div class="card overflow-hidden">
+
+          <table id="studentTable" class="table table-striped">
+            <thead>
+              <tr>
+                <th class="employee_restriction_d_none" data-sortable="true">
+                  <input type="checkbox" class="checkbox_all" name="" id="">
+                </th>
+                <th class="h6 text-white">SL</th>
+                <th class="h6 text-white">List Name</th>
+                <th class="h6 text-white">Import / Export</th>
+                <th class="h6 text-white">Status</th>
+                <!-- <th class="h6 text-white">Status</th> -->
+                <th class="h6 text-white">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="student-list-table-data">
+
+            </tbody>
+          </table>
+          <!-- Pagination Footer -->
+          <div class="d-flex align-items-center justify-content-between" id="paginationFooter" style="padding: 1rem;">
+            <!-- Injected dynamically by your pagination.js -->
+          </div>
+        </div>
+
+
+      </div>
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js -->
+
+    <script type="module" src="assets/custom-js/create-batch-category-list.js"></script>
+
+    <!-- <script>
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const selectAllCheckbox = document.getElementById("selectAll");
+
+      // Toggle dropdown visibility
+      dropdownButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("active");
+      });
+
+      // Update button text based on selected options
+      dropdownMenu.addEventListener("change", (event) => {
+        const checkboxes = dropdownMenu.querySelectorAll("input[type='checkbox']:not(#selectAll)");
+        const selected = Array.from(checkboxes)
+          .filter(input => input.checked)
+          .map(input => input.parentElement.textContent.trim());
+
+        // Update "Select All" state
+        if (event.target !== selectAllCheckbox) {
+          selectAllCheckbox.checked = checkboxes.length === selected.length;
+        }
+
+        // Update button text
+        if (selected.length === 0) {
+          dropdownButton.textContent = "-- Select Students --";
+        } else if (selected.length === 1) {
+          dropdownButton.textContent = selected[0];
+        } else {
+          dropdownButton.textContent = `${selected.length} students selected`;
+        }
+      });
+
+      // Handle "Select All" functionality
+      selectAllCheckbox.addEventListener("change", () => {
+        const checkboxes = dropdownMenu.querySelectorAll("input[type='checkbox']:not(#selectAll)");
+        checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
+
+        // Update button text
+        const selected = Array.from(checkboxes).map(input => input.parentElement.textContent.trim());
+        if (selectAllCheckbox.checked) {
+          dropdownButton.textContent = `${selected.length} students selected`;
+        } else {
+          dropdownButton.textContent = "-- Select Students --";
+        }
+      });
+
+      // Close the dropdown when clicking outside
+      document.addEventListener("click", (event) => {
+        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+          dropdownMenu.classList.remove("active");
+        }
+      });
+    </script> -->
+
+</body>
+
+</html>

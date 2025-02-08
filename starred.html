@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.themeholy.com/edmate/starred.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:43 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title> NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css">
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css">
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css">
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css">
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/global-header.js"></script>
+</head> 
+<body>
+    
+<!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+<!--==================== Preloader End ====================-->
+
+<!--==================== Sidebar Overlay End ====================-->
+<div class="side-overlay"></div>
+<!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+<aside class="sidebar"  id="sidebar-placeholder"></aside>
+   
+<!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+       <div id="header-placeholder"></div>
+
+        
+        <div class="dashboard-body">
+            <!-- Breadcrumb Start -->
+<div class="breadcrumb mb-24">
+    <ul class="flex-align gap-4">
+        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+        <li><span class="text-main-600 fw-normal text-15">Starred Email</span></li>
+    </ul>
+</div>
+<!-- Breadcrumb End -->
+            
+            <div class="row gy-4">
+                <div class="col-xl-3">
+                    <div class="card h-100 p-0">
+                        <div class="card-body p-24">
+                            <button type="button" class="btn btn-main text-sm px-12 py-12 w-100 rounded-pill flex-center gap-8 mb-16">
+                                <i class="ph-fill ph-pencil-simple"></i>
+                                Compose
+                            </button>
+                            <div class="mt-16">
+                                <ul>
+                                    <li class="mb-8 email-links">
+                                        <a href="email.html" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-envelope-simple"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Inbox</span>
+                                                </span>
+                                                <span class="fw-medium">425</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-8 email-links">
+                                        <a href="starred.html" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-star"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Starred</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-8 email-links">
+                                        <a href="#" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-paper-plane-tilt"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Sent</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-8 email-links">
+                                        <a href="#" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-file"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Draft</span>
+                                                </span>
+                                                <span class="fw-medium">3</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="mb-8 email-links">
+                                        <a href="#" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-warning-circle"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Spam</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-bg-main-50 px-20 py-8 w-100 rounded-pill text-gray-300 hover-text-gray-600">
+                                            <span class="flex-between gap-10 w-100">
+                                                <span class="flex-center gap-10">   
+                                                    <span class="icon text-xl line-height-1 d-flex">
+                                                        <i class="ph ph-trash"></i>
+                                                    </span>
+                                                    <span class="fw-medium">Bin</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email List Start -->
+                <div class="col-xl-9">
+                    <div class="card h-100 p-0 email-card">
+                        <div class="card-header border-bottom bg-base py-16 px-24">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
+                                <div class="flex-center gap-16">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox" id="selectAll">
+                                        <div class="dropdown line-height-1">
+                                            <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="line-height-1 d-flex"> 
+                                                <i class="ph ph-caret-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu p-12 border bg-base shadow">
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        All
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        None
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        Read
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        Unread
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        Starred
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item px-16 py-4 rounded-8 text-gray-400 bg-hover-neutral-200 text-hover-neutral-900">
+                                                        Unstarred
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="delete-button d-none text-secondary-light text-xl d-flex  rounded-4">
+                                        <i class="ph ph-trash"></i>
+                                    </button>
+                                    <button type="button" class="reload-button text-secondary-light text-xl d-flex rounded-4">
+                                        <i class="ph ph-arrows-clockwise"></i>
+                                    </button>
+                                    <div class="dropdown">
+                                        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class=" d-flex rounded-4"> 
+                                            <i class="ph-fill ph-dots-three-outline-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu--lg p-12 border bg-base shadow">
+                                            <li>
+                                                <button type="button" class="dropdown-item px-16 py-8 rounded-8 text-secondary-light bg-hover-neutral-200 text-hover-neutral-900 flex-center justify-content-start gap-10">
+                                                    <i class="ph ph-envelope-simple"></i>
+                                                    Mark all as read
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <p class="ms-40 mt-8 text-secondary-light mb-0">
+                                                    Select Messages to see more actions
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <form action="#" class="w-350 d-sm-block d-none">
+                                        <div class="position-relative">
+                                            <button type="submit" class="input-icon text-xl d-flex text-gray-100 pointer-event-none"><i class="ph ph-magnifying-glass"></i></button> 
+                                            <input type="text" class="form-control ps-40 h-40 border-transparent focus-border-main-600 bg-main-50 rounded-pill placeholder-15" placeholder="Search...">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="flex-center gap-16">
+                                    <span class="text-secondary-light line-height-1">1-12 of 1,253</span>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link d-flex border text-gray-500 hover-bg-gray-50 text-xl w-40 h-32 flex-center" href="javascript:void(0)"><i class="ph ph-caret-left"></i> </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link d-flex border text-gray-500 hover-bg-gray-50 text-xl w-40 h-32 flex-center" href="javascript:void(0)"><i class="ph ph-caret-right"></i> </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="overflow-x-auto scroll-sm scroll-sm-horizontal">
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Jerome Bell</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Kristin Watson</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Cody Fisher</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Dianne Russell</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Floyd Miles</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Devon Lane</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Dianne Russell</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Annette Black</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Bessie Cooper</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Courtney Henry</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                                <li class="email-item px-24 py-16 flex-align gap-16 border-bottom border-gray-100 cursor-pointer min-w-max-content">
+                                    <div class="form-check style-check flex-center mb-0 gap-8">
+                                        <input class="form-check-input radius-4 border border-gray-200" type="checkbox" name="checkbox">
+                                    </div>
+                                    <button type="button" class="starred-button icon text-xl text-secondary-light line-height-1 d-flex">
+                                        <i class="ph-fill ph-star text-warning-600"></i>
+                                    </button>
+                                    <a href="veiw-details.html" class="text-heading fw-medium text-md text-line-1 w-190">Wade Warren</a>
+                                    <a href="veiw-details.html" class="text-heading fw-medium mb-0 text-line-1 max-w-740">Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus. Aliquam pulvinar vestibulum blandit. Donec sed nisl libero. Fusce dignissim luctus sem eu dapibus</a>
+                                    <span class="text-heading fw-medium min-w-max-content ms-auto">6:07 AM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Email List End -->
+
+            </div>
+            
+        </div>
+         <div id="footer-placeholder"></div>
+    </div>
+        
+        <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+
+
+
+    
+<script>
+    // Table Header Checkbox checked all js Start
+    $('#selectAll').on('change', function () {
+        $('.form-check .form-check-input').prop('checked', $(this).prop('checked')); 
+        
+        if ($(this).prop('checked')) {
+            $('.email-item').addClass('active');
+        } else {
+            $('.email-item').removeClass('active');
+        }
+    }); 
+
+    // Active Item with js
+    $('.form-check .form-check-input').on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).closest('.email-item').addClass('active'); 
+        } else {
+            $(this).closest('.email-item').removeClass('active'); 
+        }
+    });
+
+    // Selected Checkbox count amount js Start
+    $('.email-card .form-check-input').on('change', function () {
+        let selectedCount = $('.email-card .form-check-input:checked').length;
+
+        if(selectedCount > 0) {
+            $('.delete-button').removeClass('d-none'); 
+        } else {
+            $('.delete-button').addClass('d-none')
+        }
+    });
+    // Selected Checkbox count amount js End
+
+    $('.delete-button').on('click', function () {
+        $('.email-item.active').addClass('d-none')
+    }); 
+   
+    // Page Reload Js
+    $(".reload-button").on("click", function() {
+        history.go(0);
+    });
+   
+    // Starred Button js
+    $('.starred-button').on('click', function () {
+        var icon = $(this).children('i');
+        if(icon.hasClass('ph ph-star')) {
+            icon.removeClass('ph ph-star'); 
+            icon.addClass('ph-fill ph-star text-warning-600'); 
+        } else {
+            icon.removeClass('ph-fill ph-star text-warning-600'); 
+            icon.addClass('ph ph-star'); 
+        }
+    }); 
+</script>
+
+
+    </body>
+
+<!-- Mirrored from html.themeholy.com/edmate/starred.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:43 GMT -->
+</html>

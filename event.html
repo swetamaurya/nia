@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.themeholy.com/edmate/event.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:28 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title> NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css">
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css">
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css">
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css">
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/global-header.js"></script>
+</head> 
+<body>
+    
+<!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+<!--==================== Preloader End ====================-->
+
+<!--==================== Sidebar Overlay End ====================-->
+<div class="side-overlay"></div>
+<!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+<aside class="sidebar"  id="sidebar-placeholder"></aside>
+   
+<!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+       <div id="header-placeholder"></div>
+
+        
+        <div class="dashboard-body">
+            <!-- Breadcrumb Start -->
+<div class="breadcrumb mb-24">
+    <ul class="flex-align gap-4">
+        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+        <li><span class="text-main-600 fw-normal text-15">Events</span></li>
+    </ul>
+</div>
+<!-- Breadcrumb End -->
+            
+            <!-- Recommended Start -->
+            <div class="card mt-24 bg-transparent">
+                <div class="card-body p-0">
+                    <div id='wrap'>
+                        <div id='calendar' class="position-relative">
+                            <button type="button" class="add-event btn btn-main text-sm btn-sm px-24 rounded-pill py-12 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="ph ph-plus me-4"></i>
+                                Add Event 
+                            </button>
+                        </div>
+                        <div style='clear:both'></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Recommended End -->
+        </div>
+         <div id="footer-placeholder"></div>
+    </div>
+    
+    
+    <!-- Modal Add Event -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+            <div class="modal-content radius-16 bg-base">
+                <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Event</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-24">
+                    <form action="#">
+                        <div class="row">   
+                            <div class="col-12 mb-20">
+                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">Event Title : </label>
+                                <input type="text" class="form-control radius-8" placeholder="Enter Event Title ">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label for="startDate" class="form-label fw-semibold text-primary-light text-sm mb-8">Start Date</label>
+                                <div class=" position-relative">
+                                    <input class="form-control radius-8 bg-base" id="startDate" type="date">
+                                    <span class="position-absolute end-0 top-50 translate-middle-y me-12 line-height-1"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label for="endDate" class="form-label fw-semibold text-primary-light text-sm mb-8">End Date </label>
+                                <div class=" position-relative">
+                                    <input class="form-control radius-8 bg-base" id="endDate" type="date">
+                                    <span class="position-absolute end-0 top-50 translate-middle-y me-12 line-height-1"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-20">
+                                <label for="endDate" class="form-label fw-semibold text-primary-light text-sm mb-8">Label </label>
+                                <div class="d-flex align-items-center flex-wrap gap-28">
+                                    <div class="form-check form-radio d-flex align-items-center gap-2 mb-0">
+                                        <input class="form-check-input" type="radio" name="label" id="Personal">
+                                        <label class="form-check-label min-width-max-content line-height-1 fw-medium text-secondary-light text-sm d-flex align-items-center gap-1 ps-4" for="Personal"> 
+                                            <span class="w-8-px h-8-px bg-success-600 rounded-circle"></span>
+                                            Personal
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-radio d-flex align-items-center gap-2 mb-0">
+                                        <input class="form-check-input" type="radio" name="label" id="Business">
+                                        <label class="form-check-label min-width-max-content line-height-1 fw-medium text-secondary-light text-sm d-flex align-items-center gap-1 ps-4" for="Business"> 
+                                            <span class="w-8-px h-8-px bg-primary-600 rounded-circle"></span>
+                                            Business
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-radio d-flex align-items-center gap-2 mb-0">
+                                        <input class="form-check-input" type="radio" name="label" id="Family">
+                                        <label class="form-check-label min-width-max-content line-height-1 fw-medium text-secondary-light text-sm d-flex align-items-center gap-1 ps-4" for="Family"> 
+                                            <span class="w-8-px h-8-px bg-warning-600 rounded-circle"></span>
+                                            Family
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-radio d-flex align-items-center gap-2 mb-0">
+                                        <input class="form-check-input" type="radio" name="label" id="Important">
+                                        <label class="form-check-label min-width-max-content line-height-1 fw-medium text-secondary-light text-sm d-flex align-items-center gap-1 ps-4" for="Important"> 
+                                            <span class="w-8-px h-8-px bg-lilac-600 rounded-circle"></span>
+                                            Important
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-radio d-flex align-items-center gap-2 mb-0">
+                                        <input class="form-check-input" type="radio" name="label" id="Holiday">
+                                        <label class="form-check-label min-width-max-content line-height-1 fw-medium text-secondary-light text-sm d-flex align-items-center gap-1 ps-4" for="Holiday"> 
+                                            <span class="w-8-px h-8-px bg-danger-600 rounded-circle"></span>
+                                            Holiday
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-20">
+                                <label for="desc" class="form-label fw-semibold text-primary-light text-sm mb-8">Description</label>
+                                <textarea class="form-control" id="desc" rows="4" cols="50" placeholder="Write some text"></textarea>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center gap-8 mt-24">
+                                <button type="reset" class="btn bg-danger-600 hover-bg-danger-800 border-danger-600 hover-border-danger-800 text-md px-24 py-12 radius-8"> 
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn bg-main-600 hover-bg-main-800 border-main-600 hover-border-main-800 text-md px-24 py-12 radius-8"> 
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+
+
+
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+
+    </body>
+
+<!-- Mirrored from html.themeholy.com/edmate/event.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:29 GMT -->
+</html>

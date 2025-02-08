@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
+    />
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+  </head>
+  <body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+      <div id="header-placeholder"></div>
+
+      <div class="dashboard-body">
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb mb-24">
+          <ul class="flex-align gap-4">
+            <li>
+              <a
+                href="index-2.html"
+                class="text-gray-200 fw-normal text-15 hover-text-main-600"
+                >Home</a
+              >
+            </li>
+            <li>
+              <span class="text-gray-500 fw-normal d-flex"
+                ><i class="ph ph-caret-right"></i
+              ></span>
+            </li>
+            <li>
+              <span class="text-main-600 fw-normal text-15"
+                >Update Employee Role Setup</span
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Breadcrumb End -->
+        <!-- Starting of Role Setup -->
+
+        <div
+          class="tab-pane fade show active"
+          id="pills-details"
+          role="tabpanel"
+          aria-labelledby="pills-details-tab"
+          tabindex="0"
+        >
+          <div class="card mt-24">
+            <div class="card-header border-bottom">
+              <h4 class="mb-4">Update Employee Role Setup</h4>
+              <!-- <p class="text-gray-600 text-15">Please fill full details about yourself</p> -->
+            </div>
+            <div class="card-body">
+              <form id="update-role-form">
+                <div class="row gy-4">
+                  <div class="col-sm-4 col-xs-4">
+                    <label for="role" class="form-label mb-8 h6">Role</label>
+                    <!-- <input
+                      type="text"
+                      class="form-control py-11"
+                      id="role"
+                      placeholder="Ex:- HR Manager, Instructor"
+                    /> -->
+                    <select class="form-control" name="role_id" id="role">
+                      <option value="Admin">Admin</option>
+                      <option value="Employee">Employee</option>
+                      <option value="Instructor">Instructor</option>
+                      <option value="Students">Students</option>
+                      <option value="HR">HR</option>
+                      <option value="Manager">Manager</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4 col-xs-4">
+                    <label for="role" class="form-label mb-8 h6">Employee Name</label>
+                    <select class="form-control" name="role_id" id="employeeDropdown">
+                      <option value="0" selected disabled>-- Select Employee --</option>
+                      <!-- Options will be dynamically populated here -->
+                    </select>
+                  </div>
+                  <div class="d-flex">
+                    <h6 class="m-0" style="line-height: 25px">
+                      Module permission :
+                    </h6>
+                    <div
+                      class="form-group form-check check-item pb-0 w-auto ms-10"
+                    >
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="select_all"
+                      />
+                      <label
+                        class="form-check-label title-color p-0 ms-5 mb-0 pl-2"
+                        style="width: 100px !important"
+                        for="select_all"
+                        >Select all</label
+                      >
+                    </div>
+                  </div>
+                  <div class="module-permission d-flex flex-wrap">
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Dashboard Management"
+                          class="form-check-input module-permission"
+                          id="dashboard-Management"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="dashboard-Management"
+                          >Dashboard Management</label
+                        >
+                      </div>
+                    </div>
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Employee Management"
+                          class="form-check-input module-permission"
+                          id="employee-Management"
+                        />
+                        <label
+                          class="form-check-label"
+                          for="employee-Management"
+                          >Employee Management</label
+                        >
+                      </div>
+                    </div>
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Course Management"
+                          class="form-check-input module-permission"
+                          id="course-Management"
+                        />
+                        <label class="form-check-label" for="course-Management"
+                          >Course Management</label
+                        >
+                      </div>
+                    </div>
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Class Management"
+                          class="form-check-input module-permission"
+                          id="class-Management"
+                        />
+                        <label class="form-check-label" for="class-Management"
+                          >Class Management</label
+                        >
+                      </div>
+                    </div>
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Student Management"
+                          class="form-check-input module-permission"
+                          id="student-Management"
+                        />
+                        <label class="form-check-label" for="student-Management"
+                          >Student Management</label
+                        >
+                      </div>
+                    </div>
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="Messages"
+                          class="form-check-input module-permission"
+                          id="messages"
+                        />
+                        <label class="form-check-label" for="messages"
+                          >Messages</label
+                        >
+                      </div>
+                    </div>
+                    <!-- <div class="check-item">
+                        <div class="form-group form-check form--check">
+                          <input
+                            type="checkbox"
+                            name="modules[]"
+                            value="user_management"
+                            class="form-check-input module-permission"
+                            id="user_management"
+                          />
+                          <label class="form-check-label" for="user_management"
+                            >User management</label
+                          >
+                        </div>
+                      </div> -->
+                    <div class="check-item">
+                      <div class="form-group form-check form--check">
+                        <input
+                          type="checkbox"
+                          name="modules[]"
+                          value="System Management"
+                          class="form-check-input module-permission"
+                          id="system-Management"
+                        />
+                        <label class="form-check-label" for="system-Management"
+                          >System management</label
+                        >
+                      </div>
+                    </div>
+                    <!-- <div class="check-item">
+                        <div class="form-group form-check form--check">
+                          <input
+                            type="checkbox"
+                            name="modules[]"
+                            value="addon_management"
+                            class="form-check-input module-permission"
+                            id="addon_management"
+                          />
+                          <label class="form-check-label" for="addon_management"
+                            >Addon management</label
+                          >
+                        </div>
+                      </div> -->
+                  </div>
+                  <div class="col-12">
+                    <div class="flex-align justify-content-end gap-8">
+                      <button
+                        type="reset"
+                        class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9"
+                      >
+                        Reset
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-main rounded-pill py-9"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ending of Role Setup -->
+
+        
+      </div>
+      <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js -->
+     <script type="module" src="assets/custom-js/update-role.js"></script>
+
+    <script>
+      // Table Header Checkbox checked all js Start
+      // Combine "select all" functionality for both checkbox groups
+      $("#select_all, #selectAll").on("change", function () {
+        const targetClass = $(this).is("#select_all")
+          ? ".module-permission"
+          : ".select";
+        $(`.form-check .form-check-input${targetClass}`).prop(
+          "checked",
+          $(this).prop("checked")
+        );
+      });
+    </script>
+  </body>
+</html>

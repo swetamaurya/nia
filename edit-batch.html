@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from html.themeholy.com/edmate/create-Batch.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:10 GMT -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <!-- <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" /> -->
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+  </head>
+
+  <body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+      <div id="header-placeholder"></div>
+
+      <div class="dashboard-body">
+        <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+          <!-- Breadcrumb Start -->
+          <div class="breadcrumb mb-24">
+            <ul class="flex-align gap-4">
+              <li>
+                <a
+                  href="index-2.html"
+                  class="text-gray-200 fw-normal text-15 hover-text-main-600"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <span class="text-gray-500 fw-normal d-flex"
+                  ><i class="ph ph-caret-right"></i
+                ></span>
+              </li>
+              <li>
+                <span class="text-main-600 fw-normal text-15"
+                  >Edit Batch</span
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Breadcrumb End -->
+
+          <!-- Buttons Start -->
+          <div class="flex-align justify-content-end gap-8 mt-20">
+            <button
+              id="submit"
+              type="button"
+              class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9"
+            >
+              Submit
+            </button>
+            <button
+              id="cancel"
+              type="button"
+              class="btn btn-main rounded-pill py-9"
+            >
+              Cancel
+            </button>
+          </div>
+          <!-- Buttons End -->
+        </div>
+
+        <!-- Batch Tab Start -->
+        <div class="card">
+          <div
+            class="card-header border-bottom border-gray-100 flex-align gap-8"
+          >
+            <h5 class="mb-0">Batch Details</h5>
+            <button
+              type="button"
+              class="text-main-600 text-md d-flex"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-title="Batch Details"
+            >
+              <i class="ph-fill ph-question"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <form id="edit-batch-form" action="#">
+              <div class="row gy-20">
+                <div class="row g-20">
+                  <div class="col-sm-4">
+                    <label
+                      for="BatchTitle"
+                      class="h6 mb-8 fw-semibold font-heading"
+                      >Batch Tittle
+                      <span class="text-13 text-gray-400 fw-medium"
+                        >(Required)</span
+                      >
+                    </label>
+                    <input
+                    
+                      type="text"
+                      class="text-counter placeholder-13 form-control py-11 pe-76"
+                      maxlength="100"
+                      id="BatchTitle"
+                    />
+                  </div>
+
+                  <div class="col-sm-4">
+                    <label
+                      for="studentDropdown"
+                      class="h6 mb-8 fw-semibold font-heading"
+                    >
+                      Select Batch Students List
+                      <span class="text-13 text-gray-400 fw-medium"
+                        >(Required)</span
+                      >
+                    </label>
+                    <select
+                      class="form-control py-11 pe-76"
+                      id="studentDropdown"
+                      name="studentDropdown"
+                    >
+                      <option value="">-- Select a Batch Student --</option>
+                      <!-- Options will be dynamically inserted here -->
+                    </select>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <label
+                      for="batchYear"
+                      class="h6 mb-8 fw-semibold font-heading"
+                      >Batch Year
+                    </label>
+                    <div class="position-relative">
+                      <input
+                        type="text"
+                        id="batchYear"
+                        class="placeholder-13 form-control py-11"
+                        placeholder="Enter the Year"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-8">
+                    <!-- <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Batch Duration
+                                    </label> -->
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <span class="h6 mb-8 fw-semibold font-heading"
+                          >Batch Duration From Date
+                        </span>
+                        <input
+                          type="date"
+                          class="placeholder-13 form-control py-11 col-5"
+                          id="fromDate"
+                          placeholder="Enter the Batch Duration"
+                        />
+                      </div>
+                      <div class="col-sm-6">
+                        <span class="h6 mb-8 fw-semibold font-heading"
+                          >Batch Duration To Date
+                        </span>
+                        <input
+                          type="date"
+                          class="placeholder-13 form-control py-11 col-5"
+                          id="toDate"
+                          placeholder="Enter the Batch Duration"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label
+                      for="BatchDuration"
+                      class="h6 mb-8 fw-semibold font-heading"
+                      >Total Days
+                    </label>
+                    <div class="position-relative">
+                      <input
+                        disabled
+                        type="text"
+                        class="placeholder-13 form-control py-11 pe-76"
+                        id="batchTotalDays"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-sm-6">
+                                    <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Select Student
+                                    </label>
+                                    <div class="position-relative">
+                                        <select id="selectStudent" class="form-select py-9 placeholder-13 text-15">
+                                            <option disabled selected>Select </option>
+                                            <option value="Aviation">Aviation </option>
+                                            <option value="Gromming">Gromming </option>
+                                            <option value="Management">Management </option>
+                                            <option value="Humanities">Humanities </option>
+                                            <option value="Data Science">Data Science </option>
+                                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                        </select>
+                                    </div>
+                            </div> -->
+                </div>
+                <div class="row g-20 mt-0"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Batch Tab End -->
+      </div>
+      <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <!-- <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script> -->
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script type="module" src="./assets/custom-js/edit-batch.js"></script>
+
+    <!-- <script>
+        flatpickr("#batchYear", {
+            dateFormat: "Y", // Year only
+            defaultDate: new Date(), // Set default date to current year
+            plugins: [new window.flatpickr.l10n.plugins().monthSelectPlugin()],
+        });
+    </script> -->
+  </body>
+
+  <!-- Mirrored from html.themeholy.com/edmate/create-Batch.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:11 GMT -->
+</html>

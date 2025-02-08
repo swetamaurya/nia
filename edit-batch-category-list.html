@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title -->
+  <title>NIA LMS Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/plyr.css" />
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+  <!-- full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css" />
+  <!-- jquery Ui -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+  <!-- editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css" />
+  <!-- apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css" />
+  <!-- calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css" />
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/global-header.js"></script>
+
+  <style>
+    .multiselect-dropdown {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      z-index: 1;
+      width: 100%;
+      max-height: 200px;
+      max-width: 370px;
+      overflow-y: auto;
+      padding: 5px 36px;
+      border-radius: 5px;
+    }
+
+    .multiselect-dropdown.active {
+      display: block;
+    }
+
+    .multiselect-dropdown label {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .multiselect-dropdown label:hover {
+      background-color: #eee;
+    }
+
+    .multiselect-dropdown input {
+      margin-right: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
+
+  <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
+
+  <!-- ============================ Sidebar Start ============================ -->
+  <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+  <!-- ============================ Sidebar End  ============================ -->
+
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
+
+    <div class="dashboard-body">
+      <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb mb-24">
+          <ul class="flex-align gap-4">
+            <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+            </li>
+            <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+            <li><span class="text-main-600 fw-normal text-15">Edit Batch Category List</span></li>
+          </ul>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Breadcrumb Right Start -->
+        <div class="flex-align gap-8 flex-wrap">
+           
+          <div
+            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+            <span class="text-lg"><i class="ph ph-trash"></i></span>
+            <button class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
+              id="delete_btn_multiple_file" data-bs-toggle="modal" data-bs-target="#delete_data">
+              Delete All
+            </button>
+          </div>
+
+        </div>
+        <!-- Breadcrumb Right End -->
+      </div>
+
+    <!-- Delete Data Modal -->
+    <div class="modal custom-modal fade" id="delete_data" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="form-header">
+              <h3>Delete Batch List</h3>
+              <p>Are you sure want to delete?</p>
+            </div>
+            <div class="modal-btn delete-action">
+              <div class="row">
+                <div class="col-6">
+                  <a href="javascript:void(0);" id="deleteButton" class="btn btn-primary continue-btn"
+                    data-bs-dismiss="modal">Delete</a>
+                </div>
+                <div class="col-6">
+                  <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                    class="btn btn-primary cancel-btn">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Starting of Role Setup -->
+
+      <div class="card mt-24">
+        <div class="card-header row border-bottom align-items-center justify-content-between">
+          <h4 class="mb-4 col-sm-4" id="createList"> </h4>
+          <div class="col-sm-6">
+            <div class="search-bar mb-3 d-flex align-items-center justify-content-end gap-2">
+              <label for="searchInput" class="fw-bold text-gray-700 mb-0">Search By:</label>
+              <input type="text" id="searchInput" class="form-control py-10"
+                placeholder="name, email, or application number..." style="max-width: 200px;" />
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="card overflow-hidden">
+         
+            <table id="studentTable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="employee_restriction_d_none" data-sortable="true">
+                    <input type="checkbox" class="checkbox_all" name="" id="">
+                  </th>
+                  <th class="h6 text-white">SL</th>
+                  <th class="h6 text-white">Students</th>
+                  <th class="h6 text-white">Email ID</th>
+                  <th class="h6 text-white">Application No.</th>
+                  <th class="h6 text-white">Registration No.</th>
+                  <th class="h6 text-white">Status</th>
+                  <th class="h6 text-white">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="student-list-table-data">
+                
+              </tbody>
+            </table>
+           <!-- Pagination Footer -->
+           <div class="d-flex align-items-center justify-content-between" id="paginationFooter" style="padding: 1rem;">
+            <!-- Injected dynamically by your pagination.js -->
+          </div>
+      </div>
+
+ 
+    </div>
+      <div id="footer-placeholder"></div>
+  </div>
+
+  <!-- Jquery js -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap Bundle Js -->
+  <script src="assets/js/boostrap.bundle.min.js"></script>
+  <!-- Phosphor Js -->
+  <script src="assets/js/phosphor-icon.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/file-upload.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/plyr.js"></script>
+  <!-- dataTables -->
+  <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <!-- full calendar -->
+  <script src="assets/js/full-calendar.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/jquery-ui.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/editor-quill.js"></script>
+  <!-- apex charts -->
+  <script src="assets/js/apexcharts.min.js"></script>
+  <!-- jvectormap Js -->
+  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+  <!-- jvectormap world Js -->
+  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+  <script type="module" src="assets/custom-js/edit-batch-category-list.js"></script>
+
+  <!-- main js -->
+  <script src="assets/js/main.js"></script>
+  <!-- custom js -->
+
+  <script>
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const searchQuery = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#student-list-table-data tr');
+
+      rows.forEach(row => {
+        const name = row.querySelector('td:nth-child(2) span').textContent.toLowerCase();
+        const email = row.querySelector('td:nth-child(3) span').textContent.toLowerCase();
+        const applicationNo = row.querySelector('td:nth-child(4) span').textContent.toLowerCase();
+        const registrationNo = row.querySelector('td:nth-child(5) span').textContent.toLowerCase();
+
+        if (
+          name.includes(searchQuery) ||
+          email.includes(searchQuery) ||
+          applicationNo.includes(searchQuery) ||
+          registrationNo.includes(searchQuery)
+        ) {
+          row.style.display = ''; // Show the row
+        } else {
+          row.style.display = 'none'; // Hide the row
+        }
+      });
+    });
+
+  </script>
+
+
+</body>
+
+</html>
