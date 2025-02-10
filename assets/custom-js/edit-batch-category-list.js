@@ -77,7 +77,7 @@ async function all_data_load_dashboard() {
                     </td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.email || "-"}</span></td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.applicationNumber || "-"}</span></td>
-                    <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.registrationNumber || "-"}</span></td>
+                    <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.registration_number || "-"}</span></td>
                     <td>
                         <div
                 onclick="editStatusById('${student._id}', event)"

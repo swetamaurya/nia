@@ -81,7 +81,7 @@ import {
                 }" data-name="${student.first_name} ${
                 student.last_name || ""
               } (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })" ${isChecked ? "checked" : ""}>
                 ${student.first_name || ""} ${student.last_name || ""} (${
                 student.registration_number || ""

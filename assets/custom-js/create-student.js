@@ -37,7 +37,7 @@ async function addStudentForm(event) {
     
     // const batchId = document.getElementById('batchId').value
     // const applicationNumber = document.getElementById('applicationNumber').value;
-    // const registrationNumber = document.getElementById('registrationNumber').value;
+    // const registration_number = document.getElementById('registration_number').value;
     // const first_name = document.getElementById('first_name').value;
     // const last_name = document.getElementById('last_name').value;
     // const father_husband_name = document.getElementById('father_husband_name').value;
@@ -50,10 +50,10 @@ async function addStudentForm(event) {
     // const marital_status = document.getElementById('marital_status').value;
     // const photo_path = document.getElementById('uploadPhoto').value;
     // const presentHouseNo = document.getElementById('presentHouseNo').value;
-    // const presentVillage = document.getElementById('presentVillage').value;
-    // const presentCity = document.getElementById('presentCity').value;
+    // const present_village = document.getElementById('present_village').value;
+    // const present_city = document.getElementById('present_city').value;
     // const presentPostOffice = document.getElementById('presentPostOffice').value;
-    // const presentState = document.getElementById('presentState').value;
+    // const present_state = document.getElementById('present_state').value;
     // const presentDistrict = document.getElementById('presentDistrict').value;
     // const presentPincode = document.getElementById('presentPincode').value;
     // const permanentStreet = document.getElementById('permanentStreet').value;
@@ -90,7 +90,7 @@ async function addStudentForm(event) {
     
     formData.append('batchId', document.getElementById('batchId').value);
 formData.append('applicationNumber', document.getElementById('applicationNumber').value);
-formData.append('registrationNumber', document.getElementById('registrationNumber').value);
+formData.append('registration_number', document.getElementById('registration_number').value);
 formData.append('first_name', document.getElementById('first_name').value);
 formData.append('last_name', document.getElementById('last_name').value);
 formData.append('father_husband_name', document.getElementById('father_husband_name').value);
@@ -101,12 +101,12 @@ formData.append('email', document.getElementById('email').value);
 formData.append('phone', document.getElementById('phone').value);
 formData.append('gender', document.getElementById('gender').value);
 formData.append('marital_status', document.getElementById('marital_status').value);
-formData.append('presentStreet', document.getElementById('presentStreet').value);
+formData.append('present_street', document.getElementById('present_street').value);
 formData.append('presentHouseNo', document.getElementById('presentHouseNo').value);
-formData.append('presentVillage', document.getElementById('presentVillage').value);
-formData.append('presentCity', document.getElementById('presentCity').value);
+formData.append('present_village', document.getElementById('present_village').value);
+formData.append('present_city', document.getElementById('present_city').value);
 formData.append('presentPostOffice', document.getElementById('presentPostOffice').value);
-formData.append('presentState', document.getElementById('presentState').value);
+formData.append('present_state', document.getElementById('present_state').value);
 formData.append('presentDistrict', document.getElementById('presentDistrict').value);
 formData.append('presentPincode', document.getElementById('presentPincode').value);
 formData.append('permanentStreet', document.getElementById('permanentStreet').value);

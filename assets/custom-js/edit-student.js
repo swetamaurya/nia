@@ -46,7 +46,7 @@ window.editLoadData = async function editLoadData() {
     }
     const batchId = document.getElementById('batchId')
     const applicationNumber = document.getElementById('applicationNumber');
-    const registrationNumber = document.getElementById('registrationNumber');
+    const registration_number = document.getElementById('registration_number');
     const first_name = document.getElementById('first_name');
     const last_name = document.getElementById('last_name');
     const father_husband_name = document.getElementById('father_husband_name');
@@ -59,10 +59,10 @@ window.editLoadData = async function editLoadData() {
     const marital_status = document.getElementById('marital_status');
     const photo_path = document.getElementById('uploadPhoto');
     const presentHouseNo = document.getElementById('presentHouseNo');
-    const presentVillage = document.getElementById('presentVillage');
-    const presentCity = document.getElementById('presentCity');
+    const present_village = document.getElementById('present_village');
+    const present_city = document.getElementById('present_city');
     const presentPostOffice = document.getElementById('presentPostOffice');
-    const presentState = document.getElementById('presentState');
+    const present_state = document.getElementById('present_state');
     const presentDistrict = document.getElementById('presentDistrict');
     const presentPincode = document.getElementById('presentPincode');
     const permanentStreet = document.getElementById('permanentStreet');
@@ -101,7 +101,7 @@ window.editLoadData = async function editLoadData() {
         const student = res.student
         batchId.value = student.batchId || '';
         applicationNumber.value = student.applicationNumber || '';
-    registrationNumber.value = student.registrationNumber || '';
+    registration_number.value = student.registration_number || '';
     first_name.value = student.first_name || '';
     last_name.value = student.last_name || '';
     father_husband_name.value = student.father_husband_name || '';
@@ -114,10 +114,10 @@ window.editLoadData = async function editLoadData() {
     marital_status.value = student.marital_status || '';
     photo_path.value = student.photo_path || '';
     presentHouseNo.value = student.presentHouseNo || '';
-    presentVillage.value = student.presentVillage || '';
-    presentCity.value = student.presentCity || '';
+    present_village.value = student.present_village || '';
+    present_city.value = student.present_city || '';
     presentPostOffice.value = student.presentPostOffice || '';
-    presentState.value = student.presentState || '';
+    present_state.value = student.present_state || '';
     presentDistrict.value = student.presentDistrict || '';
     presentPincode.value = student.presentPincode || '';
     permanentStreet.value = student.permanentStreet || '';
@@ -155,7 +155,7 @@ async function editBatchForm(event) {
 
     const batchId = document.getElementById('batchId').value;
     const applicationNumber = document.getElementById('applicationNumber').value;
-    const registrationNumber = document.getElementById('registrationNumber').value;
+    const registration_number = document.getElementById('registration_number').value;
     const first_name = document.getElementById('first_name').value;
     const last_name = document.getElementById('last_name').value;
     const father_husband_name = document.getElementById('father_husband_name').value;
@@ -168,10 +168,10 @@ async function editBatchForm(event) {
     const marital_status = document.getElementById('marital_status').value;
     const photo_path = document.getElementById('uploadPhoto').value;
     const presentHouseNo = document.getElementById('presentHouseNo').value;
-    const presentVillage = document.getElementById('presentVillage').value;
-    const presentCity = document.getElementById('presentCity').value;
+    const present_village = document.getElementById('present_village').value;
+    const present_city = document.getElementById('present_city').value;
     const presentPostOffice = document.getElementById('presentPostOffice').value;
-    const presentState = document.getElementById('presentState').value;
+    const present_state = document.getElementById('present_state').value;
     const presentDistrict = document.getElementById('presentDistrict').value;
     const presentPincode = document.getElementById('presentPincode').value;
     const permanentStreet = document.getElementById('permanentStreet').value;
@@ -208,7 +208,7 @@ async function editBatchForm(event) {
                 'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify({ batchId, applicationNumber, registrationNumber, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,photo_path,presentHouseNo,presentVillage,presentCity,presentPostOffice,presentState,presentDistrict,presentPincode,permanentStreet,permanentHouseNo,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_detailsDivision,highSchoolDetails,highSchoolDetailsDivision,applyFor,examinationFee,examinationCenterState,examinationCenterCity,_id })
+            body: JSON.stringify({ batchId, applicationNumber, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,photo_path,presentHouseNo,present_village,present_city,presentPostOffice,present_state,presentDistrict,presentPincode,permanentStreet,permanentHouseNo,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_detailsDivision,highSchoolDetails,highSchoolDetailsDivision,applyFor,examinationFee,examinationCenterState,examinationCenterCity,_id })
         });
 
         const r1 = await response.json();
