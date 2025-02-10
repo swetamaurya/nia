@@ -69,10 +69,10 @@ async function all_data_load_dashboard() {
                                           <h5 class="mb-4 text-truncate"><a href="course-details.html"
                                                   class="hover-text-main-600">${e.title ? e.title : '-'}</a></h5><span
                                               class="badge ${statusCardBgColor} position-absolute "
-                                              style="top: 9px;right: 8px;">${e.statusOfCards}</span>
+                                              style="top: 13px;right: 13px;">${e.statusOfCards}</span>
                                               <span
                                               class="badge bg-secondary position-absolute "
-                                              style="top: 9px;left: 9px;">${e.createdAt.split(' ')[0]}</span>
+                                              style="top: 13px;left: 13px;">${e.createdAt.split(' ')[0]}</span>
                                           <p class="three-line-text-truncate">${e.description}</p>
                                           <div class="flex-align gap-8 flex-wrap mt-16">
                                               <img src="assets/images/thumbs/user-img5.png"
