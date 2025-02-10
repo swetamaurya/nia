@@ -84,7 +84,7 @@ import {
                 student.registrationNumber || ""
               })" ${isChecked ? "checked" : ""}>
                 ${student.first_name || ""} ${student.last_name || ""} (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })
               `;
               studentListElement.appendChild(studentLabel);
@@ -143,7 +143,7 @@ import {
               const fullName = `${student.first_name} ${
                 student.last_name || ""
               } (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })
               `.toLowerCase();
               return fullName.includes(searchTerm);
@@ -316,11 +316,11 @@ import {
                             }" data-name="${student.first_name} ${
                 student.last_name || ""
               }" (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })
               ${isChecked ? "checked" : ""}>
                             ${student.first_name || ""} ${student.last_name || ""} (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })
                         `;
               studentList.appendChild(option);
@@ -375,7 +375,7 @@ import {
               const fullName = `${student.first_name} ${
                 student.last_name || ""
               } (${
-                student.registrationNumber || ""
+                student.registration_number || ""
               })
               `.toLowerCase();
               return fullName.includes(searchTerm);
@@ -480,11 +480,11 @@ import {
 
   // ==============================================================================
   // Add Batch Form Function
-// ✅ Function to handle batch selection and student selection
+//  Function to handle batch selection and student selection
 async function multipleBatchForm(event) {
   event.preventDefault();
 
-  // ✅ Get all selected batch IDs
+  //  Get all selected batch IDs
   const selectedBatches = [];
   document
     .querySelectorAll('#checkboxContainer input[type="checkbox"]:checked')
@@ -492,7 +492,7 @@ async function multipleBatchForm(event) {
       selectedBatches.push(checkbox.value);
     });
 
-  // ✅ Get all selected student IDs
+  //  Get all selected student IDs
   const selectedStudents = [];
   document
     .querySelectorAll('#studentSelectList input[type="checkbox"]:checked')
@@ -513,26 +513,26 @@ async function multipleBatchForm(event) {
   try {
     loading_shimmer();
   } catch (error) {
-    console.log("❌ Error showing shimmer:", error);
+    console.log(" Error showing shimmer:", error);
   }
 
   try {
-    const API = BATCH_Category_UPDATE_API; // ✅ Correct API for updating existing batches
+    const API = BATCH_Category_UPDATE_API; //  Correct API for updating existing batches
 
     const response = await fetch(API, {
-      method: "POST", // ✅ PATCH is correct for updates
+      method: "POST", //  PATCH is correct for updates
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
       },
       body: JSON.stringify({
-        batchIds: selectedBatches, // ✅ Send selected batches as an array
-        students: selectedStudents, // ✅ Send selected students as an array
+        batchIds: selectedBatches, //  Send selected batches as an array
+        students: selectedStudents, //  Send selected students as an array
       }),
     });
 
     const result = await response.json();
-    console.log("✅ Batch Update Response:", result);
+    console.log(" Batch Update Response:", result);
 
     status_popup(result?.message, response.ok);
 
@@ -542,25 +542,25 @@ async function multipleBatchForm(event) {
     //   }, 1000);
     // }
   } catch (error) {
-    status_popup("❌ Batch update failed", false);
-    console.log("❌ Error updating batch:", error);
+    status_popup(" Batch update failed", false);
+    console.log(" Error updating batch:", error);
   } finally {
     remove_loading_shimmer();
   }
 }
 
-// ✅ Attach event listener to submit button
+//  Attach event listener to submit button
 document.addEventListener("DOMContentLoaded", () => {
-  // console.log("✅ DOM fully loaded");
+  // console.log(" DOM fully loaded");
 
   const submitButton = document.getElementById("submit");
   if (submitButton) {
     submitButton.addEventListener("click", (event) => {
-      console.log("✅ Submit button clicked");
+      console.log(" Submit button clicked");
       multipleBatchForm(event);
     });
   } else {
-    console.error("❌ Submit button not found!");
+    console.error(" Submit button not found!");
   }
 });
 
