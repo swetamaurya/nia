@@ -41,9 +41,9 @@ window.editLoadData = async function editLoadData() {
         const res = await response.json()
         const employee = res.user;
         console.log('This is my response: ', employee);
-        const firstName = employee.firstName ? employee.firstName : ""
-        const lastName = employee.lastName ? employee.lastName : ""
-        const fullName = firstName + " " + lastName
+        const first_name = employee.first_name ? employee.first_name : ""
+        const last_name = employee.last_name ? employee.last_name : ""
+        const fullName = first_name + " " + last_name
         employeeName.innerText = fullName;
         employeeRole.innerText = employee.roles?.roles? employee.roles?.roles : '-';
         employeePhoneNumber.innerText = employee.phoneNumber || '-';

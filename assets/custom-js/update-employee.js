@@ -44,8 +44,8 @@ window.editLoadData = async function editLoadData() {
     } catch (error) {
         console.error(error);
     }
-    const firstName = document.getElementById('fname')
-    const lastName = document.getElementById('lname')
+    const first_name = document.getElementById('fname')
+    const last_name = document.getElementById('lname')
     const phoneNumber = document.getElementById('phone')
     const address = document.getElementById('address')
     const email = document.getElementById('email')
@@ -72,8 +72,8 @@ window.editLoadData = async function editLoadData() {
         const res = await response.json()
         const employee = res.user;
         console.log('This is my response: ', employee);
-        firstName.value = employee.firstName
-        lastName.value = employee.lastName
+        first_name.value = employee.first_name
+        last_name.value = employee.last_name
         phoneNumber.value = employee.phoneNumber
         address.value = employee.address
         email.value = employee.email
@@ -97,8 +97,8 @@ document.getElementById(updateEmployeeForm).addEventListener("submit", async fun
 
     if(!editValidateEmployee()) return
 
-    const firstName = document.getElementById('fname').value;
-    const lastName = document.getElementById('lname').value;
+    const first_name = document.getElementById('fname').value;
+    const last_name = document.getElementById('lname').value;
     const phoneNumber = document.getElementById('phone').value;
     const address = document.getElementById('address').value;
     const email = document.getElementById('email').value;
@@ -122,8 +122,8 @@ document.getElementById(updateEmployeeForm).addEventListener("submit", async fun
                 formData.append("image", image); 
             }
         }
-        formData.append("firstName", firstName);
-        formData.append("lastName", lastName);
+        formData.append("first_name", first_name);
+        formData.append("last_name", last_name);
         formData.append("phoneNumber", phoneNumber);
         formData.append("email", email);
         formData.append("password", password);
@@ -165,8 +165,8 @@ document.getElementById(updateEmployeeForm).addEventListener("submit", async fun
 function editValidateEmployee(){
     clearErrors();
   let isValid = true;
-    const firstName = document.getElementById('fname')
-    const lastName = document.getElementById('lname')
+    const first_name = document.getElementById('fname')
+    const last_name = document.getElementById('lname')
     const phoneNumber = document.getElementById('phone')
     const address = document.getElementById('address')
     const email = document.getElementById('email')
@@ -175,12 +175,12 @@ function editValidateEmployee(){
     // const imageFileUpload = document.getElementById('customFileUpload')
     // const spanProfilePhoto = document.getElementById('profile-photo')
 
-    if(firstName.value.trim() ==='' || !/^[A-Za-z]+$/.test(firstName.value)){
-      showError(firstName,'Enter a valid first name');
+    if(first_name.value.trim() ==='' || !/^[A-Za-z]+$/.test(first_name.value)){
+      showError(first_name,'Enter a valid first name');
       isValid=false;
     }
-    if(lastName.value.trim() ==='' || !/^[A-Za-z]+$/.test(lastName.value)){
-      showError(lastName,'Enter a valid last name');
+    if(last_name.value.trim() ==='' || !/^[A-Za-z]+$/.test(last_name.value)){
+      showError(last_name,'Enter a valid last name');
       isValid=false;
     }
     const phoneNumberValue = phoneNumber.value.trim();

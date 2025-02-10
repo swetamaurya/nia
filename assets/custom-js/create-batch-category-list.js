@@ -78,12 +78,12 @@ import {
               studentLabel.innerHTML = `
                 <input type="checkbox" class="student-checkbox" value="${
                   student._id
-                }" data-name="${student.firstName} ${
-                student.lastName || ""
+                }" data-name="${student.first_name} ${
+                student.last_name || ""
               } (${
                 student.registrationNumber || ""
               })" ${isChecked ? "checked" : ""}>
-                ${student.firstName || ""} ${student.lastName || ""} (${
+                ${student.first_name || ""} ${student.last_name || ""} (${
                 student.registrationNumber || ""
               })
               `;
@@ -140,8 +140,8 @@ import {
           const searchTerm = this.value.toLowerCase();
           if (searchTerm) {
             const filteredStudentList = apiData?.students.filter((student) => {
-              const fullName = `${student.firstName} ${
-                student.lastName || ""
+              const fullName = `${student.first_name} ${
+                student.last_name || ""
               } (${
                 student.registrationNumber || ""
               })
@@ -313,13 +313,13 @@ import {
               option.innerHTML = `
                             <input type="checkbox" class="student-checkboxs" value="${
                               student._id
-                            }" data-name="${student.firstName} ${
-                student.lastName || ""
+                            }" data-name="${student.first_name} ${
+                student.last_name || ""
               }" (${
                 student.registrationNumber || ""
               })
               ${isChecked ? "checked" : ""}>
-                            ${student.firstName || ""} ${student.lastName || ""} (${
+                            ${student.first_name || ""} ${student.last_name || ""} (${
                 student.registrationNumber || ""
               })
                         `;
@@ -372,8 +372,8 @@ import {
           const searchTerm = this.value.toLowerCase();
           if (searchTerm) {
             const filteredStudents = res?.students.filter((student) => {
-              const fullName = `${student.firstName} ${
-                student.lastName || ""
+              const fullName = `${student.first_name} ${
+                student.last_name || ""
               } (${
                 student.registrationNumber || ""
               })

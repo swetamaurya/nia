@@ -150,8 +150,8 @@ async function all_data_load_dashboard() {
               <td>
                 <span class="h6 mb-0 fw-medium text-gray-300">
                   ${
-                    e?.name?.firstName || e?.name?.lastName || e?.name?.userId
-                      ? [e?.name?.firstName, e?.name?.lastName, `(${e?.name?.userId})`]
+                    e?.name?.first_name || e?.name?.last_name || e?.name?.userId
+                      ? [e?.name?.first_name, e?.name?.last_name, `(${e?.name?.userId})`]
                           .filter(Boolean)
                           .join(" ")
                       : "-"

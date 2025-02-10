@@ -64,10 +64,10 @@ async function all_data_load_list() {
     let rowHtml = "";
     if (totalUsers > 0 && data.length) {
       data.forEach((user) => {
-        const firstName = user.firstName || "";
-        const lastName  = user.lastName || "";
+        const first_name = user.first_name || "";
+        const last_name  = user.last_name || "";
         const userId  = user.userId || "";
-        const fullName  = (firstName + " " + lastName).trim();
+        const fullName  = (first_name + " " + last_name).trim();
         const imageUrl  = user.image || "assets/images/thumbs/dummy-image.jpg";
 
         rowHtml += `

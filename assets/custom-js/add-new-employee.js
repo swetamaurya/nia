@@ -40,8 +40,8 @@ document.getElementById(addNewEmployeeForm).addEventListener("submit", async fun
 
     if(!validateEmployee()) return
     
-    const firstName = document.getElementById('fname').value;
-    const lastName = document.getElementById('lname').value;
+    const first_name = document.getElementById('fname').value;
+    const last_name = document.getElementById('lname').value;
     const phoneNumber = document.getElementById('phone').value;
     const address = document.getElementById('address').value;
     const email = document.getElementById('email').value;
@@ -62,8 +62,8 @@ for (const file of files) {
 for (const image of images) {
   formData.append("image", image);
 }
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
+      formData.append("first_name", first_name);
+      formData.append("last_name", last_name);
       formData.append("phoneNumber", phoneNumber); 
       formData.append("email", email); 
       formData.append("password", password); 
@@ -100,8 +100,8 @@ for (const image of images) {
 function validateEmployee(){
     clearErrors();
   let isValid = true;
-    const firstName = document.getElementById('fname')
-    const lastName = document.getElementById('lname')
+    const first_name = document.getElementById('fname')
+    const last_name = document.getElementById('lname')
     const phoneNumber = document.getElementById('phone')
     const address = document.getElementById('address')
     const email = document.getElementById('email')
@@ -110,12 +110,12 @@ function validateEmployee(){
     // const imageFileUpload = document.getElementById('customFileUpload')
     // const spanProfilePhoto = document.getElementById('profile-photo')
 
-    if(firstName.value.trim() ==='' || !/^[A-Za-z]+$/.test(firstName.value)){
-      showError(firstName,'Enter a valid first name');
+    if(first_name.value.trim() ==='' || !/^[A-Za-z]+$/.test(first_name.value)){
+      showError(first_name,'Enter a valid first name');
       isValid=false;
     }
-    if(lastName.value.trim() ==='' || !/^[A-Za-z]+$/.test(lastName.value)){
-      showError(lastName,'Enter a valid last name');
+    if(last_name.value.trim() ==='' || !/^[A-Za-z]+$/.test(last_name.value)){
+      showError(last_name,'Enter a valid last name');
       isValid=false;
     }
     const phoneNumberValue = phoneNumber.value.trim();

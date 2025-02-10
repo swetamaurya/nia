@@ -2,12 +2,21 @@ import { COURSE_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
+import {
+    individual_delete,
+    objects_data_handler_function,
+  } from "./global/delete_div.js";
+
+//   import { checkbox_function } from "./global/multi_checkbox.js";
+  // // For "individual_delete" if your code uses it
+  window.individual_delete = individual_delete;
+
 const token = localStorage.getItem('token')
 // ==============================================================================
 //===============================================================================
 //Get All API to show the data
 
-async function all_data_load_list() {
+async function all_data_load_dashboard() {
     try {
         loading_shimmer();
     } catch (error) {
@@ -46,7 +55,9 @@ async function all_data_load_list() {
                     e.statusOfCards === 'Draft'? statusCardBgColor='bg-danger' : statusCardBgColor='bg-primary'
                    
                     cards += `
-                          <div class="col-xxl-3 col-lg-4 col-sm-6">
+                    
+                          <div class="col-xxl-3 col-lg-4 col-sm-6" data-id="${e?._id || "-"}">
+                          <input type="checkbox" class="checkbox_child d-none" hidden  value="${  e?._id || "-"}" />
                               <div class="card border border-gray-100">
                                   <div class="card-body p-8">
                                       <a href="course-details.html"
@@ -84,9 +95,11 @@ async function all_data_load_list() {
                       <a href="edit-course.html?id=${e._id}" class="action-btn me-5" title="Edit">
                         <i class="ph ph-pencil me-3"></i> Edit
                       </a>
-                      <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-2" data-message="Want to delete this role?">
-                        <i class="ph ph-trash me-3"></i> Delete
-                      </a>
+    <a data-bs-toggle="modal" data-bs-target="#delete_data"
+   class="action-btn btn--danger btn-outline-danger form-alert"
+    onclick="individual_delete('${e?._id || "-"}')">
+   <i class="ph ph-trash"></i> Delete
+</a>
                       
                     </div>
                               </div>
@@ -112,4 +125,6 @@ async function all_data_load_list() {
     }
 }
 
-all_data_load_list();
+
+all_data_load_dashboard()
+objects_data_handler_function(all_data_load_dashboard);

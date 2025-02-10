@@ -15,7 +15,7 @@ const batch = `/batch`
 const batchCategory = `/batchCategory`
 const student = `/student`
 // -----------------------------------------
-
+export const TOKEN = localStorage.getItem("token");
 
 //All APIs
 const admin_API = `${domain}${admin}`;

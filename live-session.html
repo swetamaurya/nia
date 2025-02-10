@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title -->
+    <title>NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css" />
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css" />
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css" />
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css" />
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/global-header.js"></script>
+    >
+
+</head>
+
+<body>
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+        <div class="dashboard-body">
+            <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+                <!-- Breadcrumb Start -->
+                <div class="breadcrumb mb-24">
+                    <ul class="flex-align gap-4">
+                        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+                        </li>
+                        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+                        <li><span class="text-main-600 fw-normal text-15">Live Session</span></li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb End -->
+
+
+            </div>
+
+            <!-- Batch Tab Start -->
+            <form id="" action="#">
+                <div class="card">
+                    <div class="card-header border-bottom border-gray-100 flex-align gap-8">
+                        <h5 class="mb-0">Live Session Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row gy-20">
+                            <div class="col-sm-4">
+                                <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Class Tittle
+                                    <span class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76"
+                                    maxlength="100" id="BatchTitle" placeholder="Enter the class title" />
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Select Instructor
+                                    <span class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                </label>
+                                <select id="selectBatch" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">---Select Instructor List---</option>
+                                    <option value="Instructor 101"> Instructor 101 </option>
+                                    <option value="Instructor 102"> Instructor 102 </option>
+                                    <option value="Instructor 103"> Instructor 103 </option>
+                                    <option value="Instructor 104"> Instructor 104 </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Select Batch
+                                    <span class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                </label>
+                                <select id="selectBatch" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">---Select Batch List---</option>
+                                    <option value="Batch 101"> Batch 101 </option>
+                                    <option value="Batch 102"> Batch 102 </option>
+                                    <option value="Batch 103"> Batch 103 </option>
+                                    <option value="Batch 104"> Batch 104 </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Select Course Category
+                                </label>
+                                <select id="selectCourse" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">---Select Course List---</option>
+                                    <option value="Course Category 101"> Course Category 101 </option>
+                                    <option value="Course Category 102"> Course Category 102 </option>
+                                    <option value="Course Category 103"> Course Category 103 </option>
+                                    <option value="Course Category 104"> Course Category 104 </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Select Course
+                                </label>
+                                <select id="selectCourse" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">---Select Course Category List---</option>
+                                    <option value="Course 101"> Course 101 </option>
+                                    <option value="Course 102"> Course 102 </option>
+                                    <option value="Course 103"> Course 103 </option>
+                                    <option value="Course 104"> Course 104 </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="custom-file">
+                                    <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Upload Files
+                                    </label>
+                                    <input type="file" name="image" id="liveUpload" class="form-control py-11" multiple
+                                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="h6 mb-8 fw-semibold font-heading">Class Description
+                                    <span class="text-danger text-size">*</span>
+                                </label>
+                                <textarea id="description" rows="4" class="placeholder-13 form-control w-100"
+                                    placeholder="Enter the class description"></textarea>
+                            </div>
+                            <div class="col-sm-4 ">
+                                <div class="d-flex justify-content-between form-switch border-bottom switch-primary">
+                                    <label class="h6 mb-8 fw-semibold font-heading col-6">Schedule Live Class
+                                        <span class="text-danger text-size">*</span>
+                                    </label>
+                                    <input class="form-check-input  col-6 " type="checkbox" role="switch" id="switch11">
+                                </div>
+                                <div class="row mt-15 classes" id="dateRangeDiv" style="display: none;">
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">From Date</span>
+                                        <input type="date" class="placeholder-13 form-control py-11 col-5" id="fromDate"
+                                            placeholder="Enter the Batch Duration" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">To Date</span>
+                                        <input type="date" class="placeholder-13 form-control py-11 col-5" id="toDate"
+                                            placeholder="Enter the Batch Duration" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-align justify-content-end gap-8 mt-20">
+                    <button id="save-as-draft" type="button"
+                        class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+                        Reset
+                    </button>
+                    <button id="publish-course" type="button" class="btn btn-main rounded-pill py-9">
+                        Submit
+                    </button>
+                </div>
+            </form>
+
+            <!-- Batch Tab End -->
+
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+    <!-- custom js -->
+
+    <script>
+        document.getElementById('switch11').addEventListener('change', function () {
+            const dateRangeDiv = document.getElementById('dateRangeDiv');
+            // Toggle the display property based on the checkbox state
+            dateRangeDiv.style.display = this.checked ? 'flex' : 'none';
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -43,10 +43,10 @@ async function all_data_load_dashboard() {
       if (data && data.length > 0) {
        
         rows = data.map((e) => {
-                          const firstName = e.firstName || "";
-                const lastName  = e.lastName || "";
+                          const first_name = e.first_name || "";
+                const last_name  = e.last_name || "";
         // const userId  = user.userId || "";
-               const fullName  = (firstName + " " + lastName).trim();
+               const fullName  = (first_name + " " + last_name).trim();
                return `
                <tr data-id="${e?._id || "-"}">
       <td><input type="checkbox" class="checkbox_child" value="${
@@ -54,7 +54,7 @@ async function all_data_load_dashboard() {
       }"></td>
                                 <td>
                                     <div class="flex-align gap-8">
-                                        <img src="${e.profileImage}" alt="" class="w-40 h-40 rounded-circle">
+                                        <img src="${e.photo_path}" alt="" class="w-40 h-40 rounded-circle">
                                         <span class="h6 mb-0 fw-medium text-gray-300">${fullName}</span>
                                     </div>
                                 </td>

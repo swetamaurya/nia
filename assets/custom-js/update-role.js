@@ -28,7 +28,7 @@ employee = res.data
     employee.forEach((employee) => {
       const option = document.createElement('option');
       option.value = employee._id; // Assuming employee ID is stored in `_id`
-      option.textContent = `${employee.firstName} ${employee.lastName}  (${employee?.roles?.roleId})`; // Assuming employee name is stored in `name`
+      option.textContent = `${employee.first_name} ${employee.last_name}  (${employee?.roles?.roleId})`; // Assuming employee name is stored in `name`
       dropdown.appendChild(option);
     });
   } catch (error) {
