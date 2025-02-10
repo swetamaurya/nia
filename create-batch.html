@@ -97,26 +97,26 @@
                 </div>
                 <div class="card-body">
                     <form id="add-batch-form" action="#">
-                        <div class="row gy-20">
-                            <div class="row g-20">
-                                <div class="col-sm-4">
-                                    <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Batch Tittle
-                                        <span class="text-13 text-gray-400 fw-medium">(Required)</span>
-                                    </label>
-                                    <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76"
-                                        maxlength="100" id="BatchTitle" placeholder="Enter the batch title" />
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">
-                                      Select Batch Students List <span class="text-13 text-gray-400 fw-medium">(Required)</span>
-                                    </label>
-                                    <select class="form-control py-11 pe-76" id="studentDropdown">
-                                      <option value="">-- Select a Batch Students --</option>
-                                      <!-- Options will be dynamically inserted here -->
-                                    </select>
-                                  </div>
-                                  
-                                <!-- <div class="col-sm-6">
+                        <div class="row g-20">
+                            <div class="col-sm-4">
+                                <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Batch Tittle
+                                    <span class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                </label>
+                                <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76"
+                                    maxlength="100" id="BatchTitle" placeholder="Enter the batch title" />
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">
+                                    Select Batch Students List <span
+                                        class="text-13 text-gray-400 fw-medium">(Required)</span>
+                                </label>
+                                <select class="form-control py-11 pe-76" id="studentDropdown">
+                                    <option value="">-- Select a Batch Students --</option>
+                                    <!-- Options will be dynamically inserted here -->
+                                </select>
+                            </div>
+
+                            <!-- <div class="col-sm-6">
                                     <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Batch ID
                                     </label>
                                     <div class="position-relative">
@@ -124,49 +124,42 @@
                                             id="BatchDuration" />
                                     </div>
                                 </div> -->
-                                <div class="col-sm-4">
-                                    <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Batch Year
-                                    </label>
-                                    <div class="position-relative">
-                                        <input type="text" id="batchYear" class="placeholder-13 form-control py-11"
-                                            placeholder="Enter the Year" />
-                                    </div>
+                            <div class="col-sm-4">
+                                <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Batch Year
+                                </label>
+                                <div class="position-relative">
+                                    <input type="text" id="batchYear" class="placeholder-13 form-control py-11"
+                                        placeholder="Enter the Year" />
                                 </div>
-                                <div class="col-sm-8">
-                                    <!-- <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Batch Duration
-                                    </label> -->
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <span class="h6 mb-8 fw-semibold font-heading">Batch Duration From Date
-                                            </span>
-                                            <input type="date" class=" placeholder-13 form-control py-11 col-5"
-                                                id="fromDate" placeholder="Enter the Batch Duration" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <span class="h6 mb-8 fw-semibold font-heading">Batch Duration To Date
-                                            </span>
-                                            <input type="date" class=" placeholder-13 form-control py-11 col-5"
-                                                id="toDate" placeholder="Enter the Batch Duration" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Total Days
-                                    </label>
-                                    <div class="position-relative">
-                                        <input disabled type="text" class=" placeholder-13 form-control py-11 pe-76"
-                                            id="batchTotalDays" placeholder="" />
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="row g-20 mt-0">
-
-
+                            <div class="col-sm-8">
+                                <!-- <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Batch Duration
+                                    </label> -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">Batch Duration From Date
+                                        </span>
+                                        <input type="date" class=" placeholder-13 form-control py-11 col-5"
+                                            id="fromDate" placeholder="Enter the Batch Duration" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <span class="h6 mb-8 fw-semibold font-heading">Batch Duration To Date
+                                        </span>
+                                        <input type="date" class=" placeholder-13 form-control py-11 col-5" id="toDate"
+                                            placeholder="Enter the Batch Duration" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="BatchDuration" class="h6 mb-8 fw-semibold font-heading">Total Days
+                                </label>
+                                <div class="position-relative">
+                                    <input disabled type="text" class=" placeholder-13 form-control py-11 pe-76"
+                                        id="batchTotalDays" placeholder="" />
+                                </div>
                             </div>
 
                         </div>
-
                     </form>
                 </div>
             </div>
