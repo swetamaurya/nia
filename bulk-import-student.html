@@ -119,7 +119,7 @@
                                         <div class="card-body">
                                             <h5 class="text-center mt-2">
                                                 Do not have the template?
-                                                <a href="assets/sample_file_export_xlsx/batch-category-list.xlsx" download=""
+                                                <a href="assets/sample_file_export_xlsx/student.xlsx" download=""
                                                     class="text-primary">Download Here</a>
                                             </h5>
                                             <div class="form-group mt-4">
@@ -130,7 +130,7 @@
                                                     </div>
                                                     <div class="__choose-input">
                                                         <input type="file" name="products_file" class="form-control"
-                                                            id="import-file" accept=".xlsx">
+                                                            id="import_excel_file_form" accept=".xlsx">
                                                     </div>
                                                 </label>
                                             </div>
@@ -148,7 +148,7 @@
                             class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
                             Reset
                         </button>
-                        <button type="submit" class="btn btn-main rounded-pill py-9">
+                        <button type="submit" id="submit" class="btn btn-main rounded-pill py-9">
                             Submit
                         </button>
                     </div>
@@ -161,7 +161,7 @@
         <div id="footer-placeholder"></div>
     </div>
 
-    <!-- Jquery js -->
+     <!-- Jquery js -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap Bundle Js -->
     <script src="assets/js/boostrap.bundle.min.js"></script>
@@ -185,6 +185,8 @@
     <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
     <!-- jvectormap world Js -->
     <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <script type="module" src="assets/custom-js/global/importData.js"></script>
 
     <!-- main js -->
     <script src="assets/js/main.js"></script>

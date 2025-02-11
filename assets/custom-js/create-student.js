@@ -36,7 +36,7 @@ async function addStudentForm(event) {
     event.preventDefault();
     
     // const batchId = document.getElementById('batchId').value
-    // const applicationNumber = document.getElementById('applicationNumber').value;
+    // const application_number = document.getElementById('application_number').value;
     // const registration_number = document.getElementById('registration_number').value;
     // const first_name = document.getElementById('first_name').value;
     // const last_name = document.getElementById('last_name').value;
@@ -55,8 +55,8 @@ async function addStudentForm(event) {
     // const presentPostOffice = document.getElementById('presentPostOffice').value;
     // const present_state = document.getElementById('present_state').value;
     // const presentDistrict = document.getElementById('presentDistrict').value;
-    // const presentPincode = document.getElementById('presentPincode').value;
-    // const permanentStreet = document.getElementById('permanentStreet').value;
+    // const present_pincode = document.getElementById('present_pincode').value;
+    // const permanent_street = document.getElementById('permanent_street').value;
     // const permanentHouseNo = document.getElementById('permanentHouseNo').value;
     // const permanent_village = document.getElementById('permanent_village').value;
     // const permanent_city = document.getElementById('permanent_city').value;
@@ -70,7 +70,7 @@ async function addStudentForm(event) {
     // const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision').value;
     // const highSchoolDetails = document.getElementById('highSchoolDetails').value;
     // const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision').value;
-    // const applyFor = document.getElementById('applyFor').value;
+    // const apply_for = document.getElementById('apply_for').value;
     // const examinationFee = document.getElementById('examinationFee').value;
     // const examinationCenterState = document.getElementById('examinationCenterState').value;
     // const examinationCenterCity = document.getElementById('examinationCenterCity').value;
@@ -89,7 +89,7 @@ async function addStudentForm(event) {
 
     
     formData.append('batchId', document.getElementById('batchId').value);
-formData.append('applicationNumber', document.getElementById('applicationNumber').value);
+formData.append('application_number', document.getElementById('application_number').value);
 formData.append('registration_number', document.getElementById('registration_number').value);
 formData.append('first_name', document.getElementById('first_name').value);
 formData.append('last_name', document.getElementById('last_name').value);
@@ -108,8 +108,8 @@ formData.append('present_city', document.getElementById('present_city').value);
 formData.append('presentPostOffice', document.getElementById('presentPostOffice').value);
 formData.append('present_state', document.getElementById('present_state').value);
 formData.append('presentDistrict', document.getElementById('presentDistrict').value);
-formData.append('presentPincode', document.getElementById('presentPincode').value);
-formData.append('permanentStreet', document.getElementById('permanentStreet').value);
+formData.append('present_pincode', document.getElementById('present_pincode').value);
+formData.append('permanent_street', document.getElementById('permanent_street').value);
 formData.append('permanentHouseNo', document.getElementById('permanentHouseNo').value);
 formData.append('permanent_village', document.getElementById('permanent_village').value);
 formData.append('permanent_city', document.getElementById('permanent_city').value);
@@ -123,7 +123,7 @@ formData.append('intermediate_details', document.getElementById('intermediate_de
 formData.append('intermediate_detailsDivision', document.getElementById('intermediate_detailsDivision').value);
 formData.append('highSchoolDetails', document.getElementById('highSchoolDetails').value);
 formData.append('highSchoolDetailsDivision', document.getElementById('highSchoolDetailsDivision').value);
-formData.append('applyFor', document.getElementById('applyFor').value);
+formData.append('apply_for', document.getElementById('apply_for').value);
 formData.append('examinationFee', document.getElementById('examinationFee').value);
 formData.append('examinationCenterState', document.getElementById('examinationCenterState').value);
 formData.append('examinationCenterCity', document.getElementById('examinationCenterCity').value);

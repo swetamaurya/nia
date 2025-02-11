@@ -45,7 +45,7 @@ window.editLoadData = async function editLoadData() {
         console.error(error);
     }
     const batchId = document.getElementById('batchId')
-    const applicationNumber = document.getElementById('applicationNumber');
+    const application_number = document.getElementById('application_number');
     const registration_number = document.getElementById('registration_number');
     const first_name = document.getElementById('first_name');
     const last_name = document.getElementById('last_name');
@@ -64,8 +64,8 @@ window.editLoadData = async function editLoadData() {
     const presentPostOffice = document.getElementById('presentPostOffice');
     const present_state = document.getElementById('present_state');
     const presentDistrict = document.getElementById('presentDistrict');
-    const presentPincode = document.getElementById('presentPincode');
-    const permanentStreet = document.getElementById('permanentStreet');
+    const present_pincode = document.getElementById('present_pincode');
+    const permanent_street = document.getElementById('permanent_street');
     const permanentHouseNo = document.getElementById('permanentHouseNo');
     const permanent_village = document.getElementById('permanent_village');
     const permanent_city = document.getElementById('permanent_city');
@@ -79,7 +79,7 @@ window.editLoadData = async function editLoadData() {
     const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision');
     const highSchoolDetails = document.getElementById('highSchoolDetails');
     const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision');
-    const applyFor = document.getElementById('applyFor');
+    const apply_for = document.getElementById('apply_for');
     const examinationFee = document.getElementById('examinationFee');
     const examinationCenterState = document.getElementById('examinationCenterState');
     const examinationCenterCity = document.getElementById('examinationCenterCity');
@@ -100,7 +100,7 @@ window.editLoadData = async function editLoadData() {
         const res = await response.json()
         const student = res.student
         batchId.value = student.batchId || '';
-        applicationNumber.value = student.applicationNumber || '';
+        application_number.value = student.application_number || '';
     registration_number.value = student.registration_number || '';
     first_name.value = student.first_name || '';
     last_name.value = student.last_name || '';
@@ -119,8 +119,8 @@ window.editLoadData = async function editLoadData() {
     presentPostOffice.value = student.presentPostOffice || '';
     present_state.value = student.present_state || '';
     presentDistrict.value = student.presentDistrict || '';
-    presentPincode.value = student.presentPincode || '';
-    permanentStreet.value = student.permanentStreet || '';
+    present_pincode.value = student.present_pincode || '';
+    permanent_street.value = student.permanent_street || '';
     permanentHouseNo.value = student.permanentHouseNo || '';
     permanent_village.value = student.permanent_village || '';
     permanent_city.value = student.permanent_city || '';
@@ -134,7 +134,7 @@ window.editLoadData = async function editLoadData() {
     intermediate_detailsDivision.value = student.intermediate_detailsDivision || '';
     highSchoolDetails.value = student.highSchoolDetails || '';
     highSchoolDetailsDivision.value = student.highSchoolDetailsDivision || '';
-    applyFor.value = student.applyFor || '';
+    apply_for.value = student.apply_for || '';
     examinationFee.value = student.examinationFee || '';
     examinationCenterState.value = student.examinationCenterState || '';
     examinationCenterCity.value = student.examinationCenterCity || '';
@@ -154,7 +154,7 @@ async function editBatchForm(event) {
     event.preventDefault();
 
     const batchId = document.getElementById('batchId').value;
-    const applicationNumber = document.getElementById('applicationNumber').value;
+    const application_number = document.getElementById('application_number').value;
     const registration_number = document.getElementById('registration_number').value;
     const first_name = document.getElementById('first_name').value;
     const last_name = document.getElementById('last_name').value;
@@ -173,8 +173,8 @@ async function editBatchForm(event) {
     const presentPostOffice = document.getElementById('presentPostOffice').value;
     const present_state = document.getElementById('present_state').value;
     const presentDistrict = document.getElementById('presentDistrict').value;
-    const presentPincode = document.getElementById('presentPincode').value;
-    const permanentStreet = document.getElementById('permanentStreet').value;
+    const present_pincode = document.getElementById('present_pincode').value;
+    const permanent_street = document.getElementById('permanent_street').value;
     const permanentHouseNo = document.getElementById('permanentHouseNo').value;
     const permanent_village = document.getElementById('permanent_village').value;
     const permanent_city = document.getElementById('permanent_city').value;
@@ -188,7 +188,7 @@ async function editBatchForm(event) {
     const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision').value;
     const highSchoolDetails = document.getElementById('highSchoolDetails').value;
     const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision').value;
-    const applyFor = document.getElementById('applyFor').value;
+    const apply_for = document.getElementById('apply_for').value;
     const examinationFee = document.getElementById('examinationFee').value;
     const examinationCenterState = document.getElementById('examinationCenterState').value;
     const examinationCenterCity = document.getElementById('examinationCenterCity').value;
@@ -208,7 +208,7 @@ async function editBatchForm(event) {
                 'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify({ batchId, applicationNumber, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,photo_path,presentHouseNo,present_village,present_city,presentPostOffice,present_state,presentDistrict,presentPincode,permanentStreet,permanentHouseNo,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_detailsDivision,highSchoolDetails,highSchoolDetailsDivision,applyFor,examinationFee,examinationCenterState,examinationCenterCity,_id })
+            body: JSON.stringify({ batchId, application_number, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,photo_path,presentHouseNo,present_village,present_city,presentPostOffice,present_state,presentDistrict,present_pincode,permanent_street,permanentHouseNo,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_detailsDivision,highSchoolDetails,highSchoolDetailsDivision,apply_for,examinationFee,examinationCenterState,examinationCenterCity,_id })
         });
 
         const r1 = await response.json();

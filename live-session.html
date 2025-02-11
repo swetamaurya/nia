@@ -33,7 +33,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <script src="assets/js/global-header.js"></script>
-    >
+    
 
 </head>
 
@@ -73,7 +73,7 @@
             </div>
 
             <!-- Batch Tab Start -->
-            <form id="" action="#">
+            <form id="classLiveStreaming" method="post">
                 <div class="card">
                     <div class="card-header border-bottom border-gray-100 flex-align gap-8">
                         <h5 class="mb-0">Live Session Details</h5>
@@ -85,70 +85,53 @@
                                     <span class="text-13 text-gray-400 fw-medium">(Required)</span>
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11 pe-76"
-                                    maxlength="100" id="BatchTitle" placeholder="Enter the class title" />
+                                    maxlength="100" id="BatchTitleName" placeholder="Enter the class title" />
                             </div>
                             <div class="col-sm-4">
                                 <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Select Instructor
                                     <span class="text-13 text-gray-400 fw-medium">(Required)</span>
                                 </label>
-                                <select id="selectBatch" class="form-control form-select placeholder-13">
-                                    <option selected disabled class="">---Select Instructor List---</option>
-                                    <option value="Instructor 101"> Instructor 101 </option>
-                                    <option value="Instructor 102"> Instructor 102 </option>
-                                    <option value="Instructor 103"> Instructor 103 </option>
-                                    <option value="Instructor 104"> Instructor 104 </option>
+                                <select id="selectInstructorList" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">--- Instructor List ---</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <label for="BatchTitle" class="h6 mb-8 fw-semibold font-heading">Select Batch
                                     <span class="text-13 text-gray-400 fw-medium">(Required)</span>
                                 </label>
-                                <select id="selectBatch" class="form-control form-select placeholder-13">
-                                    <option selected disabled class="">---Select Batch List---</option>
-                                    <option value="Batch 101"> Batch 101 </option>
-                                    <option value="Batch 102"> Batch 102 </option>
-                                    <option value="Batch 103"> Batch 103 </option>
-                                    <option value="Batch 104"> Batch 104 </option>
+                                <select id="selectbatchList" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">--- Batch List ---</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Select Course Category
                                 </label>
-                                <select id="selectCourse" class="form-control form-select placeholder-13">
-                                    <option selected disabled class="">---Select Course List---</option>
-                                    <option value="Course Category 101"> Course Category 101 </option>
-                                    <option value="Course Category 102"> Course Category 102 </option>
-                                    <option value="Course Category 103"> Course Category 103 </option>
-                                    <option value="Course Category 104"> Course Category 104 </option>
+                                <select id="selectCourseCategoryList" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">--- Course Category List ---</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Select Course
                                 </label>
-                                <select id="selectCourse" class="form-control form-select placeholder-13">
-                                    <option selected disabled class="">---Select Course Category List---</option>
-                                    <option value="Course 101"> Course 101 </option>
-                                    <option value="Course 102"> Course 102 </option>
-                                    <option value="Course 103"> Course 103 </option>
-                                    <option value="Course 104"> Course 104 </option>
+                                <select id="selectCourseList" class="form-control form-select placeholder-13">
+                                    <option selected disabled class="">--- Course List ---</option>
                                 </select>
                             </div>
                             <div class="col-sm-4">
                                 <div class="custom-file">
                                     <label for="batchYear" class="h6 mb-8 fw-semibold font-heading">Upload Files
                                     </label>
-                                    <input type="file" name="image" id="liveUpload" class="form-control py-11" multiple
-                                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                                    <input type="file" name="image" id="liveUpload" class="form-control py-11" multiple />
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <label class="h6 mb-8 fw-semibold font-heading">Class Description
                                     <span class="text-danger text-size">*</span>
                                 </label>
-                                <textarea id="description" rows="4" class="placeholder-13 form-control w-100"
+                                <textarea id="descriptionLive" rows="4" class="placeholder-13 form-control w-100"
                                     placeholder="Enter the class description"></textarea>
                             </div>
-                            <div class="col-sm-4 ">
+                            <!-- <div class="col-sm-4 ">
                                 <div class="d-flex justify-content-between form-switch border-bottom switch-primary">
                                     <label class="h6 mb-8 fw-semibold font-heading col-6">Schedule Live Class
                                         <span class="text-danger text-size">*</span>
@@ -168,7 +151,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -177,9 +160,9 @@
                         class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
                         Reset
                     </button>
-                    <a id="publish-course" href="live-class.html" type="button" class="btn btn-main rounded-pill py-9">
+                    <button id="publish-course" type="submit" class="btn btn-main rounded-pill py-9">
                         Submit
-                    </a>
+                    </button>
                 </div>
             </form>
 
@@ -218,13 +201,14 @@
     <script src="assets/js/main.js"></script>
     <!-- custom js -->
 
-    <script>
+    <!-- <script>
         document.getElementById('switch11').addEventListener('change', function () {
             const dateRangeDiv = document.getElementById('dateRangeDiv');
             // Toggle the display property based on the checkbox state
             dateRangeDiv.style.display = this.checked ? 'flex' : 'none';
         });
-    </script>
+    </script> -->
+    <script src="assets/custom-js/live-session.js" type="module"></script>
 
 
 </body>

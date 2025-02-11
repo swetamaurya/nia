@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.themeholy.com/edmate/students.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:11 GMT -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title -->
+  <title> NIA LMS Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css">
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/plyr.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+  <!-- full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css">
+  <!-- jquery Ui -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <!-- editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css">
+  <!-- apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css">
+  <!-- calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/global-header.js"></script>
+</head>
+
+<body>
+
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
+
+  <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
+
+  <!-- ============================ Sidebar Start ============================ -->
+  <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
+
+  <!-- ============================ Sidebar End  ============================ -->
+
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
+
+
+    <div class="dashboard-body">
+
+      <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb mb-24">
+          <ul class="flex-align gap-4">
+            <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+            <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+            <li><span class="text-main-600 fw-normal text-15">Students</span></li>
+          </ul>
+        </div>
+        <!-- Breadcrumb End -->
+
+        <!-- Breadcrumb Right Start -->
+
+        <!-- Breadcrumb Right End -->
+      </div>
+
+      <!-- Modals -->
+      <!-- Export Data Modal -->
+      <div class="modal custom-modal fade" id="export_data" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="form-header">
+                <h3>Export Students</h3>
+                <p>Are you sure want to download the File?</p>
+              </div>
+              <div class="modal-btn delete-action">
+                <div class="row">
+                  <div class="col-6">
+                    <a href="javascript:void(0);" id="exportButton" class="btn btn-primary continue-btn"
+                      data-bs-dismiss="modal" n>Download</a>
+                  </div>
+                  <div class="col-6">
+                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary cancel-btn">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Data Modal -->
+      <div class="modal custom-modal fade" id="delete_data" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="form-header">
+                <h3>Delete Batch List</h3>
+                <p>Are you sure want to delete?</p>
+              </div>
+              <div class="modal-btn delete-action">
+                <div class="row">
+                  <div class="col-6">
+                    <a href="javascript:void(0);" id="deleteButton" class="btn btn-primary continue-btn"
+                      data-bs-dismiss="modal">Delete</a>
+                  </div>
+                  <div class="col-6">
+                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                      class="btn btn-primary cancel-btn">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+
+        <table id="studentTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="employee_restriction_d_none" data-sortable="true">
+                <input type="checkbox" class="checkbox_all" name="" id="">
+              </th>
+              <th class="h6 text-white">Class Title</th>
+              <th class="h6 text-white">Instructor</th>
+              <th class="h6 text-white">Course</th>
+              <th class="h6 text-white">Batch</th>
+              <!-- <th class="h6 text-white">Status</th> -->
+              <th class="h6 text-white">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="checkbox_child">
+              </td>
+              <td>
+                <div class="flex-align gap-8">
+                  <a>
+                    <span class="h6 mb-0 fw-medium text-gray-300">
+                      class list
+                    </span>
+                  </a>
+                </div>
+              </td>
+              <td>
+                <h6 class="m-0">
+                  <a class="text-hover text-gray-300">
+                    Instructor
+                  </a>
+                </h6>
+              </td>
+              <td>
+                <span class="bg-success-50 text-bg-primary h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill">
+                  Course
+                </span>
+              </td>
+              <td>
+                <a class="text-hover text-gray-300">
+                  Instructor
+                </a>
+              </td>
+              <td>
+                <div class="btn--container d-flex justify-content-start">
+                 
+                  <a d
+                    class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" onclick="individual_delete('${user._id}')
+  ">
+                    <i class="ph ph-eye"></i>
+                  </a>
+
+                </div>
+              </td>
+            </tr>
+            `;
+          </tbody>
+        </table>
+
+        <!-- Pagination Footer -->
+        <div class="d-flex align-items-center justify-content-between" id="paginationFooter" style="padding: 1rem;">
+        </div>
+      </div>
+
+
+    </div>
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <!-- Jquery js -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap Bundle Js -->
+  <script src="assets/js/boostrap.bundle.min.js"></script>
+  <!-- Phosphor Js -->
+  <script src="assets/js/phosphor-icon.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/file-upload.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/plyr.js"></script>
+  <!-- dataTables -->
+  <!-- full calendar -->
+  <script src="assets/js/full-calendar.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/jquery-ui.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/editor-quill.js"></script>
+  <!-- apex charts -->
+  <script src="assets/js/apexcharts.min.js"></script>
+  <!-- jvectormap Js -->
+  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+  <!-- jvectormap world Js -->
+  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+  <!-- main js -->
+  <script src="assets/js/main.js"></script>
+  <!-- custom js -->
+  <!-- <script type="module" src="assets/custom-js/student.js"></script> -->
+
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/students.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:13 GMT -->
+
+</html>

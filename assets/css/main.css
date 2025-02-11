@@ -8955,6 +8955,7 @@ button:focus {
 /* Sidebar Css Start */
 .sidebar-menu__item:not(:last-child) {
     margin-block-end: 12px;
+    border-bottom: 1px solid #ececec;
 }
 
 .sidebar-menu__item.activePage .sidebar-menu__link {

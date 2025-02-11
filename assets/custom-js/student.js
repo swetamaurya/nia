@@ -68,13 +68,13 @@ async function all_data_load_dashboard() {
                 <td>
                   <span
                     class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
-                    >${e.applicationNumber || '-'}</span
+                    >${e.application_number || '-'}</span
                   >
                 </td>
                 <td>
                 <span
                     class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
-                    >${e.applyFor || '-'}</span
+                    >${e.apply_for || '-'}</span
                   >
                   
                 </td>

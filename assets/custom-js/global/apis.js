@@ -1,5 +1,5 @@
-// const domain = 'http://localhost:5000';
-const domain = 'https://backend-lms-yibk.onrender.com'
+// export const domain = 'http://localhost:5000';
+export const domain = 'https://backend-lms-yibk.onrender.com'
 
 // ---------------------END POINTS------------------------------
 const admin = `/admin`
@@ -14,6 +14,7 @@ const courseCategory = `/courseCategory`
 const batch = `/batch`
 const batchCategory = `/batchCategory`
 const student = `/student`
+const classes = `/class`
 // -----------------------------------------
 export const TOKEN = localStorage.getItem("token");
 
@@ -27,6 +28,15 @@ const batch_API = `${domain}${batch}`
 const batch_category_API = `${domain}${batchCategory}`
 const student_API = `${domain}${student}`
 export const delete_API = `${domain}/delete/all`;
+export const import_API = `${domain}/import/student`;
+export const export_API = `${domain}/export/data`;
+
+
+const class_API = `${domain}${classes}`;
+export const CLASS_GET_API = `${domain}${classes}${get}`;
+export const CLASS_CREATE_API = `${domain}${classes}${post}`;
+export const CLASS_GETALL_API = `${domain}${classes}${getall}`;
+export const CLASS_UPDATE_API = `${domain}${classes}${update}`;
 
 
 // ---------------User Log-In ----------------//
@@ -55,6 +65,7 @@ export const COURSE_CREATE_API = `${course_API}${post}`
 export const COURSE_GETALL_API = `${course_API}${getall}`
 export const COURSE_GET_API = `${course_API}${get}`
 export const COURSE_UPDATE_API = `${course_API}${update}`
+
 
 //COURSE Category API
 export const COURSE_category_CREATE_API = `${course_category_API}${post}`
