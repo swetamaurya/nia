@@ -87,24 +87,7 @@
           
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
-          <div
-            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-            <span class="text-lg"><i class="ph ph-layout"></i></span>
-            <button class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
-              id="download_excel_multiple_file" data-bs-toggle="modal" data-bs-target="#export_data">
-              Export All
-            </button>
-          </div>
-          <div
-            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-            <span class="text-lg"><i class="ph ph-layout"></i></span>
-            <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
-              id="exportOptions">
-              <option value="" selected disabled>Import</option>
-              <option value="csv">CSV</option>
-              <option value="json">JSON</option>
-            </select>
-          </div>
+          
 
           <div
             class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
@@ -119,31 +102,7 @@
       </div>
 
       <!-- Modals -->
-      <!-- Export Data Modal -->
-      <div class="modal custom-modal fade" id="export_data" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="form-header">
-                <h3>Export Students</h3>
-                <p>Are you sure want to download the File?</p>
-              </div>
-              <div class="modal-btn delete-action">
-                <div class="row">
-                  <div class="col-6">
-                    <a href="javascript:void(0);" id="exportButton" class="btn btn-primary continue-btn"
-                      data-bs-dismiss="modal" n>Download</a>
-                  </div>
-                  <div class="col-6">
-                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
-                      class="btn btn-primary cancel-btn">Cancel</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- Delete Data Modal -->
       <div class="modal custom-modal fade" id="delete_data" role="dialog">
