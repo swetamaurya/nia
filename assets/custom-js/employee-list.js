@@ -64,13 +64,13 @@ async function all_data_load_list() {
     let rowHtml = "";
     if (totalUsers > 0 && data.length) {
       data.forEach((user) => {
-        const first_name = user.first_name || "";
+        const firstName = user.firstName || "";
         const last_name  = user.last_name || "";
         const userId  = user.userId || "";
-        const fullName  = (first_name + " " + last_name).trim();
-        const imageUrl  = user.image || "assets/images/thumbs/dummy-image.jpg";
+        const fullName  = (firstName + " " + last_name).trim();
+        const imageUrl  = user.image || "";
 
-        rowHtml += `
+        rowHtml += ` 
           <tr data-id='${user._id}'>
             <td class="employee_restriction_d_none"><input type="checkbox" class="checkbox_child" value="${user._id}"></td>
             <td>
@@ -131,10 +131,9 @@ async function all_data_load_list() {
                 >
                   <i class="ph ph-pencil"></i>
                 </a>
-                <a data-bs-toggle="modal" data-bs-target="#delete_individual"
+                <a data-bs-toggle="modal" data-bs-target="#delete_data"
    class="action-btn btn--danger btn-outline-danger form-alert"
-   href="javascript:" onclick="individual_delete('${user._id}')
-">
+    onclick="individual_delete('${user?._id || "-"}')">
    <i class="ph ph-trash"></i>
 </a>
 
@@ -175,8 +174,6 @@ objects_data_handler_function(all_data_load_list);
  * Example status update function used in the row:
  * <div onclick="editStatusById('${user._id}', event)" ... >
  */
-
-
 window.editStatusById = async function editStatusById(id, event) {
   const element = event.target;
   let updatedStatus = element.checked ? "Active" : "In-Active";

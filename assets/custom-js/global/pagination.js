@@ -6,58 +6,76 @@ let totalEntries = 0;   // Total entries
 let totalPages = 0;     // Total pages
 let tableDataReload;    // Function to reload data
 
-/**
- * Renders the pagination UI:
- * - "Showing x to y of z entries"
- * - Previous / Next buttons
- * - Page links
- */
 export function showTotalEntries(entries, totalPage) {
   totalEntries = entries || 0;
-  totalPages   = totalPage || 1;
+  totalPages = totalPage || 1;
 
   let paginationContent = '';
-  for (let i = 1; i <= totalPages; i++) {
-    paginationContent += `
-      <li 
-        id="pageItem${i}" 
-        class="page-item ${i === currentPage ? 'active' : ''}"
-        onclick="getIndex(${i})"
-      >
-        <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">
-          ${i}
-        </a>
-      </li>
-    `;
+  let startPage = Math.max(1, currentPage - 1); // Start from the previous page
+  let endPage = Math.min(totalPages, startPage + 5); // Show next 5 pages max
+
+  if (totalPages > 10) {
+    if (currentPage > 2) {
+      paginationContent += `
+        <li class="page-item" onclick="getIndex(1)">
+          <a class="page-link">1</a>
+        </li>`;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      paginationContent += `
+        <li id="pageItem${i}" class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
+          <a class="page-link">${i}</a>
+        </li>
+      `;
+    }
+
+    if (endPage < totalPages - 4) {
+      paginationContent += `
+        <li class="page-item disabled">
+          <a class="page-link">...</a>
+        </li>
+      `;
+
+      for (let i = totalPages - 3; i <= totalPages; i++) {
+        paginationContent += `
+          <li class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
+            <a class="page-link">${i}</a>
+          </li>
+        `;
+      }
+    }
+  } else {
+    for (let i = 1; i <= totalPages; i++) {
+      paginationContent += `
+        <li id="pageItem${i}" class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
+          <a class="page-link">${i}</a>
+        </li>
+      `;
+    }
   }
 
-  // Build pagination footer
   paginationFooter.innerHTML = `
     <span class="text-gray-900">
       Showing ${((currentPage - 1) * limit) + 1}
       to ${Math.min(currentPage * limit, totalEntries)}
       of ${totalEntries} entries
     </span>
-
     <ul id="paginationPages" class="meraPaginationHai pagination flex-align flex-wrap">
-      <button id="previousBtn"> << </button>
-        ${paginationContent}
-      <button id="nextBtn"> >> </button>
+      <button id="previousBtn" ${currentPage === 1 ? 'disabled' : ''}> << </button>
+      ${paginationContent}
+      <button id="nextBtn" ${currentPage === totalPages ? 'disabled' : ''}> >> </button>
     </ul>
   `;
 
-  // Attach Prev/Next handlers
   document.getElementById('previousBtn').addEventListener('click', () => {
-    if (currentPage > 1) {
-      getIndex(currentPage - 1);
-    }
+    if (currentPage > 1) getIndex(currentPage - 1);
   });
   document.getElementById('nextBtn').addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      getIndex(currentPage + 1);
-    }
+    if (currentPage < totalPages) getIndex(currentPage + 1);
   });
 }
+
 
 /**
  * Sets the reload function that gets called 

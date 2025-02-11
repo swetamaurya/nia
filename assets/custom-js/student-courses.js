@@ -2,6 +2,7 @@ import { COURSE_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
+import { showTotalEntries, getParameters, paginationDataHandler } from "./global/pagination.js";
 import {
     individual_delete,
     objects_data_handler_function,
@@ -27,7 +28,7 @@ async function all_data_load_dashboard() {
         let coursesCards = document.getElementById("courses-cards");
         coursesCards.innerHTML = '';
         let cards = "";
-        const API = `${COURSE_GETALL_API}`;
+        const API = `${COURSE_GETALL_API}${getParameters()}`;
 
         const response = await fetch(API, {
             method: "GET",
@@ -35,7 +36,7 @@ async function all_data_load_dashboard() {
                 "Content-Type": "application/json",
                 Authorization: token,
             },
-        });
+        }); 
 
         if (!response.ok) {
             throw new Error("Failed to fetch data.");
@@ -45,6 +46,7 @@ async function all_data_load_dashboard() {
         console.log('THIS IS MY DATA: ',r1);
         const data = r1?.courses;
         let totalCourses = r1?.pagination?.totalCourses;
+        let totalPages = r1?.pagination?.totalPages;
 
         // setTotalDataCount(totalCourses);
         if (totalCourses > 0) {
@@ -105,6 +107,7 @@ async function all_data_load_dashboard() {
                               </div>
                           </div>`;
                   });
+                  showTotalEntries(totalCourses,totalPages)
             } catch (error) {
                 cards = `<tr><td colspan="4" class="text-center">Got error, please try again later!</td></tr>`;
                 console.error("Data not found:", error);
@@ -126,5 +129,6 @@ async function all_data_load_dashboard() {
 }
 
 
-all_data_load_dashboard()
 objects_data_handler_function(all_data_load_dashboard);
+paginationDataHandler(all_data_load_dashboard)
+all_data_load_dashboard()
