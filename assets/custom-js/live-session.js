@@ -54,7 +54,7 @@ async function loadAllList(){
             let aa1 = document.getElementById("selectInstructorList");
             let dd1 = instructorList.map((e)=>{
                 if(e?.roles?.roles=="Instructor" || false){
-                    return `<option value="${e?._id}" >${e?.first_name} ${e?.last_name} (${e?.userId})</option>`;
+                    return `<option value="${e?._id}" >${e?.firstName} ${e?.lastName} (${e?.userId})</option>`;
                 }
             }).join("");
             aa1.innerHTML += dd1;
@@ -132,7 +132,7 @@ async function formSubmitLiveSession(event) {
             status_popup( ((c1) ? "Class created <br> Successfully!" : "Please try <br> again later"), (c1) );
             setTimeout(function(){
                 window.location.href = 'live-class.html';  
-            },(10*1000));
+            },(1*1000));
         } catch (error){
             status_popup("Please try <br> again later", false);
         }            

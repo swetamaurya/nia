@@ -1,9 +1,9 @@
-import { CLASS_UPDATE_API, domain } from "./global/apis.js";
+import { CLASS_UPDATE_API, domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
 
 /********************************************
  *  Replace with your own details
  ********************************************/
-const APP_ID = "3a55484f226043e18c5298242837f753";
+const APP_ID = `${LIVE_CLASS_APP_ID}`;
 const SERVER_URL = `${domain}`;
 /********************************************/
 
@@ -31,7 +31,6 @@ let __id = localStorage.getItem("liveClassIdStart");
 // ======================================================================================
 (function(){
     if(localStorage.getItem("liveClassIdStart")){
-        document.getElementById("classId").value = __id;
         liveClassStart();
     } else {
         // localStorage.clear();
@@ -51,7 +50,7 @@ async function liveClassStart(){
     }
 
     // Get the channel name
-    const channelName = document.getElementById("classId").value.trim();
+    const channelName = __id;
     if (!channelName) {
         alert("Please enter a channel name first!");
         return;
@@ -203,7 +202,7 @@ async function screenShareOnBtnFun (){
         return;
     }
 
-    const channelName = document.getElementById("classId").value.trim();
+    const channelName = __id;
     if (!channelName) {
         alert("Enter channel name first!");
         return;

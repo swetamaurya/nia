@@ -1,6 +1,7 @@
 // export const domain = 'http://localhost:5000';
 export const domain = 'https://backend-lms-yibk.onrender.com'
 
+export const LIVE_CLASS_APP_ID = '3a55484f226043e18c5298242837f753';
 // ---------------------END POINTS------------------------------
 const admin = `/admin`
 const user = `/user`;
@@ -37,7 +38,6 @@ export const CLASS_GET_API = `${domain}${classes}${get}`;
 export const CLASS_CREATE_API = `${domain}${classes}${post}`;
 export const CLASS_GETALL_API = `${domain}${classes}${getall}`;
 export const CLASS_UPDATE_API = `${domain}${classes}${update}`;
-
 
 // ---------------User Log-In ----------------//
 export const ADMIN_SIGNIN_API = `${admin_API}/login`;

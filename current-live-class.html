@@ -1,327 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.themeholy.com/edmate/live-class.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:40 GMT -->
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title -->
-    <title> NIA LMS Dashboard</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/file-upload.css">
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/plyr.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-    <!-- full calendar -->
-    <link rel="stylesheet" href="assets/css/full-calendar.css">
-    <!-- jquery Ui -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">
-    <!-- editor quill Ui -->
-    <link rel="stylesheet" href="assets/css/editor-quill.css">
-    <!-- apex charts Css -->
-    <link rel="stylesheet" href="assets/css/apexcharts.css">
-    <!-- calendar Css -->
-    <link rel="stylesheet" href="assets/css/calendar.css">
-    <!-- jvector map Css -->
-    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIA LMS Dashboard</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Main css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script src="assets/js/global-header.js"></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
 
-    <style>
-        #remote-stream {
-            width: 100%;
-            height: 500px;
-            background: #ddd;
-            margin-bottom: 15px;
-        }
-    </style>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+  <!-- File upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css">
+  <link rel="stylesheet" href="assets/css/plyr.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+
+  <!-- Full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css">
+
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+
+  <!-- Editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css">
+
+  <!-- Apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css">
+
+  <!-- Calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css">
+
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <script src="assets/js/global-header.js"></script>
+
+  <!--
+    Custom inline style for the main stream container and camera corner box
+  -->
+  <style>
+    /* Main container for either screen-share or full camera */
+    #main-stream {
+      width: 100%;
+      height: 500px;
+      background: #ddd;
+      margin-bottom: 15px;
+      position: relative;
+
+      > div:nth-child(1){
+        position: absolute !important;
+        height: 200px !important;
+        width: 200px !important;
+        z-index: 1;
+        bottom: 0;
+        border-radius: 20px;
+      }
+
+    }
+
+    /* Small camera box for teacher's camera when screen-share is active */
+    #teacher-camera-container {
+      width: 200px;
+      height: 120px;
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: #000;
+      display: none; /* Hidden by default; shown only when both screen & camera are active */
+      z-index: 999;
+    }
+  </style>
 </head>
 
 <body>
 
-    <!--==================== Preloader Start ====================-->
-    <div class="preloader">
-        <div class="loader"></div>
-    </div>
-    <!--==================== Preloader End ====================-->
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
 
-    <!--==================== Sidebar Overlay End ====================-->
-    <div class="side-overlay"></div>
-    <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
 
-    <!-- ============================ Sidebar Start ============================ -->
+  <!-- ============================ Sidebar Start ============================ -->
+  <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
+  <!-- ============================ Sidebar End  ============================ -->
 
-    <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
 
-    <!-- ============================ Sidebar End  ============================ -->
+    <div class="dashboard-body">
 
-    <div class="dashboard-main-wrapper">
-        <div id="header-placeholder"></div>
+      <!-- Breadcrumb Start -->
+      <div class="breadcrumb mb-24">
+        <ul class="flex-align gap-4">
+          <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+          <li><span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span></li>
+          <li><span class="text-main-600 fw-normal text-15">Class Name</span></li>
+        </ul>
+      </div>
+      <!-- Breadcrumb End -->
 
+      <div class="row gy-4">
+        <div class="col-md-12">
+          <div class="rounded-16 overflow-hidden position-relative">
+            <span class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
+            
+            <!-- 
+              Replace the old #remote-stream container:
+              Main container for screen-share OR full camera,
+              plus the smaller camera corner container
+            -->
+            <div id="main-stream"></div>
+            <div id="teacher-camera-container"></div>
+          </div>
 
-        <div class="dashboard-body">
+          <!-- Course Card Start -->
+         
+          <!-- Course Card End -->
 
-            <!-- Breadcrumb Start -->
-            <div class="breadcrumb mb-24">
-                <ul class="flex-align gap-4">
-                    <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
-                    <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-                    <li><span class="text-main-600 fw-normal text-15">Class Name</span></li>
-                </ul>
-            </div>
-            <!-- Breadcrumb End -->
-            <div class="row gy-4">
-                <div class="col-md-12">
-                    <div class="rounded-16 overflow-hidden position-relative">
-                        <div>
-                            <input type="text" id="clsIdBro" placeholder="enter your class id here" />
-                            <button id="joinBtn">Join Class</button>
-                        </div>
-                        <span
-                            class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
-                        <div id="remote-stream"><!-- Teacher's video will be displayed here --></div>
-                    </div>
-                    <!-- Course Card Start -->
-                    <div class="card mt-24">
-                        <div class="card-body">
-                            <div class="pb-24 flex-between gap-4 flex-wrap">
-                                <h5 class="mb-12 fw-bold">Questions (85)</h5>
-                                <a href="#" class="btn btn-outline-gray text-gray-500 text-13 py-8 px-8 rounded-4">See
-                                    All</a>
-                            </div>
-
-                            <ul class="comment-list">
-                                <li>
-                                    <div class="d-flex align-items-start gap-8 flex-xs-row flex-column">
-                                        <img src="assets/images/thumbs/mentor-img1.png" alt=""
-                                            class="w-48 h-48 rounded-circle object-fit-cover flex-shrink-0">
-                                        <div class="">
-                                            <div class="flex-align flex-wrap gap-8">
-                                                <h6 class="text-15 fw-bold mb-0">Amir Hamja </h6>
-                                                <span
-                                                    class="py-0 px-8 bg-main-50 text-main-600 rounded-4 text-15 fw-medium h5 mb-0 fw-bold">You</span>
-                                                <span class="text-gray-300 text-13">8:00PM </span>
-                                            </div>
-                                            <p class="text-15 text-gray-600 mt-8">Fringilla justo mauris cursus arcu sit
-                                                urna. Nullam eu non bibendum quam mi dolor nisi orci?</p>
-                                        </div>
-                                    </div>
-                                    <ul class="sub-comment-list mt-24">
-                                        <li>
-                                            <div class="d-flex align-items-start gap-8 flex-xs-row flex-column">
-                                                <img src="assets/images/thumbs/mentor-img2.png" alt=""
-                                                    class="w-48 h-48 rounded-circle object-fit-cover flex-shrink-0">
-                                                <div class="">
-                                                    <div class="flex-align flex-wrap gap-8">
-                                                        <h6 class="text-15 fw-bold mb-0">Selina Eyvi</h6>
-                                                        <span
-                                                            class="py-0 px-8 bg-main-50 text-main-600 rounded-4 text-15 fw-medium h5 mb-0 fw-bold">Mentor</span>
-                                                        <span class="text-gray-300 text-13">8:10PM</span>
-                                                    </div>
-                                                    <p class="text-15 text-gray-600 mt-8">Justo gravida eget id massa
-                                                        volutpat. Volutpat vehicula tortor fusce sed pellentesque id
-                                                        sagittis eu commodo. Ut ultrices neque faucibus morbi rhoncus.
-                                                        Volutpat vehicula tortor fusce sed pellentesque id sagittis eu
-                                                        commodo</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <form action="#" class="position-relative mt-44">
-                                <input type="text" class="form-control bg-main-50 border-0 py-18 pe-54"
-                                    placeholder="Drop your questions here...">
-                                <button type="submit"
-                                    class="w-40 h-40 flex-center rounded-8 bg-white text-main-600 hover-bg-main-600 hover-text-white transition-1 position-absolute inset-inline-end-0 top-50 translate-middle-y me-8">
-                                    <i class="ph ph-paper-plane-tilt"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Course Card End -->
-                </div>
-            </div>
         </div>
-        <div id="footer-placeholder"></div>
+      </div>
     </div>
+    <div id="footer-placeholder"></div>
+  </div>
 
-    <!-- Jquery js -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <!-- Bootstrap Bundle Js -->
-    <script src="assets/js/boostrap.bundle.min.js"></script>
-    <!-- Phosphor Js -->
-    <script src="assets/js/phosphor-icon.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/file-upload.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/plyr.js"></script>
-    <!-- dataTables -->
-    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <!-- full calendar -->
-    <script src="assets/js/full-calendar.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/jquery-ui.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/editor-quill.js"></script>
-    <!-- apex charts -->
-    <script src="assets/js/apexcharts.min.js"></script>
-    <!-- jvectormap Js -->
-    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
-    <!-- jvectormap world Js -->
-    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- Agora RTC & RTM SDKs -->
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
 
-    <!-- main js -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/global-header.js"></script>
-    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+  <!-- =========== STUDENT LIVE CLASS JS (inline) =========== -->
+  <script src="assets/custom-js/current-live-class.js" type="module"></script>
+  <!-- =========== END STUDENT LIVE CLASS JS =========== -->
 
-
-
-    <script>
-        // Replace with your Agora App ID and server URL
-        const APP_ID = "3a55484f226043e18c5298242837f753";
-        const SERVER_URL = "http://192.168.1.5:5000"; // Node server with tokens
-
-        let rtcClient; // For audio/video
-        let rtmClient; // For real-time messaging
-        let rtmChannel;
-        let remoteUid = null; // we might store teacher's UID if needed
-
-        document.getElementById("joinBtn").onclick = async () => {
-            const channelName = document.getElementById("clsIdBro").value.trim();
-            if (!channelName) {
-                alert("Please enter a channel name!");
-                return;
-            }
-            // Generate random UID for this student
-            const uid = String(Math.floor(Math.random() * 10000));
-
-            // 1. Join RTC channel to see teacher's video
-            await joinRTC(channelName, uid);
-
-            // 2. Join RTM channel to chat
-            await joinRTM(channelName, uid);
-        };
-
-        // ----------- RTC PART -----------
-        async function joinRTC(channelName, uid) {
-            try {
-                const role = "subscriber";
-
-                // Fetch RTC token
-                const resp = await fetch(`${SERVER_URL}/rtc-token`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ channelName, uid, role }),
-                });
-                const data = await resp.json();
-                const rtcToken = data.token;
-
-                // Create Agora client
-                rtcClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-                // Listen for teacher's published track
-                rtcClient.on("user-published", handleUserPublished);
-
-                // Join channel
-                await rtcClient.join(APP_ID, channelName, rtcToken, uid);
-                console.log("Student joined RTC channel:", channelName, "UID:", uid);
-            } catch (error) {
-                console.error("Failed to join RTC:", error);
-            }
-        }
-
-        // Triggered when teacher publishes
-        async function handleUserPublished(user, mediaType) {
-            await rtcClient.subscribe(user, mediaType);
-            console.log("Subscribed to user:", user.uid);
-
-            if (mediaType === "video") {
-                const remoteVideoTrack = user.videoTrack;
-                remoteUid = user.uid; // store teacher's UID if you want
-                if (remoteVideoTrack) {
-                    remoteVideoTrack.play("remote-stream");
-                }
-            }
-
-            if (mediaType === "audio") {
-                const remoteAudioTrack = user.audioTrack;
-                if (remoteAudioTrack) {
-                    remoteAudioTrack.play(); // No DOM needed for audio
-                }
-            }
-        }
-
-        // ----------- RTM PART -----------
-        async function joinRTM(channelName, uid) {
-            try {
-                // 1. Fetch RTM token
-                const resp = await fetch(`${SERVER_URL}/rtm-token`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ uid }),
-                });
-                const data = await resp.json();
-                const rtmToken = data.token;
-
-                // 2. Create RTM client & login
-                rtmClient = AgoraRTM.createInstance(APP_ID);
-                await rtmClient.login({ token: rtmToken, uid });
-                console.log("RTM login success for UID:", uid);
-
-                // 3. Join RTM channel
-                rtmChannel = await rtmClient.createChannel(channelName);
-                await rtmChannel.join();
-                console.log("RTM channel joined:", channelName);
-
-                // 4. Listen for channel messages
-                rtmChannel.on("ChannelMessage", ({ text }, senderId) => {
-                    addMessageToChatBox(`User(${senderId}): ${text}`);
-                });
-            } catch (err) {
-                console.error("Error joining RTM:", err);
-            }
-        }
-
-        // Sending a chat message
-        document.getElementById("send-btn").onclick = async () => {
-            if (!rtmChannel) {
-                alert("Join the RTM channel first!");
-                return;
-            }
-            const input = document.getElementById("chat-input");
-            const msg = input.value.trim();
-            if (!msg) return;
-
-            await rtmChannel.sendMessage({ text: msg });
-            addMessageToChatBox(`Me: ${msg}`);
-            input.value = "";
-        };
-
-        function addMessageToChatBox(message) {
-            const box = document.getElementById("chat-box");
-            const newMsg = document.createElement("div");
-            newMsg.innerText = message;
-            box.appendChild(newMsg);
-            box.scrollTop = box.scrollHeight;
-        }
-    </script>
-
-
+  <!-- Additional JS (from your original code) -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/boostrap.bundle.min.js"></script>
+  <script src="assets/js/phosphor-icon.js"></script>
+  <script src="assets/js/file-upload.js"></script>
+  <script src="assets/js/plyr.js"></script>
+  <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <script src="assets/js/full-calendar.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+  <script src="assets/js/editor-quill.js"></script>
+  <script src="assets/js/apexcharts.min.js"></script>
+  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/global-header.js"></script>
 </body>
-
-<!-- Mirrored from html.themeholy.com/edmate/live-class.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:42 GMT -->
-
 </html>

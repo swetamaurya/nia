@@ -133,61 +133,18 @@
         <table id="studentTable" class="table table-striped">
           <thead>
             <tr>
-              <th class="employee_restriction_d_none" data-sortable="true">
+              <th class="" data-sortable="true">
                 <input type="checkbox" class="checkbox_all" name="" id="">
               </th>
               <th class="h6 text-white">Class Title</th>
               <th class="h6 text-white">Instructor</th>
               <th class="h6 text-white">Course</th>
               <th class="h6 text-white">Batch</th>
-              <!-- <th class="h6 text-white">Status</th> -->
+              <th class="h6 text-white">Status</th>
               <th class="h6 text-white">Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" class="checkbox_child">
-              </td>
-              <td>
-                <div class="flex-align gap-8">
-                  <a>
-                    <span class="h6 mb-0 fw-medium text-gray-300">
-                      class list
-                    </span>
-                  </a>
-                </div>
-              </td>
-              <td>
-                <h6 class="m-0">
-                  <a class="text-hover text-gray-300">
-                    Instructor
-                  </a>
-                </h6>
-              </td>
-              <td>
-                <span class="bg-success-50 text-bg-primary h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill">
-                  Course
-                </span>
-              </td>
-              <td>
-                <a class="text-hover text-gray-300">
-                  Instructor
-                </a>
-              </td>
-              <td>
-                <div class="btn--container d-flex justify-content-start">
-                 
-                  <a d
-                    class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" onclick="individual_delete('${user._id}')
-  ">
-                    <i class="ph ph-eye"></i>
-                  </a>
-
-                </div>
-              </td>
-            </tr>
-            `;
-          </tbody>
+          <tbody id="dynamicClassListTable"></tbody>
         </table>
 
         <!-- Pagination Footer -->
@@ -199,6 +156,9 @@
     </div>
     <div id="footer-placeholder"></div>
   </div>
+
+  <script src="assets/custom-js/live-class-list.js" type="module" ></script>
+
 
   <!-- Jquery js -->
   <script src="assets/js/jquery-3.7.1.min.js"></script>
