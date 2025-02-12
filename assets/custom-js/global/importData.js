@@ -83,10 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // Display success or error message
             status_popup(responseData?.message || "Unknown error occurred", response.ok);
 
-            if (response.ok) {
-                forGloablDelete_js();
-            } else {
-                console.error("Import Error:", responseData);
+            if (responseData.ok) {
+                setTimeout(() => {
+                    window.location.href = 'students.html';
+                }, 1000);
             }
         } catch (error) {
             console.error("Error importing data:", error);
