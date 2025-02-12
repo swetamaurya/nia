@@ -9,7 +9,7 @@
     <!-- Title -->
     <title>NIA LMS Dashboard</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" /> 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <!-- file upload -->
@@ -38,7 +38,7 @@
 
 <body>
     <!--==================== Preloader Start ====================-->
-    <div class="preloader">
+    <div class="preloader"> 
         <div class="loader"></div>
     </div>
     <!--==================== Preloader End ====================-->
@@ -67,7 +67,7 @@
                             <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
                         </li>
                         <li>
-                            <span class="text-main-600 fw-normal text-15">Create Students</span>
+                            <span class="text-main-600 fw-normal text-15">Edit Students</span>
                         </li>
                     </ul>
                 </div>
@@ -97,11 +97,11 @@
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <label for="paymentStudent" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="status" class="h6 mb-8 fw-semibold font-heading">
                                     Payment Status
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    maxlength="100" id="paymentStudent" />
+                                    maxlength="100" id="status" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="application_number" class="h6 mb-8 fw-semibold font-heading">
@@ -136,11 +136,11 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <label for="examinationFee" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="examination_fees" class="h6 mb-8 fw-semibold font-heading">
                                     Examination Fee
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="examinationFee" />
+                                    id="examination_fees" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="examination_centre_state" class="h6 mb-8 fw-semibold font-heading">
@@ -150,11 +150,11 @@
                                     id="examination_centre_state" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="examinationCenterCity" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="examination_centre_city" class="h6 mb-8 fw-semibold font-heading">
                                     Exam Center City
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="examinationCenterCity" />
+                                    id="examination_centre_city" />
                             </div>
                         </div>
                     </div>
@@ -231,14 +231,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <span class="h6 mb-8 fw-semibold font-heading">Email ID
                                         </span>
                                         <input type="email" class=" placeholder-13 form-control py-11 col-5"
                                             id="email" placeholder="Enter Your email id" />
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-6">
-                                        <span class="h6 mb-8 fw-semibold font-heading">phone Number
+                                        <span class="h6 mb-8 fw-semibold font-heading">Phone Number
                                         </span>
                                         <input type="tel" class=" placeholder-13 form-control py-11 col-5" id="phone"
                                             placeholder="Enter your phone number" />
@@ -282,14 +282,14 @@
                                     &nbsp;
                                 </label> -->
                                     <div class="col-sm-12 col-xs-12 text-center">
-                                        <div id="uploadPhoto" class="fileUpload image-upload"></div>
+                                        <div id="photo_path" class="fileUpload image-upload"></div>
 
                                     </div>
                                     <div class="col-sm-12 col-xs-12 text-center">
                                         <!-- <label class="form-label d-none d-md-block">
                                     &nbsp;
                                 </label> -->
-                                        <div id="uploadSignature" class="fileUpload image-upload"></div>
+                                        <div id="signature_path" class="fileUpload image-upload"></div>
                                     </div>
                                 </div>
                             </div>
@@ -344,10 +344,10 @@
                                             id="intermediate_details" placeholder="Enter your education board" />
                                     </div>
                                     <div class="col-12">
-                                        <label for="intermediate_detailsDivision" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="intermediate_details_division" class="h6 mb-8 fw-semibold font-heading">
                                             Division
                                         </label>
-                                        <select id="intermediate_detailsDivision" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="intermediate_details_division" class="form-select py-9 placeholder-13 text-15">
                                             <option disabled selected>Select </option>
                                             <option value="First Division">First Division </option>
                                             <option value="Second Division">Second Division </option>
@@ -360,17 +360,17 @@
                             <div class="col-sm-4">
                                 <div class="row gy-20">
                                     <div class="col-12">
-                                        <label for="highSchoolDetails" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="high_school_details" class="h6 mb-8 fw-semibold font-heading">
                                             High School
                                         </label>
                                         <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                            id="highSchoolDetails" placeholder="Enter your education board" />
+                                            id="high_school_details" placeholder="Enter your education board" />
                                     </div>
                                     <div class="col-12">
-                                        <label for="highSchoolDetailsDivision" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="high_school_details_division" class="h6 mb-8 fw-semibold font-heading">
                                             Division
                                         </label>
-                                        <select id="highSchoolDetailsDivision" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="high_school_details_division" class="form-select py-9 placeholder-13 text-15">
                                             <option disabled selected>Select </option>
                                             <option value="First Division">First Division </option>
                                             <option value="Second Division">Second Division </option>
@@ -399,11 +399,11 @@
                                     id="permanent_street" placeholder="Enter your street name" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="permanentHouseNo" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="permanent_house_no" class="h6 mb-8 fw-semibold font-heading">
                                     House No
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="permanentHouseNo" placeholder="Enter your house no" />
+                                    id="permanent_house_no" placeholder="Enter your house no" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="permanent_village" class="h6 mb-8 fw-semibold font-heading">
@@ -472,11 +472,11 @@
                                     id="present_street" placeholder="Enter your street name" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="presentHouseNo" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="present_house_no" class="h6 mb-8 fw-semibold font-heading">
                                     House No
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="presentHouseNo" placeholder="Enter your house no" />
+                                    id="present_house_no" placeholder="Enter your house no" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="present_village" class="h6 mb-8 fw-semibold font-heading">
@@ -493,11 +493,11 @@
                                     id="present_city" placeholder="Enter your city" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="presentPostOffice" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="present_post_office" class="h6 mb-8 fw-semibold font-heading">
                                     Post Office
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="presentPostOffice" placeholder="Enter your post office" />
+                                    id="present_post_office" placeholder="Enter your post office" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="present_state" class="h6 mb-8 fw-semibold font-heading">
@@ -507,11 +507,11 @@
                                     id="present_state" placeholder="Enter your state" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="presentDistrict" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="present_district" class="h6 mb-8 fw-semibold font-heading">
                                     District
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="presentDistrict" placeholder="Enter your district" />
+                                    id="present_district" placeholder="Enter your district" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="present_pincode" class="h6 mb-8 fw-semibold font-heading">
@@ -524,7 +524,55 @@
                     </div>
                 </div>
 
-                
+                 <!-- Account Info -->
+                <div class="card mt-24">
+                    <div class="card-header border-bottom">
+                      <h4 class="mb-4">Account Information</h4>
+                      <!-- <p class="text-gray-600 text-15">
+                      Please fill full details about yourself
+                    </p> -->
+                    </div>
+                    <div class="card-body">
+                      <div class="row gy-4">
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="email" class="form-label mb-8 h6">Email ID
+                            <span class="text-danger text-size">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="email"
+                            placeholder="Enter Email ID"
+                          />
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="password" class="form-label mb-8 h6"
+                            >Password
+                            <span class="text-danger text-size">*</span>
+                            </label
+                          >
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="password"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="lname" class="form-label mb-8 h6"
+                            >Confirm Password
+                            <span class="text-danger text-size">*</span></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="confirmPassword"
+                            placeholder="Enter Confirm Password"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <!-- Buttons Start -->
                 <div class="flex-align justify-content-end gap-8 mt-20">
                     <button id="submit" type="button"

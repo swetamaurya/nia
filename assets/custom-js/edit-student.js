@@ -11,7 +11,7 @@ let id = new URLSearchParams(window.location.search).get('id')
 //==============================================================================
 //Dropdowm courses
 //Dropdown for Course
-async function dropdownBtaches() {
+async function dropdownBtaches() { 
     const API = BATCH_GETALL_API
     try {
         const response = await fetch(API, {
@@ -57,16 +57,17 @@ window.editLoadData = async function editLoadData() {
     const phone = document.getElementById('phone');
     const gender = document.getElementById('gender');
     const marital_status = document.getElementById('marital_status');
-    const photo_path = document.getElementById('uploadPhoto');
-    const presentHouseNo = document.getElementById('presentHouseNo');
+    const photo_path = document.getElementById('photo_path');
+    const present_street = document.getElementById('present_street')
+    const present_house_no = document.getElementById('present_house_no');
     const present_village = document.getElementById('present_village');
     const present_city = document.getElementById('present_city');
-    const presentPostOffice = document.getElementById('presentPostOffice');
+    const present_post_office = document.getElementById('present_post_office');
     const present_state = document.getElementById('present_state');
-    const presentDistrict = document.getElementById('presentDistrict');
+    const present_district = document.getElementById('present_district');
     const present_pincode = document.getElementById('present_pincode');
     const permanent_street = document.getElementById('permanent_street');
-    const permanentHouseNo = document.getElementById('permanentHouseNo');
+    const permanent_house_no = document.getElementById('permanent_house_no');
     const permanent_village = document.getElementById('permanent_village');
     const permanent_city = document.getElementById('permanent_city');
     const permanent_post_office = document.getElementById('permanent_post_office');
@@ -76,13 +77,16 @@ window.editLoadData = async function editLoadData() {
     const educational_qualification = document.getElementById('educational_qualification');
     const educational_qualification_division = document.getElementById('educational_qualification_division');
     const intermediate_details = document.getElementById('intermediate_details');
-    const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision');
-    const highSchoolDetails = document.getElementById('highSchoolDetails');
-    const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision');
+    const intermediate_details_division = document.getElementById('intermediate_details_division');
+    const high_school_details = document.getElementById('high_school_details');
+    const high_school_details_division = document.getElementById('high_school_details_division');
     const apply_for = document.getElementById('apply_for');
-    const examinationFee = document.getElementById('examinationFee');
+    const examination_fees = document.getElementById('examination_fees');
     const examination_centre_state = document.getElementById('examination_centre_state');
-    const examinationCenterCity = document.getElementById('examinationCenterCity');
+    const examination_centre_city = document.getElementById('examination_centre_city');
+    const status =document.getElementById('status');
+    // formData.append('status', document.getElementById('status').value);
+
 
     try {
         const API = `${STUDENT_GET_API}?_id=${id}`;
@@ -113,15 +117,16 @@ window.editLoadData = async function editLoadData() {
     gender.value = student.gender || '';
     marital_status.value = student.marital_status || '';
     photo_path.value = student.photo_path || '';
-    presentHouseNo.value = student.presentHouseNo || '';
+    present_street.value = student.present_street || '';
+    present_house_no.value = student.permanent_house_no || '';
     present_village.value = student.present_village || '';
     present_city.value = student.present_city || '';
-    presentPostOffice.value = student.presentPostOffice || '';
+    present_post_office.value = student.present_post_office || '';
     present_state.value = student.present_state || '';
-    presentDistrict.value = student.presentDistrict || '';
+    present_district.value = student.present_district || '';
     present_pincode.value = student.present_pincode || '';
     permanent_street.value = student.permanent_street || '';
-    permanentHouseNo.value = student.permanentHouseNo || '';
+    permanent_house_no.value = student.present_post_office || '';
     permanent_village.value = student.permanent_village || '';
     permanent_city.value = student.permanent_city || '';
     permanent_post_office.value = student.permanent_post_office || '';
@@ -131,13 +136,14 @@ window.editLoadData = async function editLoadData() {
     educational_qualification.value = student.educational_qualification || '';
     educational_qualification_division.value = student.educational_qualification_division || '';
     intermediate_details.value = student.intermediate_details || '';
-    intermediate_detailsDivision.value = student.intermediate_detailsDivision || '';
-    highSchoolDetails.value = student.highSchoolDetails || '';
-    highSchoolDetailsDivision.value = student.highSchoolDetailsDivision || '';
+    intermediate_details_division.value = student.intermediate_details_division || '';
+    high_school_details.value = student.high_school_details || '';
+    high_school_details_division.value = student.high_school_details_division || '';
     apply_for.value = student.apply_for || '';
-    examinationFee.value = student.examinationFee || '';
+    examination_fees.value = student.examination_fees || '';
     examination_centre_state.value = student.examination_centre_state || '';
-    examinationCenterCity.value = student.examinationCenterCity || '';
+    examination_centre_city.value = student.examination_centre_city || '';
+    status.value = student.status || ''
     } catch (error) { console.log(error) }
     try {
         remove_loading_shimmer();
@@ -166,16 +172,16 @@ async function editBatchForm(event) {
     const phone = document.getElementById('phone').value;
     const gender = document.getElementById('gender').value;
     const marital_status = document.getElementById('marital_status').value;
-    const photo_path = document.getElementById('uploadPhoto').value;
-    const presentHouseNo = document.getElementById('presentHouseNo').value;
+    const photo_path = document.getElementById('photo_path').value;
+    const present_house_no = document.getElementById('present_house_no').value;
     const present_village = document.getElementById('present_village').value;
     const present_city = document.getElementById('present_city').value;
-    const presentPostOffice = document.getElementById('presentPostOffice').value;
+    const present_post_office = document.getElementById('present_post_office').value;
     const present_state = document.getElementById('present_state').value;
-    const presentDistrict = document.getElementById('presentDistrict').value;
+    const present_district = document.getElementById('present_district').value;
     const present_pincode = document.getElementById('present_pincode').value;
     const permanent_street = document.getElementById('permanent_street').value;
-    const permanentHouseNo = document.getElementById('permanentHouseNo').value;
+    const permanent_house_no = document.getElementById('permanent_house_no').value;
     const permanent_village = document.getElementById('permanent_village').value;
     const permanent_city = document.getElementById('permanent_city').value;
     const permanent_post_office = document.getElementById('permanent_post_office').value;
@@ -185,13 +191,14 @@ async function editBatchForm(event) {
     const educational_qualification = document.getElementById('educational_qualification').value;
     const educational_qualification_division = document.getElementById('educational_qualification_division').value;
     const intermediate_details = document.getElementById('intermediate_details').value;
-    const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision').value;
-    const highSchoolDetails = document.getElementById('highSchoolDetails').value;
-    const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision').value;
+    const intermediate_details_division = document.getElementById('intermediate_details_division').value;
+    const high_school_details = document.getElementById('high_school_details').value;
+    const high_school_details_division = document.getElementById('high_school_details_division').value;
     const apply_for = document.getElementById('apply_for').value;
-    const examinationFee = document.getElementById('examinationFee').value;
+    const examination_fees = document.getElementById('examination_fees').value;
     const examination_centre_state = document.getElementById('examination_centre_state').value;
-    const examinationCenterCity = document.getElementById('examinationCenterCity').value;
+    const examination_centre_city = document.getElementById('examination_centre_city').value;
+    const status = document.getElementById('status').value;
     const _id = id;
 
     try {
@@ -208,7 +215,7 @@ async function editBatchForm(event) {
                 'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify({ batchId, application_number, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,photo_path,presentHouseNo,present_village,present_city,presentPostOffice,present_state,presentDistrict,present_pincode,permanent_street,permanentHouseNo,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_detailsDivision,highSchoolDetails,highSchoolDetailsDivision,apply_for,examinationFee,examination_centre_state,examinationCenterCity,_id })
+            body: JSON.stringify({ batchId, application_number, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,status,photo_path,present_house_no,present_village,present_city,present_post_office,present_state,present_district,present_pincode,permanent_street,permanent_house_no,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_details_division,high_school_details,high_school_details_division,apply_for,examination_fees,examination_centre_state,examination_centre_city,_id })
         });
 
         const r1 = await response.json();

@@ -48,16 +48,16 @@ async function addStudentForm(event) {
     // const phone = document.getElementById('phone').value;
     // const gender = document.getElementById('gender').value;
     // const marital_status = document.getElementById('marital_status').value;
-    // const photo_path = document.getElementById('uploadPhoto').value;
-    // const presentHouseNo = document.getElementById('presentHouseNo').value;
+    // const photo_path = document.getElementById('photo_path').value;
+    // const present_house_no = document.getElementById('present_house_no').value;
     // const present_village = document.getElementById('present_village').value;
     // const present_city = document.getElementById('present_city').value;
-    // const presentPostOffice = document.getElementById('presentPostOffice').value;
+    // const present_post_office = document.getElementById('present_post_office').value;
     // const present_state = document.getElementById('present_state').value;
-    // const presentDistrict = document.getElementById('presentDistrict').value;
+    // const present_district = document.getElementById('present_district').value;
     // const present_pincode = document.getElementById('present_pincode').value;
     // const permanent_street = document.getElementById('permanent_street').value;
-    // const permanentHouseNo = document.getElementById('permanentHouseNo').value;
+    // const permanent_house_no = document.getElementById('permanent_house_no').value;
     // const permanent_village = document.getElementById('permanent_village').value;
     // const permanent_city = document.getElementById('permanent_city').value;
     // const permanent_post_office = document.getElementById('permanent_post_office').value;
@@ -67,13 +67,13 @@ async function addStudentForm(event) {
     // const educational_qualification = document.getElementById('educational_qualification').value;
     // const educational_qualification_division = document.getElementById('educational_qualification_division').value;
     // const intermediate_details = document.getElementById('intermediate_details').value;
-    // const intermediate_detailsDivision = document.getElementById('intermediate_detailsDivision').value;
-    // const highSchoolDetails = document.getElementById('highSchoolDetails').value;
-    // const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision').value;
+    // const intermediate_details_division = document.getElementById('intermediate_details_division').value;
+    // const high_school_details = document.getElementById('high_school_details').value;
+    // const high_school_details_division = document.getElementById('high_school_details_division').value;
     // const apply_for = document.getElementById('apply_for').value;
-    // const examinationFee = document.getElementById('examinationFee').value;
+    // const examination_fees = document.getElementById('examination_fees').value;
     // const examination_centre_state = document.getElementById('examination_centre_state').value;
-    // const examinationCenterCity = document.getElementById('examinationCenterCity').value;
+    // const examination_centre_city = document.getElementById('examination_centre_city').value;
 
     const formData = new FormData();
     const signature_paths = document.getElementById('fileUpload-4').files;
@@ -102,15 +102,15 @@ formData.append('phone', document.getElementById('phone').value);
 formData.append('gender', document.getElementById('gender').value);
 formData.append('marital_status', document.getElementById('marital_status').value);
 formData.append('present_street', document.getElementById('present_street').value);
-formData.append('presentHouseNo', document.getElementById('presentHouseNo').value);
+formData.append('present_house_no', document.getElementById('present_house_no').value);
 formData.append('present_village', document.getElementById('present_village').value);
 formData.append('present_city', document.getElementById('present_city').value);
-formData.append('presentPostOffice', document.getElementById('presentPostOffice').value);
+formData.append('present_post_office', document.getElementById('present_post_office').value);
 formData.append('present_state', document.getElementById('present_state').value);
-formData.append('presentDistrict', document.getElementById('presentDistrict').value);
+formData.append('present_district', document.getElementById('present_district').value);
 formData.append('present_pincode', document.getElementById('present_pincode').value);
 formData.append('permanent_street', document.getElementById('permanent_street').value);
-formData.append('permanentHouseNo', document.getElementById('permanentHouseNo').value);
+formData.append('permanent_house_no', document.getElementById('permanent_house_no').value);
 formData.append('permanent_village', document.getElementById('permanent_village').value);
 formData.append('permanent_city', document.getElementById('permanent_city').value);
 formData.append('permanent_post_office', document.getElementById('permanent_post_office').value);
@@ -120,13 +120,16 @@ formData.append('permanent_pincode', document.getElementById('permanent_pincode'
 formData.append('educational_qualification', document.getElementById('educational_qualification').value);
 formData.append('educational_qualification_division', document.getElementById('educational_qualification_division').value);
 formData.append('intermediate_details', document.getElementById('intermediate_details').value);
-formData.append('intermediate_detailsDivision', document.getElementById('intermediate_detailsDivision').value);
-formData.append('highSchoolDetails', document.getElementById('highSchoolDetails').value);
-formData.append('highSchoolDetailsDivision', document.getElementById('highSchoolDetailsDivision').value);
+formData.append('intermediate_details_division', document.getElementById('intermediate_details_division').value);
+formData.append('high_school_details', document.getElementById('high_school_details').value);
+formData.append('high_school_details_division', document.getElementById('high_school_details_division').value);
 formData.append('apply_for', document.getElementById('apply_for').value);
-formData.append('examinationFee', document.getElementById('examinationFee').value);
+formData.append('examination_fees', document.getElementById('examination_fees').value);
 formData.append('examination_centre_state', document.getElementById('examination_centre_state').value);
-formData.append('examinationCenterCity', document.getElementById('examinationCenterCity').value);
+formData.append('examination_centre_city', document.getElementById('examination_centre_city').value);
+formData.append('password', document.getElementById('password').value);
+formData.append('status', document.getElementById('status').value);
+
 
     
     try {

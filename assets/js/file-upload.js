@@ -9,7 +9,7 @@
 
       // Dynamically generate content based on the container's ID
       var fileDivContent = "";
-      if (fileUploadDiv.attr("id") === "uploadPhoto") {
+      if (fileUploadDiv.attr("id") === "photo_path") {
         fileDivContent = `
                     <label for="${fileUploadId}" class="file-upload image-upload__box">
                         <div class="image-upload__boxInner">
@@ -20,7 +20,7 @@
                         <input type="file" id="${fileUploadId}" name="photo[]"  hidden accept="image/png, image/jpeg, image/gif, image/bmp, image/svg+xml" />
                     </label>
                 `;
-      } else if (fileUploadDiv.attr("id") === "uploadSignature") {
+      } else if (fileUploadDiv.attr("id") === "signature_path") {
         fileDivContent = `
                     <label for="${fileUploadId}" class="file-upload image-upload__box">
                         <div class="image-upload__boxInner">
@@ -105,5 +105,5 @@
 
 // Apply fileUpload functionality to each container with the class "fileUpload"
 $(".fileUpload").fileUpload();
-$("#uploadPhoto").fileUpload();
-$("#uploadSignature").fileUpload();
+$("#photo_path").fileUpload();
+$("#signature_path").fileUpload();
