@@ -16,88 +16,91 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 import { TOKEN, import_API } from './apis.js';
-// -----------------------------------------------------------------------------
 import { status_popup } from './status_popup.js';
 import { loading_shimmer, remove_loading_shimmer } from './loading_shimmer.js';
- // -----------------------------------------------------------------------------
-// import { forGloablDelete_js, pagination_data_handler_function } from './globalFunctionPagination.js';
- 
-// ==============================================================================
-// ==============================================================================
 
-// let table_data_reload;
-// export function objects_data_handler_function(table_data_function){
-//     pagination_data_handler_function(table_data_function);
-// }
+// Ensure the script runs only after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("import_excel_file_form");
+    const fileInput = document.getElementById("fileInputImport");
 
-// console.log("attached broher")
-
-const form = document.getElementById("import_excel_file_form");
-
-form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    
-    try {
-        loading_shimmer();
-    } catch (error) {
-        console.log("Loading shimmer error:", error);
+    if (!form) {
+        console.error("Form element not found. Check if the ID is correct.");
+        return;
     }
 
-    try {
-        document.querySelectorAll(".btn-close").forEach(e => e.click());
-    } catch (error) {
-        console.log("Close button error:", error);
-    }
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        console.log("Form Submitted!");
 
-    try {
-        const formdata = new FormData();
-        let fileInput = document.getElementById("fileInputImport");
-        let file = fileInput.files[0];
-
-        // Check if file is selected
-        if (!file) {
-            status_popup("Please select a file before submitting.", false);
-            remove_loading_shimmer();
-            return;
-        }
-
-        formdata.append("file", file);
-        formdata.append("role", form.getAttribute("modeltype"));
-
-        const response = await fetch(`${import_API}`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `${TOKEN}`,
-            },
-            body: formdata,
-        });
-
-        let responseData;
         try {
-            responseData = await response.json();
-        } catch (jsonError) {
-            throw new Error("Invalid JSON response from server");
+            loading_shimmer();
+        } catch (error) {
+            console.error("Loading shimmer error:", error);
         }
 
-        // Display success or error message
-        status_popup(responseData?.message || "Unknown error occurred", response?.ok);
-
-        if (response?.ok) {
-            forGloablDelete_js();
-        } else {
-            console.error("Import Error:", responseData);
+        try {
+            document.querySelectorAll(".btn-close").forEach(e => e.click());
+        } catch (error) {
+            console.error("Close button error:", error);
         }
-    } catch (error) {
-        console.error("Error importing data:", error);
-        status_popup("Error importing data. Please try again.", false);
-    }
 
-    try {
-        remove_loading_shimmer();
-    } catch (error) {
-        console.log("Remove shimmer error:", error);
-    }
+        try {
+            const formData = new FormData();
+            let file = fileInput.files[0];
+
+            // Validate file selection
+            if (!file) {
+                status_popup("Please select a file before submitting.", false);
+                remove_loading_shimmer();
+                return;
+            }
+
+            formData.append("file", file);
+            formData.append("role", form.getAttribute("modeltype") || "defaultRole");
+
+            console.log("Submitting file:", file.name);
+
+            const response = await fetch(import_API, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `${TOKEN}`, // Do not set Content-Type, FormData does it automatically
+                },
+                body: formData,
+            });
+
+            console.log("Response Status:", response.status); // Debugging
+
+            let responseData;
+            try {
+                responseData = await response.json();
+            } catch (jsonError) {
+                throw new Error("Invalid JSON response from server");
+            }
+
+            console.log("Server Response:", responseData); // Debugging
+
+            // Display success or error message
+            status_popup(responseData?.message || "Unknown error occurred", response.ok);
+
+            if (response.ok) {
+                forGloablDelete_js();
+            } else {
+                console.error("Import Error:", responseData);
+            }
+        } catch (error) {
+            console.error("Error importing data:", error);
+            status_popup("Error importing data. Please try again.", false);
+        }
+
+        try {
+            remove_loading_shimmer();
+        } catch (error) {
+            console.error("Remove shimmer error:", error);
+        }
+    });
 });
+
 
 
 // document.addEventListener("DOMContentLoaded", () => {

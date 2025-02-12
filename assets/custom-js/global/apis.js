@@ -1,5 +1,5 @@
-export const domain = 'http://localhost:5000';
-// export const domain = 'https://backend-lms-yibk.onrender.com'
+// export const domain = 'http://localhost:5000';
+export const domain = 'https://backend-lms-yibk.onrender.com'
 
 // ---------------------END POINTS------------------------------
 const admin = `/admin`
