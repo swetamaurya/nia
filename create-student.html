@@ -143,11 +143,11 @@
                                     id="examinationFee" />
                             </div>
                             <div class="col-sm-3">
-                                <label for="examinationCenterState" class="h6 mb-8 fw-semibold font-heading">
+                                <label for="examination_centre_state" class="h6 mb-8 fw-semibold font-heading">
                                     Exam Center State
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    id="examinationCenterState" />
+                                    id="examination_centre_state" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="examinationCenterCity" class="h6 mb-8 fw-semibold font-heading">
@@ -231,14 +231,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <span class="h6 mb-8 fw-semibold font-heading">Email ID
                                         </span>
                                         <input type="email" class=" placeholder-13 form-control py-11 col-5"
                                             id="email" placeholder="Enter Your email id" />
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-6">
-                                        <span class="h6 mb-8 fw-semibold font-heading">phone Number
+                                        <span class="h6 mb-8 fw-semibold font-heading">Phone Number
                                         </span>
                                         <input type="tel" class=" placeholder-13 form-control py-11 col-5" id="phone"
                                             placeholder="Enter your phone number" />
@@ -524,7 +524,54 @@
                     </div>
                 </div>
 
-                
+                <div class="card mt-24">
+                    <div class="card-header border-bottom">
+                      <h4 class="mb-4">Account Information</h4>
+                      <!-- <p class="text-gray-600 text-15">
+                      Please fill full details about yourself
+                    </p> -->
+                    </div>
+                    <div class="card-body">
+                      <div class="row gy-4">
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="email" class="form-label mb-8 h6">Email ID
+                            <span class="text-danger text-size">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="email"
+                            placeholder="Enter Email ID"
+                          />
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="password" class="form-label mb-8 h6"
+                            >Password
+                            <span class="text-danger text-size">*</span>
+                            </label
+                          >
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="password"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                          <label for="lname" class="form-label mb-8 h6"
+                            >Confirm Password
+                            <span class="text-danger text-size">*</span></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control py-11"
+                            id="confirmPassword"
+                            placeholder="Enter Confirm Password"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <!-- Buttons Start -->
                 <div class="flex-align justify-content-end gap-8 mt-20">
                     <button id="submit" type="button"

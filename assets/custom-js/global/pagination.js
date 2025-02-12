@@ -18,14 +18,14 @@ export function showTotalEntries(entries, totalPage) {
     if (currentPage > 2) {
       paginationContent += `
         <li class="page-item" onclick="getIndex(1)">
-          <a class="page-link">1</a>
+          <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium">1</a>
         </li>`;
     }
 
     for (let i = startPage; i <= endPage; i++) {
       paginationContent += `
         <li id="pageItem${i}" class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
-          <a class="page-link">${i}</a>
+          <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium">${i}</a>
         </li>
       `;
     }
@@ -33,14 +33,14 @@ export function showTotalEntries(entries, totalPage) {
     if (endPage < totalPages - 4) {
       paginationContent += `
         <li class="page-item disabled">
-          <a class="page-link">...</a>
+          <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium">...</a>
         </li>
       `;
 
       for (let i = totalPages - 3; i <= totalPages; i++) {
         paginationContent += `
           <li class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
-            <a class="page-link">${i}</a>
+            <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium">${i}</a>
           </li>
         `;
       }
@@ -49,23 +49,20 @@ export function showTotalEntries(entries, totalPage) {
     for (let i = 1; i <= totalPages; i++) {
       paginationContent += `
         <li id="pageItem${i}" class="page-item ${i === currentPage ? 'active' : ''}" onclick="getIndex(${i})">
-          <a class="page-link">${i}</a>
+          <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium">${i}</a>
         </li>
       `;
     }
   }
 
   paginationFooter.innerHTML = `
-    <span class="text-gray-900">
-      Showing ${((currentPage - 1) * limit) + 1}
-      to ${Math.min(currentPage * limit, totalEntries)}
-      of ${totalEntries} entries
-    </span>
+    <button id="previousBtn" class="btn btn-outline-gray rounded-pill py-9 flex-align gap-4" ${currentPage === 1 ? 'disabled' : ''}>  <span class="d-flex text-xl"><i class="ph ph-arrow-left"></i></span>Previous </button>
     <ul id="paginationPages" class="meraPaginationHai pagination flex-align flex-wrap">
-      <button id="previousBtn" ${currentPage === 1 ? 'disabled' : ''}> << </button>
+      
       ${paginationContent}
-      <button id="nextBtn" ${currentPage === totalPages ? 'disabled' : ''}> >> </button>
+     
     </ul>
+     <button id="nextBtn" class="btn btn-outline-gray rounded-pill py-9 flex-align gap-4" ${currentPage === totalPages ? 'disabled' : ''}> Next <span class="d-flex text-xl"><i class="ph ph-arrow-right"></i></span> </button>
   `;
 
   document.getElementById('previousBtn').addEventListener('click', () => {

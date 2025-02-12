@@ -1,5 +1,5 @@
-// export const domain = 'http://localhost:5000';
-export const domain = 'https://backend-lms-yibk.onrender.com'
+export const domain = 'http://localhost:5000';
+// export const domain = 'https://backend-lms-yibk.onrender.com'
 
 // ---------------------END POINTS------------------------------
 const admin = `/admin`
@@ -29,7 +29,7 @@ const batch_category_API = `${domain}${batchCategory}`
 const student_API = `${domain}${student}`
 export const delete_API = `${domain}/delete/all`;
 export const import_API = `${domain}/import/student`;
-export const export_API = `${domain}/export/data`;
+export const EXPORT_API = `${domain}/export/data`  
 
 
 const class_API = `${domain}${classes}`;

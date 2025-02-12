@@ -72,7 +72,7 @@ async function addStudentForm(event) {
     // const highSchoolDetailsDivision = document.getElementById('highSchoolDetailsDivision').value;
     // const apply_for = document.getElementById('apply_for').value;
     // const examinationFee = document.getElementById('examinationFee').value;
-    // const examinationCenterState = document.getElementById('examinationCenterState').value;
+    // const examination_centre_state = document.getElementById('examination_centre_state').value;
     // const examinationCenterCity = document.getElementById('examinationCenterCity').value;
 
     const formData = new FormData();
@@ -125,7 +125,7 @@ formData.append('highSchoolDetails', document.getElementById('highSchoolDetails'
 formData.append('highSchoolDetailsDivision', document.getElementById('highSchoolDetailsDivision').value);
 formData.append('apply_for', document.getElementById('apply_for').value);
 formData.append('examinationFee', document.getElementById('examinationFee').value);
-formData.append('examinationCenterState', document.getElementById('examinationCenterState').value);
+formData.append('examination_centre_state', document.getElementById('examination_centre_state').value);
 formData.append('examinationCenterCity', document.getElementById('examinationCenterCity').value);
 
     

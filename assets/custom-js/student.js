@@ -1,6 +1,7 @@
-import { STUDENT_GETALL_API } from './global/apis.js'
+import { STUDENT_GETALL_API, EXPORT_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
+import { status_popup } from "./global/status_popup.js";
 import { showTotalEntries, getParameters, paginationDataHandler } from "./global/pagination.js";
 import { individual_delete, objects_data_handler_function } from "./global/delete.js";
  import { checkbox_function } from './global/multi_checkbox.js';
@@ -95,7 +96,7 @@ async function all_data_load_dashboard() {
     onclick="individual_delete('${e?._id || "-"}')">
    <i class="ph ph-trash"></i>
 </a>
-              </div>
+              </div> 
             </td>
           </tr>`;
         });
@@ -124,6 +125,7 @@ async function all_data_load_dashboard() {
     try {
       remove_loading_shimmer();
     } catch (error) {
+
       console.log(error);
     }
   }
@@ -135,3 +137,99 @@ objects_data_handler_function(all_data_load_dashboard);
 paginationDataHandler(all_data_load_dashboard);
 
 all_data_load_dashboard();
+
+let selectedIdArr = [];
+let table = document.getElementById('student-list-table-data');
+let checkboxAll = document.querySelector('.checkbox_all')
+table.addEventListener('change', (event) => {
+  if (event.target.classList.contains('checkbox_child')) {
+    if (event.target.checked) {
+      console.log("Checked:", event.target.value);
+      selectedIdArr.push(event.target.value);
+    } else {
+      console.log("Unchecked:", event.target.value);
+    }
+  }
+})
+
+//Store All checkbox ids
+checkboxAll.addEventListener('change',(event)=>{
+  // console.log(event);
+  let checkbox_child = document.querySelectorAll('.checkbox_child');
+  setTimeout(()=>{
+    checkbox_child.forEach((e)=>{
+      if(e.checked){
+        selectedIdArr.push(e.value)
+      }
+    })
+  },2000)
+  console.log('Ids: ',selectedIdArr)
+})
+
+let exportBtn = document.getElementById('exportButton')
+exportBtn.addEventListener('click',async(event)=>{
+  event.preventDefault()
+  try {
+    loading_shimmer()
+  } catch (error) {
+    console.log(error)
+  }
+  if (selectedIdArr.length > 0) {
+          try {
+              const response = await fetch(`${EXPORT_API}`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': `${token}`,
+                  },
+                  body: JSON.stringify({ "_id": selectedIdArr }),
+              });
+  
+              // ----------------------------------------------------------------------------------------------------
+              try{
+                  remove_loading_shimmer();
+              } catch(error){console.log(error)}
+              // ----------------------------------------------------------------------------------------------------
+  
+              const success = response.ok;
+              status_popup(success ? "Data Exported Successfully!" : "Please try again later", success);
+  
+  
+              if (response.ok) {
+                  // Convert response to ArrayBuffer (if it's in bytes)
+                  const arrayBuffer = await response.arrayBuffer();
+              
+                  // Create a Blob from the ArrayBuffer (with MIME type for XLSX)
+                  const blob = new Blob([arrayBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+              
+                  // Create a temporary download link
+                  const link = document.createElement('a');
+                  const url = window.URL.createObjectURL(blob);
+                  
+                  // Set the href of the link to the Blob URL
+                  link.href = url;
+              
+                  // Set the filename for the download
+                  link.download = 'exported_file.xlsx';
+              
+                  // Trigger the click event to download the file
+                  link.click();
+              
+                  // Clean up the Blob URL after download
+                  window.URL.revokeObjectURL(url);
+              } else {
+                  console.error('Failed to fetch the file');
+              }
+              
+          } catch (error) {
+              console.error("Error deleting data:", error);
+              status_popup("Please try again later", false);
+          }
+      }
+      // ----------------------------------------------------------------------------------------------------
+      try{
+          remove_loading_shimmer();
+      } catch(error){console.log(error)}
+})
+
+
