@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             formData.append("file", file);
-            formData.append("role", form.getAttribute("modeltype") || "defaultRole");
+            formData.append("roles", form.getAttribute("modeltype") || "Students");
 
             console.log("Submitting file:", file.name);
 
