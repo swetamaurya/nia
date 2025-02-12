@@ -59,8 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("file", file);
             formData.append("roles", form.getAttribute("modeltype") || "Students");
 
-            console.log("Submitting file:", file.name);
-
             const response = await fetch(import_API, {
                 method: 'POST',
                 headers: {
@@ -69,25 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData,
             });
 
-            console.log("Response Status:", response.status); // Debugging
+            let responseData = await response.json();
 
-            let responseData;
-            try {
-                responseData = await response.json();
-            } catch (jsonError) {
-                throw new Error("Invalid JSON response from server");
-            }
-
-            console.log("Server Response:", responseData); // Debugging
-
-            // Display success or error message
             status_popup(responseData?.message || "Unknown error occurred", response.ok);
 
-            if (responseData.ok) {
-                setTimeout(() => {
-                    window.location.href = 'students.html';
-                }, 1000);
-            }
+            setTimeout(() => {
+                window.location.href = 'students.html';
+            }, 1000);
         } catch (error) {
             console.error("Error importing data:", error);
             status_popup("Error importing data. Please try again.", false);
