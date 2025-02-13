@@ -53,6 +53,9 @@ async function all_data_load_dashboard() {
             try {
                 data.forEach((e, i) => {
                     const thumbnail  = e.thumbnail || "assets/images/thumbs/course-img1.png";
+                    const firstName = e?.instructor?.first_name || ''
+                    const lastName = e?.instructor?.last_name || ''
+                    const instructorName = firstName +' '+lastName
 
                     e.statusOfCards === 'Draft'? statusCardBgColor='bg-danger' : statusCardBgColor='bg-primary'
                    
@@ -80,8 +83,8 @@ async function all_data_load_dashboard() {
                                               <img src="assets/images/thumbs/user-img5.png"
                                                   class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
                                               <div>
-                                                  <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                          class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">${e.createdBy}</a> </span>
+                                                  <span class="text-gray-600 text-13">Instructor Name <a href="profile.html"
+                                                          class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">${instructorName}</a> </span>
                                               </div>
                                           </div>
   

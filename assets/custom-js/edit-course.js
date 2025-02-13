@@ -1,10 +1,64 @@
-import { COURSE_GET_API, COURSE_UPDATE_API } from './global/apis.js'
+import { COURSE_GET_API, COURSE_UPDATE_API, USER_GETALL_API, COURSE_category_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
 const token = localStorage.getItem('token')
 // ==============================================================================
 //===============================================================================
+
+//Dropdown Course Category
+async function dropdownCourses() {
+    const API = COURSE_category_GETALL_API
+    try {
+        const response = await fetch(API, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token
+          },
+        });
+        const res = await response.json();
+        console.log(res);
+    const courseCategory = document.getElementById("courseCategory");
+    res?.categories.forEach((course) => {
+        const option = document.createElement("option");
+        option.value = course._id;
+        option.text = `${course?.categoryName}`;
+        courseCategory.appendChild(option);
+      });
+    }
+    catch(error){
+        console.error('Error fetching data:', error);
+    }
+}
+dropdownCourses();
+
+//Dropdown Instructor
+async function dropdownInstructor(){
+    let instructorList = [];
+    const API = USER_GETALL_API
+    try {
+        const response = await fetch(API, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token
+          },
+        });
+        const res = await response.json();
+        instructorList = res.data;
+        const instructor = instructorList.filter((e)=>e.roles.roles === 'Instructor')
+        const selectInstructor = document.getElementById("selectInstructor");
+        instructor?.forEach((instructors) => {
+          const option = document.createElement("option");
+          option.value = instructors._id;
+          option.text = `${instructors?.first_name} ${instructors?.last_name}`;
+          selectInstructor.appendChild(option);
+        });
+    }catch(error){
+        console.log(error)
+    }
+}
 
 let id = new URLSearchParams(window.location.search).get('id')
 let imageFiles = []; // To store the actual File objects
@@ -60,6 +114,12 @@ document.getElementById('multipleImageUpload').addEventListener('change', (event
         reader.readAsDataURL(file);
     });
 });
+
+//Initialize Function 
+function initializePage(){
+    dropdownInstructor()
+}
+initializePage();
  
 //===============================================================================
 window.editLoadData = async function editLoadData() {
@@ -71,6 +131,7 @@ window.editLoadData = async function editLoadData() {
     const title = document.getElementById('courseTitle')
     // const createdBy = localStorage.getItem('name');
     const description = document.getElementById('description')
+    let instructor = document.getElementById('selectInstructor')
     const category = document.getElementById('courseCategory')
     const duration = document.getElementById('courseDuration')
     const thumbnails = document.getElementById('viewer')
@@ -95,10 +156,14 @@ window.editLoadData = async function editLoadData() {
         }
         const res = await response.json()
         const course = res.course;
+        console.log('nvdsndsvjnd: ',course)
         title.value = course.title
         description.value = course.description
-        category.value = course.category
+        category.value = course.category._id
         duration.value = course.duration
+        setTimeout(()=>{
+            instructor.value = course.instructor._id
+        },500)
         thumbnails.src = course?.thumbnail || 'assets/images/thumbs/upload-image.png';
         // Function to handle file uploads
         imageUploadInput.addEventListener('change', (event) => {
@@ -254,6 +319,7 @@ window.editLoadData = async function editLoadData() {
 editLoadData()
 
 
+
 //Update Course API
 async function createCourse(event) {
     let _id = id
@@ -269,6 +335,7 @@ async function createCourse(event) {
     }
     const title = document.getElementById('courseTitle').value;
     const createdBy = localStorage.getItem('name');
+    const instructor = document.getElementById('selectInstructor').value
     const description = document.getElementById('description').value;
     const category = document.getElementById('courseCategory').value;
     const duration = document.getElementById('courseDuration').value;
@@ -296,6 +363,7 @@ async function createCourse(event) {
         formData.append("statusOfCards", statusOfCards);
         formData.append("createdBy", createdBy);
         formData.append("duration", duration);
+        formData.append("instructor", instructor);
         formData.append('_id',_id)
 
         const API = `${COURSE_UPDATE_API}`;

@@ -1,9 +1,9 @@
-import { COURSE_CREATE_API,COURSE_category_GETALL_API } from './global/apis.js'
+import { COURSE_CREATE_API, COURSE_category_GETALL_API, USER_GETALL_API } from './global/apis.js'
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
 const token = localStorage.getItem('token')
 
-async function dropdownBtaches() {
+async function dropdownCourses() {
     const API = COURSE_category_GETALL_API
     try {
         const response = await fetch(API, {
@@ -27,13 +27,41 @@ async function dropdownBtaches() {
         console.error('Error fetching data:', error);
     }
 }
-dropdownBtaches();
-// Add Batch Form Function
+dropdownCourses();
+// -----------------------------------------------------------------------
+
+async function dropdownInstructor(){
+    let instructorList = [];
+    const API = USER_GETALL_API
+    try {
+        const response = await fetch(API, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token
+          },
+        });
+        const res = await response.json();
+        instructorList = res.data;
+        const instructor = instructorList.filter((e)=>e.roles.roles === 'Instructor')
+        console.log('instructor: ',instructor);
+        const selectInstructor = document.getElementById("selectInstructor");
+        instructor?.forEach((instructors) => {
+          const option = document.createElement("option");
+          option.value = instructors._id;
+          option.text = `${instructors?.first_name} ${instructors?.last_name} (${instructors?.userId})`;
+          selectInstructor.appendChild(option);
+        });
+    }catch(error){
+        console.log(error)
+    }
+}
+dropdownInstructor()
 
 async function createCourse(event){
     event.preventDefault();
 
-    if(!validateCourse()) return
+    // if(!validateCourse()) return
 
     let statusOfCards;
     console.log('event: ',event);
@@ -45,7 +73,8 @@ async function createCourse(event){
         console.log(statusOfCards);
     }
     const title = document.getElementById('courseTitle').value;
-    const createdBy = localStorage.getItem('name');
+    // const createdBy = localStorage.getItem('name');
+    const instructor = document.getElementById("selectInstructor").value;
     const description = document.getElementById('description').value;
     const category = document.getElementById('courseCategory').value;
     const duration = document.getElementById('courseDuration').value;
@@ -72,8 +101,9 @@ for (const thumbnail of thumbnails) {
       formData.append("description", description);
       formData.append("category", category);
       formData.append("statusOfCards", statusOfCards);
-      formData.append("createdBy", createdBy);
+      // formData.append("createdBy", createdBy);
       formData.append("duration", duration);
+      formData.append("instructor", instructor);
 
         const API = `${COURSE_CREATE_API}`;
         // -----------------------------------------------------------------------------------
@@ -87,6 +117,7 @@ for (const thumbnail of thumbnails) {
         // -----------------------------------------------------------------------------------
         const r1 = await response.json();
         console.log('THIS IS MY RESPONSE: ',r1)
+        // debugger
         // -----------------------------------------------------------------------------------
         try{
             status_popup(r1?.message, (response?.ok));
@@ -108,53 +139,42 @@ document.getElementById('save-as-draft').addEventListener('click',(event)=>{crea
 document.getElementById('publish-course').addEventListener('click',(event)=>{createCourse(event)})
 
 // validation course
-function validateCourse(){
-    clearErrors();
-  let isValid = true;
-  const title = document.getElementById('courseTitle')
-  const description = document.getElementById('description')
-  const category = document.getElementById('courseCategory')
-  const duration = document.getElementById('courseDuration')
-    // const imageFileUpload = document.getElementById('customFileUpload')
-    // const spanProfilePhoto = document.getElementById('profile-photo')
+// function validateCourse(){
+//     clearErrors();
+//   let isValid = true;
+//   const title = document.getElementById('courseTitle')
+//   const description = document.getElementById('description')
+//   const category = document.getElementById('courseCategory')
+//   const duration = document.getElementById('courseDuration')
+//     if(!description.value.trim()){
+//       showError(description,'Enter a valid description');
+//       isValid=false;
+//     }
+//     if (!category.value.trim() || category.value === 'Enter course category') {
+//         showError(category, 'Enter a valid category');
+//         isValid = false;
+//     }
+//     return isValid;
+// }
 
-    // if(!title.value.trim() || !/^[A-Za-z]+$/.test(title.value)){
-    //   showError(title,'Enter a valid title');
-    //   isValid=false;
-    // }
-    if(!description.value.trim()){
-      showError(description,'Enter a valid description');
-      isValid=false;
-    }
-    if (!category.value.trim() || category.value === 'Enter course category') {
-        showError(category, 'Enter a valid category');
-        isValid = false;
-    }
-    // if (!duration.value.trim()) {
-    //     showError(duration, 'Enter a valid duration');
-    //     isValid = false;
-    // }
-    return isValid;
-}
-
-function showError(element, message) {
-    const errorContainer = element.previousElementSibling; // Access the div with label
-    let errorElement = errorContainer.querySelector('.text-danger.text-size');
+// function showError(element, message) {
+//     const errorContainer = element.previousElementSibling; // Access the div with label
+//     let errorElement = errorContainer.querySelector('.text-danger.text-size');
   
-    if (!errorElement) {
-        errorElement = document.createElement('span');
-        errorElement.className = 'text-danger text-size mohit_error_js_dynamic_validation';
-        errorElement.style.fontSize = '10px';
-        errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
-        errorContainer.appendChild(errorElement);
-    } else {
-        errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
-    }
-  }
-  // --------------------------------------------------------------------------------------------------
-  // Function to clear all error messages
-  // --------------------------------------------------------------------------------------------------
-  function clearErrors() {
-    const errorMessages = document.querySelectorAll('.text-danger.text-size.mohit_error_js_dynamic_validation');
-    errorMessages.forEach((msg) => msg.remove());
-  }
+//     if (!errorElement) {
+//         errorElement = document.createElement('span');
+//         errorElement.className = 'text-danger text-size mohit_error_js_dynamic_validation';
+//         errorElement.style.fontSize = '10px';
+//         errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+//         errorContainer.appendChild(errorElement);
+//     } else {
+//         errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+//     }
+//   }
+//   // --------------------------------------------------------------------------------------------------
+//   // Function to clear all error messages
+//   // --------------------------------------------------------------------------------------------------
+//   function clearErrors() {
+//     const errorMessages = document.querySelectorAll('.text-danger.text-size.mohit_error_js_dynamic_validation');
+//     errorMessages.forEach((msg) => msg.remove());
+//   }

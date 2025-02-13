@@ -40,7 +40,7 @@ dropdownBtaches();
 //===============================================================================
 window.editLoadData = async function editLoadData() {
     try {
-        loading_shimmer();
+        loading_shimmer(); 
     } catch (error) {
         console.error(error);
     }
@@ -53,7 +53,7 @@ window.editLoadData = async function editLoadData() {
     const mother_name = document.getElementById('mother_name');
     const date_of_birth = document.getElementById('date_of_birth');
     const category = document.getElementById('category');
-    const email = document.getElementById('email');
+    // const email = document.getElementById('email');
     const phone = document.getElementById('phone');
     const gender = document.getElementById('gender');
     const marital_status = document.getElementById('marital_status');
@@ -112,7 +112,7 @@ window.editLoadData = async function editLoadData() {
     mother_name.value = student.mother_name || '';
     date_of_birth.value = student.date_of_birth || '';
     category.value = student.category || '';
-    email.value = student.email || '';
+    // email.value = student.email || '';
     phone.value = student.phone || '';
     gender.value = student.gender || '';
     marital_status.value = student.marital_status || '';
@@ -168,7 +168,7 @@ async function editBatchForm(event) {
     const mother_name = document.getElementById('mother_name').value;
     const date_of_birth = document.getElementById('date_of_birth').value;
     const category = document.getElementById('category').value;
-    const email = document.getElementById('email').value;
+    // const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
     const gender = document.getElementById('gender').value;
     const marital_status = document.getElementById('marital_status').value;

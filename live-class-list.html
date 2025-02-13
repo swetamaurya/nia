@@ -55,14 +55,14 @@
 
     .red {
       background-color: red;
-      animation: blink-red 1s infinite alternate;
+      /* animation: blink-red 1s infinite alternate; */
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
       /* Red glow */
     }
 
-    .join-class{
+    .join-class {
       animation: blink-join-green 1s infinite alternate;
-      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+      /* box-shadow: 0 0 10px rgba(0, 255, 0, 0.8); */
     }
 
     @keyframes blink-green {
@@ -72,7 +72,7 @@
       }
 
       100% {
-        opacity: 0.3;
+        opacity: 0.6;
         box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
       }
     }
@@ -89,7 +89,31 @@
       }
     }
 
-   
+    @keyframes blink-join-green {
+      0% {
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.2;
+      }
+
+      40% {
+        opacity: 0.4;
+      }
+
+      60% {
+        opacity: 0.6;
+      }
+
+      80% {
+        opacity: 0.8;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
 
 </head>

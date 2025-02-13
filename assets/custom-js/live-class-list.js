@@ -43,16 +43,8 @@ async function loadAllList() {
                             <span class="bg-success-50 text-bg-primary h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill remark-three-dot-css-design" style="max-width: 200px !important;">${e?.course?.title || ''}</span>
                         </td>
                         <td><a class="text-hover text-gray-300">${e?.batch?.batchTitle} (${e?.batch?.batchId})</a></td>
-                        <td>
-  <a class="text-hover text-gray-300">
-    <span class="${e?.liveClassStatus == 'true' ? 'green' : 'red'}"></span>
-  </a>
-</td>
-                        <td>
-                            <div class="btn--container d-flex justify-content-start">
-                                ${e?.liveClassStatus=='true' ? `<a class="bg-success text-white p-10 px-15 join-class form-alert" href="javascript:void(0)" style="border-radius:20px" onclick="classLoadView('${e?._id}')">Join Class</a>` : ''}
-                            </div>
-                        </td>
+                        <td><a class="text-hover text-gray-300"><span class="${e?.liveClassStatus == 'true' ? 'green' : 'red'}"></span></a></td>
+                        <td><div>${e?.liveClassStatus == 'true' ? `<a class="bg-success text-white p-10 px-15 join-class form-alert" href="javascript:void(0)" style="border-radius:10px" onclick="classLoadView('${e?._id}')">Join Class</a>` : `<span class="bg-danger text-white p-10 px-28" style="border-radius:10px">Ended</span>`}</div></td>
                     </tr>
                 `;
             }).join("");

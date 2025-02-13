@@ -44,6 +44,9 @@ window.editLoadData = async function editLoadData() {
         }
         const res = await response.json()
         const course = res.course;
+        const firstName = course.instructor?.first_name || ''
+        const lastName = course.instructor?.last_name || ''
+        const instructorName = firstName +' '+lastName
         title.innerText = course.title
         description.innerText = course.description
         course?.status === 'Publish'?
@@ -51,7 +54,7 @@ window.editLoadData = async function editLoadData() {
         :
         cardStatus.setAttribute('class','bg-danger')
         cardStatus.innerText = course.statusOfCards
-        createdBy.innerText =  course.createdBy
+        createdBy.innerText =  instructorName
         createdDate.innerText = course.createdAt.split(' ')[0]
         courseCategory.innerText = course?.category?.categoryName
 
