@@ -34,6 +34,64 @@
   <!-- Main css -->
   <link rel="stylesheet" href="assets/css/main.css">
   <script src="assets/js/global-header.js"></script>
+
+  <style>
+    .green,
+    .red {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+      /* Default green glow */
+    }
+
+    .green {
+      background-color: green;
+      animation: blink-green 1s infinite alternate;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+      /* Green glow */
+    }
+
+    .red {
+      background-color: red;
+      animation: blink-red 1s infinite alternate;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+      /* Red glow */
+    }
+
+    .join-class{
+      animation: blink-join-green 1s infinite alternate;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    }
+
+    @keyframes blink-green {
+      0% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 1);
+      }
+
+      100% {
+        opacity: 0.3;
+        box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+      }
+    }
+
+    @keyframes blink-red {
+      0% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 1);
+      }
+
+      100% {
+        opacity: 0.3;
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+      }
+    }
+
+   
+  </style>
+
 </head>
 
 <body>
@@ -157,7 +215,7 @@
     <div id="footer-placeholder"></div>
   </div>
 
-  <script src="assets/custom-js/live-class-list.js" type="module" ></script>
+  <script src="assets/custom-js/live-class-list.js" type="module"></script>
 
 
   <!-- Jquery js -->

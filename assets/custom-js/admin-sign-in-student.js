@@ -1,4 +1,4 @@
-import { ADMIN_SIGNIN_API } from './global/apis.js'
+import { STUDENT_SIGNIN_API, TOKEN } from './global/apis.js'
 
 try{
     localStorage.clear();
@@ -8,7 +8,7 @@ import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimme
 import { status_popup } from "./global/status_popup.js";
 // ==============================================================================
 // ==============================================================================
-
+console.log("STUDENT_SIGNIN_API :- ",STUDENT_SIGNIN_API)
 let signIn = "sign-in-form";
 document.getElementById(signIn).addEventListener("submit", async function (event){
     event.preventDefault();
@@ -19,12 +19,13 @@ document.getElementById(signIn).addEventListener("submit", async function (event
     try{
         const email = document.getElementById('fname').value;
         const password = document.getElementById('current-password').value;
-        const API = `${ADMIN_SIGNIN_API}`;
+        const API = `${STUDENT_SIGNIN_API}`;
         // -----------------------------------------------------------------------------------
         const response = await fetch(API, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // 'Authorization': `${TOKEN}`
             },
             body: JSON.stringify({ email, password }),
         });
@@ -38,14 +39,14 @@ document.getElementById(signIn).addEventListener("submit", async function (event
             if(response?.ok) {
                 try{
                     localStorage.setItem('token', r1?.token);
-                    localStorage.setItem('roles', r1?.admin?.roles);
-                    localStorage.setItem('name', r1?.admin?.name);
-                    localStorage.setItem('_id', r1?.admin?._id);
-                    localStorage.setItem('email',r1?.admin?.email);
-                    localStorage.setItem('permissions',r1?.admin?.permissions);
-                    localStorage.setItem('roles', r1?.admin?.roles)
+                    localStorage.setItem('roles', r1?.student?.roles);
+                    localStorage.setItem('name', r1?.student?.name);
+                    localStorage.setItem('_id',  r1?.student?._id);
+                    localStorage.setItem('email', r1?.student?.email);
+                    localStorage.setItem('permissions',r1?.student?.permissions);
+                    localStorage.setItem('roles', r1?.student?.roles)
 
-                    window.location.href = `index-2.html`
+                    window.location.href = `live-class-list.html`
                 } catch(error){
                     status_popup( ("please try again later, Server Error !"), (false));
                     console.log(error);
