@@ -10017,3 +10017,16 @@ table tr th:last-child {
     }
 
 }
+
+
+
+
+
+/* =============== */
+.remark-three-dot-css-design {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
