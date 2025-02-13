@@ -534,8 +534,8 @@ async function multipleBatchForm(event) {
     const result = await response.json();
     console.log(" Batch Update Response:", result);
 
-    status_popup(result?.message, response.ok);
-
+    status_popup(response.ok);
+alert("ho gya")
     // if (response.ok) {
     //   setTimeout(() => {
     //     window.location.href = "create-batch-category-list.html";
