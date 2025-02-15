@@ -258,7 +258,7 @@ formData.append('_id', id); // Assuming `id` is already defined
     // const examination_centre_city = document.getElementById('examination_centre_city').value;
     // const status = document.getElementById('status').value;
     // const _id = id;
-=======
+ 
     const batchId = document.getElementById('batchId').value;
     const application_number = document.getElementById('application_number').value;
     const registration_number = document.getElementById('registration_number').value;
@@ -300,8 +300,7 @@ formData.append('_id', id); // Assuming `id` is already defined
     const examination_centre_city = document.getElementById('examination_centre_city').value;
     const status = document.getElementById('status').value;
     const _id = id;
->>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
-
+ 
     try {
         loading_shimmer();
     } catch (error) {
