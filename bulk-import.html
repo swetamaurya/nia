@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <form action="#">
+                                <form id="import_excel_file_form">
 
                                     <div class="card">
                                         <div class="card-body">
@@ -122,18 +122,29 @@
                                                 <a href="assets/sample_file_export_xlsx/batch-category-list.xlsx" download=""
                                                     class="text-primary">Download Here</a>
                                             </h5>
-                                            <div class="form-group mt-4">
-                                                <label class="drag--area mb-0 mx-auto cursor-pointer"
-                                                    ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                    <img class="icon" src="assets/images/icons/cloud.png" style="width: 80px;height: 50px;" alt="">
-                                                    <div class="my-10">Click here to import the .xlsx file here
-                                                    </div>
-                                                    <div class="__choose-input">
-                                                        <input type="file" name="products_file" class="form-control"
-                                                            id="import-file" accept=".xlsx">
-                                                    </div>
-                                                </label>
-                                            </div>
+                                            <!-- <form id="import_excel_file_form"> -->
+                                                <div class="form-group mt-4">
+                                                    <label class="drag--area mb-0 mx-auto cursor-pointer" 
+                                                        ondrop="drop(event)" ondragover="allowDrop(event)">
+                                                        
+                                                        <img class="icon" src="assets/images/icons/cloud.png" 
+                                                            style="width: 80px; height: 50px;" alt="">
+                                                        
+                                                        <div class="my-10">Click here to import the .xlsx file here</div>
+                                                        
+                                                        <div class="__choose-input">
+                                                            <input type="file" name="products_file" 
+                                                                class="form-control" id="fileInputImport" accept=".xlsx">
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                                
+                                                <!-- Submit Button (Must be inside the form) -->
+                                                <button type="submit" class="btn btn-main rounded-pill py-9 mt-3">
+                                                    Submit
+                                                </button>
+                                            <!-- </form> -->
+                                            
                                         </div>
                                     </div>
                                 </form>
@@ -142,17 +153,17 @@
                     </div>
 
                 </div>
-                <div class="col-12 mt-20">
+                <!-- <div class="col-12 mt-20">
                     <div class="flex-align justify-content-end gap-8">
                         <button type="reset"
                             class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
                             Reset
                         </button>
-                        <button type="submit" class="btn btn-main rounded-pill py-9">
+                        <button type="submit" id="submit" class="btn btn-main rounded-pill py-9">
                             Submit
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Ending of Role Setup -->
@@ -161,7 +172,7 @@
         <div id="footer-placeholder"></div>
     </div>
 
-    <!-- Jquery js -->
+     <!-- Jquery js -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap Bundle Js -->
     <script src="assets/js/boostrap.bundle.min.js"></script>
@@ -185,6 +196,8 @@
     <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
     <!-- jvectormap world Js -->
     <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <script type="module" src="assets/custom-js/global/importData.js"></script>
 
     <!-- main js -->
     <script src="assets/js/main.js"></script>

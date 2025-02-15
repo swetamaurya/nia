@@ -621,13 +621,18 @@ async function all_data_load_dashboard() {
                             }</span>
                         </td>
                         <td>
-                            <a href="#" class="import-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
-                              e._id
-                            }">Import</a>
+                         <div
+                           
+      <a href="bulk-import.html?id=${e._id}" class="import-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" title="Import">
+    Import
+</a>
+
+      
+                           
                             <a href="#" class="export-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
                               e._id
-                            }">Export</a>
-                        </td>
+                            }">Export</a></div>
+                        </td>   
                         <td>
                             <div
                 onclick="editStatusById('${e._id}', event)"

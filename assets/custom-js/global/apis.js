@@ -1,7 +1,7 @@
-// export const domain = 'http://localhost:5000';
+export const domain = 'http://localhost:5000';
 import {} from './hide_unhide_ROLE.js';
 
-export const domain = 'https://backend-lms-yibk.onrender.com'
+// export const domain = 'https://backend-lms-yibk.onrender.com'
 
 export const LIVE_CLASS_APP_ID = '3a55484f226043e18c5298242837f753';
 // ---------------------END POINTS------------------------------
@@ -48,7 +48,6 @@ export const ADMIN_VERIFY_OTP = `${admin_API}/verifyOtp`
 export const ADMIN_RESET_PASSWORD = `${admin_API}/resetPassword`
 
 
-export const STUDENT_SIGNIN_API = `${domain}/student/login`;
 
 
 //ROLE APIs
@@ -98,3 +97,4 @@ export const STUDENT_CREATE_API = `${student_API}${post}`
 export const STUDENT_GETALL_API = `${student_API}${getall}`
 export const STUDENT_GET_API = `${student_API}${get}`
 export const STUDENT_UPDATE_API = `${student_API}${update}`
+export const STUDENT_SIGNIN_API = `${domain}/student/login`;
