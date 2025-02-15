@@ -87,8 +87,7 @@ async function all_data_load_dashboard() {
                                               <img src="assets/images/thumbs/user-img5.png"
                                                   class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
                                               <div>
-                                                   <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                   <span class="text-gray-600 text-13">Instructor Name <a href="profile.html"
+                                                    <span class="text-gray-600 text-13">Instructor Name <a href="profile.html"
                                                            class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">${instructorName}</a> </span>
                                               </div>
                                           </div>
