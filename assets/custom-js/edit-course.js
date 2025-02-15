@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-if (!localStorage.getItem("token")) {
+ if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
   }
-=======
->>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
-import { COURSE_GET_API, COURSE_UPDATE_API, USER_GETALL_API, COURSE_category_GETALL_API } from './global/apis.js'
+ import { COURSE_GET_API, COURSE_UPDATE_API, USER_GETALL_API, COURSE_category_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";

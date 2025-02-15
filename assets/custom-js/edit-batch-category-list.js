@@ -76,12 +76,9 @@ async function all_data_load_dashboard() {
                     <td><input type="checkbox" class="checkbox_child" value="${student?._id || '-'}"></td>
                     <td><p class="h6 mb-0 fw-medium text-gray-300">${index + 1}</p></td>
                     <td>
-<<<<<<< HEAD
-                        <img style="width: 40px;" src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" class="rounded-circle" width="40">
-=======
-                        <img src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" alt="Profile" class="rounded-circle" style="width:40px;height:40px;">
->>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
-                        <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
+                         <img style="width: 40px;" src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" class="rounded-circle" width="40">
+                         <img src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" alt="Profile" class="rounded-circle" style="width:40px;height:40px;">
+                         <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
                     </td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.email || "-"}</span></td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.application_number || "-"}</span></td>

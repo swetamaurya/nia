@@ -170,8 +170,7 @@ async function editBatchForm(event) {
     event.preventDefault();
     const formData = new FormData();
 
-<<<<<<< HEAD
-    const photo_paths = document.getElementById('fileUpload-1').files;
+     const photo_paths = document.getElementById('fileUpload-1').files;
     const signature_paths = document.getElementById('fileUpload-2').files;
 
     
