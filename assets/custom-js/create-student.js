@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { STUDENT_CREATE_API ,BATCH_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";

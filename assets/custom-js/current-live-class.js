@@ -1,4 +1,7 @@
-
+if (!localStorage.getItem("token")) {
+  localStorage.clear();
+  window.location.href = 'sign-in.html';
+}
 import { domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
 
 /********************************************

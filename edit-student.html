@@ -9,7 +9,7 @@
     <!-- Title -->
     <title>NIA LMS Dashboard</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" /> 
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <!-- file upload -->
@@ -38,7 +38,7 @@
 
 <body>
     <!--==================== Preloader Start ====================-->
-    <div class="preloader"> 
+    <div class="preloader">
         <div class="loader"></div>
     </div>
     <!--==================== Preloader End ====================-->
@@ -108,7 +108,8 @@
                                     Application Number
                                 </label>
                                 <input type="text" class="text-counter placeholder-13 form-control py-11"
-                                    maxlength="100" id="application_number" placeholder="Enter the application number" />
+                                    maxlength="100" id="application_number"
+                                    placeholder="Enter the application number" />
                             </div>
                             <div class="col-sm-3">
                                 <label for="registration_number" class="h6 mb-8 fw-semibold font-heading">
@@ -174,8 +175,7 @@
                                             Name
                                         </label>
                                         <div class="position-relative">
-                                            <input type="text" id="first_name"
-                                                class="placeholder-13 form-control py-11"
+                                            <input type="text" id="first_name" class="placeholder-13 form-control py-11"
                                                 placeholder="Enter the first name" />
                                         </div>
                                     </div>
@@ -184,8 +184,7 @@
                                             Name
                                         </label>
                                         <div class="position-relative">
-                                            <input type="text" id="last_name"
-                                                class="placeholder-13 form-control py-11"
+                                            <input type="text" id="last_name" class="placeholder-13 form-control py-11"
                                                 placeholder="Enter the last name" />
                                         </div>
                                     </div>
@@ -211,7 +210,8 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="date_of_birth" class="h6 mb-8 fw-semibold font-heading">Date of Birth
+                                        <label for="date_of_birth" class="h6 mb-8 fw-semibold font-heading">Date of
+                                            Birth
                                         </label>
                                         <div class="position-relative">
                                             <input type="date" id="date_of_birth"
@@ -282,14 +282,46 @@
                                     &nbsp;
                                 </label> -->
                                     <div class="col-sm-12 col-xs-12 text-center">
-                                        <div id="photo_path" class="fileUpload image-upload"></div>
+                                        <!-- <div id="photo_path" class="fileUpload image-upload"></div> -->
+                                        <!-- <div class="col-3"> -->
+                                            <div class="text-center mb-4">
+                                                <img 
+                                                class="initial-24" id="viewer1">
+                                            </div>
+            
+                                        <!-- </div> -->
+                                        <!-- <div class="col-sm-3 mb-0"> -->
+
+                                           <label class="form-label mb-8 h6">
+                                              Update Profile Photo
+                                           </label>
+                                           <div class="custom-file">
+                                               <input type="file" name="image" id="fileUpload-1" 
+                                                   class="form-control py-11"
+                                                   accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                                               <label 
+                                                class="custom-file-label h--45px" for="fileUpload-1">
+                                               </label>
+                                           </div>
+                                        <!-- </div> -->
 
                                     </div>
                                     <div class="col-sm-12 col-xs-12 text-center">
-                                        <!-- <label class="form-label d-none d-md-block">
-                                    &nbsp;
-                                </label> -->
-                                        <div id="signature_path" class="fileUpload image-upload"></div>
+                                        <!-- <div id="signature_path" class="fileUpload image-upload"></div> -->
+                                        <div class="text-center mb-4">
+                                            <img class="initial-24" id="viewer2">
+                                        </div>
+                                        <label class="form-label mb-8 h6">
+                                            Update Signature Photo
+                                         </label>
+                                         <div class="custom-file">
+                                             <input type="file" name="image" id="fileUpload-2" 
+                                                 class="form-control py-11"
+                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                                             <label 
+                                              class="custom-file-label h--45px" for="fileUpload-2">
+                                             </label>
+                                         </div>
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +344,8 @@
                                             Educational Qualification
                                         </label>
                                         <div class="position-relative">
-                                            <select id="educational_qualification" class="form-select py-9 placeholder-13 text-15">
+                                            <select id="educational_qualification"
+                                                class="form-select py-9 placeholder-13 text-15">
                                                 <option disabled selected>Select </option>
                                                 <option value="High School">High School </option>
                                                 <option value="Intermediate">Intermediate </option>
@@ -322,10 +355,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="educational_qualification_division" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="educational_qualification_division"
+                                            class="h6 mb-8 fw-semibold font-heading">
                                             Division
                                         </label>
-                                        <select id="educational_qualification_division" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="educational_qualification_division"
+                                            class="form-select py-9 placeholder-13 text-15">
                                             <option disabled selected>Select </option>
                                             <option value="First Division">First Division </option>
                                             <option value="Second Division">Second Division </option>
@@ -344,10 +379,12 @@
                                             id="intermediate_details" placeholder="Enter your education board" />
                                     </div>
                                     <div class="col-12">
-                                        <label for="intermediate_details_division" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="intermediate_details_division"
+                                            class="h6 mb-8 fw-semibold font-heading">
                                             Division
                                         </label>
-                                        <select id="intermediate_details_division" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="intermediate_details_division"
+                                            class="form-select py-9 placeholder-13 text-15">
                                             <option disabled selected>Select </option>
                                             <option value="First Division">First Division </option>
                                             <option value="Second Division">Second Division </option>
@@ -367,10 +404,12 @@
                                             id="high_school_details" placeholder="Enter your education board" />
                                     </div>
                                     <div class="col-12">
-                                        <label for="high_school_details_division" class="h6 mb-8 fw-semibold font-heading">
+                                        <label for="high_school_details_division"
+                                            class="h6 mb-8 fw-semibold font-heading">
                                             Division
                                         </label>
-                                        <select id="high_school_details_division" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="high_school_details_division"
+                                            class="form-select py-9 placeholder-13 text-15">
                                             <option disabled selected>Select </option>
                                             <option value="First Division">First Division </option>
                                             <option value="Second Division">Second Division </option>
@@ -524,7 +563,11 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
+                <!-- Account Info -->
+=======
                  <!-- Account Info -->
+>>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
                 <!-- <div class="card mt-24">
                     <div class="card-header border-bottom">
                       <h4 class="mb-4">Account Information</h4>
@@ -618,7 +661,7 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
     <!-- custom js  -->
-     <script type="module" src="assets/custom-js/edit-student.js"></script>
+    <script type="module" src="assets/custom-js/edit-student.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
     <!-- <script type="module" src="./assets/custom-js/create-student.js"></script> -->
 
@@ -643,6 +686,37 @@
             }
         });
     </script>
+    <script>
+    // Get references to the input and image elements
+    const fileInput = document.getElementById("fileUpload-1");
+    const viewer = document.getElementById("viewer1");
+
+    // Add an event listener for file selection
+    fileInput.addEventListener("change", function () {
+        const file = fileInput.files[0]; // Get the selected file
+        if (file) {
+            const reader = new FileReader(); // Create a FileReader to read the file
+            reader.onload = function (e) {
+                viewer.src = e.target.result; // Update the image's src with the file's data URL
+            };
+            reader.readAsDataURL(file); // Read the file as a Data URL
+        }
+    });
+    const fileInput2 = document.getElementById("fileUpload-2");
+    const viewer2 = document.getElementById("viewer2");
+
+    // Add an event listener for file selection
+    fileInput2.addEventListener("change", function () {
+        const file = fileInput2.files[0]; // Get the selected file
+        if (file) {
+            const reader = new FileReader(); // Create a FileReader to read the file
+            reader.onload = function (e) {
+                viewer2.src = e.target.result; // Update the image's src with the file's data URL
+            };
+            reader.readAsDataURL(file); // Read the file as a Data URL
+        }
+    });
+</script>
 
 
 

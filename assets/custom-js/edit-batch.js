@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { COURSE_GETALL_API, BATCH_GET_API, BATCH_UPDATE_API, BATCH_Category_GETALL_API } from './global/apis.js';
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";

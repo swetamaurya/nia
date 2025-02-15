@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { BATCH_GETALL_API, CLASS_CREATE_API, COURSE_category_GETALL_API, COURSE_GETALL_API, USER_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
@@ -29,7 +33,7 @@ async function loadAllList(){
         const api4 = fetch(`${COURSE_GETALL_API}`, ddd1);
         // -------------------------------------------------------------------------------
 
-        // Await all fetch calls and parse JSON
+        // Await all fetch calls and parse JSON 
         const responses = await Promise.all([api1, api2, api3, api4]);
 
         const [data1, data2, data3, data4] = await Promise.all(

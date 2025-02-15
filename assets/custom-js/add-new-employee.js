@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+  localStorage.clear();
+  window.location.href = 'sign-in.html';
+}
 import { USER_CREATE_API,ROLE_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
@@ -84,7 +88,10 @@ for (const image of images) {
         console.log('THIS IS MY RESPONSE: ',r1)
         // -----------------------------------------------------------------------------------
         try{
-            status_popup(r1?.message, (response?.ok));
+          status_popup(r1?.message, (response?.ok));
+          setTimeout(()=>{
+              window.location.href = 'employee-list.html'
+            },1000)
         } catch(error){console.log(error)}
     } catch(error){
         status_popup( ("Invalid Credentials"), (false));

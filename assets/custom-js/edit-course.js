@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
+=======
+>>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
 import { COURSE_GET_API, COURSE_UPDATE_API, USER_GETALL_API, COURSE_category_GETALL_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
@@ -257,14 +264,14 @@ window.editLoadData = async function editLoadData() {
         // Render existing course materials
         if (course.materials.length > 0) {
             course.materials.map((e, i) => {
-                courseFileTbody.innerHTML += `
+                courseFileTbody.innerHTML += ` 
             <tr>
                 <td>${i + 1}</td>
                 <td><a href="${e}" target="_blank">File ${i + 1}</a></td>
                 <td>
                     <div class="btn--container d-flex">
-                        <a href="${e}" class="action-btn me-5" title="View">
-                            <i class="ph ph-eye"></i>
+                        <a href="${e}" class="action-btn me-5" title="Download">
+                            <i class="ph ph-arrow-down"></i>
                         </a>
                         <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-${i}" data-message="Want to delete this file?">
                             <i class="ph ph-trash"></i>
@@ -358,7 +365,7 @@ async function createCourse(event) {
             formData.append("thumbnail", thumbnail);
         }
         formData.append("title", title);
-        formData.append("description", description);
+        formData.append("description", description); 
         formData.append("category", category);
         formData.append("statusOfCards", statusOfCards);
         formData.append("createdBy", createdBy);

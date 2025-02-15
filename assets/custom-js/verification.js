@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { ADMIN_VERIFY_OTP } from './global/apis.js'
 
 // try{

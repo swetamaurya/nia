@@ -1,4 +1,8 @@
 console.log("hello world")
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 
 // -----------------------------------------------------------------------------
 const token = localStorage.getItem('token');

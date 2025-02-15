@@ -1,5 +1,8 @@
 // employee-list.js
-
+if (!localStorage.getItem("token")) {
+  localStorage.clear();
+  window.location.href = 'sign-in.html';
+}
 import { USER_GETALL_API, USER_UPDATE_API } from "./global/apis.js";
 import {
  

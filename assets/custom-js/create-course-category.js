@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { 
     COURSE_category_CREATE_API, 
     COURSE_category_GETALL_API, 

@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+    localStorage.clear();
+    window.location.href = 'sign-in.html';
+  }
 import { STUDENT_GET_API, BATCH_GETALL_API ,STUDENT_UPDATE_API} from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
@@ -85,6 +89,8 @@ window.editLoadData = async function editLoadData() {
     const examination_centre_state = document.getElementById('examination_centre_state');
     const examination_centre_city = document.getElementById('examination_centre_city');
     const status =document.getElementById('status');
+    const profilePhoto = document.getElementById('viewer1')
+    const signaturePhoto = document.getElementById('viewer2')
     // formData.append('status', document.getElementById('status').value);
 
 
@@ -99,10 +105,11 @@ window.editLoadData = async function editLoadData() {
             },
         });
         if (!response.ok) {
-            throw new Error("Failed to fetch data.");
+            throw new Error("Failed to fetch data."); 
         }
         const res = await response.json()
         const student = res.student
+        console.log('hkhk: ',student);
         batchId.value = student.batchId || '';
         application_number.value = student.application_number || '';
     registration_number.value = student.registration_number || '';
@@ -116,7 +123,7 @@ window.editLoadData = async function editLoadData() {
     phone.value = student.phone || '';
     gender.value = student.gender || '';
     marital_status.value = student.marital_status || '';
-    photo_path.value = student.photo_path || '';
+    // photo_path.value = student.photo_path || '';
     present_street.value = student.present_street || '';
     present_house_no.value = student.permanent_house_no || '';
     present_village.value = student.present_village || '';
@@ -144,6 +151,9 @@ window.editLoadData = async function editLoadData() {
     examination_centre_state.value = student.examination_centre_state || '';
     examination_centre_city.value = student.examination_centre_city || '';
     status.value = student.status || ''
+    student.photo_path? profilePhoto.src = student.photo_path : profilePhoto.src = "assets/images/thumbs/upload-image.png"
+    student.signature_path? signaturePhoto.src = student.signature_path : signaturePhoto.src = "assets/images/thumbs/upload-image.png"
+
     } catch (error) { console.log(error) }
     try {
         remove_loading_shimmer();
@@ -158,7 +168,98 @@ editLoadData()
 // ✅ Submit Batch Form (Edit)
 async function editBatchForm(event) {
     event.preventDefault();
+    const formData = new FormData();
 
+<<<<<<< HEAD
+    const photo_paths = document.getElementById('fileUpload-1').files;
+    const signature_paths = document.getElementById('fileUpload-2').files;
+
+    
+    for (const photo_path of photo_paths) {
+        formData.append("photo_path", photo_path);
+    }
+    for (const signature_path of signature_paths) {
+        formData.append("signature_path", signature_path);
+    }
+    
+    formData.append('present_house_no', document.getElementById('present_house_no').value);
+formData.append('present_village', document.getElementById('present_village').value);
+formData.append('present_city', document.getElementById('present_city').value);
+formData.append('present_post_office', document.getElementById('present_post_office').value);
+formData.append('present_state', document.getElementById('present_state').value);
+formData.append('present_district', document.getElementById('present_district').value);
+formData.append('present_pincode', document.getElementById('present_pincode').value);
+
+// Permanent Address
+formData.append('permanent_street', document.getElementById('permanent_street').value);
+formData.append('permanent_house_no', document.getElementById('permanent_house_no').value);
+formData.append('permanent_village', document.getElementById('permanent_village').value);
+formData.append('permanent_city', document.getElementById('permanent_city').value);
+formData.append('permanent_post_office', document.getElementById('permanent_post_office').value);
+formData.append('permanent_state', document.getElementById('permanent_state').value);
+formData.append('permanent_district', document.getElementById('permanent_district').value);
+formData.append('permanent_pincode', document.getElementById('permanent_pincode').value);
+
+// Education Details
+formData.append('educational_qualification', document.getElementById('educational_qualification').value);
+formData.append('educational_qualification_division', document.getElementById('educational_qualification_division').value);
+formData.append('intermediate_details', document.getElementById('intermediate_details').value);
+formData.append('intermediate_details_division', document.getElementById('intermediate_details_division').value);
+formData.append('high_school_details', document.getElementById('high_school_details').value);
+formData.append('high_school_details_division', document.getElementById('high_school_details_division').value);
+
+// Examination Details
+formData.append('apply_for', document.getElementById('apply_for').value);
+formData.append('examination_fees', document.getElementById('examination_fees').value);
+formData.append('examination_centre_state', document.getElementById('examination_centre_state').value);
+formData.append('examination_centre_city', document.getElementById('examination_centre_city').value);
+
+// Other Details
+formData.append('status', document.getElementById('status').value);
+formData.append('_id', id); // Assuming `id` is already defined
+
+
+    // const batchId = document.getElementById('batchId').value;
+    // const application_number = document.getElementById('application_number').value;
+    // const registration_number = document.getElementById('registration_number').value;
+    // const first_name = document.getElementById('first_name').value;
+    // const last_name = document.getElementById('last_name').value;
+    // const father_husband_name = document.getElementById('father_husband_name').value;
+    // const mother_name = document.getElementById('mother_name').value;
+    // const date_of_birth = document.getElementById('date_of_birth').value;
+    // const category = document.getElementById('category').value;
+    // const phone = document.getElementById('phone').value;
+    // const gender = document.getElementById('gender').value;
+    // const marital_status = document.getElementById('marital_status').value;
+    // const photo_path = document.getElementById('photo_path').value;
+    // const present_house_no = document.getElementById('present_house_no').value;
+    // const present_village = document.getElementById('present_village').value;
+    // const present_city = document.getElementById('present_city').value;
+    // const present_post_office = document.getElementById('present_post_office').value;
+    // const present_state = document.getElementById('present_state').value;
+    // const present_district = document.getElementById('present_district').value;
+    // const present_pincode = document.getElementById('present_pincode').value;
+    // const permanent_street = document.getElementById('permanent_street').value;
+    // const permanent_house_no = document.getElementById('permanent_house_no').value;
+    // const permanent_village = document.getElementById('permanent_village').value;
+    // const permanent_city = document.getElementById('permanent_city').value;
+    // const permanent_post_office = document.getElementById('permanent_post_office').value;
+    // const permanent_state = document.getElementById('permanent_state').value;
+    // const permanent_district = document.getElementById('permanent_district').value;
+    // const permanent_pincode = document.getElementById('permanent_pincode').value;
+    // const educational_qualification = document.getElementById('educational_qualification').value;
+    // const educational_qualification_division = document.getElementById('educational_qualification_division').value;
+    // const intermediate_details = document.getElementById('intermediate_details').value;
+    // const intermediate_details_division = document.getElementById('intermediate_details_division').value;
+    // const high_school_details = document.getElementById('high_school_details').value;
+    // const high_school_details_division = document.getElementById('high_school_details_division').value;
+    // const apply_for = document.getElementById('apply_for').value;
+    // const examination_fees = document.getElementById('examination_fees').value;
+    // const examination_centre_state = document.getElementById('examination_centre_state').value;
+    // const examination_centre_city = document.getElementById('examination_centre_city').value;
+    // const status = document.getElementById('status').value;
+    // const _id = id;
+=======
     const batchId = document.getElementById('batchId').value;
     const application_number = document.getElementById('application_number').value;
     const registration_number = document.getElementById('registration_number').value;
@@ -200,6 +301,7 @@ async function editBatchForm(event) {
     const examination_centre_city = document.getElementById('examination_centre_city').value;
     const status = document.getElementById('status').value;
     const _id = id;
+>>>>>>> b349d434fc691165adf5aa670dffc296f447ec6e
 
     try {
         loading_shimmer();
@@ -212,10 +314,9 @@ async function editBatchForm(event) {
         const response = await fetch(API, {
             method: 'POST', //   Changed from POST to PATCH (for updates)
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': token
             },
-            body: JSON.stringify({ batchId, application_number, registration_number, first_name, last_name, father_husband_name,mother_name,date_of_birth,category,email,phone,gender,marital_status,status,photo_path,present_house_no,present_village,present_city,present_post_office,present_state,present_district,present_pincode,permanent_street,permanent_house_no,permanent_village,permanent_city,permanent_post_office,permanent_state,permanent_district,permanent_pincode,educational_qualification, educational_qualification_division,intermediate_details,intermediate_details_division,high_school_details,high_school_details_division,apply_for,examination_fees,examination_centre_state,examination_centre_city,_id })
+            body: formData
         });
 
         const r1 = await response.json();
