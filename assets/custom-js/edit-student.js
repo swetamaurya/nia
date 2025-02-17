@@ -170,7 +170,7 @@ async function editBatchForm(event) {
     event.preventDefault();
     const formData = new FormData();
 
-     const photo_paths = document.getElementById('fileUpload-1').files;
+    const photo_paths = document.getElementById('fileUpload-1').files;
     const signature_paths = document.getElementById('fileUpload-2').files;
 
     
@@ -258,49 +258,7 @@ formData.append('_id', id); // Assuming `id` is already defined
     // const examination_centre_city = document.getElementById('examination_centre_city').value;
     // const status = document.getElementById('status').value;
     // const _id = id;
- 
-    const batchId = document.getElementById('batchId').value;
-    const application_number = document.getElementById('application_number').value;
-    const registration_number = document.getElementById('registration_number').value;
-    const first_name = document.getElementById('first_name').value;
-    const last_name = document.getElementById('last_name').value;
-    const father_husband_name = document.getElementById('father_husband_name').value;
-    const mother_name = document.getElementById('mother_name').value;
-    const date_of_birth = document.getElementById('date_of_birth').value;
-    const category = document.getElementById('category').value;
-    // const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const gender = document.getElementById('gender').value;
-    const marital_status = document.getElementById('marital_status').value;
-    const photo_path = document.getElementById('photo_path').value;
-    const present_house_no = document.getElementById('present_house_no').value;
-    const present_village = document.getElementById('present_village').value;
-    const present_city = document.getElementById('present_city').value;
-    const present_post_office = document.getElementById('present_post_office').value;
-    const present_state = document.getElementById('present_state').value;
-    const present_district = document.getElementById('present_district').value;
-    const present_pincode = document.getElementById('present_pincode').value;
-    const permanent_street = document.getElementById('permanent_street').value;
-    const permanent_house_no = document.getElementById('permanent_house_no').value;
-    const permanent_village = document.getElementById('permanent_village').value;
-    const permanent_city = document.getElementById('permanent_city').value;
-    const permanent_post_office = document.getElementById('permanent_post_office').value;
-    const permanent_state = document.getElementById('permanent_state').value;
-    const permanent_district = document.getElementById('permanent_district').value;
-    const permanent_pincode = document.getElementById('permanent_pincode').value;
-    const educational_qualification = document.getElementById('educational_qualification').value;
-    const educational_qualification_division = document.getElementById('educational_qualification_division').value;
-    const intermediate_details = document.getElementById('intermediate_details').value;
-    const intermediate_details_division = document.getElementById('intermediate_details_division').value;
-    const high_school_details = document.getElementById('high_school_details').value;
-    const high_school_details_division = document.getElementById('high_school_details_division').value;
-    const apply_for = document.getElementById('apply_for').value;
-    const examination_fees = document.getElementById('examination_fees').value;
-    const examination_centre_state = document.getElementById('examination_centre_state').value;
-    const examination_centre_city = document.getElementById('examination_centre_city').value;
-    const status = document.getElementById('status').value;
-    const _id = id;
- 
+
     try {
         loading_shimmer();
     } catch (error) {
