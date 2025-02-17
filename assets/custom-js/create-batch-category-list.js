@@ -410,6 +410,7 @@ import {
   // Add Batch Form Function
   async function addBatchForm(event) {
     event.preventDefault();
+    if(!validateStudent()) return
   
     const createList = document.getElementById("createList")?.value; // Ensure correct ID
   
@@ -489,95 +490,95 @@ import {
   // ==============================================================================
   // Add Batch Form Function
 //  Function to handle batch selection and student selection
-// async function multipleBatchForm(event) {
-//   event.preventDefault();
+async function multipleBatchForm(event) {
+  event.preventDefault();
 
-//   //  Get all selected batch IDs
-//   const selectedBatches = [];
-//   document
-//     .querySelectorAll('#checkboxContainer input[type="checkbox"]:checked')
-//     .forEach((checkbox) => {
-//       selectedBatches.push(checkbox.value);
-//     });
+  //  Get all selected batch IDs
+  const selectedBatches = [];
+  document
+    .querySelectorAll('#checkboxContainer input[type="checkbox"]:checked')
+    .forEach((checkbox) => {
+      selectedBatches.push(checkbox.value);
+    });
 
-//   //  Get all selected student IDs
-//   const selectedStudents = [];
-//   document
-//     .querySelectorAll('#studentSelectList input[type="checkbox"]:checked')
-//     .forEach((checkbox) => {
-//       selectedStudents.push(checkbox.value);
-//     });
+  //  Get all selected student IDs
+  const selectedStudents = [];
+  document
+    .querySelectorAll('#studentSelectList input[type="checkbox"]:checked')
+    .forEach((checkbox) => {
+      selectedStudents.push(checkbox.value);
+    });
 
-//   console.log("🚀 Selected Batches:", selectedBatches);
-//   console.log("🚀 Selected Students:", selectedStudents);
+  // console.log("🚀 Selected Batches:", selectedBatches);
+  // console.log("🚀 Selected Students:", selectedStudents);
 
-//   if (selectedBatches.length === 0 || selectedStudents.length === 0) {
-//     alert("Please select at least one batch and one student.");
-//     return;
-//   }
+  // if (selectedBatches.length === 0 || selectedStudents.length === 0) {
+  //   alert("Please select at least one batch and one student.");
+  //   return;
+  // }
 
  
 
-//   try {
-//     loading_shimmer();
-//   } catch (error) {
-//     console.log(" Error showing shimmer:", error);
-//   }
+  try {
+    loading_shimmer();
+  } catch (error) {
+    console.log(" Error showing shimmer:", error);
+  }
 
-//   try {
-//     const API = BATCH_Category_UPDATE_API; //  Correct API for updating existing batches
+  try {
+    const API = BATCH_Category_UPDATE_API; //  Correct API for updating existing batches
 
-//     const response = await fetch(API, {
-//       method: "POST", //  PATCH is correct for updates
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: token,
-//       },
-//       body: JSON.stringify({
-//         batchIds: selectedBatches, //  Send selected batches as an array
-//         students: selectedStudents, //  Send selected students as an array
-//       }),
-//     });
+    const response = await fetch(API, {
+      method: "POST", //  PATCH is correct for updates
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        batchIds: selectedBatches, //  Send selected batches as an array
+        students: selectedStudents, //  Send selected students as an array
+      }),
+    });
 
-//     const result = await response.json();
-//     console.log(" Batch Update Response:", result);
+    const result = await response.json();
+    console.log(" Batch Update Response:", result);
 
-//     status_popup(result?.message, response.ok);
+    status_popup(result?.message, response.ok);
 
-//     // if (response.ok) {
-//     //   setTimeout(() => {
-//     //     window.location.href = "create-batch-category-list.html";
-//     //   }, 1000);
-//     // }
-//   } catch (error) {
-//     status_popup(" Batch update failed", false);
-//     console.log(" Error updating batch:", error);
-//   } finally {
-//     remove_loading_shimmer();
-//   }
-// }
+    // if (response.ok) {
+    //   setTimeout(() => {
+    //     window.location.href = "create-batch-category-list.html";
+    //   }, 1000);
+    // }
+  } catch (error) {
+    status_popup(" Batch update failed", false);
+    console.log(" Error updating batch:", error);
+  } finally {
+    remove_loading_shimmer();
+  }
+}
 
-// //  Attach event listener to submit button
-// document.addEventListener("DOMContentLoaded", () => {
-//   // console.log(" DOM fully loaded");
+//  Attach event listener to submit button
+document.addEventListener("DOMContentLoaded", () => {
+  // console.log(" DOM fully loaded");
 
-//   const submitButton = document.getElementById("submit");
-//   if (submitButton) {
-//     submitButton.addEventListener("click", (event) => {
-//       console.log(" Submit button clicked");
-//       multipleBatchForm(event);
-//     });
-//   } else {
-//     console.error(" Submit button not found!");
-//   }
-// });
+  const submitButton = document.getElementById("submit");
+  if (submitButton) {
+    submitButton.addEventListener("click", (event) => {
+      console.log(" Submit button clicked");
+      multipleBatchForm(event);
+    });
+  } else {
+    console.error(" Submit button not found!");
+  }
+});
 
 
 
 
 
 // ==============================================================================
-
+let studentArr = [];
 async function all_data_load_dashboard() {
   try {
     loading_shimmer();
@@ -613,6 +614,7 @@ async function all_data_load_dashboard() {
 
     if (batchs && batchs.length > 0) {
       rows = batchs.map((e, index) => {
+        studentArr.push(e.createList)
         return `
                     <tr data-id="${e?._id || "-"}">
                     <td><input type="checkbox" class="checkbox_child" value="${
@@ -722,7 +724,7 @@ window.editStatusById = async function editStatusById(id, event) {
     }
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   }
 };
@@ -785,8 +787,44 @@ addMultiListForm.addEventListener('submit',async(event)=>{
 //---------------------------------------------------------------------------
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
-  }
+  } 
 
 })
+
+//Validation
+function validateStudent(){
+  clearErrors();
+  let isValid=true;
+  let createList = document.getElementById('createList');
+  studentArr.map((e)=>{
+    if(e===createList.value){
+      showError(createList,'Student must be Unique');
+      isValid=false;
+    }
+  })
+  return isValid
+} 
+
+function showError(element, message) {
+  const errorContainer = element.previousElementSibling; // Access the div with label
+  let errorElement = errorContainer.querySelector('.text-danger.text-size');
+
+  if (!errorElement) {
+      errorElement = document.createElement('span');
+      errorElement.className = 'text-danger text-size mohit_error_js_dynamic_validation';
+      errorElement.style.fontSize = '10px';
+      errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+      errorContainer.appendChild(errorElement);
+  } else {
+      errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+  }
+}
+// --------------------------------------------------------------------------------------------------
+// Function to clear all error messages
+// --------------------------------------------------------------------------------------------------
+function clearErrors() {
+  const errorMessages = document.querySelectorAll('.text-danger.text-size.mohit_error_js_dynamic_validation');
+  errorMessages.forEach((msg) => msg.remove());
+}

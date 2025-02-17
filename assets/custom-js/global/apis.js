@@ -18,6 +18,7 @@ const batch = `/batch`
 const batchCategory = `/batchCategory`
 const student = `/student`
 const classes = `/class`
+const search = `/search`
 // -----------------------------------------
 export const TOKEN = localStorage.getItem("token");
 
@@ -33,6 +34,7 @@ const student_API = `${domain}${student}`
 export const delete_API = `${domain}/delete/all`;
 export const import_API = `${domain}/import/student`;
 export const EXPORT_API = `${domain}/export/data`  
+export const SEARCH_API = `${domain}/search/data`  
 
 
 const class_API = `${domain}${classes}`;
