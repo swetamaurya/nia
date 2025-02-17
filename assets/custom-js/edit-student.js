@@ -315,3 +315,38 @@ function resetBatchForm(event) {
 //   Attach Event Listeners
 document.getElementById('submit').addEventListener('click', editBatchForm);
 document.getElementById('cancel').addEventListener('click', resetBatchForm);
+
+
+
+// /Autofill the filled if the element is checked
+let permanentAddress = document.getElementById('sameAsPermanent')
+permanentAddress.addEventListener('change',(e)=>{
+    let permanent_street = document.getElementById('permanent_street').value
+    let permanent_house_no = document.getElementById('permanent_house_no').value
+    let permanent_village = document.getElementById('permanent_village').value
+    let permanent_city = document.getElementById('permanent_city').value
+    let permanent_post_office = document.getElementById('permanent_post_office').value
+    let permanent_state = document.getElementById('permanent_state').value
+    let permanent_district = document.getElementById('permanent_district').value
+    let permanent_pincode = document.getElementById('permanent_pincode').value
+    if(e.target.checked === true){
+        document.getElementById('present_street').value = permanent_street
+        document.getElementById('present_house_no').value = permanent_house_no
+        document.getElementById('present_village').value = permanent_village
+        document.getElementById('present_city').value = permanent_city
+        document.getElementById('present_post_office').value = permanent_post_office
+        document.getElementById('present_state').value = permanent_state
+        document.getElementById('present_district').value = permanent_district
+        document.getElementById('present_pincode').value = permanent_pincode
+    }
+    else{
+        document.getElementById('present_street').value = ""
+        document.getElementById('present_house_no').value = ""
+        document.getElementById('present_village').value = ""
+        document.getElementById('present_city').value = ""
+        document.getElementById('present_post_office').value = ""
+        document.getElementById('present_state').value = ""
+        document.getElementById('present_district').value = ""
+        document.getElementById('present_pincode').value = ""
+    }
+})
