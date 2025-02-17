@@ -45,11 +45,15 @@ async function loadAllList() {
  
     
         if (data && data.length > 0) {
-            rows = data.map(e => {
+            rows = data.map((e, index)=> {
                 return `
                     <tr data-id="${e?._id || "-"}">
-                        <td><input type="checkbox" class="checkbox_child" value="${e?._id || "-"}"></td>
-                        <td>
+                      <td>
+                            <p class="h6 mb-0 fw-medium text-gray-300">${
+                              index + 1
+                            }</p>
+                        </td>
+                          <td>
                             <div class="flex-align gap-8">
                                 <a><span class="h6 mb-0 fw-medium text-gray-300">${e?.classTitle}</span></a>
                             </div>
