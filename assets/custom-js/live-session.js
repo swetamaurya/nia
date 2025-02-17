@@ -70,8 +70,8 @@ async function loadAllList(){
         if(batchList!=null || batchList!=''){
             let aa1 = document.getElementById("selectbatchList");
             let dd1 = batchList.map((e)=>{
-                 return `<option value="${e?._id}" >${e?.batchId}</option>`;
-            }).join("");
+                 return `<option value="${e?._id}"> ${e?.batchTitle} (${e?.batchId})</option>`;
+             }).join("");
             aa1.innerHTML += dd1;
         }
     } catch (error){
