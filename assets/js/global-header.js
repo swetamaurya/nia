@@ -23,6 +23,8 @@ loadContent('footer.html', 'footer-placeholder');
 function initializeUser() {
     let userName = document.getElementById('userName');
     let userEmail = document.getElementById('userEmail');
+    let userRoles = document.getElementById('roles');
+
 
     if (!userName || !userEmail) {
         console.error("User elements not found!");
@@ -34,7 +36,9 @@ function initializeUser() {
 
     const name = localStorage.getItem("name") || "Guest";
     const email = localStorage.getItem("email") || "guest@example.com";
+    const roles = localStorage.getItem("roles") || "Guest";
 
     userName.innerText = name;
     userEmail.innerText = email;
+    userRoles.innerText = roles
 }
