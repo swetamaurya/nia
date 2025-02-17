@@ -59,8 +59,7 @@ async function all_data_load_dashboard() {
       }"></td>
                                 <td>
                                     <div class="flex-align gap-8">
-                                        <img src="${e.photo_path}" alt="" class="w-40 h-40 rounded-circle">
-                                        <span class="h6 mb-0 fw-medium text-gray-300">${fullName}</span>
+                                         <span class="h6 mb-0 fw-medium text-gray-300">${fullName}</span>
                                     </div>
                                 </td>
 
@@ -83,13 +82,7 @@ async function all_data_load_dashboard() {
                   >
                   
                 </td>
-                <td>
-                <span
-                    class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
-                    >${e.category || '-'}</span
-                  >
-                  
-                </td>
+                
                 <td>
                 <span
                     class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
