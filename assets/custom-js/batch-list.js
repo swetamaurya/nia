@@ -71,7 +71,7 @@ async function all_data_load_dashboard() {
               <span class="h6 mb-0 fw-medium text-gray-300">${e?.createdAt?.split(' ')[0] ?? '-'}</span>
             </td>
             <td>
-              <span class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill text-truncate" style="width:300px">
+              <span class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill text-truncate" >
                 ${e?.batchTitle ?? '-'}
               </span>
             </td>
