@@ -2,7 +2,7 @@ if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
   }
-import { BATCH_Category_GET_API,STUDENT_UPDATE_API } from './global/apis.js';
+import { BATCH_Category_GET_API,STUDENT_UPDATE_API  ,BATCH_Category_UPDATE_API} from './global/apis.js';
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
 import { individual_delete, objects_data_handler_function } from "./global/delete.js";
@@ -76,7 +76,8 @@ async function all_data_load_dashboard() {
                     <td><input type="checkbox" class="checkbox_child" value="${student?._id || '-'}"></td>
                     <td><p class="h6 mb-0 fw-medium text-gray-300">${index + 1}</p></td>
                     <td>
-                          <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
+                        <img style="width: 40px;" src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" class="rounded-circle" width="40">
+                        <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
                     </td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.email || "-"}</span></td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.application_number || "-"}</span></td>
@@ -89,7 +90,7 @@ async function all_data_load_dashboard() {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  ${student.userStatus === "Active" ? "checked" : ""}
+                  ${student.status === "Active" ? "checked" : ""}
                 />
               </div>
                     </td>
@@ -100,7 +101,7 @@ async function all_data_load_dashboard() {
                             </a>
                             <a data-bs-toggle="modal" data-bs-target="#delete_data"
                                class="action-btn btn--danger btn-outline-danger form-alert"
-                               onclick="individual_delete('${student?._id || '-'}')">
+                               onclick="getIdForDeletion('${student._id}')">
                                <i class="ph ph-trash"></i>
                             </a>
                         </div>
@@ -152,7 +153,7 @@ window.editStatusById = async function editStatusById(id, event) {
         },
         body: JSON.stringify({
           _id: id,
-          userStatus: updatedStatus
+          status: updatedStatus
         })
       });
   
@@ -179,5 +180,50 @@ paginationDataHandler(all_data_load_dashboard);
 
   
 all_data_load_dashboard();
+
+//getting the student id
+let studentId;
+window.getIdForDeletion = function getIdForDeletion(id){
+    studentId=id
+}
+
+let deleteStudent = document.getElementById('deleteButton')
+deleteStudent.addEventListener('click',async(event)=>{
+    event.preventDefault();
+    let batchIdForDeletion = id;
+    let deleteStudentId = studentId;
+    try {
+        loading_shimmer()
+    } catch (error) {
+        console.log(error)
+    }
+    try {
+        const response = await fetch(BATCH_Category_UPDATE_API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({
+            batchIdForDeletion,
+            deleteStudentId
+          }),
+        });
+    
+        const result = await response.json();
+        // console.log("Update status response:", result);
+    //--------------------------------------------------------------------------
+        try{
+            remove_loading_shimmer()
+            window.location.reload()
+          status_popup(result?.message, (response?.ok));
+        } catch(error){console.log(error)}
+    //---------------------------------------------------------------------------
+      } catch (error) {
+        console.error("Error while deleting:", error);
+      }
+})
+
+
 
 
