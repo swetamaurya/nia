@@ -1,7 +1,3 @@
-if (!localStorage.getItem("token")) {
-  localStorage.clear();
-  window.location.href = 'sign-in.html';
-}
 import {
     BATCH_Category_CREATE_API,
     BATCH_Category_GETALL_API,
@@ -30,7 +26,6 @@ import {
   window.individual_delete = individual_delete;
   const token = localStorage.getItem("token");
   
-  let studentListArr = []
   // ==============================================================================
   // Dropdown for Course
   // Fetch student data and populate multi-select dropdown
@@ -46,9 +41,7 @@ import {
         });
     
         const apiData = await response.json();
-        studentListArr = apiData.students
-        console.log("Fetched Students:", apiData);
-
+        // console.log("Fetched Students:", apiData);
     
         const searchInputElement = document.getElementById("searchStudentInputs");
         const studentListElement = document.getElementById("studentSelectList");
@@ -168,7 +161,7 @@ import {
       }
     }
     
-  let batchCategoryStudentArr = [];  
+    
   
   async function dropdownCoursesList() {
     const API = BATCH_Category_GETALL_API;
@@ -181,7 +174,6 @@ import {
         },
       });
       const res = await response.json();
-      batchCategoryStudentArr = res.data;
       // console.log("Fetched Data:", res.data);
       const checkboxContainer = document.getElementById("checkboxContainer");
   
@@ -194,8 +186,8 @@ import {
           checkboxDiv.className = "form-check mb-2";
   
           const checkbox = document.createElement("input");
-          checkbox.classList.add("form-check-input", "student-check");
           checkbox.type = "checkbox";
+          checkbox.className = "form-check-input";
           checkbox.id = `checkbox_${course._id}`;
           checkbox.value = course.createList; // Assuming createList contains the course name
   
@@ -629,13 +621,19 @@ async function all_data_load_dashboard() {
                             }</span>
                         </td>
                         <td>
-                            <a href="#" class="import-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
-                              e._id
-                            }">Import</a>
-                            <a href="#" class="export-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
-                              e._id
-                            }">Export</a>
-                        </td>
+                      
+                <div class="btn--container d-flex">
+                    <a href="${e._id ? `bulk-import.html?id=${e._id}` : '#'}"
+                       class="import-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white"
+                       title="Import">
+                       Import
+                    </a>
+                    <a href="#" class="export-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${e._id}">
+                      Export
+                    </a>
+                </div>
+            </td>
+                          
                         <td>
                             <div
                 onclick="editStatusById('${e._id}', event)"
@@ -731,62 +729,3 @@ window.editStatusById = async function editStatusById(id, event) {
 paginationDataHandler(all_data_load_dashboard);
 
 all_data_load_dashboard();
-
-let a = document.getElementById('dropdownToggle');
-a.addEventListener('change',()=>{
-  let multiSelectedBatch = document.getElementById('multiSelectedBatch');
-})
-
-const addMultiListForm = document.getElementById('add-multi-list-form');
-addMultiListForm.addEventListener('submit',async(event)=>{
-  event.preventDefault()
-  const batchIds = [];
-  const student = [];
-  // console.log('this is my multi Student: ',batchCategoryStudentArr);
-  // console.log('this is my student data: ',studentListArr)
-  // batchCategoryStudentArr.filter((e)=>{e._id ===})
-  try {
-    
-    document.querySelectorAll('.student-check').forEach((e)=>{
-      if(e.checked === true){
-        console.log(e.value);
-        console.log(e.id.split('_')[1]);
-        batchIds.push(e.id.split('_')[1])
-      }
-    })
-    document.querySelectorAll('.student-checkbox').forEach((ee)=>{
-      if(ee.checked === true){
-        console.log('this is my id: ',ee.value);
-        student.push(ee.value)
-      }
-    })
-  } catch (error) {
-    console.log(error)
-  }
-  try {
-    const response = await fetch(BATCH_Category_UPDATE_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-      body: JSON.stringify({
-        batchIds,
-        student
-      }),
-    });
-
-    const result = await response.json();
-    // console.log("Update status response:", result);
-//--------------------------------------------------------------------------
-    try{
-      status_popup(result?.message, (response?.ok));
-    } catch(error){console.log(error)}
-//---------------------------------------------------------------------------
-  } catch (error) {
-    console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
-    element.checked = !element.checked; //
-  }
-
-})
