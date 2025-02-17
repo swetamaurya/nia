@@ -1,18 +1,22 @@
+// अगर यूजर के पास token नहीं है तो sign-in पेज पर रीडायरेक्ट करें
 if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
-  }
+}
 import { CLASS_UPDATE_API, domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
 
 /********************************************
- *  Replace with your own details
+ *  अपने डिटेल्स यहाँ सेट करें
  ********************************************/
-const APP_ID = `${LIVE_CLASS_APP_ID}`;
-const SERVER_URL = `${domain}`;
-/********************************************/
+const APP_ID = LIVE_CLASS_APP_ID;
+const SERVER_URL = domain;
 
-// ========= [ A. RTC Setup with 2 Clients ] =========
-// -- Client A: for camera + mic --
+// टीचर के लिए निश्चित UID: कैमरा = 1001, स्क्रीन = 1002
+const teacherCameraUid = 1001;
+const teacherScreenUid = 1002;
+
+// ========= RTC Setup with 2 Clients =========
+// Client A: कैमरा + माइक के लिए
 let mainClient;
 let localTracks = {
     videoTrack: null,
@@ -20,19 +24,47 @@ let localTracks = {
 };
 let isMainPublished = false;
 
-// -- Client B: for screen share --
+// Client B: स्क्रीन शेयर के लिए
 let screenClient;
 let screenTrack = null;
 let isScreenPublished = false;
 
-// ========= [ B. RTM (Chat) Setup ] =========
-let rtmClient;
-let rtmChannel;
-// ======================================================================================
-// ======================================================================================
-// ======================================================================================
+// For session timer and student count
+let timerDiv = document.getElementById("timer");
+let studentCountDiv = document.getElementById("student-count");
+let startTime = null;
+let timerInterval = null;
+
+// For counting remote students (ignore teacher UIDs)
+let remoteUsers = {};
+
+// Update layout based on active streams (existing functionality)
+function updateLayoutTeacher() {
+  if (isScreenPublished && screenTrack) {
+    document.body.classList.add("screensharing");
+  } else {
+    document.body.classList.remove("screensharing");
+  }
+}
+
+// Update session timer display
+function updateTimer() {
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const hours = String(Math.floor(elapsed / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((elapsed % 3600) / 60)).padStart(2, "0");
+  const seconds = String(elapsed % 60).padStart(2, "0");
+  timerDiv.innerText = `Session Timer: ${hours}:${minutes}:${seconds}`;
+}
+
+// Update student count display
+function updateStudentCount() {
+  const count = Object.keys(remoteUsers).length;
+  studentCountDiv.innerText = `Total Students Live: ${count}`;
+}
+
+// Live class ID localStorage से
 let __id = localStorage.getItem("liveClassIdStart");
-// ======================================================================================
+
 (function(){
     if(localStorage.getItem("liveClassIdStart")){
         liveClassStart();
@@ -41,78 +73,72 @@ let __id = localStorage.getItem("liveClassIdStart");
         // window.location.href = 'sign-in.html';  
     }
 })();
-// ======================================================================================
-// ======================================================================================
 
 // =========== Start Button (Camera & Mic) ===========
-// document.getElementById("startBtn").addEventListener("click", liveClassStart)
-
 async function liveClassStart(){
     if (isMainPublished) {
         alert("Already streaming camera!");
         return;
     }
-
-    // Get the channel name
     const channelName = __id;
     if (!channelName) {
         alert("Please enter a channel name first!");
         return;
     }
-
-    // Random teacher UID
-    const uid = String(Math.floor(Math.random() * 10000));
-    const role = "publisher";
-
-    // 1) Get RTC token
-    let rtcToken;
+    // GET मेथड से कैमरा टोकन प्राप्त करें
+    let rtcTokenCamera;
     try {
-        const resp = await fetch(`${SERVER_URL}/rtc-token`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ channelName, uid, role })
-        });
+        const resp = await fetch(`${SERVER_URL}/rtcToken?channel=${channelName}&uid=${teacherCameraUid}`);
         const data = await resp.json();
-        rtcToken = data.token;
+        rtcTokenCamera = data.token;
     } catch (err) {
-        console.error("Failed to get RTC token:", err);
+        console.error("Failed to get RTC token for camera:", err);
         return;
     }
-
     try {
-        // 2) mainClient join
         mainClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-        await mainClient.join(APP_ID, channelName, rtcToken, uid);
+        await mainClient.join(APP_ID, channelName, rtcTokenCamera, teacherCameraUid);
 
-        // 3) Create camera+mic
+        // कैमरा + माइक ट्रैक्स बनाएं
         const [micTrack, camTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
         localTracks.audioTrack = micTrack;
         localTracks.videoTrack = camTrack;
 
-        // 4) Play camera in teacher-stream
+        // teacher-stream container में प्ले करें
         localTracks.videoTrack.play("teacher-stream");
 
-        // 5) Publish
+        // ट्रैक्स पब्लिश करें
         await mainClient.publish([micTrack, camTrack]);
         isMainPublished = true;
-        console.log("Camera stream published!");
+        updateLayoutTeacher();
 
-        // 6) Also log in to RTM and join channel for chat
-        // await startRTM(channelName, uid);
+        // Start session timer
+        startTime = Date.now();
+        timerInterval = setInterval(updateTimer, 1000);
+
+        // Listen for remote student events on clientCamera
+        mainClient.on("user-joined", (user) => {
+            if (user.uid !== teacherCameraUid && user.uid !== teacherScreenUid) {
+                remoteUsers[user.uid] = user;
+                updateStudentCount();
+            }
+        });
+        mainClient.on("user-left", (user) => {
+            if (remoteUsers[user.uid]) {
+                delete remoteUsers[user.uid];
+                updateStudentCount();
+            }
+        });
     } catch (err) {
         console.error("Error starting main stream:", err);
     }
 };
 
-// ========== Stop Button (Stop All Streaming) ==========
+// ========== Stop Button (Stop All Streaming) ===========
 let stopBtnEventListener = document.getElementById("stopBtn");
 stopBtnEventListener.addEventListener("click", async function(){
-    console.log("hello brohter, this si fiish. ")
     localStorage.removeItem("liveClassIdStart");
     liveClassStop();
-    
-    console.log("hello brohter, sfgsfa=fa=df=a===================adf=asdf=")
-    console.log("hello brohter, sfgsfa=fa=df=a===================adf=asdf=")
     
     let API = `${CLASS_UPDATE_API}`;
     await fetch(API, {
@@ -126,13 +152,10 @@ stopBtnEventListener.addEventListener("click", async function(){
             "liveClassStatus":"false"
         })
     });
-    console.log("hello brohter, sfgsfa=fa=df=a===================adf=asdf=")
-    
-})
+});
 
 async function liveClassStop(){
-
-    // 1) Stop camera+mic
+    // कैमरा + माइक स्टॉप करें
     if (isMainPublished && mainClient) {
         try {
             await mainClient.unpublish();
@@ -153,8 +176,7 @@ async function liveClassStop(){
             console.error("Error stopping main stream:", err);
         }
     }
-
-    // 2) Stop screen share
+    // स्क्रीन शेयर स्टॉप करें
     if (isScreenPublished && screenClient) {
         try {
             await screenClient.unpublish(screenTrack);
@@ -170,31 +192,24 @@ async function liveClassStop(){
             console.error("Error stopping screen share:", err);
         }
     }
-
-    // 3) Clear UI
     document.getElementById("teacher-stream").innerHTML = "";
     document.getElementById("screen-stream").innerHTML = "";
     document.body.classList.remove("screensharing");
 
-    // 4) Leave RTM channel if joined
-    if (rtmChannel) {
-        await rtmChannel.leave();
-        rtmChannel = null;
-    }
-    if (rtmClient) {
-        await rtmClient.logout();
-        rtmClient = null;
-    }
+    clearInterval(timerInterval);
+    timerDiv.innerText = "Session Timer: 00:00:00";
 
-    console.log("All streaming & RTM stopped.");
-};
+    remoteUsers = {};
+    updateStudentCount();
+    updateLayoutTeacher();
+}
 
 // ========== Screen Share ON ==========
-document.getElementById("screenShareBtn").addEventListener("click", function() {
+document.getElementById("screenShareBtn").addEventListener("click", async function() {
     screenShareOnBtnFun();
     document.getElementById("screenShareBtn").classList.add("d-none");
     document.getElementById("screenShareOffBtn").classList.remove("d-none");
-})
+});
 
 async function screenShareOnBtnFun (){
     if (!isMainPublished) {
@@ -205,69 +220,47 @@ async function screenShareOnBtnFun (){
         alert("Screen share already active!");
         return;
     }
-
     const channelName = __id;
     if (!channelName) {
         alert("Enter channel name first!");
         return;
     }
-
-    // New random UID for screen client
-    const uid = String(Math.floor(Math.random() * 10000));
-    const role = "publisher";
-
-    // 1) Get RTC token for second client
-    let screenToken;
+    // GET मेथड से स्क्रीन शेयर टोकन प्राप्त करें (UID = 1002)
+    let rtcTokenScreen;
     try {
-        const resp = await fetch(`${SERVER_URL}/rtc-token`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ channelName, uid, role })
-        });
+        const resp = await fetch(`${SERVER_URL}/rtcToken?channel=${channelName}&uid=${teacherScreenUid}`);
         const data = await resp.json();
-        screenToken = data.token;
+        rtcTokenScreen = data.token;
     } catch (err) {
-        console.error("Failed to get screen RTC token:", err);
+        console.error("Failed to get RTC token for screen share:", err);
         return;
     }
-
-    // 2) Create screenClient, join channel
     try {
         screenClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-        await screenClient.join(APP_ID, channelName, screenToken, uid);
-
-        // 3) Create screen track
-        screenTrack = await AgoraRTC.createScreenVideoTrack(
-            { encoderConfig: "1080p_1" },
-            "auto"
-        );
-
-        // 4) Publish screen track
+        await screenClient.join(APP_ID, channelName, rtcTokenScreen, teacherScreenUid);
+        screenTrack = await AgoraRTC.createScreenVideoTrack();
         await screenClient.publish(screenTrack);
         isScreenPublished = true;
-        console.log("Screen sharing published!");
-
-        // 5) Play in #screen-stream
         document.body.classList.add("screensharing");
         screenTrack.play("screen-stream");
+        updateLayoutTeacher();
     } catch (err) {
         console.error("Error starting screen share:", err);
     }
 };
 
 // ========== Screen Share OFF ==========
-document.getElementById("screenShareOffBtn").addEventListener("click", function(){
+document.getElementById("screenShareOffBtn").addEventListener("click", async function(){
     screenShareOffFunction();
     document.getElementById("screenShareBtn").classList.remove("d-none");
     document.getElementById("screenShareOffBtn").classList.add("d-none");
-})
+});
 
 async function screenShareOffFunction(){
     if (!isScreenPublished || !screenClient || !screenTrack) {
         alert("No active screen share!");
         return;
     }
-
     try {
         await screenClient.unpublish(screenTrack);
         screenTrack.stop();
@@ -276,22 +269,20 @@ async function screenShareOffFunction(){
         await screenClient.leave();
         screenClient = null;
         isScreenPublished = false;
-
         document.body.classList.remove("screensharing");
         document.getElementById("screen-stream").innerHTML = "";
-        console.log("Screen sharing stopped!");
+        updateLayoutTeacher();
     } catch (err) {
         console.error("Error stopping screen share:", err);
     }
 };
 
 // ========== Video OFF (Camera) ==========
-document.getElementById("videoOffBtn").addEventListener("click", function(){
+document.getElementById("videoOffBtn").addEventListener("click", async function(){
     videoOffBtnFunction();
-    
     document.getElementById("videoOffBtn").classList.add("d-none");
     document.getElementById("videoOnBtn").classList.remove("d-none");
-})
+});
 async function videoOffBtnFunction(){
     if (!localTracks.videoTrack) {
         alert("Camera track not found!");
@@ -306,11 +297,11 @@ async function videoOffBtnFunction(){
 };
 
 // ========== Video ON (Camera) ==========
-document.getElementById("videoOnBtn").addEventListener("click", function(){
+document.getElementById("videoOnBtn").addEventListener("click", async function(){
     videoOnBtnFun();
     document.getElementById("videoOnBtn").classList.add("d-none");
     document.getElementById("videoOffBtn").classList.remove("d-none");
-})
+});
 async function videoOnBtnFun(){
     if (!localTracks.videoTrack) {
         alert("Camera track not found!");
@@ -325,12 +316,11 @@ async function videoOnBtnFun(){
 };
 
 // ========== Mic OFF ==========
-document.getElementById("micOffBtn").addEventListener("click", function(){
+document.getElementById("micOffBtn").addEventListener("click", async function(){
     micOffBtnFnc();
-    
     document.getElementById("micOffBtn").classList.add("d-none");
     document.getElementById("micOnBtn").classList.remove("d-none");
-})
+});
 async function micOffBtnFnc(){
     if (!localTracks.audioTrack) {
         alert("Mic track not found!");
@@ -345,12 +335,11 @@ async function micOffBtnFnc(){
 };
 
 // ========== Mic ON ==========
-document.getElementById("micOnBtn").addEventListener("click", function(){
+document.getElementById("micOnBtn").addEventListener("click", async function(){
     micOnBtnFnc();
-    
     document.getElementById("micOffBtn").classList.remove("d-none");
     document.getElementById("micOnBtn").classList.add("d-none");
-})
+});
 async function micOnBtnFnc(){
     if (!localTracks.audioTrack) {
         alert("Mic track not found!");
@@ -363,68 +352,3 @@ async function micOnBtnFnc(){
         console.error("Failed to turn on mic:", err);
     }
 };
-
-// ========== RTM (Chat) Logic ==========
-// async function startRTM(channelName, uid) {
-//     try {
-//         // 1) Get RTM token
-//         const resp = await fetch(`${SERVER_URL}/rtm-token`, {
-//             method: "POST",
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify({ uid })
-//         });
-//         console.warn("Fetching RTM token...");
-//         const data = await resp.json();
-//         const rtmToken = data.token;
-//         console.warn("RTM token fetched:", rtmToken);
-
-//         // 2) Create RTM client & login
-//         console.warn("Logging in to RTM...");
-//         rtmClient = AgoraRTM.createInstance(APP_ID);
-//         await rtmClient.login({ token: rtmToken, uid });
-//         console.warn("RTM login success, uid:", uid);
-//         console.warn("Successfully logged in to RTM.");
-
-//         // 3) Join RTM channel
-//         console.warn("Joining RTM channel...");
-//         rtmChannel = await rtmClient.createChannel(channelName);
-//         await rtmChannel.join();
-//         console.warn("RTM channel joined:", channelName);
-//         console.warn("Joined RTM channel:", channelName);
-
-//         // 4) Listen for incoming messages
-//         rtmChannel.on("ChannelMessage", ({ text }, senderId) => {
-//             addMessageToChatBox(`User(${senderId}): ${text}`);
-//         });
-//     } catch (err) {
-//         console.error("Error starting RTM:", err);
-//     }
-// }
-
-// ---------- Send Chat Message ----------
-// document.getElementById("send-btn").onclick = async () => {
-//     if (!rtmChannel) {
-//         alert("Not in RTM channel yet!");
-//         return;
-//     }
-//     const input = document.getElementById("chat-input");
-//     const msg = input.value.trim();
-//     if (!msg) return;
-
-//     try {
-//         await rtmChannel.sendMessage({ text: msg });
-//         addMessageToChatBox(`Me: ${msg}`);
-//         input.value = "";
-//     } catch (err) {
-//         console.error("Failed to send RTM message:", err);
-//     }
-// };
-
-// Display a new chat message in the #chat-box
-// function addMessageToChatBox(message) {
-//     const box = document.getElementById("chat-box");
-//     const newMsg = document.createElement("div");
-//     newMsg.innerText = message;
-//     box.appendChild(newMsg);
-//     box.scrollTop = box.scrollHeight;
-// }

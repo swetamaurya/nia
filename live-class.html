@@ -4,300 +4,284 @@
 <!-- Mirrored from html.themeholy.com/edmate/live-class.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:40 GMT -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title -->
-    <title> LMS Dashboard</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/file-upload.css">
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/plyr.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-    <!-- full calendar -->
-    <link rel="stylesheet" href="assets/css/full-calendar.css">
-    <!-- jquery Ui -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">
-    <!-- editor quill Ui -->
-    <link rel="stylesheet" href="assets/css/editor-quill.css">
-    <!-- apex charts Css -->
-    <link rel="stylesheet" href="assets/css/apexcharts.css">
-    <!-- calendar Css -->
-    <link rel="stylesheet" href="assets/css/calendar.css">
-    <!-- jvector map Css -->
-    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title -->
+  <title> LMS Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css">
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/plyr.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+  <!-- full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css">
+  <!-- jquery Ui -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <!-- editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css">
+  <!-- apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css">
+  <!-- calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Main css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script src="assets/js/global-header.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/global-header.js"></script>
 
-    <style>
-        body {
-            font-family: sans-serif;
-        }
+  <style>
+    body {
+      font-family: sans-serif;
+    }
 
-        #controls {
-            margin-bottom: 15px;
-        }
+    #controls {
+      margin-bottom: 15px;
+    }
 
-        #teacher-stream,
-        #screen-stream {
-            margin: 10px 0;
-            background: #ccc;
-            position: relative;
-            border-radius: 15px;
+    #teacher-stream,
+    #screen-stream {
+      margin: 10px 0;
+      background: #ccc;
+      position: relative;
+      border-radius: 15px;
+    }
 
-            >div {
-                border-radius: 15px;
-            }
+    /* Default sizing for teacher-stream when screen share is OFF */
+    #teacher-stream {
+      width: 100%;
+      height: 500px;
+      border-radius: 15px;
+    }
 
-        }
+    /* Hidden by default for screen-stream */
+    #screen-stream {
+      display: none;
+      width: 100%;
+      height: 400px;
+      background: #aaa;
+    }
 
-        /* Default sizing for teacher-stream when screen share is OFF */
-        #teacher-stream {
-            width: 100%;
-            height: 500px;
-            border-radius: 15px;
+    /* When screen sharing is ON, show #screen-stream and shrink #teacher-stream into corner */
+    body.screensharing #screen-stream {
+      display: block;
+      width: 100%;
+      height: 500px;
+      background: #ccc;
+      margin-bottom: 20px;
+    }
 
+    body.screensharing #teacher-stream {
+      width: 200px;
+      height: 150px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+      border: 2px solid #000;
+    }
 
-        }
+    video {
+      border-radius: 15px;
+    }
 
-        /* Hidden by default for screen-stream */
-        #screen-stream {
-            display: none;
-            width: 100%;
-            height: 400px;
-            background: #aaa;
-        }
+    /* Chat styles */
+    #chat-container {
+      margin-top: 20px;
+    }
 
-        /* When screen sharing is ON, show #screen-stream and shrink #teacher-stream into corner */
-        body.screensharing #screen-stream {
-            display: block;
-            width: 100%;
-            height: 500px;
-            background: #ccc;
-            margin-bottom: 20px;
-        }
+    #chat-box {
+      width: 300px;
+      height: 200px;
+      border: 1px solid #ccc;
+      overflow: auto;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
 
-        body.screensharing #teacher-stream {
-            width: 200px;
-            height: 150px;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 999;
-            border: 2px solid #000;
-        }
+    #chat-input {
+      width: 220px;
+    }
 
-        video {
-            border-radius: 15px;
-        }
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
 
-        /* Chat styles */
-        #chat-container {
-            margin-top: 20px;
-        }
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-        #chat-box {
-            width: 300px;
-            height: 200px;
-            border: 1px solid #ccc;
-            overflow: auto;
-            margin-bottom: 10px;
-            padding: 5px;
-        }
+    button i {
+      font-size: 18px;
+    }
 
-        #chat-input {
-            width: 220px;
-        }
+    button:hover {
+      transform: scale(1.05);
+    }
 
-        #controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+    button:active {
+      transform: scale(0.95);
+    }
 
-        button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 15px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
+    .on {
+      background-color: #28a745;
+    }
 
-        button i {
-            font-size: 18px;
-        }
+    .on:hover {
+      background-color: #1e7e34;
+    }
 
-        button:hover {
-            transform: scale(1.05);
-        }
+    .off {
+      background-color: #dc3545;
+    }
 
-        button:active {
-            transform: scale(0.95);
-        }
+    .off:hover {
+      background-color: #b02a37;
+    }
 
-        .on {
-            background-color: #28a745;
-        }
-
-        .on:hover {
-            background-color: #1e7e34;
-        }
-
-        .off {
-            background-color: #dc3545;
-        }
-
-        .off:hover {
-            background-color: #b02a37;
-        }
-
-        /* Separator styles */
-        .separator {
-            display: inline-block;
-            width: 2px;
-            height: 24px;
-            background-color: #ccc;
-            margin: 0 10px;
-        }
-    </style>
+    /* Separator styles */
+    .separator {
+      display: inline-block;
+      width: 2px;
+      height: 24px;
+      background-color: #ccc;
+      margin: 0 10px;
+    }
+  </style>
 
 </head>
 
 <body>
 
-    <!--==================== Preloader Start ====================-->
-    <div class="preloader">
-        <div class="loader"></div>
-    </div>
-    <!--==================== Preloader End ====================-->
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
 
-    <!--==================== Sidebar Overlay End ====================-->
-    <div class="side-overlay"></div>
-    <!--==================== Sidebar Overlay End ====================-->
+  <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
 
-    <!-- ============================ Sidebar Start ============================ -->
+  <!-- ============================ Sidebar Start ============================ -->
 
-    <aside class="sidebar" id="sidebar-placeholder"></aside>
+  <aside class="sidebar" id="sidebar-placeholder"></aside>
 
-    <!-- ============================ Sidebar End  ============================ -->
+  <!-- ============================ Sidebar End  ============================ -->
 
-    <div class="dashboard-main-wrapper">
-        <div id="header-placeholder"></div>
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
 
+    <div class="dashboard-body">
 
-        <div class="dashboard-body">
+      <!-- Breadcrumb Start -->
+      <div class="breadcrumb mb-24 d-flex justify-content-between">
+        <ul class="flex-align gap-4">
+          <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+          <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+          <li><span class="text-main-600 fw-normal text-15">Course Details</span></li>
+        </ul>
 
-            <!-- Breadcrumb Start -->
-            <div class="breadcrumb mb-24 d-flex justify-content-between">
-                <ul class="flex-align gap-4">
-                    <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
-                    <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-                    <li><span class="text-main-600 fw-normal text-15">Course Details</span></li>
-                </ul>
-
-                <div>
-                    <button id="stopBtn" class="off"><i class="fas fa-close"></i> Finish & Exit</button>
-                </div>
-            </div>
-            <!-- Breadcrumb End -->
-
-
-            <div class="row gy-4">
-                <div class="col-md-12">
-                    <div class="rounded-16 overflow-hidden position-relative">
-                        <span
-                            class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
-                        <!-- Teacher camera container -->
-                        <div id="teacher-stream"></div>
-                        <!-- Screen-share container -->
-                        <div id="screen-stream"></div>
-                    </div>
-
-
-
-
-                    
-            <!-- Channel name input -->
-            <!-- <input type="text" id="classId" placeholder="Enter your channel/class name" style="margin-bottom:10px; display: none;" hidden /> -->
-
-            <!-- Control Buttons -->
-            <div id="controls" class="align-items-center">
-                <button id="screenShareBtn" class="on"><i class="fas fa-desktop"></i> Screen Share ON</button>
-                <button id="screenShareOffBtn" class="off d-none"><i class="fas fa-pause-circle"></i> Screen Sharing Paused</button>
-                <span class="separator"></span>
-                <button id="videoOnBtn" class="on d-none"><i class="fas fa-video"></i> Video ON</button>
-                <button id="videoOffBtn" class="off"><i class="fas fa-video-slash"></i> Disable Video</button>
-                <span class="separator"></span>
-                <button id="micOnBtn" class="on d-none"><i class="fas fa-microphone"></i> Mic ON</button>
-                <button id="micOffBtn" class="off"><i class="fas fa-volume-mute"></i>Mute Mic</button>
-            </div>
-
-
-
-
-                    <!-- Course Card Start -->
-                    
-                    <!-- Course Card End -->
-                </div>
-            </div>
+        <div>
+          <button id="stopBtn" class="off"><i class="fas fa-close"></i> Finish & Exit</button>
         </div>
-        <div id="footer-placeholder"></div>
+      </div>
+      <!-- Breadcrumb End -->
+
+      <div class="row gy-4">
+        <div class="col-md-12">
+          <div class="rounded-16 overflow-hidden position-relative">
+            <span class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
+            <!-- Teacher camera container -->
+            <div id="teacher-stream"></div>
+            <!-- Screen-share container -->
+            <div id="screen-stream"></div>
+          </div>
+
+          <!-- Control Buttons -->
+          <div id="controls" class="align-items-center">
+            <button id="screenShareBtn" class="on"><i class="fas fa-desktop"></i> Screen Share ON</button>
+            <button id="screenShareOffBtn" class="off d-none"><i class="fas fa-pause-circle"></i> Screen Sharing Paused</button>
+            <span class="separator"></span>
+            <button id="videoOnBtn" class="on d-none"><i class="fas fa-video"></i> Video ON</button>
+            <button id="videoOffBtn" class="off"><i class="fas fa-video-slash"></i> Video Disabled</button>
+            <span class="separator"></span>
+            <button id="micOnBtn" class="on d-none"><i class="fas fa-microphone"></i> Mic ON</button>
+            <button id="micOffBtn" class="off"><i class="fas fa-volume-mute"></i> Mic Muted</button>
+          </div>
+
+          <!-- Additional Info: Session Timer and Student Count -->
+          <div class="mb-3">
+            <div id="timer">Session Timer: 00:00:00</div>
+            <div id="student-count">Total Students Live: 0</div>
+          </div>
+
+          <!-- Course Card Start -->
+          <!-- (Other content can go here) -->
+          <!-- Course Card End -->
+        </div>
+      </div>
     </div>
+    <div id="footer-placeholder"></div>
+  </div>
 
 
-    <!-- main js -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/global-header.js"></script>
-    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+  <!-- main js -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/global-header.js"></script>
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
 
-    <script src="assets/custom-js/live-class.js" type="module"></script>
+  <script src="assets/custom-js/live-class.js" type="module"></script>
 
-
-    <!-- Jquery js -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <!-- Bootstrap Bundle Js -->
-    <script src="assets/js/boostrap.bundle.min.js"></script>
-    <!-- Phosphor Js -->
-    <script src="assets/js/phosphor-icon.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/file-upload.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/plyr.js"></script>
-    <!-- dataTables -->
-    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <!-- full calendar -->
-    <script src="assets/js/full-calendar.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/jquery-ui.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/editor-quill.js"></script>
-    <!-- apex charts -->
-    <script src="assets/js/apexcharts.min.js"></script>
-    <!-- jvectormap Js -->
-    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
-    <!-- jvectormap world Js -->
-    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
-
+  <!-- Jquery js -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap Bundle Js -->
+  <script src="assets/js/boostrap.bundle.min.js"></script>
+  <!-- Phosphor Js -->
+  <script src="assets/js/phosphor-icon.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/file-upload.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/plyr.js"></script>
+  <!-- dataTables -->
+  <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <!-- full calendar -->
+  <script src="assets/js/full-calendar.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/jquery-ui.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/editor-quill.js"></script>
+  <!-- apex charts -->
+  <script src="assets/js/apexcharts.min.js"></script>
+  <!-- jvectormap Js -->
+  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+  <!-- jvectormap world Js -->
+  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
 
 </body>
 

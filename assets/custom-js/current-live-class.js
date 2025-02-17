@@ -1,7 +1,9 @@
+// Redirect to sign-in if no token exists
 if (!localStorage.getItem("token")) {
   localStorage.clear();
   window.location.href = 'sign-in.html';
 }
+
 import { domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
 
 /********************************************
@@ -9,176 +11,140 @@ import { domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
  ********************************************/
 const APP_ID = LIVE_CLASS_APP_ID;
 const SERVER_URL = domain;
+
 /********************************************/
 
-let rtcClient;             // For audio/video
-let remoteUid = null;      // Might store teacher’s UID if needed
-let screenShareTrack = null;  // Teacher's screen-share
-let cameraTrack = null;       // Teacher's camera
+// For the student, let Agora assign a UID (using null)
+const appId = APP_ID;
+const uid = null;
 
-// Live class ID from local storage
-let __id = localStorage.getItem("liveClassIdStart");
+// Create an Agora client (subscriber)
+let client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
-// Auto-start if we have a class ID
-(function(){
-  if (__id) {
-    liveClassStart();
-  } else {
-    // localStorage.clear();
-    // window.location.href = 'live-class-list.html';  
+// DOM element references
+const remoteCameraDiv = document.getElementById("remote-camera");
+const remoteScreenDiv = document.getElementById("remote-screen");
+const remoteScreenContainer = document.getElementById("remote-screen-container");
+
+// Flags to track teacher stream availability
+// (Teacher uses fixed UIDs: 1001 for camera, 1002 for screen)
+let teacherCameraActive = false;
+let teacherScreenActive = false;
+
+// Fetch token from the server
+async function getToken(channel, uid) {
+  try {
+    const response = await fetch(`${SERVER_URL}/rtcToken?channel=${channel}&uid=${uid || 0}`);
+    const data = await response.json();
+    return data.token;
+  } catch (error) {
+    console.error("Error fetching token:", error);
+    return null;
   }
+}
+
+/**
+ * Update the student layout based on available teacher streams:
+ *
+ * - If both teacher screen and camera streams are active:
+ *    • The teacher screen (#remote-screen) is shown full width (100% × 500px).
+ *    • The teacher camera (#remote-camera) is overlaid at the bottom–right.
+ *
+ * - If only the teacher camera is active:
+ *    • The teacher camera is displayed full width (by overriding its styles).
+ *
+ * - If only the teacher screen is active:
+ *    • The teacher screen is shown full width.
+ *
+ * - If neither stream is active, both containers are hidden.
+ */
+function updateLayoutStudent() {
+  if (teacherCameraActive && teacherScreenActive) {
+    // Both streams active: show teacher screen and overlay teacher camera
+    remoteScreenDiv.classList.remove("hidden");
+    remoteCameraDiv.classList.remove("hidden");
+    // Remove any inline style overrides (use default overlay styling)
+    remoteCameraDiv.style.position = "";
+    remoteCameraDiv.style.width = "";
+    remoteCameraDiv.style.height = "";
+  } else if (teacherCameraActive && !teacherScreenActive) {
+    // Only teacher camera active: show teacher camera as full stream
+    remoteCameraDiv.classList.remove("hidden");
+    remoteScreenDiv.classList.add("hidden");
+    // Override styling so that the camera fills the container
+    remoteCameraDiv.style.position = "relative";
+    remoteCameraDiv.style.width = "100%";
+    remoteCameraDiv.style.height = "500px";
+  } else if (teacherScreenActive && !teacherCameraActive) {
+    // Only teacher screen active: show teacher screen as full stream
+    remoteScreenDiv.classList.remove("hidden");
+    remoteCameraDiv.classList.add("hidden");
+  } else {
+    // Neither stream active: hide both containers
+    remoteScreenDiv.classList.add("hidden");
+    remoteCameraDiv.classList.add("hidden");
+  }
+}
+
+// Immediately join the channel (using live class ID stored in localStorage)
+(async function () {
+  const channel = localStorage.getItem("liveClassIdStart");
+  if (!channel) {
+    console.error("No live class ID found in localStorage.");
+    return;
+  }
+  const token = await getToken(channel, uid);
+  if (!token) {
+    console.error("Failed to retrieve token.");
+    return;
+  }
+  await client.join(appId, channel, token, uid);
 })();
 
-async function liveClassStart() {
-  const channelName = __id;
-  if (!channelName) {
-    alert("Please enter a channel name!");
-    return;
-  }
-  // Generate a random UID for the student
-  const uid = String(Math.floor(Math.random() * 10000));
-  await joinRTC(channelName, uid);
-}
-
-async function joinRTC(channelName, uid) {
-  try {
-    // 1. Get an RTC token from your server
-    const role = "subscriber";
-    const resp = await fetch(`${SERVER_URL}/rtc-token`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ channelName, uid, role }),
-    });
-    const data = await resp.json();
-    const rtcToken = data.token;
-
-    // 2. Create Agora client
-    rtcClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-
-    // 3. Handle teacher’s tracks
-    rtcClient.on("user-published", handleUserPublished);
-    rtcClient.on("user-unpublished", handleUserUnpublished);
-
-    // 4. Join channel
-    await rtcClient.join(APP_ID, channelName, rtcToken, uid);
-    console.log("Student joined RTC channel:", channelName, "UID:", uid);
-  } catch (error) {
-    console.error("Failed to join RTC:", error);
-  }
-}
-
-async function handleUserPublished(user, mediaType) {
-  await rtcClient.subscribe(user, mediaType);
-  console.log("Subscribed to user:", user.uid, "mediaType:", mediaType);
-
-  remoteUid = user.uid; 
-
-  if (mediaType === "audio" && user.audioTrack) {
-    // Just play audio
-    user.audioTrack.play();
-    return;
-  }
-
-  if (mediaType === "video" && user.videoTrack) {
-    // Heuristic to distinguish screen-share track vs. camera track
-    const trackLabel = user.videoTrack
-                          .getMediaStreamTrack()
-                          .label.toLowerCase();
-
-    if (trackLabel.includes("screen")) {
-      // Screen-share track
-      screenShareTrack = user.videoTrack;
-      playScreenShare();
-    } else {
-      // Camera track
-      cameraTrack = user.videoTrack;
-      playCameraFeed();
-    }
-  }
-}
-
-function handleUserUnpublished(user, mediaType) {
-  console.log("User unpublished:", user.uid, "mediaType:", mediaType);
+// Subscribe to remote streams published by the teacher
+client.on("user-published", async (user, mediaType) => {
+  await client.subscribe(user, mediaType);
+  console.log("Subscribed to user:", user.uid);
 
   if (mediaType === "video") {
-    // Check which track got unpublished
-    const trackLabel = user.videoTrack?.getMediaStreamTrack()?.label?.toLowerCase() || "";
-
-    // If it's the screen-share track
-    if (screenShareTrack && trackLabel.includes("screen")) {
-      screenShareTrack.stop();
-      screenShareTrack.close();
-      screenShareTrack = null;
-
-      // Clear main stream
-      clearMainStream();
-
-      // If camera is still active, show it
-      if (cameraTrack) {
-        playCameraFeed();
-      }
-    }
-    // If it's the camera track
-    else if (cameraTrack && !trackLabel.includes("screen")) {
-      cameraTrack.stop();
-      cameraTrack.close();
-      cameraTrack = null;
-
-      // If no screen-share remains, clear the main container
-      if (!screenShareTrack) {
-        clearMainStream();
-      }
-      hideCameraBox();
+    if (user.uid === 1001) {
+      // Teacher camera stream
+      teacherCameraActive = true;
+      user.videoTrack && user.videoTrack.play(remoteCameraDiv);
+    } else if (user.uid === 1002) {
+      // Teacher screen share stream
+      teacherScreenActive = true;
+      user.videoTrack && user.videoTrack.play(remoteScreenDiv);
     }
   }
-}
-
-// ========== Helper functions ==========
-
-// Show screen-share in the main container
-function playScreenShare() {
-  if (!screenShareTrack) return;
-  screenShareTrack.play("main-stream");
-
-  // If camera track also exists, show it in the small corner
-  if (cameraTrack) {
-    showCameraBox();
-    cameraTrack.play("teacher-camera-container");
+  if (mediaType === "audio") {
+    user.audioTrack && user.audioTrack.play();
   }
-}
+  updateLayoutStudent();
+});
 
-// Show camera track in main container (if no screen-share),
-// or in small box if screen-share is active
-function playCameraFeed() {
-  if (!screenShareTrack) {
-    // No screen-share, so camera goes full in main-stream
-    cameraTrack.play("main-stream");
-    hideCameraBox();
-  } else {
-    // Screen-share is active, so keep it in main,
-    // and move camera to the small corner container
-    screenShareTrack.play("main-stream");
-    showCameraBox();
-    cameraTrack.play("teacher-camera-container");
+// When a teacher stream is unpublished, update the layout accordingly
+client.on("user-unpublished", (user, mediaType) => {
+  if (mediaType === "video") {
+    if (user.uid === 1001) {
+      teacherCameraActive = false;
+      remoteCameraDiv.innerHTML = "";
+    } else if (user.uid === 1002) {
+      teacherScreenActive = false;
+      remoteScreenDiv.innerHTML = "";
+    }
   }
-}
+  updateLayoutStudent();
+});
 
-// Clear the main container (stop/hide existing video)
-function clearMainStream() {
-  const mainElem = document.getElementById("main-stream");
-  mainElem.innerHTML = "";
-}
-
-// Display the small camera box
-function showCameraBox() {
-  const camBox = document.getElementById("teacher-camera-container");
-  camBox.style.display = "block";
-  camBox.innerHTML = "";
-}
-
-// Hide the small camera box
-function hideCameraBox() {
-  const camBox = document.getElementById("teacher-camera-container");
-  camBox.style.display = "none";
-  camBox.innerHTML = "";
-}
+// Clean up if a teacher leaves the channel
+client.on("user-left", (user) => {
+  if (user.uid === 1001) {
+    teacherCameraActive = false;
+    remoteCameraDiv.innerHTML = "";
+  } else if (user.uid === 1002) {
+    teacherScreenActive = false;
+    remoteScreenDiv.innerHTML = "";
+  }
+  updateLayoutStudent();
+});

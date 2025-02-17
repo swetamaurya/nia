@@ -1,89 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LMS Dashboard</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 
-  <!-- File upload -->
-  <link rel="stylesheet" href="assets/css/file-upload.css">
-  <link rel="stylesheet" href="assets/css/plyr.css">
-
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-
-  <!-- Full calendar -->
-  <link rel="stylesheet" href="assets/css/full-calendar.css">
-
-  <!-- jQuery UI -->
-  <link rel="stylesheet" href="assets/css/jquery-ui.css">
-
-  <!-- Editor quill Ui -->
-  <link rel="stylesheet" href="assets/css/editor-quill.css">
-
-  <!-- Apex charts Css -->
-  <link rel="stylesheet" href="assets/css/apexcharts.css">
-
-  <!-- Calendar Css -->
-  <link rel="stylesheet" href="assets/css/calendar.css">
-
-  <!-- jvector map Css -->
-  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-  <!-- Main css -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/file-upload.css" />
+  <link rel="stylesheet" href="assets/css/plyr.css" />
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+  <link rel="stylesheet" href="assets/css/full-calendar.css" />
+  <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+  <link rel="stylesheet" href="assets/css/editor-quill.css" />
+  <link rel="stylesheet" href="assets/css/apexcharts.css" />
+  <link rel="stylesheet" href="assets/css/calendar.css" />
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 
   <script src="assets/js/global-header.js"></script>
 
-  <!--
-    Custom inline style for the main stream container and camera corner box
-  -->
   <style>
-    /* Main container for either screen-share or full camera */
-    #main-stream {
+    /* Main container for the teacher's screen share stream */
+    #remote-screen {
       width: 100%;
       height: 500px;
-      background: #ddd;
-      margin-bottom: 15px;
-      position: relative;
-
-      > div:nth-child(1){
-        position: absolute !important;
-        height: 200px !important;
-        width: 200px !important;
-        z-index: 1;
-        bottom: 0;
-        border-radius: 20px;
-      }
-
+      background-color: #000;
     }
 
-    /* Small camera box for teacher's camera when screen-share is active */
-    #teacher-camera-container {
+    /* Overlay style for teacher's camera stream when both streams are active */
+    #remote-camera {
       width: 200px;
-      height: 120px;
+      height: 100px;
+      border: 2px solid #fff;
       position: absolute;
-      bottom: 30px;
-      left: 30px;
-      background: #000;
-      display: none; /* Hidden by default; shown only when both screen & camera are active */
-      z-index: 999;
+      bottom: 20px;
+      left: 20px;
+      z-index: 100;
+    }
+
+    /* When only teacher camera is active, show it full width */
+    .full-stream {
+      position: relative !important;
+      width: 100% !important;
+      height: 500px !important;
+    }
+
+    /* Hide elements by default */
+    .hidden {
+      display: none;
+    }
+
+    /* Container for the remote screen (sets the positioning context) */
+    #remote-screen-container {
+      position: relative;
+      width: 100%;
     }
   </style>
 </head>
-
 <body>
-
   <!--==================== Preloader Start ====================-->
   <div class="preloader">
     <div class="loader"></div>
@@ -98,15 +80,19 @@
 
   <div class="dashboard-main-wrapper">
     <div id="header-placeholder"></div>
-
     <div class="dashboard-body">
-
       <!-- Breadcrumb Start -->
       <div class="breadcrumb mb-24">
         <ul class="flex-align gap-4">
-          <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
-          <li><span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span></li>
-          <li><span class="text-main-600 fw-normal text-15">Class Name</span></li>
+          <li>
+            <a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+          </li>
+          <li>
+            <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
+          </li>
+          <li>
+            <span class="text-main-600 fw-normal text-15">Class Name</span>
+          </li>
         </ul>
       </div>
       <!-- Breadcrumb End -->
@@ -115,20 +101,18 @@
         <div class="col-md-12">
           <div class="rounded-16 overflow-hidden position-relative">
             <span class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
-            
-            <!-- 
-              Replace the old #remote-stream container:
-              Main container for screen-share OR full camera,
-              plus the smaller camera corner container
-            -->
-            <div id="main-stream"></div>
-            <div id="teacher-camera-container"></div>
+            <div id="remote-screen-container">
+              <h3>Teacher Screen Share</h3>
+              <!-- Teacher's screen share will appear here -->
+              <div id="remote-screen" class="hidden"></div>
+              <!-- Teacher's camera stream will overlay here in dual-stream mode -->
+              <div id="remote-camera" class="hidden"></div>
+            </div>
           </div>
 
           <!-- Course Card Start -->
-         
+          <!-- (Your other content here) -->
           <!-- Course Card End -->
-
         </div>
       </div>
     </div>
@@ -143,7 +127,7 @@
   <script src="assets/custom-js/current-live-class.js" type="module"></script>
   <!-- =========== END STUDENT LIVE CLASS JS =========== -->
 
-  <!-- Additional JS (from your original code) -->
+  <!-- Additional JS Files -->
   <script src="assets/js/jquery-3.7.1.min.js"></script>
   <script src="assets/js/boostrap.bundle.min.js"></script>
   <script src="assets/js/phosphor-icon.js"></script>
