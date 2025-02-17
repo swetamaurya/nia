@@ -1,3 +1,7 @@
+if (!localStorage.getItem("token")) {
+  localStorage.clear();
+  window.location.href = 'sign-in.html';
+}
 import { STUDENT_GETALL_API, EXPORT_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
@@ -41,7 +45,7 @@ async function all_data_load_dashboard() {
       const totalPages = res?.pagination?.totalPages ?? 1;
   
  
-      if (data && data.length > 0) {
+      if (data && data.length > 0) { 
        
         rows = data.map((e) => {
                           const first_name = e.first_name || "";
@@ -83,6 +87,13 @@ async function all_data_load_dashboard() {
                 <span
                     class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
                     >${e.category || '-'}</span
+                  >
+                  
+                </td>
+                <td>
+                <span
+                    class="h6 mb-0 fw-medium text-gray-300 p-6 px-10 rounded-pill"
+                    >${e.createdAt.split(' ')[0] || '-'}</span
                   >
                   
                 </td>
