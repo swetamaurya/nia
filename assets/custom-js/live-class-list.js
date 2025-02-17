@@ -116,12 +116,12 @@ loadAllList()
 // ==============================================================================================
 // ==============================================================================================
 
-// window.classLoadView = function (__id){
-//     localStorage.setItem("liveClassIdStart", __id);
-//     window.location.href = 'current-live-class.html';
+window.classLoadView = function (__id){
+    localStorage.setItem("liveClassIdStart", __id);
+    window.location.href = 'current-live-class.html';
 
 
-// }
+}
 
 
 
