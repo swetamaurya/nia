@@ -44,6 +44,7 @@ document.getElementById(signIn).addEventListener("submit", async function (event
                     localStorage.setItem('email',r1?.admin?.email);
                     localStorage.setItem('permissions',r1?.admin?.permissions);
                     localStorage.setItem('roles', r1?.admin?.roles)
+                    localStorage.setItem('image', r1?.admin?.image)
 
                     window.location.href = `index-2.html`
                 } catch(error){

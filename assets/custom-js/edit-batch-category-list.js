@@ -76,9 +76,7 @@ async function all_data_load_dashboard() {
                     <td><input type="checkbox" class="checkbox_child" value="${student?._id || '-'}"></td>
                     <td><p class="h6 mb-0 fw-medium text-gray-300">${index + 1}</p></td>
                     <td>
-                         <img style="width: 40px;" src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" class="rounded-circle" width="40">
-                         <img src="${student?.photo_path || 'assets/images/thumbs/upload-image.png'}" alt="Profile" class="rounded-circle" style="width:40px;height:40px;">
-                         <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
+                          <span class="h6 mb-0 fw-medium text-gray-300">${student?.first_name || "-"} ${student?.last_name || "-"}</span>
                     </td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.email || "-"}</span></td>
                     <td><span class="h6 mb-0 fw-medium text-gray-300">${student?.application_number || "-"}</span></td>
@@ -91,7 +89,7 @@ async function all_data_load_dashboard() {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  ${student.status === "Active" ? "checked" : ""}
+                  ${student.userStatus === "Active" ? "checked" : ""}
                 />
               </div>
                     </td>
@@ -154,7 +152,7 @@ window.editStatusById = async function editStatusById(id, event) {
         },
         body: JSON.stringify({
           _id: id,
-          status: updatedStatus
+          userStatus: updatedStatus
         })
       });
   
