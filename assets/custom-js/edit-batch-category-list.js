@@ -47,7 +47,7 @@ async function all_data_load_dashboard() {
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch data. HTTP Status: ${response.status}`);
+            throw new Error(`Failed to fetch data. HTTP Disable Video: ${response.status}`);
         }
 
         const res = await response.json();
@@ -90,7 +90,7 @@ async function all_data_load_dashboard() {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  ${student.status === "Active" ? "checked" : ""}
+                  ${student.userStatus === "Active" ? "checked" : ""}
                 />
               </div>
                     </td>
@@ -146,14 +146,14 @@ window.editStatusById = async function editStatusById(id, event) {
   
     try {
       const response = await fetch(STUDENT_UPDATE_API, {
-        method: "POST", // ✅ Use PATCH instead of POST for updates
+        method: "POST", //   Use PATCH instead of POST for updates
         headers: {
           "Content-Type": "application/json",
           Authorization: token
         },
         body: JSON.stringify({
           _id: id,
-          status: updatedStatus
+          userStatus: updatedStatus
         })
       });
   
