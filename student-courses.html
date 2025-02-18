@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
     <title> LMS Dashboard</title>
     <!-- Favicon -->
@@ -67,8 +67,8 @@
                 </ul>
             </div>
             <!-- Breadcrumb End -->
-               <!-- Breadcrumb Right Start -->
-        <!-- <div class="flex-align gap-8 flex-wrap">
+            <!-- Breadcrumb Right Start -->
+            <!-- <div class="flex-align gap-8 flex-wrap">
          
   
             <div
@@ -80,40 +80,40 @@
               </button>
             </div>
           </div> -->
-          <!-- Breadcrumb Right End -->
-      <!-- Delete Data Modal -->
-      <div class="modal custom-modal fade" id="delete_data" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="form-header">
-                <h3>Delete Batch List</h3>
-                <p>Are you sure want to delete?</p>
-              </div>
-              <div class="modal-btn delete-action">
-                <div class="row">
-                  <div class="col-6">
-                    <a href="javascript:void(0);" id="deleteButton" class="btn btn-primary continue-btn"
-                      data-bs-dismiss="modal">Delete</a>
-                  </div>
-                  <div class="col-6">
-                    <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
-                      class="btn btn-primary cancel-btn">Cancel</a>
-                  </div>
+            <!-- Breadcrumb Right End -->
+            <!-- Delete Data Modal -->
+            <div class="modal custom-modal fade" id="delete_data" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-header">
+                                <h3>Delete Batch List</h3>
+                                <p>Are you sure want to delete?</p>
+                            </div>
+                            <div class="modal-btn delete-action">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="javascript:void(0);" id="deleteButton"
+                                            class="btn btn-primary continue-btn" data-bs-dismiss="modal">Delete</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
+                                            class="btn btn-primary cancel-btn">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
 
             <!-- Recommended Course Start -->
             <div class="card mt-24">
                 <div class="card-body">
-                    <div class="mb-20 flex-between flex-wrap gap-8">
+                    <!-- <div class="mb-20 flex-between flex-wrap gap-8">
                         <h4 class="mb-0">Recommended For You</h4>
-                    </div>
+                    </div> -->
 
                     <div id="courses-cards" class="row g-20">
                         <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
@@ -125,7 +125,7 @@
                                     </a>
                                     <div class="p-8">
                                         <span class="text-13 py-2 px-10 rounded-pill bg-warning-50 text-warning-600 mb-16">Design</span> -->
-                                        <!-- <h5 class="mb-4"><a href="course-details.html"
+                        <!-- <h5 class="mb-4"><a href="course-details.html"
                                                 class="hover-text-main-600">Aviation</a></h5><span
                                             class="badge bg-success position-absolute "
                                             style="top: 9px;right: 8px;">Published</span>
@@ -146,7 +146,7 @@
 
 
 
-                                        <!-- <div class="flex-between flex-wrap mt-24 justify-content-between">
+                        <!-- <div class="flex-between flex-wrap mt-24 justify-content-between">
                                             <a href="course-details.html"
                                                 class="col-sm-6 btn  btn-outline-main rounded-pill py-9">Edit
                                             </a>
@@ -347,24 +347,29 @@
                         </div> -->
 
                     </div>
+                   
                 </div>
             </div>
             <!-- Recommended Course End -->
+            <div class="card mt-24">
+                <div class="card-body">
+                  
+                    <!-- Pagination Footer -->
+                    <div class="d-flex align-items-center justify-content-between" id="paginationFooter"
+                        >
+                        <!-- Injected dynamically by your pagination.js -->
+                    </div>
+                </div>
+            </div>
+
         </div>
-  <!-- Pagination Footer -->
-  <div class="d-flex align-items-center justify-content-between" id="paginationFooter" style="padding: 1rem;">
-    <!-- Injected dynamically by your pagination.js -->
-  </div>
-</div>
+        <div id="footer-placeholder"></div>
+
+    </div>
 
 
-</div>
-<div id="footer-placeholder"></div>
-</div>    </div>
-<th style="display: none;" class="employee_restriction_d_none" data-sortable="true">
-    <input type="checkbox" class="checkbox_all" name="" id="" hidden style="display: none;">
-  </th>
-     <!-- Jquery js -->
+
+    <!-- Jquery js -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap Bundle Js -->
     <script src="assets/js/boostrap.bundle.min.js"></script>
@@ -392,7 +397,7 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
     <!-- custom js -->
-     <script type="module" src="assets/custom-js/student-courses.js"></script>
+    <script type="module" src="assets/custom-js/student-courses.js"></script>
 
 
 </body>

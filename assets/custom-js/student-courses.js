@@ -85,8 +85,8 @@ async function all_data_load_dashboard() {
                                               style="top: 13px;left: 13px;">${e.createdAt.split(' ')[0]}</span>
                                           <p class="three-line-text-truncate">${e.description}</p>
                                           <div class="flex-align gap-8 flex-wrap mt-16">
-                                              <img src="assets/images/thumbs/user-img5.png"
-                                                  class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
+                                              <img src="assets/images/thumbs/dummy-image.jpg"
+                                                  class="w-28 h-28 rounded-circle object-fit-cover" alt="">
                                               <div>
                                                     <span class="text-gray-600 text-13">Instructor Name <a href="profile.html"
                                                            class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">${instructorName}</a> </span>
