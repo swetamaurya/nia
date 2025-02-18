@@ -32,7 +32,16 @@
     <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css">
-
+    <style>
+        .auth-right__inner .badge {
+            font-weight: 400;
+            font-size: 14px;
+            color: #01684b;
+            background-color: rgba(1, 104, 75, 0.1);
+            border-radius: 15px;
+            padding: 7px 13px 6px;
+        }
+    </style>
     <script src="assets/js/global-header.js"></script>
 </head> 
 <body>
@@ -57,6 +66,12 @@
                     <img src="assets/images/logo/nia-logo.png" style="width: 150px;height: 150px;" alt="">
                 </a>
                 <h2 class="mb-8">Welcome Back!</h2>
+                <p class="mb-0">Want to login your student account?
+                    <a href="sign-in-student.html">
+                        Student Login
+                    </a>
+                </p>
+                <span class="badge badge-soft-info my-10">( Admin or Employee login )</span>
                 <p class="text-gray-600 text-15 mb-32">Enter username and password to sign in!</p>
 
                 <form id="sign-in-form">
