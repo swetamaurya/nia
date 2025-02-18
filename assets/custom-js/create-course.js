@@ -126,9 +126,9 @@ for (const thumbnail of thumbnails) {
         // -----------------------------------------------------------------------------------
         try{
             status_popup(r1?.message, (response?.ok));
-            setTimeout(()=>{
-                window.location.href = 'student-courses.html';
-            },1000)
+            // setTimeout(()=>{
+            //     window.location.href = 'student-courses.html';
+            // },1000)
         } catch(error){console.log(error)}
     } catch(error){
         status_popup( ("Invalid Credentials"), (false));
