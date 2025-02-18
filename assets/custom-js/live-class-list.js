@@ -42,10 +42,13 @@ async function loadAllList() {
  
         const totalCount = r1?.pagination?.totalCount ?? 0;
         const totalPages = r1?.pagination?.totalPages ?? 1;
- 
-    
+        const currentPage = r1?.pagination?.currentPage ?? 1;
+        const itemsPerPage = 10;
+        
         if (data && data.length > 0) {
             rows = data.map((e, index)=> {
+                const startIndex = (currentPage - 1) * itemsPerPage;
+
                 const rowNumber = startIndex + index + 1;
                 return `
                     <tr data-id="${e?._id || "-"}">
