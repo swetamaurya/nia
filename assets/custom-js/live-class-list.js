@@ -46,11 +46,12 @@ async function loadAllList() {
     
         if (data && data.length > 0) {
             rows = data.map((e, index)=> {
+                const rowNumber = startIndex + index + 1;
                 return `
                     <tr data-id="${e?._id || "-"}">
                       <td>
                             <p class="h6 mb-0 fw-medium text-gray-300">${
-                              index + 1
+                                rowNumber
                             }</p>
                         </td>
                           <td>
