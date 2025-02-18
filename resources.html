@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!-- Mirrored from html.themeholy.com/edmate/resources.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:21 GMT -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,68 +34,73 @@
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/global-header.js"></script>
-</head> 
-<body>
-    
-<!--==================== Preloader Start ====================-->
-  <div class="preloader">
-    <div class="loader"></div>
-  </div>
-<!--==================== Preloader End ====================-->
+</head>
 
-<!--==================== Sidebar Overlay End ====================-->
-<div class="side-overlay"></div>
-<!--==================== Sidebar Overlay End ====================-->
+<body>
+
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
 
     <!-- ============================ Sidebar Start ============================ -->
-<aside class="sidebar"  id="sidebar-placeholder"></aside>
-   
-<!-- ============================ Sidebar End  ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
 
     <div class="dashboard-main-wrapper">
 
         <div id="header-placeholder"></div>
 
-        
+
         <div class="dashboard-body">
 
             <div class="breadcrumb-with-buttons mb-24 flex-between flex-wrap gap-8">
                 <!-- Breadcrumb Start -->
-<div class="breadcrumb mb-24">
-    <ul class="flex-align gap-4">
-        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
-        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
-        <li><span class="text-main-600 fw-normal text-15">Files & Resources</span></li>
-    </ul>
-</div>
-<!-- Breadcrumb End -->
+                <div class="breadcrumb mb-24">
+                    <ul class="flex-align gap-4">
+                        <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+                        </li>
+                        <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+                        <li><span class="text-main-600 fw-normal text-15">Files & Resources</span></li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb End -->
 
-               <!-- Breadcrumb Right Start -->
-               <div class="flex-align gap-8 flex-wrap">
-                <div class="position-relative text-gray-500 flex-align gap-4 text-13">
-                    <span class="text-inherit">Sort by: </span>
-                    <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-                        <span class="text-lg"><i class="ph ph-funnel-simple"></i></span>
-                        <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center">
-                            <option value="1" selected>Popular</option>
-                            <option value="1">Latest</option>
-                            <option value="1">Trending</option>
-                            <option value="1">Matches</option>
+                <!-- Breadcrumb Right Start -->
+                <div class="flex-align gap-8 flex-wrap">
+                    <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+                        <span class="text-inherit">Sort by: </span>
+                        <div
+                            class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+                            <span class="text-lg"><i class="ph ph-funnel-simple"></i></span>
+                            <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center">
+                                <option value="1" selected>Popular</option>
+                                <option value="1">Latest</option>
+                                <option value="1">Trending</option>
+                                <option value="1">Matches</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div
+                        class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
+                        <span class="text-lg"><i class="ph ph-layout"></i></span>
+                        <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"
+                            id="exportOptions">
+                            <option value="" selected disabled>Export</option>
+                            <option value="csv">CSV</option>
+                            <option value="json">JSON</option>
                         </select>
                     </div>
                 </div>
-                <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-20 focus-border-main-600 bg-white">
-                    <span class="text-lg"><i class="ph ph-layout"></i></span>
-                    <select class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center" id="exportOptions">
-                        <option value="" selected disabled>Export</option>
-                        <option value="csv">CSV</option>
-                        <option value="json">JSON</option>
-                    </select>
-                </div>
+                <!-- Breadcrumb Right End -->
             </div>
-            <!-- Breadcrumb Right End -->
-            </div>
-           
+
             <!-- Card Start -->
             <div class="card">
                 <!-- Card Header Start -->
@@ -102,8 +108,12 @@
                     <div class="flex-between flex-wrap gap-8">
                         <form action="#" class="w-350 d-sm-block d-none">
                             <div class="position-relative">
-                                <button type="submit" class="input-icon text-xl d-flex text-gray-100 pointer-event-none"><i class="ph ph-magnifying-glass"></i></button> 
-                                <input type="text" class="form-control ps-40 h-40 border-transparent focus-border-main-600 bg-main-50 rounded-pill placeholder-15" placeholder="Search...">
+                                <button type="submit"
+                                    class="input-icon text-xl d-flex text-gray-100 pointer-event-none"><i
+                                        class="ph ph-magnifying-glass"></i></button>
+                                <input type="text"
+                                    class="form-control ps-40 h-40 border-transparent focus-border-main-600 bg-main-50 rounded-pill placeholder-15"
+                                    placeholder="Search...">
                             </div>
                         </form>
                         <div class="flex-align gap-8 flex-wrap">
@@ -120,7 +130,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <label for="upload" class="btn btn-main text-sm btn-sm px-24 py-12 d-flex align-items-center gap-8">
+                            <label for="upload"
+                                class="btn btn-main text-sm btn-sm px-24 py-12 d-flex align-items-center gap-8">
                                 <i class="ph ph-upload-simple d-flex text-xl"></i>
                                 Upload File
                             </label>
@@ -255,7 +266,7 @@
                                 </label>
                             </div> -->
                         </div>
-                        <div class="resource-item-wrapper px-24">
+                        <!-- <div class="resource-item-wrapper px-24">
                             <div class="resource-item">
                                 <div class="form-check">
                                     <input class="form-check-input border-gray-200 rounded-4" id="checkbox13" type="checkbox">
@@ -662,12 +673,12 @@
                                     <span class="d-block text-gray-200 text-15">32 Files</span>
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Grid View End -->
 
                     <!-- List View Start -->
-                    <div class="list-view d-none">
+                    <!-- <div class="list-view d-none">
                         <div class="card-body p-0 overflow-x-auto scroll-sm scroll-sm-horizontal">
                             <table id="studentTable" class="table table-striped style-three w-100">
                                 <thead>
@@ -968,54 +979,27 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- List View End -->
                 </div>
 
                 <div class="card-footer border-top border-gray-100">
-                    <div class="flex-between flex-wrap gap-8 mt-20">
-                        <a href="#" class="btn btn-outline-gray rounded-pill py-9 flex-align gap-4">
-                            <span class="d-flex text-xl"><i class="ph ph-arrow-left"></i></span> 
-                            Previous
-                        </a>
-
-                        <ul class="pagination flex-align flex-wrap">
-                            <li class="page-item active">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">...</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">8</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">9</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-44 w-44 flex-center text-15 rounded-8 fw-medium" href="#">10</a>
-                            </li>
-                        </ul>
-                        
-                        <a href="#" class="btn btn-main rounded-pill py-9 flex-align gap-4">
-                            Next <span class="d-flex text-xl"><i class="ph ph-arrow-right"></i></span> 
-                        </a>
+                    <!-- Pagination Footer -->
+                    <div class="d-flex align-items-center justify-content-between" id="paginationFooter"
+                        style="padding: 1rem;">
+                        <!-- Injected dynamically by your pagination.js -->
                     </div>
                 </div>
+
             </div>
             <!-- Card End -->
 
         </div>
-         <div id="footer-placeholder"></div>
+
+        <div id="footer-placeholder"></div>
     </div>
-    
-        <!-- Jquery js -->
+
+    <!-- Jquery js -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap Bundle Js -->
     <script src="assets/js/boostrap.bundle.min.js"></script>
@@ -1039,22 +1023,22 @@
     <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
     <!-- jvectormap world Js -->
     <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
-    
+
     <!-- main js -->
     <script src="assets/js/main.js"></script>
     <script type="module" src="assets/custom-js/resources.js"> </script>
 
 
 
-    <script>    
+    <script>
 
-     // ========================== Export Js Start ==============================
-        document.getElementById('exportOptions').addEventListener('change', function() {
+        // ========================== Export Js Start ==============================
+        document.getElementById('exportOptions').addEventListener('change', function () {
             const format = this.value;
             const table = document.getElementById('studentTable');
             let data = [];
             const headers = [];
-            
+
             // Get the table headers
             table.querySelectorAll('thead th').forEach(th => {
                 headers.push(th.innerText.trim());
@@ -1100,12 +1084,12 @@
             document.body.removeChild(a);
         }
         // ========================== Export Js End ==============================
-    
+
         // Table Header Checkbox checked all js Start
         $('#selectAll').on('change', function () {
-            $('.form-check .form-check-input').prop('checked', $(this).prop('checked')); 
-        }); 
-    
+            $('.form-check .form-check-input').prop('checked', $(this).prop('checked'));
+        });
+
         // Data Tables
         new DataTable('#studentTable', {
             searching: false,
@@ -1118,7 +1102,8 @@
         });
     </script>
 
-    </body>
+</body>
 
 <!-- Mirrored from html.themeholy.com/edmate/resources.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:24 GMT -->
+
 </html>
