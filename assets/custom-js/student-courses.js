@@ -32,7 +32,8 @@ async function all_data_load_dashboard() {
         let coursesCards = document.getElementById("courses-cards");
         coursesCards.innerHTML = '';
         let cards = "";
-        const API = `${COURSE_GETALL_API}${getParameters()}`;
+        // const API = `${COURSE_GETALL_API}${getParameters()}`;
+        const API = `${COURSE_GETALL_API}?page=1&limit=8`;
 
         const response = await fetch(API, {
             method: "GET",
