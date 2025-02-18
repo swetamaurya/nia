@@ -19,6 +19,7 @@ const batchCategory = `/batchCategory`
 const student = `/student`
 const classes = `/class`
 const search = `/search`
+const resources = `/resource`
 // -----------------------------------------
 export const TOKEN = localStorage.getItem("token");
 
@@ -31,6 +32,7 @@ const course_category_API =`${domain}${courseCategory}`
 const batch_API = `${domain}${batch}`
 const batch_category_API = `${domain}${batchCategory}`
 const student_API = `${domain}${student}`
+const resources_API = `${domain}${resources}`
 export const delete_API = `${domain}/delete/all`;
 export const import_API = `${domain}/import/student`;
 export const EXPORT_API = `${domain}/export/data`  
@@ -42,6 +44,7 @@ export const CLASS_GET_API = `${domain}${classes}${get}`;
 export const CLASS_CREATE_API = `${domain}${classes}${post}`;
 export const CLASS_GETALL_API = `${domain}${classes}${getall}`;
 export const CLASS_UPDATE_API = `${domain}${classes}${update}`;
+
 
 // ---------------User Log-In ----------------//
 export const ADMIN_SIGNIN_API = `${admin_API}/login`;
@@ -100,3 +103,6 @@ export const STUDENT_CREATE_API = `${student_API}${post}`
 export const STUDENT_GETALL_API = `${student_API}${getall}`
 export const STUDENT_GET_API = `${student_API}${get}`
 export const STUDENT_UPDATE_API = `${student_API}${update}`
+
+// RESOURCES API
+export const RESOURCES_GETALL_API = `${resources_API}${getall}`
