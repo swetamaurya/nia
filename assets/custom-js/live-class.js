@@ -1,31 +1,26 @@
-// अगर यूजर के पास token नहीं है तो sign-in पेज पर रीडायरेक्ट करें
-if (!localStorage.getItem("token")) {
+ if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
 }
 import { CLASS_UPDATE_API, domain, LIVE_CLASS_APP_ID } from "./global/apis.js";
 
 /********************************************
- *  अपने डिटेल्स यहाँ सेट करें
- ********************************************/
+  ********************************************/
 const APP_ID = LIVE_CLASS_APP_ID;
 const SERVER_URL = domain;
 
-// टीचर के लिए निश्चित UID: कैमरा = 1001, स्क्रीन = 1002
-const teacherCameraUid = 1001;
+ const teacherCameraUid = 1001;
 const teacherScreenUid = 1002;
 
 // ========= RTC Setup with 2 Clients =========
-// Client A: कैमरा + माइक के लिए
-let mainClient;
+ let mainClient;
 let localTracks = {
     videoTrack: null,
     audioTrack: null
 };
 let isMainPublished = false;
 
-// Client B: स्क्रीन शेयर के लिए
-let screenClient;
+ let screenClient;
 let screenTrack = null;
 let isScreenPublished = false;
 
@@ -85,8 +80,7 @@ async function liveClassStart(){
         alert("Please enter a channel name first!");
         return;
     }
-    // GET मेथड से कैमरा टोकन प्राप्त करें
-    let rtcTokenCamera;
+     let rtcTokenCamera;
     try {
         const resp = await fetch(`${SERVER_URL}/rtcToken?channel=${channelName}&uid=${teacherCameraUid}`);
         const data = await resp.json();
@@ -99,16 +93,13 @@ async function liveClassStart(){
         mainClient = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
         await mainClient.join(APP_ID, channelName, rtcTokenCamera, teacherCameraUid);
 
-        // कैमरा + माइक ट्रैक्स बनाएं
-        const [micTrack, camTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
+         const [micTrack, camTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
         localTracks.audioTrack = micTrack;
         localTracks.videoTrack = camTrack;
 
-        // teacher-stream container में प्ले करें
-        localTracks.videoTrack.play("teacher-stream");
+         localTracks.videoTrack.play("teacher-stream");
 
-        // ट्रैक्स पब्लिश करें
-        await mainClient.publish([micTrack, camTrack]);
+         await mainClient.publish([micTrack, camTrack]);
         isMainPublished = true;
         updateLayoutTeacher();
 
@@ -155,8 +146,7 @@ stopBtnEventListener.addEventListener("click", async function(){
 });
 
 async function liveClassStop(){
-    // कैमरा + माइक स्टॉप करें
-    if (isMainPublished && mainClient) {
+     if (isMainPublished && mainClient) {
         try {
             await mainClient.unpublish();
             if (localTracks.videoTrack) {
@@ -176,8 +166,7 @@ async function liveClassStop(){
             console.error("Error stopping main stream:", err);
         }
     }
-    // स्क्रीन शेयर स्टॉप करें
-    if (isScreenPublished && screenClient) {
+     if (isScreenPublished && screenClient) {
         try {
             await screenClient.unpublish(screenTrack);
             if (screenTrack) {
@@ -225,8 +214,7 @@ async function screenShareOnBtnFun (){
         alert("Enter channel name first!");
         return;
     }
-    // GET मेथड से स्क्रीन शेयर टोकन प्राप्त करें (UID = 1002)
-    let rtcTokenScreen;
+     let rtcTokenScreen;
     try {
         const resp = await fetch(`${SERVER_URL}/rtcToken?channel=${channelName}&uid=${teacherScreenUid}`);
         const data = await resp.json();

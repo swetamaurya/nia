@@ -150,11 +150,16 @@
         <div class="card-header row border-bottom align-items-center justify-content-between">
           <h4 class="mb-4 col-sm-4" id="createList"> </h4>
           <div class="col-sm-6">
-            <div class="search-bar mb-3 d-flex align-items-center justify-content-end gap-2">
+            <div class="search-bar mb-3 d-flex align-items-center justify-content-end gap-2 datatable-search">
               <label for="searchInput" class="fw-bold text-gray-700 mb-0">Search By:</label>
-              <input type="text" id="searchInput" class="form-control py-10"
-                placeholder="name, email, or application number..." style="max-width: 200px;" />
-            </div>
+              <input 
+              id="student-search" 
+              type="search" 
+              name="search"
+              class="form-control bg-white datatable-input" 
+              placeholder="Search..." 
+              fdprocessedid="svykdc"
+              />            </div>
           </div>
         </div>
 
@@ -169,7 +174,7 @@
                   <th class="employee_restriction_d_none" data-sortable="true">
                     <input type="checkbox" class="checkbox_all" name="" id="">
                   </th>
-                  <th class="h6 text-white">SL</th>
+                  <!-- <th class="h6 text-white">SL</th> -->
                   <th class="h6 text-white">Students</th>
                   <th class="h6 text-white">Email ID</th>
                   <th class="h6 text-white">Application No.</th>
