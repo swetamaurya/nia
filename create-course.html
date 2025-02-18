@@ -122,13 +122,23 @@
                                     <label class="h6 mb-8 fw-semibold font-heading">Course Description
                                         <span class="text-danger text-size">*</span>
                                     </label>
-                                    <textarea id="description" rows="4" class="placeholder-13 form-control w-100"
-                                        placeholder="Enter Course Description"></textarea>
+                                    <textarea  id="description"  rows="4" class="placeholder-13 form-control w-100"
+                                        placeholder="Enter Course Description" minlength="100" required></textarea>
                                 </div>
                                </div>
                             </div>
                             <div class="row g-20 mt-0">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
+                                    <label for="selectInstructor" class="h6 mb-8 fw-semibold font-heading">Instructor
+                                        <span class="text-danger text-size">*</span>
+                                    </label>
+                                    <div class="position-relative">
+                                        <select id="selectInstructor" class="form-select py-9 placeholder-13 text-15">
+                                              <option disabled selected>Select Instructor</option>  
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
                                     <label for="courseCategory" class="h6 mb-8 fw-semibold font-heading">Course Category
                                         <span class="text-danger text-size">*</span>
                                     </label>
@@ -144,7 +154,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <label for="courseDuration" class="h6 mb-8 fw-semibold font-heading">Course Duration (In Days)
                                         <span class="text-danger text-size">*</span>
                                     </label>
@@ -168,16 +178,7 @@
                                     <input type="file" name="image" id="multipleFileUpload"
                                         class="form-control py-11 pe-76" multiple required="" />
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="selectInstructor" class="h6 mb-8 fw-semibold font-heading">Instructor
-                                        <span class="text-danger text-size">*</span>
-                                    </label>
-                                    <div class="position-relative">
-                                        <select id="selectInstructor" class="form-select py-9 placeholder-13 text-15">
-                                              <option disabled selected>Select Instructor</option>  
-                                        </select>
-                                    </div>
-                                </div>
+                                
 
                             </div>
                             <!-- </div> -->

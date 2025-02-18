@@ -53,17 +53,14 @@ window.editLoadData = async function editLoadData() {
         const instructorName = firstName +' '+lastName
         title.innerText = course.title
         description.innerText = course.description
-        course?.status === 'Publish'?
-        cardStatus.setAttribute('class','bg-success')
+        course?.statusOfCards === 'Publish'?
+        cardStatus.setAttribute('class','bg-success py-6 px-16 text-main-600 rounded-pill text-13 text-white')
         :
-        cardStatus.setAttribute('class','bg-danger')
+        cardStatus.setAttribute('class','bg-danger py-6 px-16 text-main-600 rounded-pill text-13 text-white')
         cardStatus.innerText = course.statusOfCards
         createdBy.innerText =  instructorName
         createdDate.innerText = course.createdAt.split(' ')[0]
         courseCategory.innerText = course?.category?.categoryName
-
-
-
         course.gallery.length > 0 ? 
         course.gallery.map((e,i)=>{
             let image = document.createElement('img');
@@ -72,7 +69,7 @@ window.editLoadData = async function editLoadData() {
             imageContainer.appendChild(image);
         })
         : imageContainer.innerHTML =`
-        <img class="initial-24" src="assets/images/thumbs/course-details.png"
+        <img class="initial-24 p-0" src="assets/images/thumbs/course-details.png"
         alt="Employee" />`
 
         if(course.materials.length > 0){

@@ -6,8 +6,10 @@ import {
     BATCH_Category_CREATE_API,
     BATCH_Category_GETALL_API,
     BATCH_Category_GET_API,
+    
     BATCH_Category_UPDATE_API,
     STUDENT_GETALL_API,
+    EXPORT_API
   } from "./global/apis.js";
   import {
     loading_shimmer,
@@ -509,13 +511,13 @@ async function multipleBatchForm(event) {
       selectedStudents.push(checkbox.value);
     });
 
-  // console.log("🚀 Selected Batches:", selectedBatches);
-  // console.log("🚀 Selected Students:", selectedStudents);
+  console.log("🚀 Selected Batches:", selectedBatches);
+  console.log("🚀 Selected Students:", selectedStudents);
 
-  // if (selectedBatches.length === 0 || selectedStudents.length === 0) {
-  //   alert("Please select at least one batch and one student.");
-  //   return;
-  // }
+  if (selectedBatches.length === 0 || selectedStudents.length === 0) {
+    alert("Please select at least one batch and one student.");
+    return;
+  }
 
  
 
@@ -634,7 +636,7 @@ async function all_data_load_dashboard() {
                             <a href="#" class="import-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
                               e._id
                             }">Import</a>
-                            <a href="#" class="export-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
+                            <a onclick="exportSingleStudentList('${e._id}')" href="#" class="export-btn bg-main-50 text-main-600 py-2 px-14 rounded-pill hover-bg-main-600 hover-text-white" data-id="${
                               e._id
                             }">Export</a>
                         </td>
@@ -724,7 +726,7 @@ window.editStatusById = async function editStatusById(id, event) {
     }
   } catch (error) {
     console.error("Error updating status:", error);
-    // alert("Failed to update status. Please try again.");
+    alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   }
 };
@@ -738,6 +740,8 @@ let a = document.getElementById('dropdownToggle');
 a.addEventListener('change',()=>{
   let multiSelectedBatch = document.getElementById('multiSelectedBatch');
 })
+
+//Multi-List API 
 
 const addMultiListForm = document.getElementById('add-multi-list-form');
 addMultiListForm.addEventListener('submit',async(event)=>{
@@ -787,12 +791,63 @@ addMultiListForm.addEventListener('submit',async(event)=>{
 //---------------------------------------------------------------------------
   } catch (error) {
     console.error("Error updating status:", error);
-    // alert("Failed to update status. Please try again.");
+    alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   } 
 
 })
+//---------------------------------------------------------------------------
 
+//Export single API for the student
+window.exportSingleStudentList = async function exportSingleStudentList(id) { 
+  const _id = [id]; // Ensure batchId is an array
+
+  try {
+    loading_shimmer();
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    const response = await fetch(EXPORT_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({ _id }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to export: ${response.statusText}`);
+    }
+
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "exported-students.xlsx";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    window.URL.revokeObjectURL(url);
+
+    try {
+      remove_loading_shimmer();
+      status_popup("File downloaded successfully", true);
+    } catch (error) {
+      console.log(error);
+    }
+    
+  } catch (error) {
+    console.error("Error while exporting:", error);
+    alert("Failed to export. Please try again.");
+  }
+};
+//---------------------------------------------------------------------------
 //Validation
 function validateStudent(){
   clearErrors();
