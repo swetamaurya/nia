@@ -8,7 +8,7 @@ import { status_popup } from "./global/status_popup.js";
 const token = localStorage.getItem('token')
 
 async function dropdownCourses() {
-    const API = COURSE_category_GETALL_API
+    const API = COURSE_category_GETALL_API 
     try {
         const response = await fetch(API, {
           method: "GET",
@@ -65,7 +65,7 @@ dropdownInstructor()
 async function createCourse(event){
     event.preventDefault();
 
-    // if(!validateCourse()) return
+    if(!validateCourse()) return
 
     let statusOfCards;
     console.log('event: ',event);
@@ -143,43 +143,53 @@ for (const thumbnail of thumbnails) {
 document.getElementById('save-as-draft').addEventListener('click',(event)=>{createCourse(event)})
 document.getElementById('publish-course').addEventListener('click',(event)=>{createCourse(event)})
 
-// validation course
-// function validateCourse(){
-//     clearErrors();
-//   let isValid = true;
-//   const title = document.getElementById('courseTitle')
-//   const description = document.getElementById('description')
-//   const category = document.getElementById('courseCategory')
-//   const duration = document.getElementById('courseDuration')
-//     if(!description.value.trim()){
-//       showError(description,'Enter a valid description');
-//       isValid=false;
-//     }
-//     if (!category.value.trim() || category.value === 'Enter course category') {
-//         showError(category, 'Enter a valid category');
-//         isValid = false;
-//     }
-//     return isValid;
-// }
+let courseDescription = document.getElementById('description');
+let totalWords;
+courseDescription.addEventListener('change',()=>{
+  totalWords = courseDescription.value;
+  console.log('words: ',totalWords.length)
+})
 
-// function showError(element, message) {
-//     const errorContainer = element.previousElementSibling; // Access the div with label
-//     let errorElement = errorContainer.querySelector('.text-danger.text-size');
+// validation course
+function validateCourse(){
+    clearErrors();
+  let isValid = true;
+  const title = document.getElementById('courseTitle')
+  const description = document.getElementById('description')
+  const category = document.getElementById('courseCategory')
+  const duration = document.getElementById('courseDuration')
+  const validateDescription = document.getElementById('validateDescription')
+    
+    // if (!category.value.trim() || category.value === 'Enter course category') {
+    //     showError(category, 'Enter a valid category');
+    //     isValid = false;
+    // }
+    if(totalWords.length > 100){
+      showError(description,'Please enter description below 100 words');
+      isValid=false;
+    }
+    return isValid;
+}
+
+function showError(element, message) {
+    const errorContainer = element.previousElementSibling; // Access the div with label
+    let errorElement = errorContainer.querySelector('.text-danger.text-size');
   
-//     if (!errorElement) {
-//         errorElement = document.createElement('span');
-//         errorElement.className = 'text-danger text-size mohit_error_js_dynamic_validation';
-//         errorElement.style.fontSize = '10px';
-//         errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
-//         errorContainer.appendChild(errorElement);
-//     } else {
-//         errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
-//     }
-//   }
-//   // --------------------------------------------------------------------------------------------------
-//   // Function to clear all error messages
-//   // --------------------------------------------------------------------------------------------------
-//   function clearErrors() {
-//     const errorMessages = document.querySelectorAll('.text-danger.text-size.mohit_error_js_dynamic_validation');
-//     errorMessages.forEach((msg) => msg.remove());
-//   }
+    if (!errorElement) {
+        errorElement = document.createElement('span');
+        errorElement.className = 'text-danger text-size mohit_error_js_dynamic_validation';
+        errorElement.style.fontSize = '10px';
+        errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+        errorContainer.appendChild(errorElement);
+    } else {
+        errorElement.innerHTML = `<i class="fa-solid fa-times"></i> ${message}`;
+    }
+  }
+  // --------------------------------------------------------------------------------------------------
+  // Function to clear all error messages
+  // --------------------------------------------------------------------------------------------------
+  function clearErrors() {
+    const errorMessages = document.querySelectorAll('.text-danger.text-size.mohit_error_js_dynamic_validation');
+    errorMessages.forEach((msg) => msg.remove());
+  }
+
