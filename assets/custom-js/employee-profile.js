@@ -77,7 +77,7 @@ window.editLoadData = async function editLoadData() {
         remove_loading_shimmer();
     } catch (error) {
         console.error(error);
-    }
+    } 
 }
 editLoadData();
 
