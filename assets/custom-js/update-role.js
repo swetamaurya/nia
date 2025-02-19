@@ -81,12 +81,14 @@ document.getElementById('select_all').addEventListener('change',isChecked)
 
 //===============================================================================
 window.editLoadData = async function editLoadData() {
+
     try {
         loading_shimmer();
     } catch (error) {
         console.error(error);
     }
     const role = document.getElementById('role')
+    const name = document.getElementById('employeeDropdown')
     let dashboardObj={
         dashboardManagement: document.getElementById('dashboard-Management'),
         employeeManagement: document.getElementById('employee-Management'),
@@ -113,7 +115,16 @@ window.editLoadData = async function editLoadData() {
         const res = await response.json()
         const updateRole = res.role
         // console.log('bdvcjidsbvjd: s',updateRole)
-        role.value = updateRole.roles
+        
+        console.log('This is my role value: ',role.value)
+        console.log('This is my updated role value: ',updateRole.roles)
+        
+        name.value = updateRole.name?._id || ''
+            role.value = updateRole.roles || ''
+            
+        
+        
+        
         try {
             Object.keys(dashboardObj).forEach((e,i)=>{
                 updateRole.permission.map((ee,ii)=>{
@@ -134,7 +145,9 @@ window.editLoadData = async function editLoadData() {
         console.error(error);
     }
 }
-editLoadData()
+setTimeout(()=>{
+    editLoadData()
+},500)
 
 console.log('This is my permission: ',permission)
 //==========================================================================
@@ -149,6 +162,11 @@ document.getElementById(updateRoleForm).addEventListener("submit", async functio
         try{
             const roles = document.getElementById('role').value.trim();
             const _id = id
+            const name = document.getElementById('employeeDropdown').value.trim(); 
+        let requestBody = { roles, permission, _id };
+        if (name!="" && name!=undefined) {
+            requestBody.name = name;
+        }
             const API = `${ROLE_UPDATE_API}`;
             // -----------------------------------------------------------------------------------
             const response = await fetch(API, {
@@ -157,7 +175,7 @@ document.getElementById(updateRoleForm).addEventListener("submit", async functio
                     'Content-Type': 'application/json',
                     'Authorization': token
                 },
-                body: JSON.stringify({ roles, permission, _id}),
+                body: JSON.stringify(requestBody),
             });
             // -----------------------------------------------------------------------------------
             const r1 = await response.json();

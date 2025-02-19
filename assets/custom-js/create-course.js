@@ -47,7 +47,17 @@ async function dropdownInstructor(){
         });
         const res = await response.json();
         instructorList = res.data;
-        const instructor = instructorList.filter((e)=>e.roles.roles === 'Instructor')
+        const instructor = instructorList.filter((e) => {
+          if (!e?.roles || !e?.roles?.roles) {
+              return false; 
+          }
+          return e.roles.roles === 'Instructor';
+      });
+      
+      if (instructor.length === 0) {
+          console.error("No instructors found in the user list.");
+      }
+      
         console.log('instructor: ',instructor);
         const selectInstructor = document.getElementById("selectInstructor");
         instructor?.forEach((instructors) => {

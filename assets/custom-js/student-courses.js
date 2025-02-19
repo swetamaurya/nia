@@ -61,6 +61,7 @@ async function all_data_load_dashboard() {
                     const firstName = e?.instructor?.first_name || ''
                     const lastName = e?.instructor?.last_name || ''
                     const instructorName = firstName +' '+lastName
+                    const image = e?.instructor?.image? e?.instructor?.image : 'assets/images/thumbs/dummy-image.jpg' 
 
                     e.statusOfCards === 'Draft'? statusCardBgColor='bg-danger' : statusCardBgColor='bg-primary'
                    
@@ -85,7 +86,7 @@ async function all_data_load_dashboard() {
                                               style="top: 13px;left: 13px;">${e.createdAt.split(' ')[0]}</span>
                                           <p class="three-line-text-truncate">${e.description}</p>
                                           <div class="flex-align gap-8 flex-wrap mt-16">
-                                              <img src="assets/images/thumbs/dummy-image.jpg"
+                                              <img src="${image}"
                                                   class="w-28 h-28 rounded-circle object-fit-cover" alt="">
                                               <div>
                                                     <span class="text-gray-600 text-13">Instructor Name <a href="profile.html"

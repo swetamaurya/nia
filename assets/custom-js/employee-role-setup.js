@@ -263,3 +263,34 @@ window.editStatusById = async function editStatusById(id, event) {
 paginationDataHandler(all_data_load_dashboard);
 
 all_data_load_dashboard();
+
+//-------------------------------------------------------------------------
+let employee
+async function loadEmployeeList() {
+  try {
+    const response = await fetch(USER_GETALL_API, {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+      },
+  }); 
+ 
+  const res = await response.json();
+
+employee = res.data
+console.log('this is my data: ',employee)
+    const dropdown = document.getElementById('employeeDropdown');
+    employee.forEach((employee) => {
+      const option = document.createElement('option');
+      option.value = employee._id; 
+      option.textContent = `${employee.first_name} ${employee.last_name}  (${employee.userId})`;
+      dropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error loading employee list:', error);
+  }
+}
+
+// Call the function to populate the dropdown on page load
+loadEmployeeList();
