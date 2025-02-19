@@ -164,8 +164,8 @@ function validateCourse(){
     //     showError(category, 'Enter a valid category');
     //     isValid = false;
     // }
-    if(totalWords.length > 100){
-      showError(description,'Please enter description below 100 words');
+    if(totalWords.length <= 100){
+      showError(description,'Please enter 100 words atleast');
       isValid=false;
     }
     return isValid;

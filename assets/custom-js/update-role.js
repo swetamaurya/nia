@@ -28,7 +28,7 @@ employee = res.data
     employee.forEach((employee) => {
       const option = document.createElement('option');
       option.value = employee._id; // Assuming employee ID is stored in `_id`
-      option.textContent = `${employee.first_name} ${employee.last_name}  (${employee?.roles?.roleId})`; // Assuming employee name is stored in `name`
+      option.textContent = `${employee.first_name} ${employee.last_name}  (${employee.userId})`; // Assuming employee name is stored in `name`
       dropdown.appendChild(option);
     });
   } catch (error) {
@@ -112,7 +112,7 @@ window.editLoadData = async function editLoadData() {
         }
         const res = await response.json()
         const updateRole = res.role
-        console.log('bdvcjidsbvjd: s',updateRole)
+        // console.log('bdvcjidsbvjd: s',updateRole)
         role.value = updateRole.roles
         try {
             Object.keys(dashboardObj).forEach((e,i)=>{

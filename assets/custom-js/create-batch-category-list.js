@@ -515,7 +515,7 @@ async function multipleBatchForm(event) {
   console.log("🚀 Selected Students:", selectedStudents);
 
   if (selectedBatches.length === 0 || selectedStudents.length === 0) {
-    alert("Please select at least one batch and one student.");
+    // alert("Please select at least one batch and one student.");
     return;
   }
 
@@ -726,7 +726,7 @@ window.editStatusById = async function editStatusById(id, event) {
     }
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   }
 };
@@ -791,7 +791,7 @@ addMultiListForm.addEventListener('submit',async(event)=>{
 //---------------------------------------------------------------------------
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   } 
 
@@ -844,7 +844,7 @@ window.exportSingleStudentList = async function exportSingleStudentList(id) {
     
   } catch (error) {
     console.error("Error while exporting:", error);
-    alert("Failed to export. Please try again.");
+    // alert("Failed to export. Please try again.");
   }
 };
 //---------------------------------------------------------------------------
