@@ -16,6 +16,7 @@ function loadContent(url, placeholderId, callback) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
+            console.log('data: ',data)
             document.getElementById(placeholderId).innerHTML = data;
             if (callback) callback();
         });

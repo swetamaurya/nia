@@ -57,7 +57,7 @@ window.editLoadData = async function editLoadData() {
     const password = document.getElementById('password')
     const roles = document.getElementById('role')
     const confirmPassword = document.getElementById('confirmPassword')
-    const imageFileUpload = document.getElementById('customFileUpload')
+    const courseFileTbody = document.getElementById('course-file-tbody');
     const image = document.getElementById('viewer')
     try {
         const API = `${USER_GET_API}?_id=${id}`;
@@ -83,8 +83,45 @@ window.editLoadData = async function editLoadData() {
         email.value = employee.email
         image.src = employee.image? employee.image : 'assets/images/thumbs/upload-image.png'
         role.value = employee.roles._id
-        // imageFileUpload.files[0].name = employee.image
-
+        courseFileTbody.addEventListener('change', (event) => {
+            const files = event.target.files;
+        
+            // Loop through each selected file
+            Array.from(files).forEach((file,i) => {
+                const reader = new FileReader();
+        
+                // Create an image container with hover actions
+                reader.onload = (e) => {
+                    const container = document.createElement('div');
+                    container.setAttribute('class', 'image-container');
+        
+                    const image = document.createElement('img');
+                    image.src = e.target.result;
+                    image.setAttribute('class', 'initial-23');
+        
+                    const actionIcons = document.createElement('div');
+                    actionIcons.setAttribute('class', 'action-icons');
+                    actionIcons.innerHTML = `
+                        <a href="${e.target.result}" class="action-btn" title="View" target="_blank">
+                        <input class="hiddenFileName" value="${files[0].name}" hidden/>
+                            <i class="ph ph-eye"></i>
+                        </a>
+                        <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" title="Delete">
+                            <i class="ph ph-trash"></i>
+                        </a>
+                    `;
+        
+                    // Append image and actions to the container
+                    container.appendChild(image);
+                    container.appendChild(actionIcons);
+        
+                    // Add uploaded images to the start of the container
+                    imageContainer.insertBefore(container, imageContainer.firstChild);
+                };
+        
+                reader.readAsDataURL(file); // Read the file as a data URL
+            });
+        });
     } catch (error) { }
     try {
         remove_loading_shimmer();
