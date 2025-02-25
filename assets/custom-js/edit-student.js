@@ -48,6 +48,7 @@ window.editLoadData = async function editLoadData() {
     } catch (error) {
         console.error(error);
     }
+    const password = document.getElementById('password');
     const batchId = document.getElementById('batchId')
     const application_number = document.getElementById('application_number');
     const registration_number = document.getElementById('registration_number');
@@ -57,7 +58,7 @@ window.editLoadData = async function editLoadData() {
     const mother_name = document.getElementById('mother_name');
     const date_of_birth = document.getElementById('date_of_birth');
     const category = document.getElementById('category');
-    // const email = document.getElementById('email');
+    const email = document.getElementById('email');
     const phone = document.getElementById('phone');
     const gender = document.getElementById('gender');
     const marital_status = document.getElementById('marital_status');
@@ -109,7 +110,9 @@ window.editLoadData = async function editLoadData() {
         }
         const res = await response.json()
         const student = res.student
-        console.log('hkhk: ',student);
+        console.log(student)
+        password.value = '';
+        email.value = student.email
         batchId.value = student.batchId || '';
         application_number.value = student.application_number || '';
     registration_number.value = student.registration_number || '';
@@ -214,7 +217,9 @@ formData.append('examination_centre_state', document.getElementById('examination
 formData.append('examination_centre_city', document.getElementById('examination_centre_city').value);
 
 // Other Details
-formData.append('status', document.getElementById('status').value);
+formData.append('status', document.getElementById('status').value); 
+formData.append('email', document.getElementById('email').value);
+formData.append('password', document.getElementById('password').value);
 formData.append('_id', id); // Assuming `id` is already defined
 
 

@@ -511,11 +511,11 @@ async function multipleBatchForm(event) {
       selectedStudents.push(checkbox.value);
     });
 
-  console.log("🚀 Selected Batches:", selectedBatches);
-  console.log("🚀 Selected Students:", selectedStudents);
+  // console.log("🚀 Selected Batches:", selectedBatches);
+  // console.log("🚀 Selected Students:", selectedStudents);
 
   if (selectedBatches.length === 0 || selectedStudents.length === 0) {
-    alert("Please select at least one batch and one student.");
+    // alert("Please select at least one batch and one student.");
     return;
   }
 
@@ -543,15 +543,15 @@ async function multipleBatchForm(event) {
     });
 
     const result = await response.json();
-    console.log(" Batch Update Response:", result);
+    // console.log(" Batch Update Response:", result);
 
     status_popup(result?.message, response.ok);
 
-    // if (response.ok) {
-    //   setTimeout(() => {
-    //     window.location.href = "create-batch-category-list.html";
-    //   }, 1000);
-    // }
+    if (response.ok) {
+      setTimeout(() => {
+        window.location.href = "create-batch-category-list.html";
+      }, 1000);
+    }
   } catch (error) {
     status_popup(" Batch update failed", false);
     console.log(" Error updating batch:", error);
@@ -726,7 +726,7 @@ window.editStatusById = async function editStatusById(id, event) {
     }
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   }
 };
@@ -791,7 +791,7 @@ addMultiListForm.addEventListener('submit',async(event)=>{
 //---------------------------------------------------------------------------
   } catch (error) {
     console.error("Error updating status:", error);
-    alert("Failed to update status. Please try again.");
+    // alert("Failed to update status. Please try again.");
     element.checked = !element.checked; //
   } 
 
@@ -844,7 +844,7 @@ window.exportSingleStudentList = async function exportSingleStudentList(id) {
     
   } catch (error) {
     console.error("Error while exporting:", error);
-    alert("Failed to export. Please try again.");
+    // alert("Failed to export. Please try again.");
   }
 };
 //---------------------------------------------------------------------------

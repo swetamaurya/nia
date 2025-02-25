@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
     <!-- Main css -->
     <link rel="stylesheet" href="assets/css/main.css">
+
     <style>
         .auth-right__inner .badge {
             font-weight: 400;
@@ -43,6 +44,7 @@
             padding: 7px 13px 6px;
         }
     </style>
+
     <script src="assets/js/global-header.js"></script>
 </head>
 
@@ -68,42 +70,16 @@
                     <img src="assets/images/logo/nia-logo.png" style="width: 150px;height: 150px;" alt="">
                 </a>
                 <h2 class="mb-8">Welcome Back!</h2>
-                <p class="mb-0">Want to login your student account?
-                    <a href="sign-in-student.html">
-                        Student Login
+                <p class="mb-0">Want to login your admin account?
+                    <a href="sign-in.html">
+                        Admin Login
                     </a>
                 </p>
-                <span class="badge badge-soft-info my-10">( Admin or Employee login )</span>
+                <span class="badge badge-soft-info my-10">( Student login )</span>
                 <p class="text-gray-600 text-15 mb-32">Enter username and password to sign in!</p>
 
                 <form id="sign-in-form">
-                    <div class="text-start mb-20">
-                        <label for="fname" class="form-label mb-8 h6 visually-hidden">Email</label>
-                        <div class="position-relative">
-                            <select class="form-control py-13 ps-40 form-select" id="selectRole">
-                                <option value="" disabled selected>--Select Role--</option>
-                                <option value="admin">Admin</option>
-                                <option value="employee">Employee</option>
-                            </select>
-                            <span class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"><i
-                                    class="ph ph-users"></i></span>
-                        </div>
-                    </div>
-                    <!-- <div class="text-start mb-20" id="specific-role" style="display: none;">
-                        <label for="specific-role-select" class="form-label mb-8 h6 visually-hidden">Specific
-                            Role</label>
-                        <div class="position-relative">
-                            <select class="form-control py-13 ps-40 form-select" id="specific-role-select">
-                                <option value="" disabled selected>--Specific Role--</option>
-                                <option value="manager">Manager</option>
-                                <option value="instructor">Instructor</option>
-                                <option value="hr">HR</option>
-                            </select>
-                            <span class="position-absolute top-50 translate-middle-y ms-16 text-gray-600 d-flex"><i
-                                    class="ph ph-users"></i></span>
-                        </div>
-                    </div> -->
-                    <div class="text-start mb-20">
+                    <div class="text-start mb-24">
                         <label for="fname" class="form-label mb-8 h6 visually-hidden">Email</label>
                         <div class="position-relative">
                             <input type="text" class="form-control py-11 ps-40" id="fname" placeholder="Enter username">
@@ -111,7 +87,7 @@
                                     class="ph ph-user"></i></span>
                         </div>
                     </div>
-                    <div class="text-start mb-20">
+                    <div class="text-start mb-24">
                         <label for="current-password" class="form-label mb-8 h6 visually-hidden">Password</label>
                         <div class="position-relative">
                             <input type="password" class="form-control py-11 ps-40" id="current-password"
@@ -184,7 +160,7 @@
     <script src="assets/js/editor-quill.js"></script>
     <!-- apex charts -->
     <script src="assets/js/apexcharts.min.js"></script>
-    <!-- jvectormap Js -->
+    <!-- jvectormap Js --> 
     <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
     <!-- jvectormap world Js -->
     <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
@@ -193,21 +169,7 @@
     <script src="assets/js/main.js"></script>
 
     <!-- custom js -->
-    <script type="module" src="./assets/custom-js/admin-sign-in.js"></script>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const roleSelect = document.getElementById("fname");
-            const specificRoleDiv = document.getElementById("specific-role");
-
-            roleSelect.addEventListener("change", function () {
-                if (this.value === "employee") {
-                    specificRoleDiv.style.display = "block";
-                } else {
-                    specificRoleDiv.style.display = "none";
-                }
-            });
-        });
-    </script> -->
+    <script type="module" src="./assets/custom-js/sign-in-instructor.js"></script>
 
 
 

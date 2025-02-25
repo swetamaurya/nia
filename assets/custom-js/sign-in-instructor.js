@@ -1,6 +1,4 @@
- 
-
-import { STUDENT_SIGNIN_API, TOKEN } from './global/apis.js'
+import { INSTRUCTOR_SIGNIN_API } from './global/apis.js'
 
 try{
     localStorage.clear();
@@ -10,7 +8,7 @@ import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimme
 import { status_popup } from "./global/status_popup.js";
 // ==============================================================================
 // ==============================================================================
-console.log("STUDENT_SIGNIN_API :- ",STUDENT_SIGNIN_API)
+// console.log("INSTRUCTOR_SIGNIN_API :- ",INSTRUCTOR_SIGNIN_API)
 let signIn = "sign-in-form";
 document.getElementById(signIn).addEventListener("submit", async function (event){
     event.preventDefault();
@@ -21,7 +19,7 @@ document.getElementById(signIn).addEventListener("submit", async function (event
     try{
         const email = document.getElementById('fname').value;
         const password = document.getElementById('current-password').value;
-        const API = `${STUDENT_SIGNIN_API}`;
+        const API = `${INSTRUCTOR_SIGNIN_API}`;
         // -----------------------------------------------------------------------------------
         const response = await fetch(API, {
             method: 'POST',
@@ -34,19 +32,22 @@ document.getElementById(signIn).addEventListener("submit", async function (event
         // -----------------------------------------------------------------------------------
         const r1 = await response.json();
         console.log('THIS IS MY RESPONSE: ',r1)
+        debugger;
         console.log(r1)
+        let firstName = r1?.user?.first_name || ''
+        let lastName = r1?.user?.last_name || '';
+        let fullName = firstName + " " + lastName
         // -----------------------------------------------------------------------------------
         try{
             status_popup(r1?.message, (response?.ok));
             if(response?.ok) {
                 try{
                     localStorage.setItem('token', r1?.token);
-                    localStorage.setItem('roles', r1?.student?.roles);
-                    localStorage.setItem('name', r1?.student?.name);
-                    localStorage.setItem('_id',  r1?.student?._id);
-                    localStorage.setItem('email', r1?.student?.email);
-                    localStorage.setItem('permissions',r1?.student?.permissions);
-                    localStorage.setItem('roles', r1?.student?.roles)
+                    localStorage.setItem('roles', r1?.user?.roles?.roles);
+                    localStorage.setItem('name', fullName);
+                    localStorage.setItem('_id',  r1?.user?._id);
+                    localStorage.setItem('email', r1?.user?.email);
+                    localStorage.setItem('permissions',r1?.user?.roles?.permission);
 
                     window.location.href = `live-class-list.html`
                 } catch(error){

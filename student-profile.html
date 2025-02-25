@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title> NIA LMS Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/file-upload.css">
+    <!-- file upload -->
+    <link rel="stylesheet" href="assets/css/plyr.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+    <!-- full calendar -->
+    <link rel="stylesheet" href="assets/css/full-calendar.css">
+    <!-- jquery Ui -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!-- editor quill Ui -->
+    <link rel="stylesheet" href="assets/css/editor-quill.css">
+    <!-- apex charts Css -->
+    <link rel="stylesheet" href="assets/css/apexcharts.css">
+    <!-- calendar Css -->
+    <link rel="stylesheet" href="assets/css/calendar.css">
+    <!-- jvector map Css -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/global-header.js"></script>
+</head>
+
+<body>
+
+    <!--==================== Preloader Start ====================-->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <!--==================== Preloader End ====================-->
+
+    <!--==================== Sidebar Overlay End ====================-->
+    <div class="side-overlay"></div>
+    <!--==================== Sidebar Overlay End ====================-->
+
+    <!-- ============================ Sidebar Start ============================ -->
+    <aside class="sidebar" id="sidebar-placeholder"></aside>
+
+    <!-- ============================ Sidebar End  ============================ -->
+
+    <div class="dashboard-main-wrapper">
+        <div id="header-placeholder"></div>
+
+
+        <div class="dashboard-body">
+            <!-- Breadcrumb Start -->
+            <div class="breadcrumb mb-24">
+                <ul class="flex-align gap-4">
+                    <li><a href="" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+                    <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+                    <li><span class="text-main-600 fw-normal text-15">Profile</span></li>
+                </ul>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <div class="card overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="cover-img position-relative">
+                        <label for="coverImageUpload"
+                            class="btn border-gray-200 text-gray-200 fw-normal hover-bg-gray-400 rounded-pill py-4 px-14 position-absolute inset-block-start-0 inset-inline-end-0 mt-24 me-24">Edit
+                            Cover</label>
+                        <div class="avatar-upload">
+                            <input type='file' id="coverImageUpload" accept=".png, .jpg, .jpeg">
+                            <div class="avatar-preview">
+                                <div id="coverImagePreview"
+                                    style="background-image: url('assets/images/thumbs/setting-cover-img.png');">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-profile px-24">
+                        <div class="d-flex align-items-end flex-wrap mb-32 gap-24">
+                            <div class="position-relative">
+                                <img id="student-photo" src="assets/images/thumbs/setting-profile-img.jpg" alt=""
+                                    class="w-120 h-120 rounded-circle border border-white position-absolute top-0 start-0 z-3">
+                                <img id="student-signature" src="assets/images/thumbs/setting-profile-img.jpg" alt=""
+                                    class="w-120 h-120 rounded-circle border border-white position-relative ms-90">
+                            </div>
+                            <div>
+                                <h4 id="student-name" class="mb-8"> </h4>
+                                <div class="setting-profile__infos flex-align flex-wrap gap-16">
+                                    <div class="flex-align gap-6">
+                                        <span class="text-gray-600 d-flex text-lg"><i class="ph ph-swatches"></i></span>
+                                        <span id="student-role" class="text-gray-600 d-flex text-15"> </span>
+                                    </div>
+                                    <div class="flex-align gap-6">
+                                        <span class="text-gray-600 d-flex text-lg"><i class="ph ph-phone"></i></span>
+                                        <span id="student-phone-no" class="text-gray-600 d-flex text-15">  </span>
+                                    </div>
+                                    <div class="flex-align gap-6">
+                                        <span class="text-gray-600 d-flex text-lg"><i class="ph ph-envelope"></i></span>
+                                        <span id="student-email" class="text-gray-600 d-flex text-15">   </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="nav common-tab style-two nav-pills mb-0" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">Profile</button>
+                            </li>
+                            <!-- <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-password-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-password" type="button" role="tab"
+                                    aria-controls="pills-password" aria-selected="false">Password</button>
+                            </li> -->
+                            <!-- <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="pills-plan-tab" data-bs-toggle="pill" data-bs-target="#pills-plan" type="button" role="tab" aria-controls="pills-plan" aria-selected="false">Plan</button>
+                            </li> -->
+                            <!-- <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-billing-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-billing" type="button" role="tab"
+                                    aria-controls="pills-billing" aria-selected="false">Billing</button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+
+                <!-- Profile Tab Start -->
+                <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+                    aria-labelledby="pills-profile-tab" tabindex="0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mt-24">
+                                <div class="card-body">
+                                    <h5 class="mb-12 border-bottom pb-15">Student Details</h5>
+                                    <div class="mt-24">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-6 col-sm-6  flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Batch ID :</p><span id="student-batch-id">  </span>
+                                                </div>
+                                            </div>
+                                            <div class=" col-lg-3 col-md-6 col-sm-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Payment Status :</p><span id="student-payment-status">  </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Application Number :</p><span id="student-application-no">  </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Registration Number :</p><span id="student-registration-no">  </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Apply For :</p><span id="student-apply-for">  </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Examination Fee :</p><span id="student-examination-fee">  </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 flex-align gap-8 flex-wrap mb-16">
+                                                <!-- <span
+                                                    class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                    <i class="ph ph-user"></i>
+                                                </span> -->
+                                                <div class="flex-align gap-8 flex-wrap text-gray-600" style="border: 1px solid #f1f1f1ee;
+                                                padding: 5px 12px;
+                                                background-color: #f9f9f9;">
+                                                    <p>Examination Center State & City :</p><span id="student-center-city">  </span>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card mt-24">
+                                <div class="card-body">
+                                    <h5 class="mb-12 border-bottom pb-15">Personel Details</h5>
+                                    <div class="mt-24">
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <i class="ph ph-user"></i>
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Father/Husband Name :</p><span id="student-father-husband-name"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25"
+                                                    height="25" fill="none" stroke="#3e80f9" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                    <!-- Head -->
+                                                    <circle cx="12" cy="7" r="4" />
+
+                                                    <!-- Hair -->
+                                                    <path d="M8 4c-2 2-2 6 0 8" />
+                                                    <path d="M16 4c2 2 2 6 0 8" />
+
+                                                    <!-- Body -->
+                                                    <path d="M9 14c-3 3-3 7-3 7h12s0-4-3-7" />
+
+                                                    <!-- Dress -->
+                                                    <path d="M7 21c1-3 4-3 5-3s4 0 5 3" />
+                                                </svg>
+
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Mother Name :</p><span id="student-mother-name"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <i class="ph ph-calendar"></i>
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Date Of Birth :</p><span id="student-date-of-birth"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <i class="ph ph-heart"></i>
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Marital Status :</p><span id="student-marital-status">  </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <i class="ph ph-identification-card"></i>
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Category :</p><span id="student-category">  </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-align gap-8 flex-wrap mb-16">
+                                            <span
+                                                class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                <i class="ph ph-gender-male"></i>
+                                            </span>
+                                            <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                <p>Gender :</p><span id="student-gender">  </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card mt-24">
+                                        <div class="card-body">
+                                            <h5 class="mb-12 border-bottom pb-15">Permanent Address</h5>
+                                            <div class="mt-24">
+
+                                                <div class="flex-align gap-8  mb-16">
+                                                    <span
+                                                        class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                        <i class="ph ph-map-pin"></i>
+                                                    </span>
+                                                    <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                        <span id="student-permanent-address"> </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card mt-24">
+                                        <div class="card-body">
+                                            <h5 class="mb-12 border-bottom pb-15">Present Address</h5>
+                                            <div class="mt-24">
+
+                                                <div class="flex-align gap-8  mb-16">
+                                                    <span
+                                                        class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                        <i class="ph ph-map-pin"></i>
+                                                    </span>
+                                                    <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                        <span id="student-present-address"> </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="card mt-24">
+                                        <div class="card-body">
+                                            <h5 class="mb-12 border-bottom pb-15">Education Details</h5>
+                                            <div class="mt-24">
+
+                                                <div class="flex-align gap-8 flex-wrap mb-16">
+                                                    <span
+                                                        class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                        <i class="ph ph-graduation-cap"></i>
+                                                    </span>
+                                                    <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                        <p>Education Qualification :</p><span id="student-educational-qualification"> Graduate</span>
+                                                    </div>
+
+                                                    <div
+                                                        class="flex-align gap-8 flex-wrap border-start ps-10 text-gray-600">
+                                                        <p>Division :</p><span id="student-educational-qualification-division"> First Division</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-align gap-8 flex-wrap mb-16">
+                                                    <span
+                                                        class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                        <i class="ph ph-books"></i>
+                                                    </span>
+                                                    <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                        <p>Intermediate :</p><span id="student-intermediate-details"> Education Board Name</span>
+                                                    </div>
+
+                                                    <div
+                                                        class="flex-align gap-8 flex-wrap border-start ps-10 text-gray-600">
+                                                        <p>Division :</p><span id="student-intermediate-details-division"> Second Division</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-align gap-8 flex-wrap mb-16">
+                                                    <span
+                                                        class="flex-center w-36 h-36 text-main-600 bg-main-100 rounded-circle text-xl">
+                                                        <i class="ph ph-books"></i>
+                                                    </span>
+                                                    <div class="flex-align gap-8 flex-wrap text-gray-600">
+                                                        <p>High School :</p><span id="student-high-school-details"> Education Board Name</span>
+                                                    </div>
+
+                                                    <div
+                                                        class="flex-align gap-8 flex-wrap border-start ps-10 text-gray-600">
+                                                        <p>Division :</p><span id="student-high-school-details-division"> Third Division</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Profile Tab End -->
+
+                <!-- Password Tab Start -->
+                <div class="tab-pane fade" id="pills-password" role="tabpanel" aria-labelledby="pills-password-tab"
+                    tabindex="0">
+                    <div class="card mt-24">
+                        <div class="card-header border-bottom">
+                            <h4 class="mb-4">Password Settings</h4>
+                            <p class="text-gray-600 text-15">Please fill full details about yourself</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="#">
+                                        <div class="row gy-4">
+                                            <div class="col-12">
+                                                <label for="current-password" class="form-label mb-8 h6">Current
+                                                    Password</label>
+                                                <div class="position-relative">
+                                                    <input type="password" class="form-control py-11"
+                                                        id="current-password" placeholder="Enter Current Password">
+                                                    <span
+                                                        class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
+                                                        id="#current-password"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="new-password" class="form-label mb-8 h6">New
+                                                    Password</label>
+                                                <div class="position-relative">
+                                                    <input type="password" class="form-control py-11" id="new-password"
+                                                        placeholder="Enter New Password">
+                                                    <span
+                                                        class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
+                                                        id="#new-password"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="confirm-password" class="form-label mb-8 h6">Confirm
+                                                    Password</label>
+                                                <div class="position-relative">
+                                                    <input type="password" class="form-control py-11"
+                                                        id="confirm-password" placeholder="Enter Confirm Password">
+                                                    <span
+                                                        class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
+                                                        id="#confirm-password"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label mb-8 h6">Password Requirements:</label>
+                                                <ul class="list-inside">
+                                                    <li class="text-gray-600 mb-4">At least one lowercase character</li>
+                                                    <li class="text-gray-600 mb-4">Minimum 8 characters long - the more,
+                                                        the better</li>
+                                                    <li class="text-gray-300 mb-4">At least one number, symbol, or
+                                                        whitespace character</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label mb-8 h6">Two-Step Verification</label>
+                                                <ul>
+                                                    <li class="text-gray-600 mb-4 fw-semibold">Two-factor authentication
+                                                        is not enabled yet.</li>
+                                                    <li class="text-gray-600 mb-4 fw-medium">Two-factor authentication
+                                                        adds a layer of security to your account by requiring more than
+                                                        just a password to log in. Learn more.</li>
+                                                </ul>
+                                                <button type="submit"
+                                                    class="btn btn-main rounded-pill py-9 mt-24">Enable two-factor
+                                                    authentication</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-12">
+                                    <div class="flex-align justify-content-end gap-8">
+                                        <button type="reset"
+                                            class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Cancel</button>
+                                        <button type="submit" class="btn btn-main rounded-pill py-9">Save
+                                            Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Password Tab End -->
+
+                <!-- Plan Tab Start -->
+                <div class="tab-pane fade" id="pills-plan" role="tabpanel" aria-labelledby="pills-plan-tab"
+                    tabindex="0">
+                    <div class="card mt-24">
+                        <div class="card-header border-bottom">
+                            <h4 class="mb-4">Pricing Breakdown</h4>
+                            <p class="text-gray-600 text-15">Creating a detailed pricing plan for your course requries
+                                considering various factors.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gy-4">
+                                <div class="col-md-4 col-sm-6">
+                                    <div
+                                        class="plan-item rounded-16 border border-gray-100 transition-2 position-relative">
+                                        <span class="text-2xl d-flex mb-16 text-main-600"><i
+                                                class="ph ph-package"></i></span>
+                                        <h3 class="mb-4">Basic Plan</h3>
+                                        <span class="text-gray-600">Perfect plan for students</span>
+                                        <h2
+                                            class="h1 fw-medium text-main mb-32 mt-16 pb-32 border-bottom border-gray-100 d-flex gap-4">
+                                            $50 <span class="text-md text-gray-600">/year</span>
+                                        </h2>
+                                        <ul>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Intro video the course
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Interactive quizes
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Course curriculum
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Community supports
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Certificate of completion
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Sample lesson showcasing
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Access to course community
+                                            </li>
+                                        </ul>
+                                        <a href="#"
+                                            class="btn btn-outline-main w-100 rounded-pill py-16 border-main-300 text-17 fw-medium mt-32">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div
+                                        class="plan-item rounded-16 border border-gray-100 transition-2 position-relative active">
+                                        <span
+                                            class="plan-badge py-4 px-16 bg-main-600 text-white position-absolute inset-inline-end-0 inset-block-start-0 mt-8 text-15">Recommended</span>
+                                        <span class="text-2xl d-flex mb-16 text-main-600"><i
+                                                class="ph ph-planet"></i></span>
+                                        <h3 class="mb-4">Standard Plan</h3>
+                                        <span class="text-gray-600">For users who want to do more</span>
+                                        <h2
+                                            class="h1 fw-medium text-main mb-32 mt-16 pb-32 border-bottom border-gray-100 d-flex gap-4">
+                                            $129 <span class="text-md text-gray-600">/year</span>
+                                        </h2>
+
+                                        <ul>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Intro video the course
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Interactive quizes
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Course curriculum
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Community supports
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Certificate of completion
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Sample lesson showcasing
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Access to course community
+                                            </li>
+                                        </ul>
+                                        <a href="#"
+                                            class="btn btn-main w-100 rounded-pill py-16 border-main-600 text-17 fw-medium mt-32">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div
+                                        class="plan-item rounded-16 border border-gray-100 transition-2 position-relative">
+                                        <span class="text-2xl d-flex mb-16 text-main-600"><i
+                                                class="ph ph-trophy"></i></span>
+                                        <h3 class="mb-4">Premium Plan</h3>
+                                        <span class="text-gray-600">Your entire friends in one place</span>
+                                        <h2
+                                            class="h1 fw-medium text-main mb-32 mt-16 pb-32 border-bottom border-gray-100 d-flex gap-4">
+                                            $280 <span class="text-md text-gray-600">/year</span>
+                                        </h2>
+
+                                        <ul>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Intro video the course
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Interactive quizes
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Course curriculum
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Community supports
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Certificate of completion
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4 mb-20">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Sample lesson showcasing
+                                            </li>
+                                            <li class="flex-align gap-8 text-gray-600 mb-lg-4">
+                                                <span class="text-24 d-flex text-main-600"><i
+                                                        class="ph ph-check-circle"></i></span>
+                                                Access to course community
+                                            </li>
+                                        </ul>
+                                        <a href="#"
+                                            class="btn btn-outline-main w-100 rounded-pill py-16 border-main-300 text-17 fw-medium mt-32">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label mb-8 h6 mt-32">Terms & Policy</label>
+                                    <ul class="list-inside">
+                                        <li class="text-gray-600 mb-4">1. Set up multiple pricing levels with different
+                                            features and functionalities to maximize revenue</li>
+                                        <li class="text-gray-600 mb-4">2. Continuously test different price points and
+                                            discounts to find the sweet spot that resonates with your target audience
+                                        </li>
+                                        <li class="text-gray-600 mb-4">3. Price your course based on the perceived value
+                                            it provides to students, considering factors</li>
+                                    </ul>
+                                    <button type="button"
+                                        class="btn btn-main text-sm btn-sm px-24 rounded-pill py-12 d-flex align-items-center gap-2 mt-24"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="ph ph-plus me-4"></i>
+                                        Add New Plan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Plan Tab End -->
+
+                <!-- Billing Tab Start -->
+                <div class="tab-pane fade" id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab"
+                    tabindex="0">
+                    <!-- Payment Method Start -->
+                    <div class="card mt-24">
+                        <div class="card-header border-bottom">
+                            <h4 class="mb-4">Payment Method</h4>
+                            <p class="text-gray-600 text-15">Update your billing details and address</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gy-4">
+                                <div class="col-lg-5">
+                                    <div class="card border border-gray-100">
+                                        <div class="card-header border-bottom border-gray-100">
+                                            <h6 class="mb-0">Contact Email</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="payment-method payment-method-one form-check form-radio d-flex align-items-center justify-content-between mb-16 rounded-16 bg-main-50 p-20 cursor-pointer position-relative transition-2">
+                                                <div>
+                                                    <h6 class="title mb-14">Send to my email account</h6>
+                                                    <span class="d-block">exampleinfo@mail.com</span>
+                                                </div>
+                                                <label
+                                                    class="position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 cursor-pointer"
+                                                    for="emailOne"></label>
+                                                <input class="form-check-input payment-method-one" type="radio"
+                                                    name="emailCheck" id="emailOne">
+                                            </div>
+                                            <div
+                                                class="payment-method payment-method-one form-check form-radio d-block rounded-16 bg-main-50 p-20 cursor-pointer position-relative transition-2 mt-24">
+                                                <div class="flex-between  mb-14 gap-4">
+                                                    <h6 class="title mb-0">Send to an alternative email</h6>
+                                                    <input class="form-check-input payment-method-one" type="radio"
+                                                        name="emailCheck" id="emailTwo">
+                                                </div>
+                                                <label
+                                                    class="position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 cursor-pointer"
+                                                    for="emailTwo"></label>
+                                                <span
+                                                    class="border-text d-block bg-white border border-main-200 px-20 py-8 rounded-8">exampleinfo@mail.com</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="card border border-gray-100">
+                                        <div class="card-header border-bottom border-gray-100 flex-between gap-8">
+                                            <h6 class="mb-0">Card Details</h6>
+                                            <a href="#" class="btn btn-outline-main rounded-pill py-6">Add New Card</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="payment-method payment-method-two form-check form-radio d-flex align-items-center justify-content-between mb-16 rounded-16 bg-main-50 p-20 cursor-pointer position-relative transition-2">
+                                                <div class="flex-align align-items-start gap-16">
+                                                    <div>
+                                                        <img src="assets/images/thumbs/payment-method1.png" alt=""
+                                                            class="w-54 h-40 rounded-8">
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="title mb-0">Visa **** **** 5890</h6>
+                                                        <span class="d-block">Up to 60 User and 100GB team data</span>
+                                                        <div
+                                                            class="text-13 flex-align gap-8 mt-12 pt-12 border-top border-gray-100">
+                                                            <span>Set as default</span>
+                                                            <a href="#" class="fw-bold">Edit</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label
+                                                    class="position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 cursor-pointer"
+                                                    for="visaCard"></label>
+                                                <input class="form-check-input payment-method-two" type="radio"
+                                                    name="cardDetails" id="visaCard">
+                                            </div>
+                                            <div
+                                                class="payment-method payment-method-two form-check form-radio d-flex align-items-center justify-content-between rounded-16 bg-main-50 p-20 cursor-pointer position-relative transition-2">
+                                                <div class="flex-align align-items-start gap-16">
+                                                    <div>
+                                                        <img src="assets/images/thumbs/payment-method2.png" alt=""
+                                                            class="w-54 h-40 rounded-8">
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="title mb-0">Mastercard **** **** 1895</h6>
+                                                        <span class="d-block">Up to 60 User and 100GB team data</span>
+                                                    </div>
+                                                </div>
+                                                <label
+                                                    class="position-absolute inset-block-start-0 inset-inline-start-0 w-100 h-100 cursor-pointer"
+                                                    for="masterCard"></label>
+                                                <input class="form-check-input payment-method-two" type="radio"
+                                                    name="cardDetails" id="masterCard">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Payment Method End -->
+
+                    <!-- Billing history Start -->
+                    <div class="card mt-24">
+                        <div class="card-header border-bottom">
+                            <div class="flex-between flex-wrap  gap-16">
+                                <div>
+                                    <h4 class="mb-4">Billing History</h4>
+                                    <p class="text-gray-600 text-15">See the transaction you made</p>
+                                </div>
+                                <div class="flex-align flex-wrap justify-content-end gap-8">
+                                    <button type="button"
+                                        class="toggle-search-btn btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Add
+                                        Filter</button>
+                                    <button type="button" class="btn btn-main rounded-pill py-9">Download All</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card toggle-search-box border-bottom border-gray-100 rounded-0">
+                            <div class="card-body">
+                                <form action="#" class="search-input-form">
+                                    <div class="search-input">
+                                        <select class="form-control form-select h6 rounded-4 mb-0 py-6 px-8">
+                                            <option value="" selected disabled>Invoice Type</option>
+                                            <option value="">Credit Invoice</option>
+                                            <option value="">Debit Invoice</option>
+                                            <option value="">Mixed Invoice</option>
+                                            <option value="">Commercial Invoice</option>
+                                        </select>
+                                    </div>
+                                    <div class="search-input">
+                                        <select class="form-control form-select h6 rounded-4 mb-0 py-6 px-8">
+                                            <option value="" selected disabled>amount</option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="search-input">
+                                        <input type="date" class="form-control form-select h6 rounded-4 mb-0 py-6 px-8">
+                                    </div>
+                                    <div class="search-input">
+                                        <select class="form-control form-select h6 rounded-4 mb-0 py-6 px-8">
+                                            <option value="" selected disabled>plan</option>
+                                            <option value="">Basic Plan</option>
+                                            <option value="">Standard Plan</option>
+                                            <option value="">Premium Plan </option>
+                                        </select>
+                                    </div>
+                                    <div class="search-input">
+                                        <button type="submit" class="btn btn-main rounded-pill py-9 w-100">Apply
+                                            Filter</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0 overflow-x-auto">
+                            <table id="studentTable" class="table table-lg table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="fixed-width w-40 h-40 ps-20">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox" id="selectAll">
+                                            </div>
+                                        </th>
+                                        <th class="h6 text-gray-600">
+                                            <span class="position-relative">
+                                                Invoices
+                                            </span>
+                                        </th>
+                                        <th class="h6 text-gray-600 text-center">Amount</th>
+                                        <th class="h6 text-gray-600 text-center">Dates</th>
+                                        <th class="h6 text-gray-600 text-center">Status</th>
+                                        <th class="h6 text-gray-600 text-center">Plan</th>
+                                        <th class="h6 text-gray-600 text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fixed-width w-40 h-40">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-align gap-10">
+                                                <div class="w-32 h-32 bg-gray-50 flex-center rounded-circle p-2">
+                                                    <img src="assets/images/thumbs/invoice-logo1.png" alt="" class="">
+                                                </div>
+                                                <div class="">
+                                                    <h6 class="mb-0">Design Accesibility</h6>
+                                                    <span class="text-13 fw-medium text-gray-200">Edmate -
+                                                        #012500</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">$180</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">06/22/2024</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span
+                                                class="text-success-600 bg-success-100 py-2 px-10 rounded-pill">Paid</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">Basic</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-12">Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-width w-40 h-40">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-align gap-10">
+                                                <div class="w-32 h-32 bg-gray-50 flex-center rounded-circle p-2">
+                                                    <img src="assets/images/thumbs/invoice-logo2.png" alt="" class="">
+                                                </div>
+                                                <div class="">
+                                                    <h6 class="mb-0">Design System</h6>
+                                                    <span class="text-13 fw-medium text-gray-200">Edmate -
+                                                        #012500</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">$250</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">06/22/2024</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span
+                                                class="text-info-600 bg-info-100 py-2 px-10 rounded-pill">Unpaid</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">Professional</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-12">Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-width w-40 h-40">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-align gap-10">
+                                                <div class="w-32 h-32 bg-gray-50 flex-center rounded-circle p-2">
+                                                    <img src="assets/images/thumbs/invoice-logo1.png" alt="" class="">
+                                                </div>
+                                                <div class="">
+                                                    <h6 class="mb-0">Frondend Develop</h6>
+                                                    <span class="text-13 fw-medium text-gray-200">Edmate -
+                                                        #012500</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">$128</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">06/22/2024</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span
+                                                class="text-success-600 bg-success-100 py-2 px-10 rounded-pill">Paid</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">Basic</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-12">Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-width w-40 h-40">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-align gap-10">
+                                                <div class="w-32 h-32 bg-gray-50 flex-center rounded-circle p-2">
+                                                    <img src="assets/images/thumbs/invoice-logo1.png" alt="" class="">
+                                                </div>
+                                                <div class="">
+                                                    <h6 class="mb-0">Design Usability</h6>
+                                                    <span class="text-13 fw-medium text-gray-200">Edmate -
+                                                        #012500</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">$132</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">06/22/2024</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span
+                                                class="text-info-600 bg-info-100 py-2 px-10 rounded-pill">Unpaid</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">Basic</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-12">Download</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-width w-40 h-40">
+                                            <div class="form-check">
+                                                <input class="form-check-input border-gray-200 rounded-4"
+                                                    type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-align gap-10">
+                                                <div class="w-32 h-32 bg-gray-50 flex-center rounded-circle p-2">
+                                                    <img src="assets/images/thumbs/invoice-logo4.png" alt="" class="">
+                                                </div>
+                                                <div class="">
+                                                    <h6 class="mb-0">Digital Marketing</h6>
+                                                    <span class="text-13 fw-medium text-gray-200">Edmate -
+                                                        #012500</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">$186</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">06/22/2024</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span
+                                                class="text-success-600 bg-success-100 py-2 px-10 rounded-pill">Paid</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="text-gray-600">Advance</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-12">Download</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-top border-gray-100">
+                            <div class="flex-align justify-content-end gap-8">
+                                <button type="reset"
+                                    class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Cancel</button>
+                                <button type="submit" class="btn btn-main rounded-pill py-9">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Billing history End -->
+                </div>
+                <!-- Billing Tab End -->
+
+            </div>
+        </div>
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Jquery js -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="assets/js/boostrap.bundle.min.js"></script>
+    <!-- Phosphor Js -->
+    <script src="assets/js/phosphor-icon.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/file-upload.js"></script>
+    <!-- file upload -->
+    <script src="assets/js/plyr.js"></script>
+    <!-- dataTables -->
+    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <!-- full calendar -->
+    <script src="assets/js/full-calendar.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/jquery-ui.js"></script>
+    <!-- jQuery UI -->
+    <script src="assets/js/editor-quill.js"></script>
+    <!-- apex charts -->
+    <script src="assets/js/apexcharts.min.js"></script>
+    <!-- jvectormap Js -->
+    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+    <!-- jvectormap world Js -->
+    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- main js -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- custom js -->
+     <script type="module" src="assets/custom-js/student-profile.js"></script>
+
+
+
+    <script>
+        // ============================= Avatar Upload js ============================= 
+        function uploadImageFunction(imageId, previewId) {
+            $(imageId).on('change', function () {
+                var input = this; // 'this' is the DOM element here
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(previewId).css('background-image', 'url(' + e.target.result + ')');
+                        $(previewId).hide();
+                        $(previewId).fadeIn(650);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            });
+        }
+        uploadImageFunction('#coverImageUpload', '#coverImagePreview');
+        uploadImageFunction('#imageUpload', '#profileImagePreview');
+
+
+        // ============================= Initialize Quill editor js Start ============================= 
+        function editorFunction(editorId) {
+            const quill = new Quill(editorId, {
+                theme: 'snow'
+            });
+        }
+        editorFunction('#editor');
+        editorFunction('#editorTwo');
+        // ============================= Initialize Quill editor js End ============================= 
+
+
+        // Table Header Checkbox checked all js Start
+        $('#selectAll').on('change', function () {
+            $('.form-check .form-check-input').prop('checked', $(this).prop('checked'));
+        });
+
+        // Data Tables
+        new DataTable('#studentTable', {
+            searching: false,
+            lengthChange: false,
+            info: false,   // Bottom Left Text => Showing 1 to 10 of 12 entries
+            pagination: false,
+            info: false,   // Bottom Left Text => Showing 1 to 10 of 12 entries
+            paging: false,
+            "columnDefs": [
+                { "orderable": false, "targets": [0, 6] } // Disables sorting on the 1st & 7th column (index 6)
+            ]
+        });
+
+    </script>
+
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:36 GMT -->
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,7 +16,7 @@
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="assets/css/file-upload.css" />
   <link rel="stylesheet" href="assets/css/plyr.css" />
-  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+  <!-- <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" /> -->
   <link rel="stylesheet" href="assets/css/full-calendar.css" />
   <link rel="stylesheet" href="assets/css/jquery-ui.css" />
   <link rel="stylesheet" href="assets/css/editor-quill.css" />
@@ -31,8 +32,15 @@
     /* Main container for the teacher's screen share stream */
     #remote-screen {
       width: 100%;
-      height: 500px;
-      background-color: #000;
+      height: 30vw;
+      background-color: aliceblue;
+      padding: 3px;
+      border-radius: 20px;
+
+      div,
+      video {
+        border-radius: 20px;
+      }
     }
 
     /* Overlay style for teacher's camera stream when both streams are active */
@@ -63,84 +71,376 @@
       position: relative;
       width: 100%;
     }
+
+    /* Full-width mode */
+    #remote-screen-container.full-width {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: black;
+      z-index: 1000;
+    }
+
+    #remote-screen-container.full-width #remote-screen,
+    #remote-screen-container.full-width #remote-camera {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* .wrapper {
+      display: grid;
+      place-content: center;
+      height: 100vh;
+    } */
+
+    .c-btn {
+      position: relative;
+      overflow: hidden;
+      padding: 9px 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b3d69;
+      text-decoration: none;
+      border-radius: 8px;
+      background-color: transparent;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      box-shadow: inset 0 0 0 1px#0b3d69;
+      transform: translateZ(0);
+    }
+
+    .c-btn::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      height: 120%;
+      width: 120%;
+      border-radius: 20%;
+      background-color: #0b3d69;
+      scale: 0 0;
+      translate: 0 140%;
+      transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), translate 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .c-btn__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 2;
+      font-size: 15px;
+      letter-spacing: 0.025em;
+      transition: color 0.32s ease-in-out;
+    }
+
+    .c-btn:hover span {
+      color: #ffffff;
+    }
+
+    .c-btn:hover:after {
+      scale: 1.5 1.5;
+      translate: 0 0;
+      border-radius: 50%;
+
+    }
+
+    #showMessages {
+      height: 265px;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+    }
+
+    .message-bubble {
+      background-color: #e9ecef;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      max-width: 75%;
+    }
+
+    /* Custom styling for the input group */
+    .custom-input-group {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-input-group .form-control {
+      border: none;
+      outline: none;
+    }
+
+    .custom-input-group .form-control:focus {
+      box-shadow: none;
+    }
+
+    .custom-input-group .input-group-text {
+      background-color: #fff;
+      border: none;
+    }
+
+    .custom-input-group .btn {
+      border: none;
+    }
   </style>
 </head>
+
 <body>
+
   <!--==================== Preloader Start ====================-->
   <div class="preloader">
     <div class="loader"></div>
   </div>
   <!--==================== Preloader End ====================-->
 
+  <!--==================== Sidebar Overlay End ====================-->
   <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
 
   <!-- ============================ Sidebar Start ============================ -->
-  <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
+  <aside class="sidebar" id="sidebar-placeholder"></aside>
+
   <!-- ============================ Sidebar End  ============================ -->
 
   <div class="dashboard-main-wrapper">
     <div id="header-placeholder"></div>
+
+
     <div class="dashboard-body">
+
       <!-- Breadcrumb Start -->
       <div class="breadcrumb mb-24">
         <ul class="flex-align gap-4">
-          <li>
-            <a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
-          </li>
-          <li>
-            <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
-          </li>
-          <li>
-            <span class="text-main-600 fw-normal text-15">Class Name</span>
-          </li>
+          <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+          <li> <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
+          <li><span class="text-main-600 fw-normal text-15">Live Class Details</span></li>
         </ul>
       </div>
       <!-- Breadcrumb End -->
 
       <div class="row gy-4">
         <div class="col-md-12">
-          <div class="rounded-16 overflow-hidden position-relative">
-            <span class="live-badge text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
-            <div id="remote-screen-container">
-              <h3>Teacher Screen Share</h3>
-              <!-- Teacher's screen share will appear here -->
-              <div id="remote-screen" class="hidden"></div>
-              <!-- Teacher's camera stream will overlay here in dual-stream mode -->
-              <div id="remote-camera" class="hidden"></div>
+          <!-- Course Card Start -->
+          <div class="card">
+            <div class="card-body p-lg-20 p-sm-3">
+              <div class="flex-between flex-wrap gap-12">
+                <div>
+                  <h3 id="class-title" class="mb-4">The Complete Web Development Course</h3>
+                  <p class="text-gray-600 text-15"><strong>Teaches By :</strong> <span id="instructor-name">Prof.
+                      Devonne Wallbridge</span>
+                  </p>
+                </div>
+
+                <div class="flex-align flex-wrap gap-1">
+                  <!-- <span id="course-title" class="py-6 px-16 bg-main-50 text-main-600 rounded-pill text-15"
+                    title="Course Name">JAVA</span> -->
+                  <span id="course-category" class="bg-success py-6 px-16 text-main-600 rounded-pill text-13 text-white"
+                    title="Course Category">Aviation</span>
+                  <span id="batch-id" class=" py-6 px-16 text-main-600 text-13 rounded-pill" title="Batch"
+                    style="border: 1px solid;">Batch-2019</span>
+                </div>
+              </div>
+
+
+
+
             </div>
           </div>
 
-          <!-- Course Card Start -->
-          <!-- (Your other content here) -->
-          <!-- Course Card End -->
+          <div class=" row mt-20 overflow-hidden position-relative">
+
+            <div class="col-md-8">
+              <div id="remote-screen-container">
+
+                <!-- Teacher's screen share will appear here -->
+                <span
+                  class="live-badge d-none text-white bg-danger-600 rounded-8 text-15 px-32 py-10 position-absolute inset-block-start-0 inset-inline-start-0 z-1 ms-24 mt-24">Live</span>
+                <div id="remote-screen" class="hidden"></div>
+                <!-- Teacher's camera stream will overlay here in dual-stream mode -->
+                <div id="remote-camera" class="hidden"></div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- <div class=" card">
+                <div class="card-body">
+                  <h5 class="mb-12 fw-bold border-bottom pb-19">Class Discussion</h5>
+                  <div id="showMessages"></div>
+                  <label class="d-none" for="">type</label>
+                  <input id="message" type="text">
+                  <button id="sendBtn">Send</button>
+                 
+                </div>
+              </div> -->
+              <div class="card">
+
+                <h5 class="m-0 fw-bold border-bottom p-19">Class Discussion</h5>
+
+                <div class="card-body border-bottom" id="showMessages">
+
+
+                </div>
+                <div class="card-footer">
+                  <!-- <div class="input-group">
+                    <input type="text" id="message" class="form-control" placeholder="Type a message">
+                    <button id="sendBtn" class="btn btn-primary">Send</button>
+                  </div> -->
+                  <div class="custom-input-group input-group">
+                    <!-- Icon on the left -->
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="bi bi-chat-text"></i>
+                    </span>
+                    <!-- Message input field -->
+                    <input type="text" id="message" class="form-control" placeholder="Type a message"
+                      aria-label="Message" aria-describedby="basic-addon1">
+                    <!-- Send button with icon -->
+                    <button id="sendBtn" class="btn btn-primary">
+                      <i class="bi bi-send"></i> Send
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Course Card End -->
+            <div class="card mt-24">
+
+              <div class="card-body">
+                <div class="  position-relative">
+                  <h5 class="mb-12 fw-bold border-bottom pb-10">Class Description</h5>
+                  <!-- <div class="wrapper position-absolute end-0" style="top: 14px;"><a href="#" title="Download Files"
+                    class="c-btn">
+                    <span class="c-btn__label">Download <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M7.50005 1.04999C7.74858 1.04999 7.95005 1.25146 7.95005 1.49999V8.41359L10.1819 6.18179C10.3576 6.00605 10.6425 6.00605 10.8182 6.18179C10.994 6.35753 10.994 6.64245 10.8182 6.81819L7.81825 9.81819C7.64251 9.99392 7.35759 9.99392 7.18185 9.81819L4.18185 6.81819C4.00611 6.64245 4.00611 6.35753 4.18185 6.18179C4.35759 6.00605 4.64251 6.00605 4.81825 6.18179L7.05005 8.41359V1.49999C7.05005 1.25146 7.25152 1.04999 7.50005 1.04999ZM2.5 10C2.77614 10 3 10.2239 3 10.5V12C3 12.5539 3.44565 13 3.99635 13H11.0012C11.5529 13 12 12.5528 12 12V10.5C12 10.2239 12.2239 10 12.5 10C12.7761 10 13 10.2239 13 10.5V12C13 13.1041 12.1062 14 11.0012 14H3.99635C2.89019 14 2 13.103 2 12V10.5C2 10.2239 2.22386 10 2.5 10Z"
+                          fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                      </svg>
+    
+                  </a></div> -->
+                  <p id="class-description" class="text-gray-300 text-15 mb-8">Lorem ipsum dolor sit amet consectetur.
+                    Molestie pharetra gravida morbi eget. Diam quam non pretium malesuada. Elit
+                    porta aliquam cursus id. Fermentum adipiscing et nisl dignissim lectus ornare
+                    amet metus. Eget leo aliquet diam dictum et sit enim. Diam enim in eu rutrum
+                    est. Eu tristique euismod malesuada velit amet tellus. Ornare viverra dignissim
+                    odio magna dui fermentum non scelerisque scelerisque. Non pellentesque commodo
+                    ut sagittis felis. </p>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
         </div>
+        <div class="row gy-4 mt-1">
+          <div class=" col-md-4">
+
+            <div class="card">
+              <div class="row" id="uploaded_filesss">
+                <div class="col-md-12">
+                  <div class="table-responsive">
+                    <table class="table table-hover ">
+                      <thead>
+                        <tr>
+                          <th class="text-white">#</th>
+                          <th class="text-white">Files</th>
+                          <th class="text-white"> Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="class-file-tbody">
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination Footer -->
+
+          </div>
+          <div class=" col-md-8">
+            <div class="card">
+
+              <div class="card-body p-lg-20 p-sm-3">
+                <h5 class="mb-12 fw-bold border-bottom pb-19">Course Title : <span id="course-title">Lorem ipsum
+                    dolor</span></h5>
+                <p id="course-description" class="text-gray-300 text-15 mb-8"><span>Course Description : </span> Lorem
+                  ipsum
+                  dolor sit amet consectetur. Molestie pharetra gravida morbi eget. Diam quam non pretium malesuada.
+                  Elit
+                  porta aliquam cursus id. Fermentum adipiscing et nisl dignissim lectus ornare
+                  amet metus. Eget leo aliquet diam dictum et sit enim. Diam enim in eu rutrum
+                  est. Eu tristique euismod malesuada velit amet tellus. Ornare viverra dignissim
+                  odio magna dui fermentum non scelerisque scelerisque. Non pellentesque commodo
+                  ut sagittis felis.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div id="footer-placeholder"></div>
+
       </div>
-    </div>
-    <div id="footer-placeholder"></div>
-  </div>
+      <!-- other content should be delete -->
 
-  <!-- Agora RTC & RTM SDKs -->
-  <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+      <!-- end of the content -->
 
-  <!-- =========== STUDENT LIVE CLASS JS (inline) =========== -->
-  <script src="assets/custom-js/current-live-class.js" type="module"></script>
-  <!-- =========== END STUDENT LIVE CLASS JS =========== -->
+      <!-- socket js -->
+      <!-- <script src="/socket.io/socket.io.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+      <!-- <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script> -->
+      <!-- custom-js  -->
+      <!-- <script type="module" src="assets/custom-js/view-current-live-class.js"></script> -->
 
-  <!-- Additional JS Files -->
-  <script src="assets/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/js/boostrap.bundle.min.js"></script>
-  <script src="assets/js/phosphor-icon.js"></script>
-  <script src="assets/js/file-upload.js"></script>
-  <script src="assets/js/plyr.js"></script>
-  <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-  <script src="assets/js/full-calendar.js"></script>
-  <script src="assets/js/jquery-ui.js"></script>
-  <script src="assets/js/editor-quill.js"></script>
-  <script src="assets/js/apexcharts.min.js"></script>
-  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
-  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/global-header.js"></script>
+      <!-- Agora RTC & RTM SDKs -->
+      <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.14.0.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/agora-rtm-sdk@1.3.1/index.js"></script>
+
+      <!-- =========== STUDENT LIVE CLASS JS (inline) =========== -->
+      <script src="assets/custom-js/current-live-class.js" type="module"></script>
+      <!-- =========== END STUDENT LIVE CLASS JS =========== -->
+
+      <!-- Additional JS Files -->
+      <script src="assets/js/jquery-3.7.1.min.js"></script>
+      <script src="assets/js/boostrap.bundle.min.js"></script>
+      <script src="assets/js/phosphor-icon.js"></script>
+      <script src="assets/js/file-upload.js"></script>
+      <script src="assets/js/plyr.js"></script>
+      <!-- <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script> -->
+      <script src="assets/js/full-calendar.js"></script>
+      <script src="assets/js/jquery-ui.js"></script>
+      <script src="assets/js/editor-quill.js"></script>
+      <script src="assets/js/apexcharts.min.js"></script>
+      <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+      <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script src="assets/js/global-header.js"></script>
+
+      <script>
+        function getCurrentTime() {
+          const now = new Date();
+          let hours = now.getHours();
+          let minutes = now.getMinutes();
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // hour '0' should be '12'
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+          return hours + ':' + minutes + ' ' + ampm;
+        }
+
+        // Set the current time in the message bubble
+        document.getElementById('msgTime').textContent = getCurrentTime();
+      </script>
 </body>
+
 </html>

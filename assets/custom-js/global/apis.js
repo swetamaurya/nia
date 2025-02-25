@@ -1,8 +1,11 @@
-// export const domain = 'http://localhost:5000';
+export const domain = 'http://localhost:5000';
+// export const domain = 'http://192.168.1.77:5000';
 import {} from './hide_unhide_ROLE.js';
 
-export const domain = 'https://backend-lms-yibk.onrender.com'
-
+ 
+// export const domain = 'https://backend-lms-yibk.onrender.com'
+// export const domain = 'https://www.ns3.microcodepgmt.com'
+ 
 export const LIVE_CLASS_APP_ID = '3a55484f226043e18c5298242837f753';
 // ---------------------END POINTS------------------------------
 const admin = `/admin`
@@ -37,7 +40,7 @@ export const delete_API = `${domain}/delete/all`;
 export const import_API = `${domain}/import/student`;
 export const EXPORT_API = `${domain}/export/data`  
 export const SEARCH_API = `${domain}/search/data`  
-
+export const  DELETE_FILE_API = `${domain}/delete/file`;
 
 const class_API = `${domain}${classes}`;
 export const CLASS_GET_API = `${domain}${classes}${get}`;
@@ -52,9 +55,12 @@ export const ADMIN_SEND_OTP = `${admin_API}/sendOtpEmail`
 export const ADMIN_VERIFY_OTP = `${admin_API}/verifyOtp`
 export const ADMIN_RESET_PASSWORD = `${admin_API}/resetPassword`
 
+export const ADMIN_GET_API = `${admin_API}${get}`
+
 
 export const STUDENT_SIGNIN_API = `${domain}/student/login`;
-
+// export const INSTRUCTOR_SIGNIN_API = `${domain}/user/login`;
+export const USER_SIGNIN_API = `${domain}/user/login`;
 
 //ROLE APIs
 export const ROLE_CREATE = `${role_API}${post}`

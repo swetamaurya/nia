@@ -1,394 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Title -->
-    <title>LMS Dashboard</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/file-upload.css" />
-    <!-- file upload -->
-    <link rel="stylesheet" href="assets/css/plyr.css" />
-    <!-- DataTables -->
-    <link
-      rel="stylesheet"
-      href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"
-    />
-    <!-- full calendar -->
-    <link rel="stylesheet" href="assets/css/full-calendar.css" />
-    <!-- jquery Ui -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
-    <!-- editor quill Ui -->
-    <link rel="stylesheet" href="assets/css/editor-quill.css" />
-    <!-- apex charts Css -->
-    <link rel="stylesheet" href="assets/css/apexcharts.css" />
-    <!-- calendar Css -->
-    <link rel="stylesheet" href="assets/css/calendar.css" />
-    <!-- jvector map Css -->
-    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
-    <!-- Main css -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <script src="assets/js/global-header.js"></script>
-  </head>
-  <body>
-    <!--==================== Preloader Start ====================-->
-    <div class="preloader">
-      <div class="loader"></div>
-    </div>
-    <!--==================== Preloader End ====================-->
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:31 GMT -->
 
-    <!--==================== Sidebar Overlay End ====================-->
-    <div class="side-overlay"></div>
-    <!--==================== Sidebar Overlay End ====================-->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title -->
+  <title>LMS Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/logo/nia-logo.png" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/file-upload.css" />
+  <!-- file upload -->
+  <link rel="stylesheet" href="assets/css/plyr.css" />
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" />
+  <!-- full calendar -->
+  <link rel="stylesheet" href="assets/css/full-calendar.css" />
+  <!-- jquery Ui -->
+  <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+  <!-- editor quill Ui -->
+  <link rel="stylesheet" href="assets/css/editor-quill.css" />
+  <!-- apex charts Css -->
+  <link rel="stylesheet" href="assets/css/apexcharts.css" />
+  <!-- calendar Css -->
+  <link rel="stylesheet" href="assets/css/calendar.css" />
+  <!-- jvector map Css -->
+  <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.5.css" />
+  <!-- Main css -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/global-header.js"></script>
+  <style>
+    #image-container .initial-23 {
+      height: 137px;
+      width: 137px;
+      padding: 0px;
+      border: 1px solid rgb(153, 167, 186);
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 5px;
+    }
 
-    <!-- ============================ Sidebar Start ============================ -->
-    <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      width: 137px;
+      padding: 0;
+      /* width: 150px; */
+      /* Adjust based on your design */
+      /* height: 137px; */
+      /* Adjust based on your design */
+      /* margin: 10px; */
+      /* Space between images */
+    }
 
-    <!-- ============================ Sidebar End  ============================ -->
+    .image-container img {
 
-    <div class="dashboard-main-wrapper">
-      <div id="header-placeholder"></div>
+      object-fit: cover;
+      border-radius: 5px;
+      padding: 0;
+      /* Optional */
+    }
 
-      <div class="dashboard-body">
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb mb-24">
-          <ul class="flex-align gap-4">
-            <li>
-              <a
-                href="index-2.html"
-                class="text-gray-200 fw-normal text-15 hover-text-main-600"
-                >Home</a
-              >
-            </li>
-            <li>
-              <span class="text-gray-500 fw-normal d-flex"
-                ><i class="ph ph-caret-right"></i
-              ></span>
-            </li>
-            <li>
-              <span class="text-main-600 fw-normal text-15"
-                >Update Employee</span
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- Breadcrumb End -->
+    .image-container .action-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: rgba(0, 0, 0, 0.5); */
+      /* Semi-transparent overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 5px;
+      /* Match image border radius */
+    }
 
-        <!-- My Details Tab start -->
-        <form id="update-employee-form" action="#">
-          <div class="card mt-24">
-            <div class="card-header border-bottom">
-              <h4 class="mb-4">General Information</h4>
-              <!-- <p class="text-gray-600 text-15">
-              Please fill full details about yourself
-            </p> -->
-            </div>
-            <div class="card-body">
-              <div class="row gy-4">
-                <div class="col-sm-8 col-xs-6">
-                  <div class="row gy-4">
-                    <div class="col-sm-6 col-xs-6">
-                      <label for="role" class="form-label mb-8 h6">Role
-                        <span class="text-danger text-size">*</span>
-                      </label>
-                      <select class="form-control" name="role_id" id="role">
-                        <option  selected="" disabled="">
-                          ---Select Role---
-                        </option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <label for="fname" class="form-label mb-8 h6"
-                      >First Name <span class="text-danger text-size">*</span></label
-                      >
-                      <input
-                        type="text"
-                        class="form-control py-11"
-                        id="fname"
-                        placeholder="Enter First Name"
-                      />
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <label for="lname" class="form-label mb-8 h6"
-                        >Last Name<span class="text-danger text-size">*</span>
-                      </label
-                      >
-                      <input
-                        type="text"
-                        class="form-control py-11"
-                        id="lname"
-                        placeholder="Enter Last Name"
-                      />
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <label for="phone" class="form-label mb-8 h6"
-                        >Phone Number<span class="text-danger text-size">*</span>
-                      </label
-                      >
-                      <input
-                        type="number"
-                        class="form-control py-11"
-                        id="phone"
-                        placeholder="Enter Phone Number"
-                      />
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                      <label for="phone" class="form-label mb-8 h6"
-                        >Address
-                        <span class="text-danger text-size">*</span></label
-                      >
-                      <input
-                        type="text"
-                        class="form-control py-11"
-                        id="address"
-                        placeholder="Enter Address"
-                      />
-                    </div>
-                    <div class="col-sm-6 col-xs-6 mb-0">
-                      <label class="form-label mb-8 h6">
-                        Upload Your Profile Photo
-                        <span id="profile-photo" class="text-danger text-size">*</span>
-                      </label>
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          name="image"
-                          id="customFileUpload"
-                          class="form-control py-11"
-                          accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
-                        />
-                        <label
-                          class="custom-file-label h--45px" 
-                          for="customFileUpload"
-                        ></label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-xs-6">
-                  <div class="row gy-4">
-                    <div class="col-sm-12 col-xs-12">
-                      <label class="form-label d-none d-md-block">
-                        &nbsp;
-                      </label>
-                      <div class="text-center mb-4">
-                        <img
-                          class="initial-24"
-                          id="viewer"
-                          src="assets/images/thumbs/upload-image.png"
-                          alt="Employee"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                      <label class="form-label mb-8 h6">
-                        Upload Multiple Documents
-                        <span class="text-danger text-size">*</span>
-                      </label>
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          name="image"
-                          id="fileUpload"
-                          class="form-control py-11"
-                          multiple
-                          accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
-                          
-                        />
-                        <label
-                          class="custom-file-label h--45px"
-                          for="customFileUpload"
-                        ></label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mt-24">
-            <div class="card-header border-bottom">
-              <h4 class="mb-4">Account Information</h4>
-              <!-- <p class="text-gray-600 text-15">
-              Please fill full details about yourself
-            </p> -->
-            </div>
-            <div class="card-body">
-              <div class="row gy-4">
-                <div class="col-sm-4 col-xs-4">
-                  <label for="email" class="form-label mb-8 h6">Email ID
-                    <span class="text-danger text-size">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control py-11"
-                    id="email"
-                    placeholder="Enter Email ID"
-                  />
-                </div>
-                <div class="col-sm-4 col-xs-4">
-                  <label for="password" class="form-label mb-8 h6"
-                    >Password
-                    <span class="text-danger text-size">*</span>
-                    </label
-                  >
-                  <input
-                    type="text"
-                    class="form-control py-11"
-                    id="password"
-                    placeholder="Enter Password"
-                  />
-                </div>
-                <div class="col-sm-4 col-xs-4">
-                  <label for="lname" class="form-label mb-8 h6"
-                    >Confirm Password
-                    <span class="text-danger text-size">*</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control py-11"
-                    id="confirmPassword"
-                    placeholder="Enter Confirm Password"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mt-24">
-            <div class="flex-align justify-content-end gap-8"> 
-              <button
-                type="reset"
-                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9"
-              >
-                Reset
-              </button>
-              <button type="submit" class="btn btn-main rounded-pill py-9">
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
+    .image-container .action-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+      text-decoration: none;
+    }
 
+    .image-container:hover .action-icons {
+      opacity: 1;
+      background: linear-gradient(45deg, black, #0000007d);
+    }
+  </style>
+</head>
 
+<body>
+  <!--==================== Preloader Start ====================-->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+  <!--==================== Preloader End ====================-->
 
+  <!--==================== Sidebar Overlay End ====================-->
+  <div class="side-overlay"></div>
+  <!--==================== Sidebar Overlay End ====================-->
 
+  <!-- ============================ Sidebar Start ============================ -->
+  <aside class="sidebar overflow-y-auto scroll-sm" id="sidebar-placeholder"></aside>
 
+  <!-- ============================ Sidebar End  ============================ -->
 
+  <div class="dashboard-main-wrapper">
+    <div id="header-placeholder"></div>
 
-        <!-- My Details Tab End -->
+    <div class="dashboard-body">
+      <!-- Breadcrumb Start -->
+      <div class="breadcrumb mb-24">
+        <ul class="flex-align gap-4">
+          <li>
+            <a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a>
+          </li>
+          <li>
+            <span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span>
+          </li>
+          <li>
+            <span class="text-main-600 fw-normal text-15">Update Employee</span>
+          </li>
+        </ul>
       </div>
-      <div id="footer-placeholder"></div>
+      <!-- Breadcrumb End -->
+
+      <!-- My Details Tab start -->
+      <form id="update-employee-form" action="#">
+        <div class="card mt-24">
+          <div class="card-header border-bottom">
+            <h4 class="mb-4">General Information</h4>
+            <!-- <p class="text-gray-600 text-15">
+              Please fill full details about yourself
+            </p> -->
+          </div>
+          <div class="card-body">
+            <div class="row gy-4">
+              <div class="col-sm-8 col-xs-6">
+                <div class="row gy-4">
+                  <div class="col-sm-6 col-xs-6">
+                    <label for="role" class="form-label mb-8 h6">Role
+                      <span class="text-danger text-size">*</span>
+                    </label>
+                    <select class="form-control" name="role_id" id="role">
+                      <option selected="" disabled="">
+                        ---Select Role---
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 col-xs-6">
+                    <label for="fname" class="form-label mb-8 h6">First Name <span
+                        class="text-danger text-size">*</span></label>
+                    <input type="text" class="form-control py-11" id="fname" placeholder="Enter First Name" />
+                  </div>
+                  <div class="col-sm-6 col-xs-6">
+                    <label for="lname" class="form-label mb-8 h6">Last Name<span class="text-danger text-size">*</span>
+                    </label>
+                    <input type="text" class="form-control py-11" id="lname" placeholder="Enter Last Name" />
+                  </div>
+                  <div class="col-sm-6 col-xs-6">
+                    <label for="phone" class="form-label mb-8 h6">Phone Number<span
+                        class="text-danger text-size">*</span>
+                    </label>
+                    <input type="number" class="form-control py-11" id="phone" placeholder="Enter Phone Number" />
+                  </div>
+                  <div class="col-sm-6 col-xs-6">
+                    <label for="phone" class="form-label mb-8 h6">Address
+                      <span class="text-danger text-size">*</span></label>
+                    <input type="text" class="form-control py-11" id="address" placeholder="Enter Address" />
+                  </div>
+                  <div class="col-sm-6 col-xs-6 mb-0">
+                    <label class="form-label mb-8 h6">
+                      Upload Your Profile Photo
+                      <span id="profile-photo" class="text-danger text-size">*</span>
+                    </label>
+                    <div class="custom-file">
+                      <input type="file" name="image" id="customFileUpload" class="form-control py-11"
+                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                      <label class="custom-file-label h--45px" for="customFileUpload"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <div class="row gy-4">
+                  <div class="col-sm-12 col-xs-12">
+                    <label class="form-label d-none d-md-block">
+                      &nbsp;
+                    </label>
+                    <div class="text-center mb-4">
+                      <img class="initial-24" id="viewer" src="assets/images/thumbs/upload-image.png" alt="Employee" />
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-xs-12">
+                    <label class="form-label mb-8 h6">
+                      Upload Multiple Documents
+                      <span class="text-danger text-size">*</span>
+                    </label>
+                    <div class="custom-file">
+                      <input type="file" name="image" id="fileUpload" class="form-control py-11" multiple
+                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+                      <label class="custom-file-label h--45px" for="customFileUpload"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div>
+          <div class="row mt-24">
+            <div class="col-md-6">
+              <div class="card ">
+                <div class=" border-gray-100">
+                  <div class="card-header border-bottom">
+                    <h4 class="mb-4">Multiple Documents</h4>
+                  </div>
+                  <div class="card-body">
+                    <div id="image-container" class="row gap-15 mb-4 px-13 position-relative">
+                      <div class="image-container">
+                        <img class="initial-24" src="assets/images/thumbs/upload-image.png" alt="Employee-doc">
+                        <div class="action-icons">
+                          <a href="#" class="action-btn" title="View" target="_blank">
+                            <i class="ph ph-eye"></i>
+                          </a>
+                          <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:"
+                            title="Delete">
+                            <i class="ph ph-trash"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card ">
+                <div class="card-header border-bottom">
+                  <h4 class="mb-4">Account Information</h4>
+                  <!-- <p class="text-gray-600 text-15">
+              Please fill full details about yourself
+            </p> -->
+                </div>
+                <div class="card-body">
+                  <div class="row gy-4">
+                    <div class="col-sm-6 col-xs-4">
+                      <label for="email" class="form-label mb-8 h6">Email ID
+                        <span class="text-danger text-size">*</span>
+                      </label>
+                      <input type="text" class="form-control py-11" id="email" placeholder="Enter Email ID" />
+                    </div>
+                    <div class="col-sm-6 col-xs-4">
+                      <label for="password" class="form-label mb-8 h6">Password
+                        <span class="text-danger text-size">*</span>
+                      </label>
+                      <input type="text" class="form-control py-11" id="password" placeholder="Enter Password" />
+                    </div>
+                    <div class="col-sm-6 col-xs-4">
+                      <label for="lname" class="form-label mb-8 h6">Confirm Password
+                        <span class="text-danger text-size">*</span></label>
+                      <input type="text" class="form-control py-11" id="confirmPassword"
+                        placeholder="Enter Confirm Password" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 mt-24">
+          <div class="flex-align justify-content-end gap-8">
+            <button type="reset"
+              class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">
+              Reset
+            </button>
+            <button type="submit" class="btn btn-main rounded-pill py-9">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+
+
+
+
+
+
+
+      <!-- My Details Tab End -->
     </div>
+    <div id="footer-placeholder"></div>
+  </div>
 
-    <!-- Jquery js -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <!-- Bootstrap Bundle Js -->
-    <script src="assets/js/boostrap.bundle.min.js"></script>
-    <!-- Phosphor Js -->
-    <script src="assets/js/phosphor-icon.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/file-upload.js"></script>
-    <!-- file upload -->
-    <script src="assets/js/plyr.js"></script>
-    <!-- dataTables -->
-    <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <!-- full calendar -->
-    <script src="assets/js/full-calendar.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/jquery-ui.js"></script>
-    <!-- jQuery UI -->
-    <script src="assets/js/editor-quill.js"></script>
-    <!-- apex charts -->
-    <script src="assets/js/apexcharts.min.js"></script>
-    <!-- jvectormap Js -->
-    <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
-    <!-- jvectormap world Js -->
-    <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- Jquery js -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap Bundle Js -->
+  <script src="assets/js/boostrap.bundle.min.js"></script>
+  <!-- Phosphor Js -->
+  <script src="assets/js/phosphor-icon.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/file-upload.js"></script>
+  <!-- file upload -->
+  <script src="assets/js/plyr.js"></script>
+  <!-- dataTables -->
+  <script src="../../cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+  <!-- full calendar -->
+  <script src="assets/js/full-calendar.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/jquery-ui.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/editor-quill.js"></script>
+  <!-- apex charts -->
+  <script src="assets/js/apexcharts.min.js"></script>
+  <!-- jvectormap Js -->
+  <script src="assets/js/jquery-jvectormap-2.0.5.min.js"></script>
+  <!-- jvectormap world Js -->
+  <script src="assets/js/jquery-jvectormap-world-mill-en.js"></script>
 
-    <!-- main js -->
-    <script src="assets/js/main.js"></script>
+  <!-- main js -->
+  <script src="assets/js/main.js"></script>
 
-    <!-- custom js -->
-     <script type="module" src="./assets/custom-js/update-employee.js"></script>
+  <!-- custom js -->
+  <script type="module" src="./assets/custom-js/update-employee.js"></script>
 
-    <script>
-      // Get references to the input and image elements
-      const fileInput = document.getElementById("customFileUpload");
-      const viewer = document.getElementById("viewer");
+  <script>
+    // Get references to the input and image elements
+    const fileInput = document.getElementById("customFileUpload");
+    const viewer = document.getElementById("viewer");
 
-      // Add an event listener for file selection
-      fileInput.addEventListener("change", function () {
-        const file = fileInput.files[0]; // Get the selected file
-        if (file) {
-          const reader = new FileReader(); // Create a FileReader to read the file
+    // Add an event listener for file selection
+    fileInput.addEventListener("change", function () {
+      const file = fileInput.files[0]; // Get the selected file
+      if (file) {
+        const reader = new FileReader(); // Create a FileReader to read the file
+        reader.onload = function (e) {
+          viewer.src = e.target.result; // Update the image's src with the file's data URL
+        };
+        reader.readAsDataURL(file); // Read the file as a Data URL
+      }
+    });
+  </script>
+
+  <script>
+    // ============================= Avatar Upload js =============================
+    function uploadImageFunction(imageId, previewId) {
+      $(imageId).on("change", function () {
+        var input = this; // 'this' is the DOM element here
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
           reader.onload = function (e) {
-            viewer.src = e.target.result; // Update the image's src with the file's data URL
+            $(previewId).css(
+              "background-image",
+              "url(" + e.target.result + ")"
+            );
+            $(previewId).hide();
+            $(previewId).fadeIn(650);
           };
-          reader.readAsDataURL(file); // Read the file as a Data URL
+          reader.readAsDataURL(input.files[0]);
         }
       });
-    </script>
+    }
+    uploadImageFunction("#coverImageUpload", "#coverImagePreview");
+    uploadImageFunction("#imageUpload", "#photo_pathPreview");
 
-    <script>
-      // ============================= Avatar Upload js =============================
-      function uploadImageFunction(imageId, previewId) {
-        $(imageId).on("change", function () {
-          var input = this; // 'this' is the DOM element here
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              $(previewId).css(
-                "background-image",
-                "url(" + e.target.result + ")"
-              );
-              $(previewId).hide();
-              $(previewId).fadeIn(650);
-            };
-            reader.readAsDataURL(input.files[0]);
-          }
-        });
-      }
-      uploadImageFunction("#coverImageUpload", "#coverImagePreview");
-      uploadImageFunction("#imageUpload", "#photo_pathPreview");
-
-      // ============================= Initialize Quill editor js Start =============================
-      function editorFunction(editorId) {
-        const quill = new Quill(editorId, {
-          theme: "snow",
-        });
-      }
-      editorFunction("#editor");
-      editorFunction("#editorTwo");
-      // ============================= Initialize Quill editor js End =============================
-
-      // Table Header Checkbox checked all js Start
-      $("#selectAll").on("change", function () {
-        $(".form-check .form-check-input").prop(
-          "checked",
-          $(this).prop("checked")
-        );
+    // ============================= Initialize Quill editor js Start =============================
+    function editorFunction(editorId) {
+      const quill = new Quill(editorId, {
+        theme: "snow",
       });
+    }
+    editorFunction("#editor");
+    editorFunction("#editorTwo");
+    // ============================= Initialize Quill editor js End =============================
 
-      // Data Tables
-      new DataTable("#studentTable", {
-        searching: false,
-        lengthChange: false,
-        info: false, // Bottom Left Text => Showing 1 to 10 of 12 entries
-        pagination: false,
-        info: false, // Bottom Left Text => Showing 1 to 10 of 12 entries
-        paging: false,
-        columnDefs: [
-          { orderable: false, targets: [0, 6] }, // Disables sorting on the 1st & 7th column (index 6)
-        ],
-      });
-    </script>
-  </body>
+    // Table Header Checkbox checked all js Start
+    $("#selectAll").on("change", function () {
+      $(".form-check .form-check-input").prop(
+        "checked",
+        $(this).prop("checked")
+      );
+    });
 
-  <!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:36 GMT -->
+    // Data Tables
+    new DataTable("#studentTable", {
+      searching: false,
+      lengthChange: false,
+      info: false, // Bottom Left Text => Showing 1 to 10 of 12 entries
+      pagination: false,
+      info: false, // Bottom Left Text => Showing 1 to 10 of 12 entries
+      paging: false,
+      columnDefs: [
+        { orderable: false, targets: [0, 6] }, // Disables sorting on the 1st & 7th column (index 6)
+      ],
+    });
+  </script>
+</body>
+
+<!-- Mirrored from html.themeholy.com/edmate/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 04 Jan 2025 09:47:36 GMT -->
+
 </html>

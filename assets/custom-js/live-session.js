@@ -116,7 +116,7 @@ async function formSubmitLiveSession(event) {
     } catch(error){console.log(error)}
     // -------------------------------------------------------------------------------
     try{
-        let formData = rtnObjDataForm();
+        // let formData = rtnObjDataForm();
 
         let API = `${CLASS_CREATE_API}`;
         const response = await fetch(API, {
@@ -124,7 +124,7 @@ async function formSubmitLiveSession(event) {
           headers: {
             Authorization: `${token}`,
           },
-          body: formData
+          body: rtnObjDataForm()
         });
 
         let r1 = await response.json();
@@ -135,7 +135,11 @@ async function formSubmitLiveSession(event) {
         try{
             status_popup( ((c1) ? "Class created <br> Successfully!" : "Please try <br> again later"), (c1) );
             setTimeout(function(){
-                window.location.href = 'live-class.html';  
+                if(response.ok){
+                    window.location.href = 'live-class.html';  
+                } else {
+                    window.location.href="sign-in.html"
+                }
             },(1*1000));
         } catch (error){
             status_popup("Please try <br> again later", false);
@@ -158,11 +162,21 @@ function rtnObjDataForm(){
     f.append("description", formclassLiveStreaming.querySelector("#descriptionLive").value || '' );
     
     let fileInput = formclassLiveStreaming.querySelector("#liveUpload");
-    console.log(fileInput)
+
+    console.log("File input element:", fileInput);
+
+    if (!fileInput) {
+        console.error("File input not found!");
+        return f;
+    }
+
     if (fileInput.files.length > 0) {
+        console.log("Selected files:", fileInput.files);
         for (let i = 0; i < fileInput.files.length; i++) {
             f.append("materials", fileInput.files[i]);
         }
+    } else {
+        console.warn("No files selected");
     }
 
     return f;
