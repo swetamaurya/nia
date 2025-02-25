@@ -343,6 +343,7 @@ async function micOnBtnFnc(){
 };
 
 //----------------------------------------
+<<<<<<< HEAD
 let name = localStorage.getItem('name')
 let role = localStorage.getItem('roles')
 // socket code start ---------------------
@@ -371,3 +372,102 @@ var socket = io(domain);
 document.getElementById('stopBtn').addEventListener('click',()=>{
     window.location.href = 'live-class-list.html'
 })
+=======
+// let name = localStorage.getItem('name')
+// let role = localStorage.getItem('roles')
+// // socket code start ---------------------
+// var socket = io(domain);
+//         const sendBtn = document.getElementById('sendBtn')
+//         const messageInput = document.getElementById('message')
+//         const showMessages = document.getElementById('showMessages')
+//         //  Listen for a successful connection
+//         // socket.on('connect', () => {
+//         //     console.log('Connected to server:', socket.id);
+//         // });
+//         socket.on("message", (name,role,message) => {
+//           const p = document.createElement("p");
+//           p.innerText = `${name}: ${role} ${message}`;
+//           showMessages.appendChild(p);
+//         });
+//         sendBtn.addEventListener("click", (e) => {
+//           const message = messageInput.value;
+//           socket.emit("user-message", name, role, message);
+//           messageInput.value = '';
+//         });
+
+// socket code end -----------------------
+
+//--------------------------------------------
+let name = localStorage.getItem("name");
+let role = localStorage.getItem("roles");
+// socket code start ---------------------
+var socket = io(domain);
+const sendBtn = document.getElementById("sendBtn");
+const messageInput = document.getElementById("message");
+const showMessages = document.getElementById("showMessages");
+//  Listen for a successful connection
+// socket.on('connect', () => {
+//     console.log('Connected to server:', socket.id);
+// });
+
+// Utility function to get current time in 12-hour format with AM/PM.
+function getCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // convert '0' to '12'
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  return hours + ":" + minutes + " " + ampm;
+}
+
+socket.on("message", (name, role, message) => {
+  const messageContainer = document.createElement("div");
+
+  // If this isn't the first message, add a margin-top class.
+  if (document.getElementById("showMessages").children.length > 0) {
+    messageContainer.classList.add("mt-20");
+  }
+
+  // Create header for sender's name and role.
+  const header = document.createElement("h6");
+  header.className = "mb-0";
+  header.innerHTML = `${name} <small class="text-muted">(${role})</small>`;
+
+  // Create the message bubble.
+  const bubble = document.createElement("div");
+  bubble.className = "message-bubble mt-1";
+
+  // Create the paragraph for the message content.
+  const p = document.createElement("p");
+  p.className = "mb-0";
+  p.textContent = message;
+
+  // Create a small element to display the current time.
+  const timeEl = document.createElement("small");
+  timeEl.className = "text-muted d-block text-end";
+  timeEl.textContent = getCurrentTime();
+
+  // Assemble the message bubble.
+  bubble.appendChild(p);
+  bubble.appendChild(timeEl);
+  messageContainer.appendChild(header);
+  messageContainer.appendChild(bubble);
+
+  // Append the constructed message to the messages area.
+  document.getElementById("showMessages").appendChild(messageContainer);
+});
+
+// Send a message when the send button is clicked.
+document.getElementById("sendBtn").addEventListener("click", () => {
+  const messageInput = document.getElementById("message");
+  const message = messageInput.value.trim();
+  if (message !== "") {
+    socket.emit("user-message", name, role, message);
+    messageInput.value = "";
+  }
+});
+
+// socket code end -----------------------
+>>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935

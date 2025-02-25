@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 export const domain = 'http://localhost:5000';
+=======
+// export const domain = 'http://localhost:5000';
+>>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
 // export const domain = 'http://192.168.1.77:5000';
 import {} from './hide_unhide_ROLE.js';
 
  
+<<<<<<< HEAD
 // export const domain = 'https://backend-lms-yibk.onrender.com'
+=======
+export const domain = 'https://backend-lms-yibk.onrender.com'
+>>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
 // export const domain = 'https://www.ns3.microcodepgmt.com'
  
 export const LIVE_CLASS_APP_ID = '3a55484f226043e18c5298242837f753';
@@ -59,9 +67,15 @@ export const ADMIN_GET_API = `${admin_API}${get}`
 
 
 export const STUDENT_SIGNIN_API = `${domain}/student/login`;
+<<<<<<< HEAD
 // export const INSTRUCTOR_SIGNIN_API = `${domain}/user/login`;
 export const USER_SIGNIN_API = `${domain}/user/login`;
 
+=======
+ // export const INSTRUCTOR_SIGNIN_API = `${domain}/user/login`;
+export const USER_SIGNIN_API = `${domain}/user/login`;
+ 
+>>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
 //ROLE APIs
 export const ROLE_CREATE = `${role_API}${post}`
 export const ROLE_GETALL_API = `${role_API}${getall}`
