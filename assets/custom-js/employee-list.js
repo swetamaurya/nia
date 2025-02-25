@@ -67,7 +67,7 @@ async function all_data_load_list() {
     let rowHtml = "";
     if (totalUsers > 0 && data.length) {
       data.forEach((user) => {
-        const firstName = user.firstName || "";
+        const firstName = user.first_name || "";
         const last_name  = user.last_name || "";
         const userId  = user.userId || "";
         const fullName  = (firstName + " " + last_name).trim();
@@ -79,11 +79,7 @@ async function all_data_load_list() {
             <td>
               <div class="flex-align gap-8">
                 <a href="employee-profile.html?id=${user._id}">
-                  <img
-                    src="${imageUrl}"
-                    alt=""
-                    class="w-40 h-40 rounded-circle"
-                  />
+                 
                  <span class="h6 mb-0 fw-medium text-gray-300">
     ${`${fullName} (${userId})` || '-'}
 </span>

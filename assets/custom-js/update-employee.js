@@ -39,7 +39,58 @@ async function dropdownRoles() {
 }
 dropdownRoles();
 
+//File Uploadation Code
+let imageFiles = [];
 
+document.getElementById("fileUpload").addEventListener("change", (event) => {
+    const files = Array.from(event.target.files); // Convert FileList to array
+    imageFiles.push(...files); // Store actual File objects
+
+    const imageContainer = document.getElementById("image-container");
+
+    files.forEach((file) => {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            // Create a container for the image
+            const container = document.createElement("div");
+            container.setAttribute("class", "image-container");
+
+            // Create the image element
+            const image = document.createElement("img");
+            image.src = e.target.result;
+            image.setAttribute("class", "initial-23");
+
+            // Create the delete & view actions
+            const actionIcons = document.createElement("div");
+            actionIcons.setAttribute("class", "action-icons");
+            actionIcons.innerHTML = `
+                <a href="${e.target.result}" class="action-btn" title="View" target="_blank">
+                    <i class="ph ph-eye"></i>
+                </a>
+                <a class="action-btn btn--danger btn-outline-danger form-alert delete-btn" href="javascript:" title="Delete">
+                    <i class="ph ph-trash"></i>
+                </a>
+            `;
+
+            // Append image & actions to container
+            container.appendChild(image);
+            container.appendChild(actionIcons);
+
+            // **Prepend the new image (put it at the top)**
+            imageContainer.prepend(container);
+
+            // Add delete functionality
+            actionIcons.querySelector(".delete-btn").addEventListener("click", () => {
+                imageContainer.removeChild(container);
+                // Remove file from imageFiles array
+                imageFiles = imageFiles.filter(f => f !== file);
+            });
+        };
+
+        reader.readAsDataURL(file);
+    });
+});
 
 //===============================================================================
 window.editLoadData = async function editLoadData() {
@@ -48,17 +99,19 @@ window.editLoadData = async function editLoadData() {
     } catch (error) {
         console.error(error);
     }
-    const first_name = document.getElementById('fname')
-    const last_name = document.getElementById('lname')
-    const phoneNumber = document.getElementById('phone')
-    const address = document.getElementById('address')
-    const email = document.getElementById('email')
-    const role = document.getElementById('role')
-    const password = document.getElementById('password')
-    const roles = document.getElementById('role')
-    const confirmPassword = document.getElementById('confirmPassword')
-    const imageFileUpload = document.getElementById('customFileUpload')
-    const image = document.getElementById('viewer')
+    
+    const first_name = document.getElementById('fname');
+    const last_name = document.getElementById('lname');
+    const phoneNumber = document.getElementById('phone');
+    const address = document.getElementById('address');
+    const email = document.getElementById('email');
+    const role = document.getElementById('role');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const imageFileUpload = document.getElementById('customFileUpload');
+    const image = document.getElementById('viewer');
+    const imageContainer = document.getElementById('image-container');
+
     try {
         const API = `${USER_GET_API}?_id=${id}`;
         console.log('This is my get API: ', API);
@@ -70,29 +123,86 @@ window.editLoadData = async function editLoadData() {
                 Authorization: token,
             },
         });
+        
         if (!response.ok) {
             throw new Error("Failed to fetch data.");
         }
-        const res = await response.json()
+
+        const res = await response.json();
         const employee = res.user;
         console.log('This is my response: ', employee);
-        first_name.value = employee.first_name
-        last_name.value = employee.last_name
-        phoneNumber.value = employee.phoneNumber
-        address.value = employee.address
-        email.value = employee.email
-        image.src = employee.image? employee.image : 'assets/images/thumbs/upload-image.png'
-        role.value = employee.roles._id
-        // imageFileUpload.files[0].name = employee.image
 
-    } catch (error) { }
+        first_name.value = employee.first_name;
+        last_name.value = employee.last_name;
+        phoneNumber.value = employee.phoneNumber;
+        address.value = employee.address;
+        email.value = employee.email;
+        image.src = employee.image ? employee.image : 'assets/images/thumbs/upload-image.png';
+        role.value = employee.roles._id;
+
+        // Clear existing images before adding new ones
+        imageContainer.innerHTML = '';
+
+        // Append response images after file upload images
+        if (employee.files && employee.files.length > 0) {
+            employee.files.forEach((e) => {
+                const container = document.createElement("div");
+                container.setAttribute("class", "image-container");
+
+                const img = document.createElement("img");
+                img.src = e;
+                img.setAttribute("class", "initial-24");
+
+                const actionIcons = document.createElement("div");
+                actionIcons.setAttribute("class", "action-icons");
+                actionIcons.innerHTML = `
+                    <a href="${e}" class="action-btn" title="View" target="_blank">
+                        <i class="ph ph-eye"></i>
+                    </a>
+                    <a class="action-btn btn--danger btn-outline-danger form-alert delete-btn" href="javascript:" title="Delete">
+                        <i class="ph ph-trash"></i>
+                    </a>
+                `;
+
+                container.appendChild(img);
+                container.appendChild(actionIcons);
+
+                // **Append response images at the bottom**
+                imageContainer.appendChild(container);
+            });
+        } else {
+            imageContainer.innerHTML = `
+                <div class="image-container">
+                    <img class="initial-23" src="assets/images/thumbs/upload-image.png" alt="Employee" />
+                    <div class="action-icons">
+                        <a href="#" class="action-btn" title="View">
+                            <i class="ph ph-eye"></i>
+                        </a>
+                        <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" title="Delete">
+                            <i class="ph ph-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+       
+    } catch (error) { 
+        console.error(error);
+    }
+
     try {
         remove_loading_shimmer();
     } catch (error) {
         console.error(error);
     }
-}
-editLoadData()
+};
+
+// Call the function to load data
+editLoadData();
+
+
+
+
 
 //Update Employee API
 let updateEmployeeForm = 'update-employee-form';
@@ -121,11 +231,9 @@ document.getElementById(updateEmployeeForm).addEventListener("submit", async fun
         for (const file of files) {
             formData.append("files", file);
         }
-        if (images.length > 0 && images[0].name) {
-            for (const image of images) {
-                formData.append("image", image); 
-            }
-        }
+        imageFiles.forEach((image)=>{
+            formData.append("image", image); 
+        })
         formData.append("first_name", first_name);
         formData.append("last_name", last_name);
         formData.append("phoneNumber", phoneNumber);

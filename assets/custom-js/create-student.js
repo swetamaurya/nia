@@ -92,7 +92,7 @@ async function addStudentForm(event) {
     }
 
     
-    formData.append('batchId', document.getElementById('batchId').value);
+formData.append('batchId', document.getElementById('batchId').value);
 formData.append('application_number', document.getElementById('application_number').value);
 formData.append('registration_number', document.getElementById('registration_number').value);
 formData.append('first_name', document.getElementById('first_name').value);

@@ -6,6 +6,9 @@
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 import { status_popup } from "./global/status_popup.js";
+import { deleteFileGlobal } from './global/deleteFile.js';
+window.deleteFileGlobal = deleteFileGlobal
+
 const token = localStorage.getItem('token')
 // ==============================================================================
 //===============================================================================
@@ -51,7 +54,16 @@ async function dropdownInstructor(){
         });
         const res = await response.json();
         instructorList = res.data;
-        const instructor = instructorList.filter((e)=>e.roles.roles === 'Instructor')
+        const instructor = instructorList.filter((e) => {
+            if (!e?.roles || !e?.roles?.roles) {
+                return false; 
+            }
+            return e.roles.roles === 'Instructor';
+        });
+        
+        if (instructor.length === 0) {
+            console.error("No instructors found in the user list.");
+        }
         const selectInstructor = document.getElementById("selectInstructor");
         instructor?.forEach((instructors) => {
           const option = document.createElement("option");
@@ -216,6 +228,7 @@ window.editLoadData = async function editLoadData() {
                 // Create an image container with hover actions
                 const container = document.createElement('div');
                 container.setAttribute('class', 'image-container');
+                container.setAttribute('id',e)
         
                 const image = document.createElement('img');
                 image.src = e;
@@ -227,7 +240,8 @@ window.editLoadData = async function editLoadData() {
                     <a href="${e}" class="action-btn" title="View" target="_blank">
                         <i class="ph ph-eye"></i>
                     </a>
-                    <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" title="Delete">
+                    <a onclick='deleteFileGlobal("${e}", "${id}")' class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" title="Delete">
+
                         <i class="ph ph-trash"></i>
                     </a>
                 `;
@@ -262,7 +276,7 @@ window.editLoadData = async function editLoadData() {
         if (course.materials.length > 0) {
             course.materials.map((e, i) => {
                 courseFileTbody.innerHTML += ` 
-            <tr>
+            <tr id=${e}>
                 <td>${i + 1}</td>
                 <td><a href="${e}" target="_blank">File ${i + 1}</a></td>
                 <td>
@@ -270,7 +284,7 @@ window.editLoadData = async function editLoadData() {
                         <a href="${e}" class="action-btn me-5" title="Download">
                             <i class="ph ph-arrow-down"></i>
                         </a>
-                        <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-${i}" data-message="Want to delete this file?">
+                        <a onclick='deleteFileGlobal("${e}", "${id}")' class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" data-id="role-${i}" data-message="Want to delete this file?">
                             <i class="ph ph-trash"></i>
                         </a>
                     </div>
@@ -401,4 +415,40 @@ async function createCourse(event) {
 
 document.getElementById('save-as-draft').addEventListener('click', (event) => { createCourse(event) })
 document.getElementById('publish-course').addEventListener('click', (event) => { createCourse(event) })
+
+//file deletion API
+// window.deleteImageByClick = async function deleteImageByClick(image){
+//     const fileName = image
+//     const _id = id
+//     try {
+//         loading_shimmer();
+//     } catch (error) { console.log(error); }
+//     try {
+//         const API = `${DELETE_FILE_API}`;
+//         console.log('This is my get API: ', API);
+
+//         const response = await fetch(API, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Authorization": token
+//             },
+//             body:JSON.stringify({_id,fileName})
+//         });
+//         console.log('this is my response; ',response)
+//         if (!response.ok) {
+//             throw new Error("Failed to fetch data.");
+//         }
+//         const res = await response.json()
+//         try {
+//             status_popup(res?.message, response?.ok);
+//             remove_loading_shimmer()
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
 

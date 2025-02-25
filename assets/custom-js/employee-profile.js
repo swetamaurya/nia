@@ -53,7 +53,7 @@ window.editLoadData = async function editLoadData() {
         employeePhoneNumber.innerText = employee.phoneNumber || '-';
         employeEmail.innerText = employee.email || '-';
         employeeAddress.innerText = employee.address || '-';
-        employeeImage.src = employee.image || '-';
+        employeeImage.src = employee.image || 'assets/images/thumbs/dummy-profile-pic.png';
 
         try {
             employee.files.length > 0 ? employee.files.map((e)=>{
@@ -77,8 +77,14 @@ window.editLoadData = async function editLoadData() {
         remove_loading_shimmer();
     } catch (error) {
         console.error(error);
-    }
+    } 
 }
 editLoadData();
 
 // showing Uploaded Images
+
+//redirect to employee edit page
+let editEmployee = document.getElementById('edit-employee')
+editEmployee.addEventListener('click',()=>{
+    window.location.href = `update-employee.html?id=${id}`
+})

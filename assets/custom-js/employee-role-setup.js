@@ -16,7 +16,7 @@ const token = localStorage.getItem('token')
 // ==============================================================================
 
 //Creating Array for the Role
-let permission=[];
+let permissions=[];
 function isChecked(){
     let dashboardObj={
      dashboardManagement: document.getElementById('dashboard-Management'),
@@ -31,15 +31,15 @@ function isChecked(){
         const element = dashboardObj[key];
         if (element.checked) {
             // Add to the array only if it's not already present
-            if (!permission.includes(element.value)) {
-                permission.push(element.value);
+            if (!permissions.includes(element.value)) {
+                permissions.push(element.value);
             }
         }
         else {
             // Remove the value from the array if unchecked
-            const index = permission.indexOf(element.value);
+            const index = permissions.indexOf(element.value);
             if (index > -1) {
-                permission.splice(index, 1);
+                permissions.splice(index, 1);
             }
         }
     })
@@ -68,7 +68,7 @@ document.getElementById(addRoleForm).addEventListener("submit", async function (
     try{
         const roles = document.getElementById('role').value.trim();
         const name = document.getElementById('employeeDropdown').value.trim(); 
-        let requestBody = { roles, permission };
+        let requestBody = { roles, permissions };
         if (name!="" && name!=undefined) {
             requestBody.name = name;
         }
@@ -164,7 +164,7 @@ async function all_data_load_dashboard() {
               </td>
               <td>
                 ${
-                  e.permission
+                  e.permissions
                     .map((ee, ii) => {
                       return ii === 3 || ii === 6
                         ? `<br/><span class="h6 mb-0 fw-medium text-gray-300">${ee}, </span>`
@@ -263,3 +263,34 @@ window.editStatusById = async function editStatusById(id, event) {
 paginationDataHandler(all_data_load_dashboard);
 
 all_data_load_dashboard();
+
+//-------------------------------------------------------------------------
+let employee
+async function loadEmployeeList() {
+  try {
+    const response = await fetch(USER_GETALL_API, {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+      },
+  }); 
+ 
+  const res = await response.json();
+
+employee = res.data
+console.log('this is my data: ',employee)
+    const dropdown = document.getElementById('employeeDropdown');
+    employee.forEach((employee) => {
+      const option = document.createElement('option');
+      option.value = employee._id; 
+      option.textContent = `${employee.first_name} ${employee.last_name}  (${employee.userId})`;
+      dropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error loading employee list:', error);
+  }
+}
+
+// Call the function to populate the dropdown on page load
+loadEmployeeList();

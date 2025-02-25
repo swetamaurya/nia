@@ -61,7 +61,7 @@
             <!-- Breadcrumb Start -->
             <div class="breadcrumb mb-24">
                 <ul class="flex-align gap-4">
-                    <li><a href="index-2.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
+                    <li><a href="admin-dashboard.html" class="text-gray-200 fw-normal text-15 hover-text-main-600">Home</a></li>
                     <li><span class="text-gray-500 fw-normal d-flex"><i class="ph ph-caret-right"></i></span> </li>
                     <li><span class="text-main-600 fw-normal text-15">Student Courses</span></li>
                 </ul>
@@ -86,23 +86,21 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <div class="form-header">
-                                <h3>Delete Batch List</h3>
-                                <p>Are you sure want to delete?</p>
+                            <div class="form-header text-center">
+                              <h3 class="mb-3">Delete Courses List</h3>
+                              <p class="mb-5 pb-5">Are you sure want to delete?</p>
                             </div>
-                            <div class="modal-btn delete-action">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a href="javascript:void(0);" id="deleteButton"
-                                            class="btn btn-primary continue-btn" data-bs-dismiss="modal">Delete</a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal"
-                                            class="btn btn-primary cancel-btn">Cancel</a>
-                                    </div>
+                            <div class="modal-btn delete-action mt-5 pt-5">
+                              <div class="row">
+                                <div class="col-6">
+                                  <a href="javascript:void(0);" id="deleteButton" class="btn btn-danger w-100 continue-btn" data-bs-dismiss="modal">Delete</a>
                                 </div>
+                                <div class="col-6">
+                                  <a id="cancelButton" href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary w-100 cancel-btn">Cancel</a>
+                                </div>
+                              </div>
                             </div>
-                        </div>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -116,236 +114,7 @@
                     </div> -->
 
                     <div id="courses-cards" class="row g-20">
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img5.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <span class="text-13 py-2 px-10 rounded-pill bg-warning-50 text-warning-600 mb-16">Design</span> -->
-                        <!-- <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Aviation</a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                            <span
-                                            class="badge badge-outline position-absolute "
-                                            style="top: 9px;left: 0px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img5.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div> -->
-
-
-
-                        <!-- <div class="flex-between flex-wrap mt-24 justify-content-between">
-                                            <a href="course-details.html"
-                                                class="col-sm-6 btn  btn-outline-main rounded-pill py-9">Edit
-                                            </a>
-                                            <a href="course-details.html"
-                                                class="col-sm-6 btn btn-outline-main rounded-pill py-9">View
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img6.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Customer Services</a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img6.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img4.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Grooming</a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img4.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img9.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Spoken English</a></h5><span
-                                            class="badge bg-danger position-absolute "
-                                            style="top: 9px;right: 8px;">Draft</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img9.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img3.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Interview Preparation </a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img3.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img7.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Personality Development </a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img7.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="card border border-gray-100">
-                                <div class="card-body p-8">
-                                    <a href="course-details.html"
-                                        class="bg-main-100 rounded-8 overflow-hidden text-center mb-8 h-164 flex-center p-8">
-                                        <img src="assets/images/thumbs/course-img8.png" alt="Course Image">
-                                    </a>
-                                    <div class="p-8">
-                                        <h5 class="mb-4"><a href="course-details.html"
-                                                class="hover-text-main-600">Retail / F&B Management </a></h5><span
-                                            class="badge bg-success position-absolute "
-                                            style="top: 9px;right: 8px;">Published</span>
-                                        <p class="three-line-text-truncate">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Sapiente iste veniam nihil sequi gjklkkkkkkkkkj</p>
-                                        <div class="flex-align gap-8 flex-wrap mt-16">
-                                            <img src="assets/images/thumbs/user-img8.png"
-                                                class="w-28 h-28 rounded-circle object-fit-cover" alt="User Image">
-                                            <div>
-                                                <span class="text-gray-600 text-13">Created by <a href="profile.html"
-                                                        class="fw-semibold text-gray-700 hover-text-main-600 hover-text-decoration-underline">Albert
-                                                        James</a> </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-between gap-4 flex-wrap mt-24">
-                                            <a href="course-details.html"
-                                                class="w-100 btn btn-outline-main rounded-pill py-9">View Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
+ 
                     </div>
                    
                 </div>

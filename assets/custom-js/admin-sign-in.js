@@ -1,4 +1,6 @@
-import { ADMIN_SIGNIN_API } from './global/apis.js'
+
+
+import { ADMIN_SIGNIN_API, USER_SIGNIN_API } from './global/apis.js'
 
 try{
     localStorage.clear();
@@ -18,15 +20,22 @@ document.getElementById(signIn).addEventListener("submit", async function (event
     // -----------------------------------------------------------------------------------
     try{
         const email = document.getElementById('fname').value;
-        const password = document.getElementById('current-password').value;
-        const API = `${ADMIN_SIGNIN_API}`;
+        const password =    document.getElementById('current-password').value;
+        // -----------------------------------------------------------------------------------
+        let API;
+
+        if(document.getElementById("selectRole").value.toLowerCase() == 'Admin'.toLowerCase() ){
+            API = `${ADMIN_SIGNIN_API}`;
+        } else {
+            API = `${USER_SIGNIN_API}`;
+        }
         // -----------------------------------------------------------------------------------
         const response = await fetch(API, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, password}),
         });
         // -----------------------------------------------------------------------------------
         const r1 = await response.json();
@@ -34,19 +43,35 @@ document.getElementById(signIn).addEventListener("submit", async function (event
         console.log(r1)
         // -----------------------------------------------------------------------------------
         try{
+            console.log(r1)
             status_popup(r1?.message, (response?.ok));
             if(response?.ok) {
                 try{
-                    localStorage.setItem('token', r1?.token);
-                    localStorage.setItem('roles', r1?.admin?.roles);
-                    localStorage.setItem('name', r1?.admin?.name);
-                    localStorage.setItem('_id', r1?.admin?._id);
-                    localStorage.setItem('email',r1?.admin?.email);
-                    localStorage.setItem('permissions',r1?.admin?.permissions);
-                    localStorage.setItem('roles', r1?.admin?.roles)
-                    localStorage.setItem('image', r1?.admin?.image)
+                    
+                    if(document.getElementById("selectRole").value.toLowerCase() == 'Admin'.toLowerCase() ){
 
-                    window.location.href = `index-2.html`
+                        localStorage.setItem('token', r1?.token);
+                        localStorage.setItem('roles', r1?.admin?.roles);
+                        localStorage.setItem('name', r1?.admin?.name);
+                        localStorage.setItem('_id', r1?.admin?._id);
+                        localStorage.setItem('email',r1?.admin?.email);
+                        localStorage.setItem('permissions',r1?.admin?.permissions);
+                        localStorage.setItem('image', r1?.admin?.image)
+                        window.location.href = `admin-dashboard.html`
+
+                    } else {
+                        localStorage.setItem('token', r1?.token);
+                        localStorage.setItem('roles', r1?.user?.roles);
+                        localStorage.setItem('name', (r1?.user?.first_name || "") + " " + (r1?.user?.last_name || ""));
+                        localStorage.setItem('_id', r1?.user?._id);
+                        localStorage.setItem('email',r1?.user?.email);
+                        localStorage.setItem('permissions',r1?.user?.permissions);
+                        localStorage.setItem('image', r1?.user?.image)
+                        window.location.href = `instructor-dashboard.html`
+
+                    }
+
+                    // window.location.href = `instructor-dashboard.html`
                 } catch(error){
                     status_popup( ("please try again later, Server Error !"), (false));
                     console.log(error);
