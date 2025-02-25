@@ -2,24 +2,11 @@ if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
   }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
 import { ADMIN_GET_API, USER_GET_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 const token = localStorage.getItem('token')
 const roles = localStorage.getItem('roles')
-<<<<<<< HEAD
-=======
-=======
-import { ADMIN_GET_API } from './global/apis.js'
-// -----------------------------------------------------------------------------
-import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
-const token = localStorage.getItem('token')
->>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
 // ==============================================================================
 //===============================================================================
 
@@ -42,22 +29,13 @@ window.editLoadData = async function editLoadData() {
     const imagesContainer = document.getElementById('show-images')
     const viewerImage = document.getElementById('viewer-image');
     try {
-<<<<<<< HEAD
         let API;
-=======
-         let API;
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
         if(roles.toLowerCase() == 'Admin'.toLowerCase() ){
                     API = `${ADMIN_GET_API}?_id=${id}`;
                 } else {
                     API = `${USER_GET_API}?_id=${id}`;
                 }
-<<<<<<< HEAD
 
-=======
-         const API = `${ADMIN_GET_API}?_id=${id}`;
- 
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
         const response = await fetch(API, {
             method: "GET",
             headers: {
@@ -69,24 +47,14 @@ window.editLoadData = async function editLoadData() {
             throw new Error("Failed to fetch data.");
         }
         const res = await response.json()
-<<<<<<< HEAD
         const admin = res.admin 
         if(admin){
         adminName.innerText = admin.name;
-=======
-         const admin = res.admin 
-        if(admin){
-         adminName.innerText = admin.name;
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
         adminRole.innerText = admin.roles? admin.roles : ''
         adminPhoneNumber.innerText = admin.mobile || '-';
         adminEmail.innerText = admin.email || '-';
         // employeeAddress.innerText = employee.address || '-';
         adminImage.src = admin.image || '-';
-<<<<<<< HEAD
-=======
- 
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
         }
         else{
             const user = res.user
@@ -98,11 +66,7 @@ window.editLoadData = async function editLoadData() {
         employeeAddress.innerText = user.address || '-';
         // adminImage.src = admin.image || '-';
         }
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
         // try {
         //     employee.files.length > 0 ? employee.files.map((e)=>{
         //         let image = document.createElement('img');

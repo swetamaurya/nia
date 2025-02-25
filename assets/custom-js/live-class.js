@@ -1,4 +1,4 @@
- if (!localStorage.getItem("token")) {
+if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
 }
@@ -343,36 +343,6 @@ async function micOnBtnFnc(){
 };
 
 //----------------------------------------
-<<<<<<< HEAD
-let name = localStorage.getItem('name')
-let role = localStorage.getItem('roles')
-// socket code start ---------------------
-var socket = io(domain);
-        const sendBtn = document.getElementById('sendBtn')
-        const messageInput = document.getElementById('message')
-        const showMessages = document.getElementById('showMessages')
-        //  Listen for a successful connection
-        // socket.on('connect', () => {
-        //     console.log('Connected to server:', socket.id);
-        // });
-        socket.on("message", (name,role,message) => {
-          const p = document.createElement("p");
-          p.innerText = `${name}: ${role} ${message}`;
-          showMessages.appendChild(p);
-        });
-        sendBtn.addEventListener("click", (e) => {
-          const message = messageInput.value;
-          socket.emit("user-message", name, role, message);
-          messageInput.value = '';
-        });
-
-// socket code end -----------------------
-
-//---------------------------------------
-document.getElementById('stopBtn').addEventListener('click',()=>{
-    window.location.href = 'live-class-list.html'
-})
-=======
 // let name = localStorage.getItem('name')
 // let role = localStorage.getItem('roles')
 // // socket code start ---------------------
@@ -470,4 +440,3 @@ document.getElementById("sendBtn").addEventListener("click", () => {
 });
 
 // socket code end -----------------------
->>>>>>> 05e0dee682bd9ae14b01bf84603d7529997ea935
