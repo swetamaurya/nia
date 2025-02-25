@@ -82,12 +82,231 @@
       /* Match image border radius */
     }
 
+<<<<<<< HEAD
     .image-container .action-icons a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       text-decoration: none;
     }
+=======
+        <!-- My Details Tab start -->
+        <form id="update-employee-form" action="#">
+          <div class="card mt-24">
+            <div class="card-header border-bottom">
+              <h4 class="mb-4">General Information</h4>
+              <!-- <p class="text-gray-600 text-15">
+              Please fill full details about yourself
+            </p> -->
+            </div>
+            <div class="card-body">
+              <div class="row gy-4">
+                <div class="col-sm-8 col-xs-6">
+                  <div class="row gy-4">
+                    <div class="col-sm-6 col-xs-6">
+                      <label for="role" class="form-label mb-8 h6">Role
+                        <span class="text-danger text-size">*</span>
+                      </label>
+                      <select class="form-control" name="role_id" id="role">
+                        <option  selected="" disabled="">
+                          ---Select Role---
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <label for="fname" class="form-label mb-8 h6"
+                      >First Name <span class="text-danger text-size">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control py-11"
+                        id="fname"
+                        placeholder="Enter First Name"
+                      />
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <label for="lname" class="form-label mb-8 h6"
+                        >Last Name<span class="text-danger text-size">*</span>
+                      </label
+                      >
+                      <input
+                        type="text"
+                        class="form-control py-11"
+                        id="lname"
+                        placeholder="Enter Last Name"
+                      />
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <label for="phone" class="form-label mb-8 h6"
+                        >Phone Number<span class="text-danger text-size">*</span>
+                      </label
+                      >
+                      <input
+                        type="number"
+                        class="form-control py-11"
+                        id="phone"
+                        placeholder="Enter Phone Number"
+                      />
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <label for="phone" class="form-label mb-8 h6"
+                        >Address
+                        <span class="text-danger text-size">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control py-11"
+                        id="address"
+                        placeholder="Enter Address"
+                      />
+                    </div>
+                    <div class="col-sm-6 col-xs-6 mb-0">
+                      <label class="form-label mb-8 h6">
+                        Upload Your Profile Photo
+                        <span id="profile-photo" class="text-danger text-size">*</span>
+                      </label>
+                      <div class="custom-file">
+                        <input
+                          type="file"
+                          name="image"
+                          id="customFileUpload"
+                          class="form-control py-11"
+                          accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                        />
+                        <label
+                          class="custom-file-label h--45px" 
+                          for="customFileUpload"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 col-xs-6">
+                  <div class="row gy-4">
+                    <div class="col-sm-12 col-xs-12">
+                      <label class="form-label d-none d-md-block">
+                        &nbsp;
+                      </label>
+                      <div class="text-center mb-4">
+                        <img
+                          class="initial-24"
+                          id="viewer"
+                          src="assets/images/thumbs/upload-image.png"
+                          alt="Employee"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                      <label class="form-label mb-8 h6">
+                        Upload Multiple Documents
+                        <span class="text-danger text-size">*</span>
+                      </label>
+                      <div class="custom-file">
+                        <input
+                          type="file"
+                          name="image"
+                          id="fileUpload"
+                          class="form-control py-11"
+                          multiple
+                          accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                          
+                        />
+                        <label
+                          class="custom-file-label h--45px"
+                          for="customFileUpload"
+                        ></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+            <div class=" col-md-5 px-20">
+                <h5 class="mb-12 fw-bold mb-22">Multiple Documents</h5>
+                <div class="row" id="uploaded_filesss">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th class="text-white">#</th>
+                                        <th class="text-white">Files</th>
+                                        <th class="text-white">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="course-file-tbody">
+                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="card mt-24">
+            <div class="card-header border-bottom">
+              <h4 class="mb-4">Account Information</h4>
+              <!-- <p class="text-gray-600 text-15">
+              Please fill full details about yourself
+            </p> -->
+            </div>
+            <div class="card-body">
+              <div class="row gy-4">
+                <div class="col-sm-4 col-xs-4">
+                  <label for="email" class="form-label mb-8 h6">Email ID
+                    <span class="text-danger text-size">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control py-11"
+                    id="email"
+                    placeholder="Enter Email ID"
+                  />
+                </div>
+                <div class="col-sm-4 col-xs-4">
+                  <label for="password" class="form-label mb-8 h6"
+                    >Password
+                    <span class="text-danger text-size">*</span>
+                    </label
+                  >
+                  <input
+                    type="password"
+                    class="form-control py-11"
+                    id="password"
+                    placeholder="Enter Password"
+                  />
+                </div>
+                <div class="col-sm-4 col-xs-4">
+                  <label for="lname" class="form-label mb-8 h6"
+                    >Confirm Password
+                    <span class="text-danger text-size">*</span></label
+                  >
+                  <input
+                    type="password"
+                    class="form-control py-11"
+                    id="confirmPassword"
+                    placeholder="Enter Confirm Password"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-24">
+            <div class="flex-align justify-content-end gap-8"> 
+              <button
+                type="reset"
+                class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9"
+              >
+                Reset
+              </button>
+              <button type="submit" class="btn btn-main rounded-pill py-9">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 
     .image-container:hover .action-icons {
       opacity: 1;

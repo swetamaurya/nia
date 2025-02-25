@@ -99,6 +99,7 @@ window.editLoadData = async function editLoadData() {
     } catch (error) {
         console.error(error);
     }
+<<<<<<< HEAD
     
     const first_name = document.getElementById('fname');
     const last_name = document.getElementById('lname');
@@ -112,6 +113,19 @@ window.editLoadData = async function editLoadData() {
     const image = document.getElementById('viewer');
     const imageContainer = document.getElementById('image-container');
 
+=======
+    const first_name = document.getElementById('fname')
+    const last_name = document.getElementById('lname')
+    const phoneNumber = document.getElementById('phone')
+    const address = document.getElementById('address')
+    const email = document.getElementById('email')
+    const role = document.getElementById('role')
+    const password = document.getElementById('password')
+    const roles = document.getElementById('role')
+    const confirmPassword = document.getElementById('confirmPassword')
+    const courseFileTbody = document.getElementById('course-file-tbody');
+    const image = document.getElementById('viewer')
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
     try {
         const API = `${USER_GET_API}?_id=${id}`;
         console.log('This is my get API: ', API);
@@ -131,6 +145,7 @@ window.editLoadData = async function editLoadData() {
         const res = await response.json();
         const employee = res.user;
         console.log('This is my response: ', employee);
+<<<<<<< HEAD
 
         first_name.value = employee.first_name;
         last_name.value = employee.last_name;
@@ -176,11 +191,42 @@ window.editLoadData = async function editLoadData() {
                     <img class="initial-23" src="assets/images/thumbs/upload-image.png" alt="Employee" />
                     <div class="action-icons">
                         <a href="#" class="action-btn" title="View">
+=======
+        first_name.value = employee.first_name
+        last_name.value = employee.last_name
+        phoneNumber.value = employee.phoneNumber
+        address.value = employee.address
+        email.value = employee.email
+        image.src = employee.image? employee.image : 'assets/images/thumbs/upload-image.png'
+        role.value = employee.roles._id
+        courseFileTbody.addEventListener('change', (event) => {
+            const files = event.target.files;
+        
+            // Loop through each selected file
+            Array.from(files).forEach((file,i) => {
+                const reader = new FileReader();
+        
+                // Create an image container with hover actions
+                reader.onload = (e) => {
+                    const container = document.createElement('div');
+                    container.setAttribute('class', 'image-container');
+        
+                    const image = document.createElement('img');
+                    image.src = e.target.result;
+                    image.setAttribute('class', 'initial-23');
+        
+                    const actionIcons = document.createElement('div');
+                    actionIcons.setAttribute('class', 'action-icons');
+                    actionIcons.innerHTML = `
+                        <a href="${e.target.result}" class="action-btn" title="View" target="_blank">
+                        <input class="hiddenFileName" value="${files[0].name}" hidden/>
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
                             <i class="ph ph-eye"></i>
                         </a>
                         <a class="action-btn btn--danger btn-outline-danger form-alert" href="javascript:" title="Delete">
                             <i class="ph ph-trash"></i>
                         </a>
+<<<<<<< HEAD
                     </div>
                 </div>
             `;
@@ -190,6 +236,22 @@ window.editLoadData = async function editLoadData() {
         console.error(error);
     }
 
+=======
+                    `;
+        
+                    // Append image and actions to the container
+                    container.appendChild(image);
+                    container.appendChild(actionIcons);
+        
+                    // Add uploaded images to the start of the container
+                    imageContainer.insertBefore(container, imageContainer.firstChild);
+                };
+        
+                reader.readAsDataURL(file); // Read the file as a data URL
+            });
+        });
+    } catch (error) { }
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
     try {
         remove_loading_shimmer();
     } catch (error) {

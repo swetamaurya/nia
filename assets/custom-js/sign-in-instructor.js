@@ -47,7 +47,11 @@ document.getElementById(signIn).addEventListener("submit", async function (event
                     localStorage.setItem('name', fullName);
                     localStorage.setItem('_id',  r1?.user?._id);
                     localStorage.setItem('email', r1?.user?.email);
+<<<<<<< HEAD
                     localStorage.setItem('permissions',r1?.user?.roles?.permission);
+=======
+                    localStorage.setItem('permissions',r1?.user?.roles?.permissions);
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 
                     window.location.href = `live-class-list.html`
                 } catch(error){

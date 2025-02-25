@@ -59,8 +59,13 @@ export const ADMIN_GET_API = `${admin_API}${get}`
 
 
 export const STUDENT_SIGNIN_API = `${domain}/student/login`;
+<<<<<<< HEAD
 // export const INSTRUCTOR_SIGNIN_API = `${domain}/user/login`;
 export const USER_SIGNIN_API = `${domain}/user/login`;
+=======
+export const INSTRUCTOR_SIGNIN_API = `${domain}/user/login`;
+
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 
 //ROLE APIs
 export const ROLE_CREATE = `${role_API}${post}`

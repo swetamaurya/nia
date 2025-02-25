@@ -2,11 +2,18 @@ if (!localStorage.getItem("token")) {
     localStorage.clear();
     window.location.href = 'sign-in.html';
   }
+<<<<<<< HEAD
 import { ADMIN_GET_API, USER_GET_API } from './global/apis.js'
 // -----------------------------------------------------------------------------
 import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
 const token = localStorage.getItem('token')
 const roles = localStorage.getItem('roles')
+=======
+import { ADMIN_GET_API } from './global/apis.js'
+// -----------------------------------------------------------------------------
+import { loading_shimmer, remove_loading_shimmer } from "./global/loading_shimmer.js";
+const token = localStorage.getItem('token')
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 // ==============================================================================
 //===============================================================================
 
@@ -29,12 +36,16 @@ window.editLoadData = async function editLoadData() {
     const imagesContainer = document.getElementById('show-images')
     const viewerImage = document.getElementById('viewer-image');
     try {
+<<<<<<< HEAD
         let API;
         if(roles.toLowerCase() == 'Admin'.toLowerCase() ){
                     API = `${ADMIN_GET_API}?_id=${id}`;
                 } else {
                     API = `${USER_GET_API}?_id=${id}`;
                 }
+=======
+        const API = `${ADMIN_GET_API}?_id=${id}`;
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 
         const response = await fetch(API, {
             method: "GET",
@@ -47,14 +58,19 @@ window.editLoadData = async function editLoadData() {
             throw new Error("Failed to fetch data.");
         }
         const res = await response.json()
+<<<<<<< HEAD
         const admin = res.admin 
         if(admin){
+=======
+        const admin = res.admin;
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
         adminName.innerText = admin.name;
         adminRole.innerText = admin.roles? admin.roles : ''
         adminPhoneNumber.innerText = admin.mobile || '-';
         adminEmail.innerText = admin.email || '-';
         // employeeAddress.innerText = employee.address || '-';
         adminImage.src = admin.image || '-';
+<<<<<<< HEAD
         }
         else{
             const user = res.user
@@ -66,6 +82,8 @@ window.editLoadData = async function editLoadData() {
         employeeAddress.innerText = user.address || '-';
         // adminImage.src = admin.image || '-';
         }
+=======
+>>>>>>> 82fd20aeb23f6465758f355f0eaaef2508afb39a
 
         // try {
         //     employee.files.length > 0 ? employee.files.map((e)=>{
